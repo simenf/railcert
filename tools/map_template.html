@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Railcert – Reference map</title>
+<style>
+:root{--bg:#f6f5f1;--panel:#fff;--ink:#1d2127;--mute:#69707a;--line:#e3e1db;--acc:#0b5d7a;--acc2:#c2410c;--chip:#eef2f4;--edge:rgba(90,100,110,.28)}
+@media (prefers-color-scheme:dark){:root{--bg:#15171a;--panel:#1d2024;--ink:#e8e6e1;--mute:#9aa1aa;--line:#2d3136;--acc:#5fb3cf;--acc2:#f08a4b;--chip:#262a2f;--edge:rgba(170,180,190,.25)}}
+*{box-sizing:border-box}body{margin:0;font:14px/1.45 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{display:flex;align-items:baseline;gap:18px;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5;flex-wrap:wrap}
+h1{font-size:17px;margin:0;letter-spacing:.2px}h1 span{color:var(--mute);font-weight:400}
+nav button{border:0;background:none;color:var(--mute);font:inherit;padding:6px 10px;border-radius:6px;cursor:pointer}
+nav button.on{background:var(--chip);color:var(--ink);font-weight:600}
+.stats{margin-left:auto;color:var(--mute);font-size:12.5px}
+main{padding:16px 22px}.view{display:none}.view.on{display:block}
+.ex{display:grid;grid-template-columns:340px 1fr;gap:16px;height:calc(100vh - 92px)}
+.side,.detail{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto}
+.side{display:flex;flex-direction:column}.side .top{padding:10px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel);z-index:1}
+input[type=search],select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font:inherit}
+.row2{display:flex;gap:6px;margin-top:6px}.row2 select{flex:1}
+.list{padding:4px 0}.grp{padding:8px 12px 3px;font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--mute)}
+.it{padding:5px 12px;cursor:pointer;border-left:3px solid transparent}.it:hover{background:var(--chip)}.it.sel{border-left-color:var(--acc);background:var(--chip)}
+.it b{font-weight:600}.sn{font-weight:600;color:var(--ink)}.num{color:var(--mute);font-size:12px;margin-left:4px}.detail .kick{font-size:12px;letter-spacing:.4px;color:var(--mute);margin:0 0 2px}.it .tt{color:var(--ink);opacity:.85}
+.it small{display:block;color:var(--mute);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.detail{padding:18px 22px}.detail h2{margin:0 0 2px;font-size:18px}.detail .sub{font-size:14.5px;margin:0 0 4px}.meta{color:var(--mute);font-size:12.5px;margin-bottom:10px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:1100px){.cols{grid-template-columns:1fr}.ex{grid-template-columns:1fr;height:auto}}
+h3{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mute);margin:14px 0 6px}
+.ty{font-weight:600;font-size:12.5px;margin:10px 0 4px}
+.ref{display:flex;gap:8px;align-items:baseline;padding:3px 0;border-bottom:1px dashed var(--line)}
+.ref a{color:var(--acc);cursor:pointer;text-decoration:none}.ref a:hover{text-decoration:underline}
+.ref .c{margin-left:auto;color:var(--mute);font-size:11.5px;white-space:nowrap}
+.tag{font-size:10.5px;padding:1px 6px;border-radius:9px;background:var(--chip);color:var(--mute);white-space:nowrap}
+.tag.lib{color:var(--acc)}.tag.paid{color:var(--acc2)}
+.xl{color:var(--mute);text-decoration:none;font-size:12px;margin-left:4px;white-space:nowrap}.xl:hover{color:var(--acc)}
+.open{display:inline-block;margin:2px 10px 0 0;font-size:12.5px;color:var(--acc);cursor:pointer}
+/* ego graph */
+.egobar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mute);margin:6px 0 4px}
+.egobar label{display:flex;gap:5px;align-items:center;cursor:pointer}.egobar select{width:auto;padding:3px 6px}
+#ego{width:100%;height:420px;border:1px solid var(--line);border-radius:9px;background:var(--bg);display:block}
+#ego text{font-size:10.5px;fill:var(--ink);pointer-events:none;paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round}
+#ego .lbl-mute{fill:var(--mute)}
+#ego .nd{cursor:pointer}#ego .nd text{pointer-events:auto}#ego .hit{fill:transparent;stroke:none}#ego .nd:hover circle{stroke:var(--acc2);stroke-width:2.5}
+#ego path{fill:none;stroke:var(--edge)}#ego path.hi{stroke:var(--acc2);stroke-opacity:.9}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11.5px;color:var(--mute);margin:6px 0 2px}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);padding:5px 9px;border-radius:6px;font-size:12px;display:none;max-width:420px;z-index:20;line-height:1.35}
+/* tables */
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{cursor:pointer;background:var(--chip);font-size:12px;white-space:nowrap}
+td.n{text-align:right;font-variant-numeric:tabular-nums}td.ti{max-width:520px}td.ti small{color:var(--mute);display:block;font-size:11px}
+td a{color:var(--acc);cursor:pointer}
+.bar{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center}.bar input{max-width:360px}.bar select{max-width:260px}.bar .note{color:var(--mute);font-size:12px}
+#gwrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;position:relative;height:calc(100vh - 170px)}
+canvas{width:100%;height:100%;display:block;cursor:grab}
+.empty{color:var(--mute);padding:40px;text-align:center}
+footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}footer a{color:var(--acc)}
+</style></head><body>
+<header><h1>Railcert <span>· reference map of EU &amp; Norwegian railway regulation</span></h1>
+<nav><button data-v="ex" class="on">Explorer</button><button data-v="gr">Graph</button><button data-v="st">Standards register</button><button data-v="mi">Missing / external</button></nav>
+<div class="stats" id="stats"></div></header>
+<main>
+<section class="view on" id="v-ex"><div class="ex">
+ <div class="side"><div class="top"><input type="search" id="q" placeholder="Search documents, standards (number or title), CELEX, SUBSET…">
+ <div class="row2"><select id="scope"><option value="lib">Library documents</option><option value="std">Standards (EN, IEC, ISO, ETSI, UIC)</option><option value="all">Everything cited</option></select></div></div>
+ <div class="list" id="list"></div></div>
+ <div class="detail" id="detail"><div class="empty">Select a document or standard on the left to see its citation graph, what it cites and what cites it.</div></div>
+</div></section>
+<section class="view" id="v-gr">
+ <div class="bar"><select id="gmode"><option value="docs">Library documents (document → document citations)</option><option value="std">Library documents + standards cited by ≥ 5 documents</option></select>
+ <select id="gfold"><option value="">All folders</option></select><span class="note">Scroll to zoom · drag background to pan · drag a node to move it · double-click a node to open it in the Explorer</span></div>
+ <div class="legend" id="legend"></div>
+ <div id="gwrap"><canvas id="cv"></canvas></div>
+</section>
+<section class="view" id="v-st">
+ <div class="bar"><input type="search" id="sq" placeholder="Filter by number or title (e.g. 50126, fire, GSM-R)"><select id="sa"><option value="">All availability</option></select><select id="sty"><option value="">All types</option><option>Standard</option><option>ETSI spec</option><option>UIC leaflet</option></select><span class="note" id="scount"></span></div>
+ <table id="stab"><thead><tr><th data-k="l">Standard</th><th data-k="t">Title</th><th data-k="ty">Type</th><th data-k="a">Availability</th><th>Link</th><th data-k="v">Versions cited</th><th data-k="n">Cited by</th></tr></thead><tbody></tbody></table>
+</section>
+<section class="view" id="v-mi">
+ <div class="bar"><input type="search" id="mq" placeholder="Filter"><select id="mt"><option value="">All types</option></select></div>
+ <table id="mtab"><thead><tr><th>Cited item</th><th>Title</th><th>Type</th><th>Status</th><th>Link</th><th>Cited by</th></tr></thead><tbody></tbody></table>
+</section>
+</main>
+<footer id="foot"></footer>
+<div class="tip" id="tip"></div>
+<script>
+const D=__DATA__;
+const docs=new Map(D.docs.map(d=>[d.id,d])), ext=new Map(D.ext.map(e=>[e.id,e]));
+const out=new Map(), inn=new Map();
+for(const [s,t,c] of D.edges){(out.get(s)||out.set(s,[]).get(s)).push([t,c]);(inn.get(t)||inn.set(t,[]).get(t)).push([s,c]);}
+const fileIn=new Map();   // library file -> Map(citing doc -> mentions)
+for(const e of D.ext) for(const f of e.lib){ for(const [s,c] of (inn.get(e.id)||[])){ if(s===f) continue; const m=fileIn.get(f)||fileIn.set(f,new Map()).get(f); m.set(s,(m.get(s)||0)+c);} }
+const esc=s=>(s??'').toString().replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const folderTop=f=>f.split('/')[0];
+const STDT=['Standard','UIC leaflet','ETSI spec'];
+document.getElementById('stats').textContent=`${D.docs.length} documents · ${D.ext.length} cited items · ${D.edges.length} citation links`;
+const tip=document.getElementById('tip');
+function showTip(ev,html){tip.innerHTML=html;tip.style.display='block';const x=Math.min(ev.clientX+14,innerWidth-440);tip.style.left=x+'px';tip.style.top=(ev.clientY+14)+'px';}
+function hideTip(){tip.style.display='none';}
+// colours
+const PAL=['#1f5f99','#d1495b','#4d9a3e','#8a5cc2','#e08a1e','#1aa3a3','#c2185b','#5c6b7a','#7a8a1a','#b0702a','#3b8fd6','#6b4f2a'];
+const folders=[...new Set(D.docs.map(d=>folderTop(d.f)))].sort(); const fcol=f=>PAL[folders.indexOf(f)%PAL.length];
+const TCOL={'EU act':'#1f5f99','Norwegian law/regulation':'#c2185b','ERA document':'#8a5cc2','ERTMS subset':'#1aa3a3','ETSI spec':'#e08a1e','Standard':'#5c6b7a','UIC leaflet':'#b0702a'};
+// tabs
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph();});
+function show(tab){document.querySelector(`nav button[data-v=${tab}]`).click();}
+// node resolution: a cited item that is a library file is shown as that file
+const numOfExt=e=>{const m=(e.l||'').match(/\d{1,4}\/\d{2,4}/); return m?m[0]:'';};
+const sNameOf=id=>{ if(docs.has(id)) return docs.get(id).s||''; const e=ext.get(id); return e&&e.s||''; };
+const resolve=id=>{const e=ext.get(id); return (e&&e.lib.length)?e.lib[0]:id;};
+const labelOf=id=>{ if(docs.has(id)){const d=docs.get(id); return (d.s?d.s+(d.n&&!d.s.includes(d.n)?' ('+d.n+')':'')+' — ':'')+(d.t||id);} const e=ext.get(id); return e?((e.s?e.s+' — ':'')+e.l+(e.t?' — '+e.t:'')):id; };
+const shortOf=id=>{ if(docs.has(id)){const d=docs.get(id); if(d.s) return d.s+(d.n&&!d.s.includes(d.n)?' ('+d.n+')':''); const r=(d.ref||'').replace(/^CELEX\s+\S+$/,''); return (r&&r.length<40?r+' · ':'')+(d.t||id);} const e=ext.get(id); if(!e) return id; if(e.s){const n=numOfExt(e); return e.s+(n&&!e.s.includes(n)?' ('+n+')':'');} return e.l+(e.t?' '+e.t:''); };
+// ---------- explorer list ----------
+const q=document.getElementById('q'), scope=document.getElementById('scope'), list=document.getElementById('list');
+let selId=null;
+function items(){
+  const s=q.value.toLowerCase().trim(), sc=scope.value; let arr=[];
+  if(sc==='lib') arr=D.docs.map(d=>({id:d.id,h:d.s?`<span class="sn">${esc(d.s)}</span>${d.n?`<span class="num">${esc(d.n)}</span>`:''}<br><span class="tt">${esc(d.t||d.id)}</span>`:`<span class="tt">${esc(d.t||d.id)}</span>`,txt:((d.s||'')+' '+d.t+' '+d.id+' '+d.ref+' '+(d.n||'')),sub:d.id,g:d.f,key:(d.s||'~'+d.t)}));
+  else arr=D.ext.filter(e=>sc==='all'||STDT.includes(e.ty)).map(e=>({id:e.id,h:(e.s?`<span class="sn">${esc(e.s)}</span><span class="num">${esc(e.l)}</span>`:`<b>${esc(e.l)}</b>`)+(e.t?' <span class="tt">'+esc(e.t)+'</span>':''),txt:(e.s||'')+' '+e.l+' '+(e.t||''),sub:`${e.ty} · cited by ${e.n} · ${e.a}`,g:e.ty,n:e.n}));
+  if(s){const words=s.split(/\s+/); arr=arr.filter(x=>{const t=x.txt.toLowerCase(); return words.every(w=>t.includes(w));});}
+  if(sc==='lib') arr.sort((a,b)=>a.g.localeCompare(b.g)||a.key.localeCompare(b.key)); else arr.sort((a,b)=>a.g.localeCompare(b.g)||b.n-a.n);
+  return arr;
+}
+function renderList(){
+  const arr=items(); let h='',g=null;
+  for(const x of arr.slice(0,1500)){ if(x.g!==g){g=x.g;h+=`<div class="grp">${esc(g)}</div>`;} h+=`<div class="it${x.id===selId?' sel':''}" data-id="${esc(x.id)}">${x.h}<small>${esc(x.sub)}</small></div>`; }
+  list.innerHTML=h||'<div class="empty">No matches</div>';
+}
+list.onclick=e=>{const it=e.target.closest('.it'); if(it) select(it.dataset.id,false);};
+q.oninput=renderList; scope.onchange=renderList;
+const MODE='__MODE__'; const LOCAL=MODE==='local';
+const fileUrl=id=>encodeURI('../'+id).replace(/#/g,'%23').replace(/\?/g,'%3F');
+const flink=id=>LOCAL&&docs.has(id)?`<a class="xl" href="${fileUrl(id)}" target="_blank" title="Open local file">📄</a>`:'';
+const xlink=(u,t)=>u?`<a class="xl" href="${esc(u)}" target="_blank" rel="noopener" title="${esc(t||'Open source')}">↗</a>`:'';
+const docLink=id=>{const d=docs.get(id); return d?flink(id)+xlink(d.u,'Official source'):'';};
+const extLink=e=>e?xlink(e.u,e.uk):'';
+const typeOrder=['EU act','Norwegian law/regulation','ERA document','ERTMS subset','ETSI spec','Standard','UIC leaflet'];
+function tagFor(e){ if(e.lib.length) return '<span class="tag lib">'+(LOCAL?'in library':'in collection')+'</span>'; if(/Paid/.test(e.a)) return '<span class="tag paid">'+(e.ty==='UIC leaflet'?'UIC – paid':'paid standard')+'</span>'; return '<span class="tag">not in library</span>'; }
+function linkExt(e){ const lbl=(e.s?`<b>${esc(e.s)}</b> <span class="num">${esc(e.l)}</span>`:esc(e.l))+(e.t?` <span style="color:var(--mute)">— ${esc(e.t.slice(0,110))}</span>`:''); return `<a data-go="${esc(resolve(e.id))}">${lbl}</a>`; }
+const docLabel=s=>{const d=docs.get(s); if(!d) return esc(s); return d.s?`<b>${esc(d.s)}</b>${d.n?` <span class="num">${esc(d.n)}</span>`:''} <span style="color:var(--mute)">— ${esc((d.t||'').slice(0,100))}</span>`:esc(d.t||s);};
+// ---------- ego graph data ----------
+function neighbours(id){
+  // returns {inc:[[id,c]], outg:[[id,c,type]]}
+  let inc=[], outg=[];
+  if(docs.has(id)){
+    inc=[...(fileIn.get(id)||new Map())];
+    for(const [t,c] of (out.get(id)||[])){ const e=ext.get(t); if(!e) continue; const r=resolve(t); if(r===id) continue; outg.push([r,c,e.ty]); }
+  } else if(ext.has(id)){
+    inc=(inn.get(id)||[]).map(x=>[x[0],x[1]]);
+  }
+  // merge duplicates
+  const m=new Map(); for(const [r,c,ty] of outg){const o=m.get(r); if(o) o[1]+=c; else m.set(r,[r,c,ty]);} outg=[...m.values()];
+  inc.sort((a,b)=>b[1]-a[1]);
+  outg.sort((a,b)=>typeOrder.indexOf(a[2])-typeOrder.indexOf(b[2])||b[1]-a[1]);
+  return {inc,outg};
+}
+function nodeColor(id,ty){ if(docs.has(id)) return fcol(folderTop(docs.get(id).f)); const e=ext.get(id); return TCOL[(e&&e.ty)||ty]||'#888'; }
+const egoOpt={inc:true,outg:true,lim:'40'};
+function drawEgo(id){
+  const svg=document.getElementById('ego'); if(!svg) return;
+  const W=svg.clientWidth||900, cx=W/2;
+  const {inc,outg}=neighbours(id);
+  const lim=egoOpt.lim==='all'?1e9:+egoOpt.lim;
+  const L=egoOpt.inc?inc.slice(0,lim):[], R=egoOpt.outg?outg.slice(0,lim):[];
+  const n=Math.max(L.length,R.length), Hn=Math.max(420, n*15+70); svg.style.height=Hn+'px';
+  const H2=Hn, cy2=H2/2;
+  const place=(arr,side)=>{
+    const m=arr.length, top=40, bot=H2-26, span=Math.min(bot-top,(m-1)*15+1);
+    return arr.map((x,i)=>{ const y=m===1?cy2:cy2-span/2+span*i/(m-1); const u=(y-cy2)/(H2/2); const off=W*0.13+W*0.07*(1-u*u);
+      return {id:x[0],c:x[1],x:cx+side*off,y,side}; });
+  };
+  const PL=place(L,-1), PR=place(R,1), all=[...PL,...PR]; const cy=cy2;
+  const many=n>60, maxc=Math.max(1,...all.map(p=>p.c));
+  let s='';
+  for(const p of all){ const mx=(cx+p.x)/2, my=(cy+p.y)/2 + (p.y-cy)*0.15; s+=`<path data-n="${esc(p.id)}" d="M${cx},${cy} Q${mx},${my} ${p.x},${p.y}" stroke-width="${(0.8+2.4*Math.log1p(p.c)/Math.log1p(maxc)).toFixed(2)}"/>`; }
+  for(const p of all){ const col=nodeColor(p.id); const lib=docs.has(p.id); const r=lib?5.5:4.5;
+    const lab=shortOf(p.id); const room=Math.max(8,Math.floor(((p.side<0?p.x:W-p.x)-16)/5.9)); const t=lab.length>room?lab.slice(0,room-1)+'…':lab;
+    s+=`<g class="nd" data-n="${esc(p.id)}" data-c="${p.c}"><circle class="hit" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="10"/><circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" fill="${col}" stroke="${lib?'var(--panel)':col}" stroke-width="${lib?1.5:0}" ${lib?'':'fill-opacity=".75"'}/>`+
+       (many?'':`<text x="${(p.x+p.side*9).toFixed(1)}" y="${(p.y+3.5).toFixed(1)}" text-anchor="${p.side<0?'end':'start'}">${esc(t)}</text>`)+`</g>`; }
+  // centre
+  const cl=shortOf(id);
+  s+=`<g><circle cx="${cx}" cy="${cy}" r="13" fill="${nodeColor(id)}" stroke="var(--acc2)" stroke-width="3"/></g>`;
+  const cw=cl.length>60?cl.slice(0,58)+'…':cl;
+  s+=`<text x="${cx}" y="${cy+30}" text-anchor="middle" style="font-weight:600;font-size:11.5px">${esc(cw)}</text>`;
+  if(egoOpt.inc) s+=`<text x="14" y="18" class="lbl-mute">◀ cited by ${inc.length}${inc.length>L.length?` (showing ${L.length})`:''}</text>`;
+  if(egoOpt.outg&&outg.length) s+=`<text x="${W-14}" y="18" text-anchor="end" class="lbl-mute">cites ${outg.length}${outg.length>R.length?` (showing ${R.length})`:''} ▶</text>`;
+  if(!all.length) s+=`<text x="${cx}" y="${cy-30}" text-anchor="middle" class="lbl-mute">No citations in this direction</text>`;
+  svg.innerHTML=s;
+  svg.onmousemove=ev=>{const g=ev.target.closest('.nd'); svg.querySelectorAll('path.hi').forEach(p=>p.classList.remove('hi'));
+    if(g){const n=g.dataset.n; svg.querySelectorAll(`path[data-n="${CSS.escape(n)}"]`).forEach(p=>p.classList.add('hi'));
+      const e=ext.get(n), d=docs.get(n);
+      showTip(ev,`<b>${esc(shortOf(n))}</b>${d&&d.s?'<br>'+esc(d.t):''}${e&&e.t?'<br>'+esc(e.t):''}${e&&e.s?'<br>'+esc(e.l):''}${d?'<br><span style="opacity:.75">'+esc(n)+'</span>':''}<br>${g.dataset.c} mention(s)${e?' · '+esc(e.ty)+' · '+esc(e.a):''}<br><i>click to centre · ${(e&&e.u)||(d&&d.u)?'shift-click to open the source':''}</i>`);} else hideTip();};
+  svg.onmouseleave=hideTip;
+  svg.onclick=ev=>{const g=ev.target.closest('.nd'); if(!g) return; hideTip(); const n=g.dataset.n; if(ev.shiftKey||ev.metaKey||ev.ctrlKey){ const u=(LOCAL&&docs.has(n))?fileUrl(n):((ext.get(n)||{}).u||(docs.get(n)||{}).u); if(u){ const a=document.createElement('a'); a.href=u; a.target='_blank'; a.rel='noopener'; document.body.appendChild(a); a.click(); a.remove(); return; } } select(n,true);};
+  // legend
+  const types=new Set(all.filter(p=>!docs.has(p.id)).map(p=>ext.get(p.id)?.ty)); const fl=new Set(all.filter(p=>docs.has(p.id)).map(p=>folderTop(docs.get(p.id).f)));
+  document.getElementById('egoleg').innerHTML=[...fl].sort().map(f=>`<span><i style="background:${fcol(f)}"></i>${esc(f)}</span>`).join('')+[...types].filter(Boolean).map(t=>`<span><i style="background:${TCOL[t]};opacity:.75"></i>${esc(t)} (not in library)</span>`).join('');
+}
+// ---------- detail ----------
+function select(id,fromGraph){
+  if(!docs.has(id)&&!ext.has(id)) return;
+  selId=id;
+  if(fromGraph){ const want=docs.has(id)?'lib':(STDT.includes(ext.get(id).ty)?'std':'all'); if(scope.value!==want&&!(want!=='lib'&&scope.value==='all')){scope.value=want;} }
+  if(!items().some(x=>x.id===id)) q.value='';
+  renderList(); const el=list.querySelector('.it.sel'); if(el) el.scrollIntoView({block:'nearest'});
+  const det=document.getElementById('detail');
+  const egoHtml=`<div class="egobar"><label><input type="checkbox" id="eIn" ${egoOpt.inc?'checked':''}> cited by (left)</label><label><input type="checkbox" id="eOut" ${egoOpt.outg?'checked':''}> cites (right)</label><label>show <select id="eLim">${['20','40','80','all'].map(v=>`<option ${egoOpt.lim===v?'selected':''}>${v}</option>`).join('')}</select> per side</label><span>Hover a node for details · click to centre on it</span></div><svg id="ego"></svg><div class="legend" id="egoleg"></div>`;
+  if(docs.has(id)){
+    const d=docs.get(id), o=(out.get(id)||[]).map(([t,c])=>[ext.get(t),c]).filter(x=>x[0]);
+    const by={}; for(const [e,c] of o)(by[e.ty]=by[e.ty]||[]).push([e,c]);
+    let left='<h3>Cites ('+o.length+')</h3>';
+    for(const ty of typeOrder) if(by[ty]){ by[ty].sort((a,b)=>b[1]-a[1]); left+=`<div class="ty">${esc(ty)} (${by[ty].length})</div>`+by[ty].map(([e,c])=>`<div class="ref"><span>${linkExt(e)}${extLink(e)}</span> ${tagFor(e)}<span class="c">${c}×${e.v?' · '+esc(e.v.slice(0,3).join(', ')):''}</span></div>`).join(''); }
+    if(!o.length) left+='<div class="meta">No machine-readable references found (link file, spreadsheet, archive or scanned PDF).</div>';
+    const ci=[...(fileIn.get(id)||new Map())].sort((a,b)=>b[1]-a[1]);
+    let right='<h3>Cited by ('+ci.length+')</h3>'+ci.map(([s,c])=>`<div class="ref"><span><a data-go="${esc(s)}">${docLabel(s)}</a>${docLink(s)}</span><span class="c">${c}×</span></div>`).join('');
+    if(!ci.length) right+='<div class="meta">Not cited by any other document in the library.</div>';
+    det.innerHTML=(d.s?`<div class="kick">${esc(d.n||'')}</div><h2>${esc(d.s)}</h2><div class="sub">${esc(d.t)}</div>`:`<h2>${esc(d.t)}</h2>`)+`<div class="meta">${esc(d.ref)} · ${esc(d.st)}<br>${LOCAL?`<a class="open" href="${fileUrl(d.id)}" target="_blank">📄 Open local file</a>`:''}${d.u?`<a class="open" href="${esc(d.u)}" target="_blank" rel="noopener">Official source ↗</a>`:''}<span>${esc(d.id)}</span></div>${egoHtml}<div class="cols"><div>${left}</div><div>${right}</div></div>`;
+  } else {
+    const e=ext.get(id), ci=(inn.get(id)||[]).slice().sort((a,b)=>b[1]-a[1]);
+    det.innerHTML=(e.s?`<div class="kick">${esc(e.l)}</div><h2>${esc(e.s)}</h2>`:`<h2>${esc(e.l)}</h2>`)+`${e.t?`<div class="sub">${esc(e.t)}</div>`:''}<div class="meta">${esc(e.ty)} · ${tagFor(e)} ${esc(e.a)}${e.ts?' · title: '+esc(e.ts):''}${e.v?'<br>Versions cited: '+esc(e.v.join(', ')):''}<br>${e.u?`<a class="open" href="${esc(e.u)}" target="_blank" rel="noopener">${esc(e.uk)} ↗</a>`:''}${e.lib.map(f=>`<a class="open" data-go="${esc(f)}">${LOCAL?'Library file':'Collection entry'}: ${esc(f)}</a>${LOCAL?`<a class="open" href="${fileUrl(f)}" target="_blank">📄 Open</a>`:''}`).join('')}</div>${egoHtml}<h3>Cited by ${ci.length} documents</h3>`+ci.map(([s,c])=>`<div class="ref"><span><a data-go="${esc(s)}">${docLabel(s)}</a>${docLink(s)}</span><span class="c">${c}×</span></div>`).join('');
+  }
+  const eIn=document.getElementById('eIn'), eOut=document.getElementById('eOut'), eLim=document.getElementById('eLim');
+  eIn.onchange=()=>{egoOpt.inc=eIn.checked; drawEgo(selId);}; eOut.onchange=()=>{egoOpt.outg=eOut.checked; drawEgo(selId);}; eLim.onchange=()=>{egoOpt.lim=eLim.value; drawEgo(selId);};
+  drawEgo(id); det.scrollTop=0;
+}
+document.getElementById('detail').addEventListener('click',e=>{const a=e.target.closest('[data-go]'); if(a){e.preventDefault(); select(a.dataset.go,true);}});
+window.addEventListener('resize',()=>{if(selId) drawEgo(selId);});
+(function(){const f=document.getElementById('foot'); if(LOCAL){f.innerHTML='Local edition · 📄 opens your downloaded copy · ↗ opens the official source';return;}
+f.innerHTML='Online edition · This site hosts no copies of the documents — every link goes to the official publisher. '+
+'EU legislation: © European Union, <a href="https://eur-lex.europa.eu" target="_blank" rel="noopener">EUR-Lex</a>, reuse under Commission Decision 2011/833/EU. '+
+'ERA documents: © European Union Agency for Railways, source <a href="https://www.era.europa.eu" target="_blank" rel="noopener">era.europa.eu</a>. '+
+'Norwegian legislation via <a href="https://lovdata.no" target="_blank" rel="noopener">Lovdata</a>. Standards are © their publishers (CEN/CENELEC, IEC, ISO, ETSI, UIC, UNISIG) and are listed by reference only. '+
+'The reference map, short names and classifications are an independent compilation and not an official publication of any of these bodies; always verify against the official text.';})();
+renderList();
+// ---------- standards register ----------
+const STD=D.ext.filter(e=>STDT.includes(e.ty));
+const sa=document.getElementById('sa'); [...new Set(STD.map(e=>e.a))].sort().forEach(a=>sa.add(new Option(a,a)));
+let sk='n',sdir=-1;
+function renderStd(){
+  const s=document.getElementById('sq').value.toLowerCase().trim(), a=sa.value, ty=document.getElementById('sty').value;
+  const words=s?s.split(/\s+/):[];
+  const arr=STD.filter(e=>{const t=(e.l+' '+(e.t||'')).toLowerCase(); return words.every(w=>t.includes(w))&&(!a||e.a===a)&&(!ty||e.ty===ty);})
+    .sort((x,y)=>{const A=sk==='v'?(x.v||[]).join():(x[sk]??''),B=sk==='v'?(y.v||[]).join():(y[sk]??'');return (A>B?1:A<B?-1:0)*sdir;});
+  document.getElementById('scount').textContent=`${arr.length} of ${STD.length} · ${STD.filter(e=>e.t).length} with title`;
+  document.querySelector('#stab tbody').innerHTML=arr.map(e=>`<tr><td style="white-space:nowrap"><a data-sel="${esc(e.id)}">${esc(e.l)}</a></td><td class="ti">${esc(e.t||'')}${e.ts?`<small>${esc(e.ts)}</small>`:''}</td><td>${esc(e.ty)}</td><td>${tagFor(e)} ${esc(e.a)}</td><td style="white-space:nowrap">${e.u?`<a href="${esc(e.u)}" target="_blank" rel="noopener">${esc(e.uk)} ↗</a>`:''}</td><td>${esc((e.v||[]).join(', '))}</td><td class="n">${e.n}</td></tr>`).join('');
+}
+document.querySelectorAll('#stab th').forEach(th=>th.onclick=()=>{const k=th.dataset.k; sdir=(sk===k)?-sdir:(k==='n'?-1:1); sk=k; renderStd();});
+document.getElementById('sq').oninput=renderStd; sa.onchange=renderStd; document.getElementById('sty').onchange=renderStd; renderStd();
+document.addEventListener('click',e=>{const a=e.target.closest('[data-sel]'); if(a){show('ex'); select(a.dataset.sel,true);}});
+// ---------- missing ----------
+const MI=D.ext.filter(e=>!e.lib.length);
+const mt=document.getElementById('mt'); [...new Set(MI.map(e=>e.ty))].sort().forEach(a=>mt.add(new Option(a,a)));
+function renderMi(){const s=document.getElementById('mq').value.toLowerCase(), t=mt.value;
+  document.querySelector('#mtab tbody').innerHTML=MI.filter(e=>(!t||e.ty===t)&&(!s||(e.l+' '+(e.t||'')).toLowerCase().includes(s))).sort((a,b)=>b.n-a.n).slice(0,2000).map(e=>`<tr><td style="white-space:nowrap"><a data-sel="${esc(e.id)}">${esc(e.l)}</a></td><td class="ti">${esc(e.t||'')}</td><td>${esc(e.ty)}</td><td>${esc(e.a)}</td><td style="white-space:nowrap">${e.u?`<a href="${esc(e.u)}" target="_blank" rel="noopener">${esc(e.uk)} ↗</a>`:''}</td><td class="n">${e.n}</td></tr>`).join('');}
+document.getElementById('mq').oninput=renderMi; mt.onchange=renderMi; renderMi();
+// ---------- static graph (layout precomputed when the map was built) ----------
+const gf=document.getElementById('gfold'); folders.forEach(f=>gf.add(new Option(f,f)));
+document.getElementById('legend').innerHTML=folders.map(f=>`<span><i style="background:${fcol(f)}"></i>${esc(f)}</span>`).join('')+'<span><i style="background:#5c6b7a"></i>Standards</span>';
+const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+let G=null, view={x:0,y:0,k:1}, hover=null, drag=null, pan=null, moved=false;
+function buildG(){
+  const mode=document.getElementById('gmode').value, ff=gf.value, src=D.G[mode];
+  const N=new Map(); const L=[];
+  const node=id=>{ if(!N.has(id)){ const p=src.pos[id]; N.set(id,{id,x:p[0],y:p[1],deg:0,doc:docs.has(id)}); } return N.get(id); };
+  for(const [a,b] of src.links){ if(ff){ const da=docs.get(a), db=docs.get(b); if(!((da&&folderTop(da.f)===ff)||(db&&folderTop(db.f)===ff))) continue; }
+    const A=node(a),B=node(b); A.deg++; B.deg++; L.push([A,B]); }
+  G={N:[...N.values()],L}; G.top=new Set([...G.N].sort((a,b)=>b.deg-a.deg).slice(0,12));
+}
+function fit(){ const r=cv.getBoundingClientRect(); if(!G.N.length) return; let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9; for(const p of G.N){x0=Math.min(x0,p.x);x1=Math.max(x1,p.x);y0=Math.min(y0,p.y);y1=Math.max(y1,p.y);} view.k=Math.min(r.width/(x1-x0+80), r.height/(y1-y0+80)); view.x=-(x0+x1)/2*view.k; view.y=-(y0+y1)/2*view.k; }
+function resize(){const r=cv.getBoundingClientRect(); cv.width=r.width*devicePixelRatio; cv.height=r.height*devicePixelRatio;}
+const R=p=>p.doc?3+Math.sqrt(p.deg)*0.9:2.5+Math.sqrt(p.deg)*0.6;
+const colOf=p=>p.doc?fcol(folderTop(docs.get(p.id).f)):'#5c6b7a';
+function draw(){
+  if(!G) return; const w=cv.width,h=cv.height; ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,w,h);
+  ctx.setTransform(view.k*devicePixelRatio,0,0,view.k*devicePixelRatio,w/2+view.x*devicePixelRatio,h/2+view.y*devicePixelRatio);
+  const nb=hover?new Set([hover,...G.L.filter(([s,t])=>s===hover||t===hover).flat()]):null;
+  ctx.lineWidth=0.7/view.k;
+  for(const [s,t] of G.L){ const on=nb&&(s===hover||t===hover); ctx.strokeStyle=on?'rgba(194,65,12,.85)':`rgba(120,120,120,${nb?0.05:0.16})`; ctx.beginPath(); ctx.moveTo(s.x,s.y); ctx.lineTo(t.x,t.y); ctx.stroke(); }
+  for(const p of G.N){ ctx.globalAlpha=nb&&!nb.has(p)?0.18:1; ctx.fillStyle=colOf(p); ctx.beginPath(); ctx.arc(p.x,p.y,R(p),0,7); ctx.fill(); }
+  ctx.globalAlpha=1; ctx.fillStyle=getComputedStyle(document.body).color; ctx.font=`${11/view.k}px sans-serif`;
+  ctx.lineJoin='round'; ctx.lineWidth=3/view.k; ctx.strokeStyle=getComputedStyle(document.body).backgroundColor;
+  const cand=G.N.filter(p=>(nb?nb.has(p):(G.top.has(p)||view.k>2.6))).sort((a,b)=>(b===hover)-(a===hover)||b.deg-a.deg);
+  const boxes=[]; const lh=13/view.k;
+  for(const p of cand){ const l=shortOf(p.id); const t=l.length>46?l.slice(0,45)+'…':l; const w=ctx.measureText(t).width, x=p.x+R(p)+2, y=p.y+3;
+    const b=[x,y-lh*0.8,x+w,y+lh*0.25]; if(p!==hover && boxes.some(o=>b[0]<o[2]&&b[2]>o[0]&&b[1]<o[3]&&b[3]>o[1])) continue; boxes.push(b);
+    ctx.strokeText(t,x,y); ctx.fillText(t,x,y); }
+}
+function toWorld(ev){const r=cv.getBoundingClientRect(); return {x:(ev.clientX-r.left-r.width/2-view.x)/view.k, y:(ev.clientY-r.top-r.height/2-view.y)/view.k};}
+function pick(ev){const m=toWorld(ev); let best=null,bd=1e9; for(const p of G.N){const d=(p.x-m.x)**2+(p.y-m.y)**2, rr=(R(p)+4/view.k)**2; if(d<bd&&d<rr){bd=d;best=p;}} return best;}
+cv.onmousemove=ev=>{ if(drag){const m=toWorld(ev); drag.x=m.x; drag.y=m.y; moved=true; draw(); return;} if(pan){view.x=pan.vx+ev.clientX-pan.x; view.y=pan.vy+ev.clientY-pan.y; draw(); return;}
+  const p=pick(ev); if(p!==hover){hover=p; draw();} if(p){ showTip(ev,`<b>${esc(labelOf(p.id))}</b><br>${p.deg} links · double-click to open in Explorer`);} else hideTip(); };
+cv.onmousedown=ev=>{const p=pick(ev); moved=false; if(p) drag=p; else {pan={x:ev.clientX,y:ev.clientY,vx:view.x,vy:view.y}; cv.style.cursor='grabbing';}};
+window.addEventListener('mouseup',()=>{drag=null;pan=null;cv.style.cursor='grab';});
+cv.onmouseleave=()=>{hover=null;hideTip();draw();};
+cv.ondblclick=ev=>{const p=pick(ev); if(p){ hideTip(); show('ex'); select(p.id,true);} };
+cv.addEventListener('wheel',ev=>{ev.preventDefault(); const r=cv.getBoundingClientRect(); const mx=ev.clientX-r.left-r.width/2, my=ev.clientY-r.top-r.height/2; const f=ev.deltaY<0?1.15:1/1.15; view.x=mx-(mx-view.x)*f; view.y=my-(my-view.y)*f; view.k*=f; draw();},{passive:false});
+let gReady=false;
+function initGraph(){ resize(); if(!gReady){ buildG(); fit(); gReady=true; } draw(); }
+document.getElementById('gmode').onchange=()=>{buildG(); fit(); draw();}; gf.onchange=()=>{buildG(); fit(); draw();};
+window.addEventListener('resize',()=>{ if(document.getElementById('v-gr').classList.contains('on')){resize(); draw();} });
+</script></body></html>

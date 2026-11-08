@@ -1,0 +1,4 @@
+ERA vehicle authorisation page (applicants: VA, OSS, pre-engagement text, related docs)
+-
+https://www.era.europa.eu/node/531
+Listing page for all VA guidance; pre-engagement is described in page text only (no separate ERA pre-engagement PDF found; covered in PA VA Guidelines)

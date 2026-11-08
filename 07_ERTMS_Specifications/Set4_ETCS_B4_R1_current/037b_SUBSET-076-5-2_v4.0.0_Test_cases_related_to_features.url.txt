@@ -1,0 +1,4 @@
+Test cases related to features [Set4]
+SUBSET-076-5-2
+https://www.era.europa.eu/sites/default/files/2026-04/index037b_subset-076-5-2%20v4.0.0.zip
+Not downloaded: larger than 150 MB – open the link to download. ERA CCS TSI specifications set

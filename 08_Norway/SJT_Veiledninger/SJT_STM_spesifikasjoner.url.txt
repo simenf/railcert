@@ -1,0 +1,4 @@
+STM-spesifikasjoner (ATC-2 STM for ERTMS/ETCS on-board)
+SJT web page
+https://sjt.no/jernbane/sikkerhet-og-sikring/tillatelser-godkjenninger-forerbevis-og-sertifikater/tillatelse-for-kjoretoy-via-sjt-og-era/tillatelse-for-kjoretoy-etter-europeisk-regelverk/stm-spesifikasjoner/
+Also hosts v6.0, 5.2, 5.1 archives.

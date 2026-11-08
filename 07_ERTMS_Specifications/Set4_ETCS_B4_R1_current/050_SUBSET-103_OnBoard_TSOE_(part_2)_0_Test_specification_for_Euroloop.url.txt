@@ -1,0 +1,4 @@
+Test specification for Euroloop [Set4]
+SUBSET-103
+https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%202%29_0.zip
+Test-sequence archive (machine-readable lab test data, ~100–150 MB per part) – linked, not downloaded. ERA CCS TSI specifications set

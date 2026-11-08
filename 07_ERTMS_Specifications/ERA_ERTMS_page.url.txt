@@ -1,0 +1,4 @@
+ERA ERTMS domain page
+-
+https://www.era.europa.eu/domains/infrastructure/european-rail-traffic-management-system-ertms_en
+Links ESC/RSC, trackside approval, error corrections, braking curves, ETCS variables, driver's handbook

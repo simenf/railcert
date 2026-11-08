@@ -1,0 +1,22 @@
+# --- Downloaded documents are NOT published (licensing: ETSI, UIC, UNISIG, standards bodies etc.)
+# Everything inside the document folders is ignored, except the .url.txt link files (title + URL only).
+/0[1-9]_*/**
+/10_*/**
+!/0[1-9]_*/**/
+!/10_*/**/
+!*.url.txt
+
+# Build scratch (extracted text, edges/nodes) and caches
+/.build/
+__pycache__/
+*.pyc
+*.part
+*.notpdf.html
+_status.tsv
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+._*
+.vscode/
+.idea/

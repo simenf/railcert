@@ -1,0 +1,4 @@
+ERA Knowledge Graph (RINF/ERATV linked data, used by RCC)
+-
+https://www.era.europa.eu/domains/registers/era-knowledge-graph
+

@@ -1,0 +1,4 @@
+Tredjepartsverifisering (AsBo, ISA, NoBo, DeBo)
+SJT web guidance
+https://sjt.no/jernbane/sikkerhet-og-sikring/tillatelser-godkjenninger-forerbevis-og-sertifikater/tredjepartsverifisering/
+Norwegian AsBos: Bane NOR (internal), Certifer Nordics, SINTEF. SJT approves ISA per project/person. DeBo relevant only for CCS on-board and rolling stock.

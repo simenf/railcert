@@ -1,0 +1,4 @@
+Test sequences [Set1]
+SUBSET-076-6-3 v2.3.3
+https://www.era.europa.eu/system/files/2023-01/sos1_index037c_-_subset-076-6-3_v233.zip
+Test-sequence archive (machine-readable lab test data, ~100–150 MB per part) – linked, not downloaded. ERA CCS TSI specifications set

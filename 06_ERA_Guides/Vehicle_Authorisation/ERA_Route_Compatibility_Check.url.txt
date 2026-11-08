@@ -1,0 +1,4 @@
+ERA Route Compatibility Check (RCC) page
+-
+https://www.era.europa.eu/domains/trains/route-compatibility-check-rcc_en
+HTML only; no ERA RCC guidance PDF found on this page. RCC tool: http://data-interop.era.europa.eu/

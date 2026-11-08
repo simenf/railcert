@@ -1,0 +1,4 @@
+CCS TSI Annex A - archived specifications (Baseline 3 MR1/R2 etc.)
+-
+https://www.era.europa.eu/era-folder/3-ccs-tsi-annex-archived-specifications
+For B3R2 (2.3.0/3.6.0) specs used by existing fleets

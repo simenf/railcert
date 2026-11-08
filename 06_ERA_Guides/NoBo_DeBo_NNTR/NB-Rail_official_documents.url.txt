@@ -1,0 +1,4 @@
+NB-Rail official documents (Recommendations for Use, QCs)
+-
+https://nb-rail.eu/official-documents
+No consolidated RFU document exists; RFUs are individual PDFs. Also RFU/QC-TSI matrix (2026.06.11) on this page. Historic: https://nb-rail.eu/historic-versions-of-rfus

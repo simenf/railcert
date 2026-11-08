@@ -1,0 +1,4 @@
+CCS TSI Appendix A mandatory specifications (ETCS B4 R1, RMR GSM-R B1 MR1, FRMCS B0, ATO B1)
+CCS TSI Appendix A
+https://www.era.europa.eu/era-folder/1-ccs-tsi-appendix-mandatory-specifications-etcs-b4-r1-rmr-gsm-r-b1-mr1-frmcs-b0-ato-b1
+Full index of ~100 files; several updated 2026-04

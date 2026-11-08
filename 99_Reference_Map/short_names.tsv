@@ -1,0 +1,192 @@
+key	short
+# --- EU framework ---
+L 2016 797	Interoperability Directive
+L 2016 798	Railway Safety Directive
+R 2016 796	ERA Regulation
+L 2012 34	SERA Directive
+L 2007 59	Train Drivers Directive
+L 2016 2370	4th Railway Package – market pillar
+D 2017 2075	SERA Annex VII
+L 2020 700	4RP transposition extension
+R 2020 1530	Channel Tunnel Regulation
+R 2026 1184	Rail Capacity Regulation
+R 2017 6	ERTMS European Deployment Plan
+R 2024 1689	AI Act
+# --- older framework still cited ---
+L 2008 57	Interoperability Directive 2008 (old)
+L 2004 49	Railway Safety Directive 2004 (old)
+R 2004 881	ERA Regulation 2004 (old)
+L 2001 16	Conventional Rail Interoperability Directive (old)
+L 1996 48	High-Speed Interoperability Directive (old)
+L 2004 50	Interoperability amending Directive 2004 (old)
+L 2001 14	Infrastructure Capacity Directive (old)
+L 1991 440	Railway Development Directive (old)
+R 2010 913	Rail Freight Corridors Regulation
+R 2013 1315	TEN-T Regulation 2013
+R 2024 1679	TEN-T Regulation
+R 2007 1371	Rail Passenger Rights Regulation 2007 (old)
+R 2021 782	Rail Passenger Rights Regulation
+R 2007 1370	PSO Regulation
+# --- TSIs (current) ---
+R 2023 1695	CCS TSI
+R 2014 1301	ENE TSI
+R 2014 1299	INF TSI
+R 2014 1302	LOC&PAS TSI
+R 2014 1304	NOI TSI
+R 2019 773	OPE TSI
+R 2014 1300	PRM TSI
+R 2014 1303	SRT TSI
+R 2013 321	WAG TSI
+R 2026 253	Telematics TSI (TEL)
+R 2011 454	TAP TSI (repealed)
+R 2014 1305	TAF TSI (repealed)
+R 2006 62	TAF TSI 2006 (old)
+# --- TSI amending packages ---
+R 2019 776	TSI package 2019 (4RP alignment)
+R 2023 1694	TSI package 2023
+R 2020 387	TSI amendment 2020 (area of use)
+R 2018 868	ENE & LOC&PAS amendment (energy measurement)
+# --- previous TSIs ---
+R 2016 919	CCS TSI 2016 (old)
+D 2012 88	CCS TSI 2012 (old)
+D 2006 679	CCS TSI CR 2006 (old)
+D 2006 860	CCS TSI HS 2006 (old)
+D 2002 731	CCS TSI HS 2002 (old)
+D 2011 291	LOC&PAS TSI 2011 (old)
+D 2008 232	HS RST TSI 2008 (old)
+D 2008 217	HS INF TSI 2008 (old)
+D 2011 275	CR INF TSI 2011 (old)
+D 2008 284	HS ENE TSI 2008 (old)
+D 2011 274	CR ENE TSI 2011 (old)
+D 2008 163	SRT TSI 2008 (old)
+D 2008 164	PRM TSI 2008 (old)
+D 2011 229	NOI TSI 2011 (old)
+D 2006 66	NOI TSI 2006 (old)
+D 2012 757	OPE TSI 2012 (old)
+D 2006 920	OPE TSI CR 2006 (old)
+D 2008 231	OPE TSI HS 2008 (old)
+D 2006 861	WAG TSI 2006 (old)
+# --- CSMs and safety ---
+R 2013 402	CSM RA
+R 2015 1136	CSM RA – amendment 2015/1136
+R 2009 352	CSM RA 2009 (old)
+R 2012 1078	CSM Monitoring
+R 2018 761	CSM Supervision
+R 2012 1077	CSM Supervision 2012 (old)
+R 2018 762	CSM SMS requirements
+R 2010 1158	CSM safety certificates 2010 (old)
+R 2010 1169	CSM safety authorisations 2010 (old)
+R 2018 763	Single Safety Certificate Regulation
+R 2019 779	ECM Regulation
+R 2011 445	ECM Regulation 2011 (old)
+R 2020 572	Accident Investigation Reports Regulation
+D 2009 460	CSM CST assessment
+D 2012 226	Common Safety Targets (2nd set)
+D 2010 409	Common Safety Targets (1st set)
+L 2009 149	Common Safety Indicators Directive 2009 (old)
+L 2014 88	Common Safety Indicators Directive 2014 (old)
+# --- conformity assessment ---
+D 2010 713	Conformity Modules Decision
+R 2019 250	EC Declaration Templates Regulation
+R 2011 201	Declaration of Conformity to Type Regulation (old)
+# --- vehicle authorisation & registers ---
+R 2018 545	Vehicle Authorisation Regulation
+R 2018 764	ERA Fees Regulation
+R 2024 2018	ERA Fees – revision 2024
+D 2011 665	ERATV Decision
+D 2018 1614	Vehicle Registers (EVR) Decision
+D 2007 756	NVR Decision (old)
+R 2019 777	RINF Regulation
+D 2014 880	RINF Decision 2014 (old)
+D 2011 633	RINF Decision 2011 (old)
+# --- Cyber Resilience Act ---
+R 2024 2847	Cyber Resilience Act (CRA)
+R 2025 1535	CRA – L-category exclusion
+R 2025 2392	CRA – important & critical products
+R 2026 881	CRA – delayed notifications
+# --- horizontal product & digital legislation ---
+D 2008 768	NLF Decision (product marketing framework)
+R 2008 765	Accreditation & Market Surveillance Regulation
+R 2019 1020	Market Surveillance Regulation
+R 2012 1025	Standardisation Regulation
+L 2015 1535	Single Market Transparency Directive (TRIS)
+R 2011 182	Comitology Regulation
+L 2014 30	EMC Directive
+L 2014 35	Low Voltage Directive
+L 2014 53	Radio Equipment Directive (RED)
+L 2014 34	ATEX Directive
+L 1999 92	ATEX Workplace Directive
+L 2006 42	Machinery Directive
+R 2023 1230	Machinery Regulation
+L 2014 68	Pressure Equipment Directive
+L 2014 29	Simple Pressure Vessels Directive
+L 2011 65	RoHS Directive
+R 2006 1907	REACH Regulation
+R 2023 1542	Batteries Regulation
+L 2006 66	Batteries Directive (old)
+L 2002 49	Environmental Noise Directive
+L 2003 10	Noise at Work Directive
+L 2002 44	Vibration at Work Directive
+L 2013 35	EMF at Work Directive
+R 2016 1628	NRMM Engine Emissions Regulation
+R 2011 305	Construction Products Regulation
+L 2020 2184	Drinking Water Directive
+L 2008 98	Waste Framework Directive
+R 2016 679	GDPR
+R 2018 1725	EU institutions Data Protection Regulation
+R 2014 910	eIDAS Regulation
+L 2016 1148	NIS Directive
+L 2022 2555	NIS2 Directive
+L 2022 2557	Critical Entities Resilience Directive
+R 2019 881	Cybersecurity Act
+R 2022 2554	DORA
+L 2002 58	ePrivacy Directive
+R 2017 745	Medical Devices Regulation
+R 2017 746	IVD Regulation
+R 2023 988	General Product Safety Regulation
+L 2024 2853	Product Liability Directive
+L 2014 90	Marine Equipment Directive
+L 2016 943	Trade Secrets Directive
+L 2014 24	Public Procurement Directive
+L 2014 25	Utilities Procurement Directive
+R 2018 1139	EASA Basic Regulation
+R 2019 2144	Vehicle General Safety Regulation
+R 2022 30	RED delegated cybersecurity
+R 2024 482	EU Cybersecurity Certification (EUCC)
+R 2024 1781	Ecodesign Regulation
+L 2005 36	Professional Qualifications Directive
+R 2001 1049	Access to Documents Regulation
+R 2013 1316	Connecting Europe Facility (CEF) Regulation
+R 2019 1010	Environmental reporting alignment Regulation
+# --- Norwegian (FOR/LOV) ---
+LOV-1993-06-11-100	Jernbaneloven
+LOV-2005-06-03-34	Jernbaneundersøkelsesloven
+LOV-1994-06-16-20	Lov om tekniske kontrollorgan
+FOR-2021-09-09-2742	Samtrafikkforskriften
+FOR-2021-09-08-2740	Sikkerhetsforskriften
+FOR-2021-06-30-2315	Jernbaneforskriften
+FOR-2011-04-11-388	Jernbaneinfrastrukturforskriften
+FOR-2022-05-25-924	Arbeidsmaskinforskriften
+FOR-2022-05-25-923	Jernbanekjøretøyforskriften
+FOR-2014-10-27-1344	CSM RA-forskriften
+FOR-2021-09-08-2703	CSM SMS-forskriften
+FOR-2021-09-08-2705	Meldermyndighetsforskriften (NoBo/DeBo)
+FOR-2021-09-08-2712	ECM-forskriften
+FOR-2021-09-08-2711	Kjøretøyregisterforskriften (EVR)
+FOR-2021-09-08-2717	EF-erklæringsforskriften
+FOR-2021-09-08-2741	TSI-unntaksforskriften
+FOR-2021-09-08-2714	TSI OPE-forskriften
+FOR-2025-03-14-450	TSI CCS-forskriften
+FOR-2015-07-23-913	TSI LOC&PAS-forskriften
+FOR-2021-09-03-2675	Forskrift om sikkerhet og tekniske forhold
+FOR-2009-11-27-1414	Førerforskriften
+FOR-2019-06-12-721	Helsekravforskriften
+FOR-2014-12-10-1572	Kravforskriften (sporvei)
+FOR-2014-12-10-1573	Sidesporforskriften
+FOR-2014-12-10-1574	Museumsbaneforskriften
+FOR-2022-01-19-100	Sikringsforskriften
+FOR-2025-03-14-531	Gebyrforskriften (SJT)
+FOR-2006-03-31-378	Jernbaneundersøkelsesforskriften
+FOR-2006-03-31-379	Varslings- og rapporteringsforskriften
+FOR-2010-12-10-1569	Tillatelsesforskriften
+FOR-2008-02-29-240	Togframføringsforskriften (repealed)

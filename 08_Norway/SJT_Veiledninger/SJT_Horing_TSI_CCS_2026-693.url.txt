@@ -1,0 +1,4 @@
+Høring om endring av TSI CCS-forskriften (Reg (EU) 2026/693)
+SJT hearing
+https://sjt.no/jernbane/sikkerhet-og-sikring/regelverk-horinger-og-veiledning/horinger-for-jernbane/horing-om-endring-av-tsi-ccs-forskriften/
+RECENT: implements 2026/693 amending 2023/1695; proposed ETCS-fit exemption for special vehicles/shunting locos on class-B-only lines; Norwegian specific case for train detection (axle distance).

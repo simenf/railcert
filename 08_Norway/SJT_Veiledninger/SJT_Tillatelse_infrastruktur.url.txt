@@ -1,0 +1,4 @@
+Ta i bruk ny eller endret infrastruktur (tillatelse for infrastruktur)
+SJT web guidance
+https://sjt.no/jernbane/sikkerhet-og-sikring/tillatelser-godkjenninger-forerbevis-og-sertifikater/tillatelse-for-infrastruktur/
+Notification/application per jernbaneinfrastrukturforskriften §3-6a/b and samtrafikkforskriften §5-4/5-5 (infra, energy, CCS trackside).

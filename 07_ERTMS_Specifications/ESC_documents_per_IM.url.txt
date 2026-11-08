@@ -1,0 +1,4 @@
+ETCS System Compatibility (ESC) documents per IM
+-
+https://www.era.europa.eu/era-folder/etcs-system-compatibility-esc-documents
+Includes Bane NOR ESC types if published

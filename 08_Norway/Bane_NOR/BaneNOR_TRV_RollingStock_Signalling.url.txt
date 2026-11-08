@@ -1,0 +1,4 @@
+Teknisk regelverk: Rolling stock / Characteristics of the infrastructure / Signalling and train control system
+TRV (Rullende materiell/Infrastrukturens egenskaper/Signal)
+https://trv.banenor.no/wiki/Rolling_stock/Characteristics_of_the_infrastructure/Signalling_and_train_control_system
+Vehicle-infrastructure compatibility requirements. TRV wiki blocks robots; Norwegian page path Rullende_materiell/... UNVERIFIED.

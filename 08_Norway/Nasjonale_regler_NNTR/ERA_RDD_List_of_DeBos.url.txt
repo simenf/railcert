@@ -1,0 +1,4 @@
+ERA RDD - List of DeBos (designated bodies)
+RDD report
+https://rdd.era.europa.eu/rdd/
+SJT links a deep RDD report URL (Reports > List of DeBos); root given here.

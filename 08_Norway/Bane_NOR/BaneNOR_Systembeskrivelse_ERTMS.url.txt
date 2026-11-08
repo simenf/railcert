@@ -1,0 +1,4 @@
+Bane NOR - Systembeskrivelse ERTMS
+Bane NOR system description
+https://oppslagsverk.banenor.no/siteassets/kontrollvirksomhet-signal/dokumenter/systembeskrivelse_ertms.pdf
+Automatic download failed (Bane NOR blocks scripts) – open link in browser. Fetched via WebFetch; references FOR-2010-06-16-820 (old samtrafikkforskrift).

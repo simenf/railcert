@@ -1,0 +1,390 @@
+set	subfolder	title	url	size
+Set1_B2		readme_file_-_set_1_-_archived_specs.docx	https://www.era.europa.eu/system/files/2023-09/sos1_readme_file_-_set_1_-_archived_specs.docx	
+Set1_B2		ERTMS/ETCS Functional Requirements Specification	https://www.era.europa.eu/system/files/2023-01/sos1_index001_-_era_ertms_003204_v500.pdf	
+Set1_B2		Glossary of Terms and Abbreviations	https://www.era.europa.eu/system/files/2023-01/sos1_index003_-_subset-023_v200.pdf	
+Set1_B2		System Requirements Specification	https://www.era.europa.eu/system/files/2023-01/sos1_index004_-_subset-026_v230.zip	
+Set1_B2		FFFIS Juridical Recorder-Downloading Tool	https://www.era.europa.eu/system/files/2023-01/sos1_index005_-_subset-027_v230.pdf	
+Set1_B2		FIS for Man-Machine Interface	https://www.era.europa.eu/system/files/2023-01/sos1_index006_-_subset-033_v200.pdf	
+Set1_B2		FIS for the Train Interface	https://www.era.europa.eu/system/files/2023-01/sos1_index007_-_subset-034_v200.pdf	
+Set1_B2		Specific Transmission Module FFFIS	https://www.era.europa.eu/system/files/2023-01/sos1_index008_-_subset-035_v211.pdf	
+Set1_B2		FFFIS for Eurobalise	https://www.era.europa.eu/system/files/2023-01/sos1_index009_-_subset-036_v241.pdf	
+Set1_B2		EuroRadio FIS	https://www.era.europa.eu/system/files/2023-01/sos1_index010_-_subset-037_v230.pdf	
+Set1_B2		Offline key management FIS	https://www.era.europa.eu/system/files/2023-01/sos1_index011_-_subset-038_v230.pdf	
+Set1_B2		FIS for the RBC/RBC Handover	https://www.era.europa.eu/system/files/2023-01/sos1_index012_-_subset-039_v230.pdf	
+Set1_B2		Dimensioning and Engineering rules	https://www.era.europa.eu/system/files/2023-01/sos1_index013_-_subset-040_v230.pdf	
+Set1_B2		Performance Requirements for Interoperability	https://www.era.europa.eu/system/files/2023-01/sos1_index014_-_subset-041_v210.pdf	
+Set1_B2		Interoperability-related consolidation on TSI annex A documents	https://www.era.europa.eu/system/files/2023-01/sos1_index015_-_subset-108_v120.zip	
+Set1_B2		FFFIS for Euroloop	https://www.era.europa.eu/system/files/2023-01/sos1_index016_-_subset-044_v230.pdf	
+Set1_B2		Radio In-fill FFFS	https://www.era.europa.eu/system/files/2023-01/sos1_index018_-_subset-046_v200.pdf	
+Set1_B2		Track-side-Trainborne FIS for Radio In-Fill	https://www.era.europa.eu/system/files/2023-01/sos1_index019_-_subset-047_v200.pdf	
+Set1_B2		Trainborne FFFIS for Radio In-Fill	https://www.era.europa.eu/system/files/2023-01/sos1_index020_-_subset-048_v200.pdf	
+Set1_B2		Radio In-Fill FIS with LEU/Interlocking	https://www.era.europa.eu/system/files/2023-01/sos1_index021_-_subset-049_v200.pdf	
+Set1_B2		Responsibilities and rules for the assignment of values to ETCS variables	https://www.era.europa.eu/system/files/2023-01/sos1_index023_-_subset-054_v210.pdf	
+Set1_B2		STM FFFIS Safe time layer	https://www.era.europa.eu/system/files/2023-01/sos1_index025_-_subset-056_v220.pdf	
+Set1_B2		STM FFFIS Safe link layer	https://www.era.europa.eu/system/files/2023-01/sos1_index026_-_subset-057_v220.pdf	
+Set1_B2		Safety requirements for the Technical Interoperability of ETCS in Levels 1 & 2	https://www.era.europa.eu/system/files/2023-01/sos1_index027_-_subset-091_v250.pdf	
+Set1_B2		Test specification for interface ‘K’	https://www.era.europa.eu/system/files/2023-01/sos1_index029_-_subset-102_v100.pdf	
+Set1_B2		Functional requirements for an onboard reference test facility	https://www.era.europa.eu/system/files/2023-01/sos1_index031_-_subset-094_v202.pdf	
+Set1_B2		GSM-R Functional requirements specification	https://www.era.europa.eu/system/files/2023-01/sos1_index032_-_eirene_frs_v800.pdf	
+Set1_B2		GSM-R System requirements specification	https://www.era.europa.eu/system/files/2023-01/sos1_index033_-_eirene_srs_v1600.pdf	
+Set1_B2		(MORANE) Radio Transmission FFFIS for EuroRadio	https://www.era.europa.eu/system/files/2023-01/sos1_index034_-a11t6001_v1300.pdf	
+Set1_B2		FFFIS STM Test cases document	https://www.era.europa.eu/system/files/2023-01/sos1_index036c_-_subset-074-2_v100.zip	
+Set1_B2		Test cases related to features	https://www.era.europa.eu/system/files/2023-01/sos1_index037b_-_subset-076-5-2_v233.zip	
+Set1_B2		Test sequences	https://www.era.europa.eu/system/files/2023-01/sos1_index037c_-_subset-076-6-3_v233.zip	
+Set1_B2		Scope of the test specifications	https://www.era.europa.eu/system/files/2023-01/sos1_index037d_-_subset-076-7_v102.pdf	
+Set1_B2		ETCS Marker-board definition	https://www.era.europa.eu/system/files/2023-01/sos1_index038_-_06e068_v20.pdf	
+Set1_B2		ERTMS EuroRadio Conformance Requirements	https://www.era.europa.eu/system/files/2023-01/sos1_index039_-_subset-092-1_v230.pdf	
+Set1_B2		ERTMS EuroRadio test cases safety layer	https://www.era.europa.eu/system/files/2023-01/sos1_index040_-_subset-092-2_v230.pdf	
+Set1_B2		Test specification for Eurobalise FFFIS	https://www.era.europa.eu/system/files/2023-01/sos1_index043_-_subset-085_v222.pdf	
+Set1_B2		Interface ‘K’ Specification	https://www.era.europa.eu/system/files/2023-01/sos1_index045_-_subset-101_v100.pdf	
+Set1_B2		Interface ‘G’ Specification	https://www.era.europa.eu/system/files/2023-01/sos1_index046_-_subset-100_v101.pdf	
+Set1_B2		Test specification for mobile equipment GSM-R	https://www.era.europa.eu/system/files/2023-01/sos1_index48_reserved_document.pdf	
+Set1_B2		Performance requirements for STM	https://www.era.europa.eu/system/files/2023-01/sos1_index049_-_subset-059_v211.pdf	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20v100.pdf	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%201%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%202%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%203%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%204%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%205%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%206%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%207%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20TSOE%20%28Part%201%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20TSOE%20%28Part%202%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20TSOE%20%28Part%203%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20TSOE%20%28Part%204%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20TSOE%20%28Part%205%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20TSOE%20%28Part%206%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20TSOE%20%28Part%207%29.zip	
+Set1_B2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/Index050%20-%20SUBSET-103%20TSTE.zip	
+Set1_B2		Ergonomic aspects of the DMI	https://www.era.europa.eu/system/files/2023-01/sos1_index51_reserved_document.pdf	
+Set1_B2		FFFIS STM Application layer	https://www.era.europa.eu/system/files/2023-01/sos1_index052_-_subset-058_v211.pdf	
+Set1_B2		RBC-RC Test specification for safe communication interface	https://www.era.europa.eu/system/files/2023-01/sos1_index62_reserved_document.pdf	
+Set1_B2		RBC-RBC Safe Communication Interface	https://www.era.europa.eu/system/files/2023-01/sos1_index063_-_subset-098_v100.pdf	
+Set1_B2		Global System for Mobile Communication (GSM); Requirements for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos1_index064_-_en_301515_v230.pdf	
+Set1_B2		Detailed requirements for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos1_index065_-_ts102281_v300.pdf	
+Set1_B2		ASCI Options for Interoperability	https://www.era.europa.eu/system/files/2023-01/sos1_index066_-_ts103169_v111.pdf	
+Set1_B2		FFFIS for GSM-R SIM Cards	https://www.era.europa.eu/system/files/2023-01/sos1_index067_-_morane_p38t9001_v50.pdf	
+Set1_B2		Railway Telecommunication; GSM; Usage of the UUIE for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos1_index068_-_ts102610_v130.pdf	
+Set1_B2		FFFS for Confirmation of High Priority Calls	https://www.era.europa.eu/system/files/2023-01/sos1_index069_-_morane_f10t6002_v50.pdf	
+Set1_B2		FIS for Confirmation of High Priority Calls	https://www.era.europa.eu/system/files/2023-01/sos1_index070_-_morane_f12t6002_v50.pdf	
+Set1_B2		FFFS for Functional Addressing	https://www.era.europa.eu/system/files/2023-01/sos1_index071_-_morane_e10t6001_v41.pdf	
+Set1_B2		FIS for Functional Addressing	https://www.era.europa.eu/system/files/2023-01/sos1_index072_-_morane_e12t6001_v51.pdf	
+Set1_B2		FFFS for Location Dependent Addressing	https://www.era.europa.eu/system/files/2023-01/sos1_index073_-_morane_f10t6001_v4.pdf	
+Set1_B2		FIS for Location Dependent Addressing	https://www.era.europa.eu/system/files/2023-01/sos1_index074_-_morane_f12t6001_v3.pdf	
+Set1_B2		FFFS for Presentation of Functional Numbers to Called and Calling Parties	https://www.era.europa.eu/system/files/2023-01/sos1_index075_-_morane_f10t6003_v4.pdf	
+Set1_B2		FIS for Presentation of Functional Numbers to Called and Calling Parties	https://www.era.europa.eu/system/files/2023-01/sos1_index076_-_morane_f12t6003_v4.pdf	
+Set1_B2		Interfaces between CCS trackside and other subsystems	https://www.era.europa.eu/system/files/2023-01/sos1_index077_-_era_ertms_033281_v40.pdf	
+Set1_B2		Safety requirements for ETCS DMI functions	https://www.era.europa.eu/system/files/2023-01/sos1_index78_reserved_document.pdf	
+Set2_B3MR1		readme_file_-_set_2_-_archived_specs.docx	https://www.era.europa.eu/system/files/2023-09/sos2_readme_file_-_set_2_-_archived_specs.docx	
+Set2_B3MR1		Glossary of Terms and Abbreviations	https://www.era.europa.eu/system/files/2023-01/sos2_index003_-_subset-023_v310.pdf	
+Set2_B3MR1		System Requirements Specification	https://www.era.europa.eu/system/files/2023-01/sos2_index004-_subset-026_v340.zip	
+Set2_B3MR1		FIS Juridical Recording	https://www.era.europa.eu/system/files/2023-01/sos2_index005_-_subset-027_v310.pdf	
+Set2_B3MR1		ETCS Driver Machine Interface	https://www.era.europa.eu/system/files/2023-01/sos2_index006_-_era_ertms_015560_v340.zip	
+Set2_B3MR1		Train Interface FIS	https://www.era.europa.eu/system/files/2023-01/sos2_index007_-_subset-034_v310.pdf	
+Set2_B3MR1		Specific Transmission Module FFFIS	https://www.era.europa.eu/system/files/2023-01/sos2_index008_-_subset-035_v310.pdf	
+Set2_B3MR1		FFFIS for Eurobalise	https://www.era.europa.eu/system/files/2023-01/sos2_index009_-_subset-036_v300.pdf	
+Set2_B3MR1		EuroRadio FIS	https://www.era.europa.eu/system/files/2023-01/sos2_index010_-_subset-037_v310.pdf	
+Set2_B3MR1		Offline key management FIS	https://www.era.europa.eu/system/files/2023-01/sos2_index011_-_subset-038_v300.pdf	
+Set2_B3MR1		FIS for the RBC/RBC handover	https://www.era.europa.eu/system/files/2023-01/sos2_index012_-_subset-039_v310.pdf	
+Set2_B3MR1		Dimensioning and Engineering rules	https://www.era.europa.eu/system/files/2023-01/sos2_index013_-_subset-040_v330.pdf	
+Set2_B3MR1		Performance Requirements for Interoperability	https://www.era.europa.eu/system/files/2023-01/sos2_index014_-_subset-041_v310.pdf	
+Set2_B3MR1		FFFIS for Euroloop	https://www.era.europa.eu/system/files/2023-01/sos2_index016_-_subset-044_v240.pdf	
+Set2_B3MR1		Trackside-Trainborne FIS for Radio infill	https://www.era.europa.eu/system/files/2023-01/sos2_index019_-_subset-047_v300.pdf	
+Set2_B3MR1		Trainborne FFFIS for Radio infill	https://www.era.europa.eu/system/files/2023-01/sos2_index020_-_subset-048_v300.pdf	
+Set2_B3MR1		Responsibilities and rules for the assignment of values to ETCS variables	https://www.era.europa.eu/system/files/2023-01/sos2_index023_-_subset-054_v300.pdf	
+Set2_B3MR1		STM FFFIS Safe time layer	https://www.era.europa.eu/system/files/2023-01/sos2_index025_-_subset-056_v300.pdf	
+Set2_B3MR1		STM FFFIS Safe link Layer	https://www.era.europa.eu/system/files/2023-01/sos2_index026_-_subset-057_v300.pdf	
+Set2_B3MR1		Safety Requirements fo the Technical Interoperability of ETCS in Levels 1 and 2	https://www.era.europa.eu/system/files/2023-01/sos2_index027_-_subset-091_v340.pdf	
+Set2_B3MR1		Test specification for interface "K"	https://www.era.europa.eu/system/files/2023-01/sos2_index029_-_subset-102_v200.pdf	
+Set2_B3MR1		Functional requirements for an on-board reference test facility	https://www.era.europa.eu/system/files/2023-01/sos2_index031_-_subset-094_v300.pdf	
+Set2_B3MR1		GSM-R Functional Requirements Specification	https://www.era.europa.eu/system/files/2023-01/sos2_index032_-_eirene_frs_v800.pdf	
+Set2_B3MR1		GSM-R System Requirements Specification	https://www.era.europa.eu/system/files/2023-01/sos2_index033_-_eirene_srs_v1600.pdf	
+Set2_B3MR1		(MORANE) Radio Transmission FFFIS for EuroRadio	https://www.era.europa.eu/system/files/2023-01/sos2_index034_-a11t6001_v1300.pdf	
+Set2_B3MR1		FFFIS STM Test cases document	https://www.era.europa.eu/system/files/2023-01/sos2_index036c_-_subset-074-2_v300.zip	
+Set2_B3MR1		Test cases related to features	https://www.era.europa.eu/system/files/2023-01/sos2_index037b_-_subset-076-5-2_v320_era-opi-2017-5.zip	
+Set2_B3MR1		Test Sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v310_1_out_of_5.zip	
+Set2_B3MR1		Test Sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v310_2_out_of_5.zip	
+Set2_B3MR1		Test Sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v310_3_out_of_5.zip	
+Set2_B3MR1		Test Sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v310_4_out_of_5.zip	
+Set2_B3MR1		Test Sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v310_5_out_of_5.zip	
+Set2_B3MR1		Scope of the test specifications	https://www.era.europa.eu/system/files/2023-01/sos2_index037d_-_subset-076-7_v320_era-opi-2017-5.zip	
+Set2_B3MR1		ETCS marker-board definition	https://www.era.europa.eu/system/files/2023-01/sos2_index038_-_06e068_v20.pdf	
+Set2_B3MR1		ERTMS EuroRadio Conformance Requirements	https://www.era.europa.eu/system/files/2023-01/sos2_index039_-_subset-092-1_v300.pdf	
+Set2_B3MR1		ERTMS Euroradio Test cases Safety Layer	https://www.era.europa.eu/system/files/2023-01/sos2_index040_-_subset-092-2_v300.pdf	
+Set2_B3MR1		Test specification for Eurobalise FFFIS	https://www.era.europa.eu/system/files/2023-01/sos2_index043_-_subset-085_v300.pdf	
+Set2_B3MR1		Interface "K" Specification	https://www.era.europa.eu/system/files/2023-01/sos2_index045_-_subset-101_v200.pdf	
+Set2_B3MR1		Interface "G" Specification	https://www.era.europa.eu/system/files/2023-01/sos2_index046_-_subset-100_v200.pdf	
+Set2_B3MR1		Test specification for mobile equipment GSM-R	https://www.era.europa.eu/system/files/2023-01/sos2_index48_reserved_document.pdf	
+Set2_B3MR1		Performance requirements for STM	https://www.era.europa.eu/system/files/2023-01/sos2_index049_-_subset-059_v300.pdf	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/sos2_index050_-_subset-103_v110.pdf	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%201%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%202%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%203%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%204%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%205%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%206%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%207%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%201%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%202%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%203%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%204%29_0.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%205%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%206%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%207%29.zip	
+Set2_B3MR1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSTE.zip	
+Set2_B3MR1		FFFIS STM Application layer	https://www.era.europa.eu/system/files/2023-01/sos2_index052_-_subset-058_v310.pdf	
+Set2_B3MR1		ETCS System Version Management	https://www.era.europa.eu/system/files/2023-01/sos2_index060_-_subset-104_v320.pdf	
+Set2_B3MR1		RBC-RBC Safe Communication Interface	https://www.era.europa.eu/system/files/2023-01/sos2_index063_-_subset-098_v300.pdf	
+Set2_B3MR1		Global System for Mobile Communication; Requirements for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos2_index064_-_en_301515_v230.pdf	
+Set2_B3MR1		Detailed requirements for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos2_index065_-_ts102281_v300.pdf	
+Set2_B3MR1		ASCI Options for Interoperability	https://www.era.europa.eu/system/files/2023-01/sos2_index066_-_ts103169_v111.pdf	
+Set2_B3MR1		FFFIS for GSM-R SIM Cards	https://www.era.europa.eu/system/files/2023-01/sos2_index067_-_morane_p38t9001_v50.pdf	
+Set2_B3MR1		Railway Telecommunication; GSM; Usage of the UUIE for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos2_index068_-_ts102610_v130.pdf	
+Set2_B3MR1		FFFS for Confirmation of High Priority Calls	https://www.era.europa.eu/system/files/2023-01/sos2_index069_-_morane_f10t6002_v50.pdf	
+Set2_B3MR1		FIS for Confirmation of High Priority Calls	https://www.era.europa.eu/system/files/2023-01/sos2_index070_-_morane_f12t6002_v50.pdf	
+Set2_B3MR1		FFFS for Functional Addressing	https://www.era.europa.eu/system/files/2023-01/sos2_index071_-_morane_e10t6001_v41.pdf	
+Set2_B3MR1		FIS for Functional Addressing	https://www.era.europa.eu/system/files/2023-01/sos2_index072_-_morane_e12t6001_v51.pdf	
+Set2_B3MR1		FFFS for Location Dependent Addressing	https://www.era.europa.eu/system/files/2023-01/sos2_index073_-_morane_f10t6001_v4.pdf	
+Set2_B3MR1		FIS for Location Dependent Addressing	https://www.era.europa.eu/system/files/2023-01/sos2_index074_-_morane_f12t6001_v3.pdf	
+Set2_B3MR1		FFFS for Presentation of Functional Numbers to Called and Calling Parties	https://www.era.europa.eu/system/files/2023-01/sos2_index075_-_morane_f10t6003_v4.pdf	
+Set2_B3MR1		FIS for Presentation of Functional Numbers to Called and Calling Parties	https://www.era.europa.eu/system/files/2023-01/sos2_index076_-_morane_f12t6003_v4.pdf	
+Set2_B3MR1		Interfaces between CCS track-side and other subsystems	https://www.era.europa.eu/system/files/2023-01/sos2_index077_-_era_ertms_0033281_v40.pdf	
+Set2_B3MR1		KMC-ETCS Entity Off-line KM FIS	https://www.era.europa.eu/system/files/2023-01/sos2_index079_-_subset-114_v100.pdf	
+Set2_B3MR1		Train Interface FFFIS	https://www.era.europa.eu/system/files/2023-01/sos2_index81_reserved_document.pdf	
+Set2_B3MR1		FFFIS TI – Safety Analysis	https://www.era.europa.eu/system/files/2023-01/sos2_index82_reserved_document.pdf	
+Set3_B3R2		readme_file_-_set_3_-_archived_specs.docx	https://www.era.europa.eu/system/files/2023-09/sos3_readme_file_-_set_3_-_archived_specs.docx	
+Set3_B3R2		Glossary of Terms and Abbreviations	https://www.era.europa.eu/system/files/2023-01/sos3_index003_-_subset-023_v330.pdf	
+Set3_B3R2		System Requirement Specification	https://www.era.europa.eu/system/files/2023-01/sos3_index004_-_subset-026_v360.zip	
+Set3_B3R2		FIS Juridical Recording	https://www.era.europa.eu/system/files/2023-01/sos3_index005_-_subset-027_v330.pdf	
+Set3_B3R2		ETCS Driver Machine Interface	https://www.era.europa.eu/system/files/2023-01/sos3_index006_-_era_ertms_015560_v360.zip	
+Set3_B3R2		Train Interface FIS	https://www.era.europa.eu/system/files/2023-01/sos3_index007_-_subset-034_v320.pdf	
+Set3_B3R2		Specific Transmission Module FFFIS	https://www.era.europa.eu/system/files/2023-01/sos3_index008_-_subset-035_v320.pdf	
+Set3_B3R2		FFFIS for Eurobalise	https://www.era.europa.eu/system/files/2023-01/sos3_index009_-_subset-036_v310.pdf	
+Set3_B3R2		Euroradio FIS	https://www.era.europa.eu/system/files/2023-01/sos3_index010_-_subset-037_v320.pdf	
+Set3_B3R2		Offline Key management FIS	https://www.era.europa.eu/system/files/2023-01/sos3_index011_-_subset-038_v310.pdf	
+Set3_B3R2		FIS for RBC/RBC handover	https://www.era.europa.eu/system/files/2023-01/sos3_index012_-_subset-039_v320.pdf	
+Set3_B3R2		Dimensioning and Engineering rules	https://www.era.europa.eu/system/files/2023-01/sos3_index013_-_subset-040_v340.pdf	
+Set3_B3R2		Performance Requirements for Interoperability	https://www.era.europa.eu/system/files/2023-01/sos3_index014_-_subset-041_v320.pdf	
+Set3_B3R2		FFFIS for Euroloop	https://www.era.europa.eu/system/files/2023-01/sos3_index016_-_subset-044_v240.pdf	
+Set3_B3R2		Trackside-Trainborne FIS for Radio infill	https://www.era.europa.eu/system/files/2023-01/sos3_index019_-_subset-047_v300.pdf	
+Set3_B3R2		Trainborne FFFIS for Radio infill	https://www.era.europa.eu/system/files/2023-01/sos3_index020_-_subset-048_v300.pdf	
+Set3_B3R2		Responsibilities and rules for the assignment of values to ETCS variables	https://www.era.europa.eu/system/files/2023-01/sos3_index023_-_subset-054_v300.pdf	
+Set3_B3R2		STM FFFIS Safe time layer	https://www.era.europa.eu/system/files/2023-01/sos3_index025_-_subset-056_v300.pdf	
+Set3_B3R2		STM FFFIS Safe link layer	https://www.era.europa.eu/system/files/2023-01/sos3_index026_-_subset-057_v310.pdf	
+Set3_B3R2		Safety Requirements for the Technical Interoperability of ETCS in Levesl 1 and 2	https://www.era.europa.eu/system/files/2023-01/sos3_index027_-_subset-091_v360.pdf	
+Set3_B3R2		Test specification for interface "K"	https://www.era.europa.eu/system/files/2023-01/sos3_index029_-_subset-102_v200.pdf	
+Set3_B3R2		Functional requirements for an onboard reference test facilitiy	https://www.era.europa.eu/system/files/2023-01/sos3_index031_-_subset-094_v310_era-opi-2017-5.zip	
+Set3_B3R2		GSM-R Functional Requirements Specification	https://www.era.europa.eu/system/files/2023-01/sos3_index032_-_eirene_frs_v800.pdf	
+Set3_B3R2		GSM-R System Requirements Specification	https://www.era.europa.eu/system/files/2023-01/sos3_index033_-_eirene_srs_v1600.pdf	
+Set3_B3R2		(MORANE) Radio Transmission FFFIS for EuroRadio	https://www.era.europa.eu/system/files/2023-01/sos3_index034_-a11t6001_v1300.pdf	
+Set3_B3R2		FFFIS STM Test cases document	https://www.era.europa.eu/system/files/2023-01/sos3_index036c_-_subset-074-2_v310.zip	
+Set3_B3R2		Test cases related to features	https://www.era.europa.eu/system/files/2023-01/sos3_index037b_-_subset-076-5-2_v330_era-opi-2017-5.zip	
+Set3_B3R2		Test sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v320_1_out_of_6.zip	
+Set3_B3R2		Test sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v320_2_out_of_6.zip	
+Set3_B3R2		Test sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v320_3_out_of_6.zip	
+Set3_B3R2		Test sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v320_4_out_of_6.zip	
+Set3_B3R2		Test sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v320_5_out_of_6_0.zip	
+Set3_B3R2		Test sequences	https://www.era.europa.eu/system/files/2023-01/subset_076-6-3_v320_6_out_of_6.zip	
+Set3_B3R2		Scope of the test specifications	https://www.era.europa.eu/system/files/2023-01/sos3_index037d_-_subset-076-7_v330_era-opi-2017-5.zip	
+Set3_B3R2		ETCS marker-board definition	https://www.era.europa.eu/system/files/2023-01/sos3_index038_-_06e068_v20.pdf	
+Set3_B3R2		ERTMS EuroRadio Conformance Requirements	https://www.era.europa.eu/system/files/2023-01/sos3_index039_-_subset-092-1_v310.pdf	
+Set3_B3R2		ERTMS EuroRadio test cases safety layer	https://www.era.europa.eu/system/files/2023-01/sos3_index040_-_subset-092-2_v310.pdf	
+Set3_B3R2		Test Specification for Eurobalise FFFIS	https://www.era.europa.eu/system/files/2023-01/sos3_index043_-_subset-085_v300.pdf	
+Set3_B3R2		Interface "K" Specification	https://www.era.europa.eu/system/files/2023-01/sos3_index045_-_subset-101_v200.pdf	
+Set3_B3R2		Interface "G" Specification	https://www.era.europa.eu/system/files/2023-01/sos3_index046_-_subset-100_v200.pdf	
+Set3_B3R2		Test specification for mobile equipment GSM-R	https://www.era.europa.eu/system/files/2023-01/sos3_index48_reserved_document.pdf	
+Set3_B3R2		Performance requirements for STM	https://www.era.europa.eu/system/files/2023-01/sos3_index049_-_subset-059_v310.pdf	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-01/sos3_index050_-_subset-103_v110.pdf	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%201%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%202%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%203%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%204%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%205%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%206%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%207%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%201%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%202%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%203%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%204%29_1.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%205%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%206%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%207%29_0.zip	
+Set3_B3R2		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSTE_0.zip	
+Set3_B3R2		FFFIS STM Application Layer	https://www.era.europa.eu/system/files/2023-01/sos3_index052_-_subset-058_v320.pdf	
+Set3_B3R2		ETCS System Version Management	https://www.era.europa.eu/system/files/2023-01/sos3_index060_-_subset-104_v330.pdf	
+Set3_B3R2		RBC-RBC Safe Communication Interface	https://www.era.europa.eu/system/files/2023-01/sos3_index063_-_subset-098_v300.pdf	
+Set3_B3R2		Global System for Mobile Communication; Requirements for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos3_index064_-_en_301515_v230.pdf	
+Set3_B3R2		Detailed requirements for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos3_index065_-_ts102281_v300.pdf	
+Set3_B3R2		ASCI Options for Interoperability	https://www.era.europa.eu/system/files/2023-01/sos3_index066_-_ts103169_v111.pdf	
+Set3_B3R2		FFFIS for GSM-R SIM Cards	https://www.era.europa.eu/system/files/2023-01/sos3_index067_-_morane_p38t9001_v50.pdf	
+Set3_B3R2		Railway Telecommunication; GSM; Usage of the UUIE for GSM operation on railways	https://www.era.europa.eu/system/files/2023-01/sos3_index068_-_ts102610_v130.pdf	
+Set3_B3R2		FFFS for Confirmation of High Priority Calls	https://www.era.europa.eu/system/files/2023-01/sos3_index069_-_morane_f10t6002_v50.pdf	
+Set3_B3R2		FIS for Confirmation of High Priority Calls	https://www.era.europa.eu/system/files/2023-01/sos3_index070_-_morane_f12t6002_v50.pdf	
+Set3_B3R2		FFFS for Functional Addressing	https://www.era.europa.eu/system/files/2023-01/sos3_index071_-_morane_e10t6001_v41.pdf	
+Set3_B3R2		FIS for Functional Addressing	https://www.era.europa.eu/system/files/2023-01/sos3_index072_-_morane_e12t6001_v51.pdf	
+Set3_B3R2		FFFS for Location Dependent Addressing	https://www.era.europa.eu/system/files/2023-01/sos3_index073_-_morane_f10t6001_v4.pdf	
+Set3_B3R2		FIS for Location Dependent Addressing	https://www.era.europa.eu/system/files/2023-01/sos3_index074_-_morane_f12t6001_v3.pdf	
+Set3_B3R2		FFFS for Presentation of Functional Numbers to Called and Calling Parties	https://www.era.europa.eu/system/files/2023-01/sos3_index075_-_morane_f10t6003_v4.pdf	
+Set3_B3R2		FIS for Presentation of Functional Numbers to Called and Calling Parties	https://www.era.europa.eu/system/files/2023-01/sos3_index076_-_morane_f12t6003_v4.pdf	
+Set3_B3R2		Interfaces between CCS track-side and other subsystems	https://www.era.europa.eu/system/files/2023-01/sos3_index077_-_era_ertms_033281_v40.pdf	
+Set3_B3R2		KMC-ETCS Entity Off-line KM FIS	https://www.era.europa.eu/system/files/2023-01/sos3_index079_-_subset-114_v110.pdf	
+Set3_B3R2		Train Interface FFFIS	https://www.era.europa.eu/system/files/2023-01/sos3_index81_reserved_document.pdf	
+Set3_B3R2		FFFIS TI – Safety Analysis	https://www.era.europa.eu/system/files/2023-01/sos3_index82_reserved_document.pdf	
+Set3_B3R2		On-line Key Management FFFIS	https://www.era.europa.eu/system/files/2023-01/sos3_index083_-_subset-137_v100.pdf	
+Set4_B4R1		readme_file_-_mandatory_specs.docx	https://www.era.europa.eu/system/files/2023-09/readme_file_-_mandatory_specs.docx	
+Set4_B4R1		Glossary of Terms and Abbreviations	https://www.era.europa.eu/system/files/2023-09/index003_-_SUBSET-023_v400.pdf	
+Set4_B4R1		System Requirements Specification	https://www.era.europa.eu/system/files/2023-09/index004_-_SUBSET-026_v400.zip	
+Set4_B4R1		FIS Juridical Recording	https://www.era.europa.eu/system/files/2023-09/index005_-_SUBSET-027_v400.pdf	
+Set4_B4R1		ETCS Driver Machine interface	https://www.era.europa.eu/system/files/2023-12/index006_-_ERA_ERTMS_015560_v400.zip	
+Set4_B4R1		Train Interface FIS	https://www.era.europa.eu/system/files/2023-09/index007_-_SUBSET-034_v400.pdf	
+Set4_B4R1		Specific Transmission Module FFFIS	https://www.era.europa.eu/system/files/2023-09/index008_-_SUBSET-035_v400.pdf	
+Set4_B4R1		FFFIS for Eurobalise	https://www.era.europa.eu/system/files/2023-09/index009_-_SUBSET-036_v400.pdf	
+Set4_B4R1		EuroRadio FIS – Part 1 [Communication layer and coordination function]	https://www.era.europa.eu/system/files/2023-09/index010a_-_SUBSET-037-1_v400.pdf	
+Set4_B4R1		EuroRadio FIS – Part 2 [Safety layer]	https://www.era.europa.eu/system/files/2023-09/index010b_-_SUBSET-037-2_v400.pdf	
+Set4_B4R1		EuroRadio FIS – Part 3 [FRMCS interface]	https://www.era.europa.eu/system/files/2023-09/index010c_-_SUBSET-037-3_v400.pdf	
+Set4_B4R1		ERTMS End-to-End Security	https://www.era.europa.eu/system/files/2023-09/index010d_-_SUBSET-146_v400.pdf	
+Set4_B4R1		Offline key management FIS	https://www.era.europa.eu/system/files/2023-09/index011_-_SUBSET-038_v400.pdf	
+Set4_B4R1		FIS for the RBC/RBC handover	https://www.era.europa.eu/system/files/2023-09/index012_-_SUBSET-039_v400.pdf	
+Set4_B4R1		Dimensioning and Engineering rules	https://www.era.europa.eu/system/files/2023-09/index013_-_SUBSET-040_v400.pdf	
+Set4_B4R1		Performance Requirements for Interoperability	https://www.era.europa.eu/system/files/2023-09/index014_-_SUBSET-041_v400.pdf	
+Set4_B4R1		FFFIS for Euroloop	https://www.era.europa.eu/system/files/2023-09/index016_-_subset-044_v240.pdf	
+Set4_B4R1		Trackside-Trainborne FIS for Radio infill	https://www.era.europa.eu/system/files/2023-09/index019_-_SUBSET-047_v400.pdf	
+Set4_B4R1		Trainborne FFFIS for Radio infill	https://www.era.europa.eu/system/files/2023-09/index020_-_subset-048_v300.pdf	
+Set4_B4R1		Responsibilities and rules for the assignment of values to ETCS variables	https://www.era.europa.eu/system/files/2023-09/index023_-_SUBSET-054_v400.pdf	
+Set4_B4R1		STM FFFIS Safe time layer	https://www.era.europa.eu/system/files/2023-09/index025_-_subset-056_v300.pdf	
+Set4_B4R1		STM FFFIS Safe link layer	https://www.era.europa.eu/system/files/2023-09/index026_-_subset-057_v310.pdf	
+Set4_B4R1		Safety Requirements for the Technical Interoperability of ETCS	https://www.era.europa.eu/system/files/2023-09/index027_-_SUBSET-091_v400.pdf	
+Set4_B4R1		Test specification for interface ‘K’	https://www.era.europa.eu/system/files/2023-09/index029_-_subset-102_v200.pdf	
+Set4_B4R1		Functional requirements for an on-board reference test facility	https://www.era.europa.eu/sites/default/files/2026-04/index031_subset-094%20v4.0.0.pdf	
+Set4_B4R1		GSM-R Functional requirements specification	https://www.era.europa.eu/system/files/2023-09/index032_-_EIRENE_FRS_v810.pdf	
+Set4_B4R1		GSM-R System requirements specification	https://www.era.europa.eu/system/files/2023-09/index033_-_EIRENE_SRS_v1610.pdf	
+Set4_B4R1		(MORANE) Radio Transmission FFFIS for EuroRadio	https://www.era.europa.eu/system/files/2023-09/index034_-_A11T6001_v1400.pdf	
+Set4_B4R1		FFFIS STM Test cases document	https://www.era.europa.eu/system/files/2023-09/index036c_-_SUBSET-074-2_v400.zip	
+Set4_B4R1		Test cases related to features	https://www.era.europa.eu/sites/default/files/2026-04/index037b_subset-076-5-2%20v4.0.0.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part1%20of13%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part2%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part3%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part4%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part5%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part6%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part7%20of%2013%29_1.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part8%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part9%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part10%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part11%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part12%20of%2013%29.zip	
+Set4_B4R1		Test sequences	https://www.era.europa.eu/sites/default/files/2026-04/index37c_subset-076-6-3v4.0.0%20%28part13%20of%2013%29.zip	
+Set4_B4R1		Scope of the test specifications	https://www.era.europa.eu/sites/default/files/2026-04/index037d_subset-076-7%20v4.0.0.pdf	
+Set4_B4R1		Railway applications. Requirements for ERTMS Trackside Boards	https://www.era.europa.eu/sites/default/files/2026-04/index38_cenelec_en_16494.pdf	
+Set4_B4R1		ERTMS EuroRadio Conformance Requirements	https://www.era.europa.eu/system/files/2023-09/index039_-_SUBSET-092-1_v400.pdf	
+Set4_B4R1		ERTMS EuroRadio test cases safety layer	https://www.era.europa.eu/system/files/2023-09/index040_-_SUBSET-092-2_v400.pdf	
+Set4_B4R1		Test specification for Eurobalise FFFIS	https://www.era.europa.eu/system/files/2023-09/index043_-_SUBSET-085_v400.pdf	
+Set4_B4R1		Interface ‘K’ Specification	https://www.era.europa.eu/system/files/2023-09/index045_-_subset-101_v200.pdf	
+Set4_B4R1		Interface ‘G’ Specification	https://www.era.europa.eu/system/files/2023-09/index046_-_subset-100_v200.pdf	
+Set4_B4R1		Test specification for mobile equipment GSM-R	https://www.era.europa.eu/system/files/2023-09/sos3_index81_reserved_document.pdf	
+Set4_B4R1		Performance requirements for STM	https://www.era.europa.eu/system/files/2023-09/index049_-_SUBSET-059_v400.pdf	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-09/index050_-_subset-103_v110.pdf	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%201%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%202%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%203%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%204%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%205%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%206%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20OnBoard%20TSOE%20%28part%207%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%201%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%202%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%203%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%204%29_1.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%205%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%206%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSOE%20%28Part%207%29_0.zip	
+Set4_B4R1		Test specification for Euroloop	https://www.era.europa.eu/system/files/2023-06/Index050%20-%20SUBSET-103%20TSTE_0.zip	
+Set4_B4R1		FFFIS STM Application layer	https://www.era.europa.eu/system/files/2023-09/index052_-_SUBSET-058_v400.pdf	
+Set4_B4R1		ETCS System Version Management	https://www.era.europa.eu/system/files/2023-09/index060_-_SUBSET-104_v400.pdf	
+Set4_B4R1		RBC-RBC Safe Communication Interface	https://www.era.europa.eu/system/files/2023-09/index063_-_SUBSET-098_v400.pdf	
+Set4_B4R1		Global System for Mobile Communication (GSM); Requirements for GSM operation on railways	https://www.era.europa.eu/system/files/2023-09/index064_-_ETSI_EN_301515_v300.pdf	
+Set4_B4R1		Detailed requirements for GSM operation on railways	https://www.era.europa.eu/system/files/2023-09/index065_-_ETSI_TS_102281_v311.pdf	
+Set4_B4R1		ASCI Options for Interoperability	https://www.era.europa.eu/system/files/2023-09/index066_-_ETSI_TS_103169_v111.pdf	
+Set4_B4R1		FFFIS for GSM-R SIM Cards	https://www.era.europa.eu/system/files/2023-09/index067_-_morane_p38t9001_v600.pdf	
+Set4_B4R1		Railway Telecommunication; GSM; Usage of the UUIE for GSM operation on railways	https://www.era.europa.eu/system/files/2023-09/index068_-_ETSI_TS_102610_v130.pdf	
+Set4_B4R1		FFFS for Confirmation of High Priority Calls	https://www.era.europa.eu/system/files/2023-09/index069_-_morane_f10t6002_v50.pdf	
+Set4_B4R1		FIS for Confirmation of High Priority Calls	https://www.era.europa.eu/system/files/2023-09/index070_-_morane_f12t6002_v50.pdf	
+Set4_B4R1		FFFS for Functional Addressing	https://www.era.europa.eu/system/files/2023-09/index071_-_morane_e10t6001_v41.pdf	
+Set4_B4R1		FIS for Functional Addressing	https://www.era.europa.eu/system/files/2023-09/index072_-_morane_e12t6001_v51.pdf	
+Set4_B4R1		FFFS for Location Dependent Addressing	https://www.era.europa.eu/system/files/2023-09/index073_-_morane_f10t6001_v4.pdf	
+Set4_B4R1		FIS for Location Dependent Addressing	https://www.era.europa.eu/system/files/2023-09/index074_-_morane_f12t6001_v3.pdf	
+Set4_B4R1		FFFS for Presentation of Functional Numbers to Called and Calling Parties	https://www.era.europa.eu/system/files/2023-09/index075_-_morane_f10t6003_v4.pdf	
+Set4_B4R1		FIS for Presentation of Functional Numbers to Called and Calling Parties	https://www.era.europa.eu/system/files/2023-09/index076_-_morane_f12t6003_v4.pdf	
+Set4_B4R1		Interfaces between CCS trackside and other subsystems	https://www.era.europa.eu/sites/default/files/2026-04/index077%20era_ertms_033281%20v5_1.pdf	
+Set4_B4R1		KMC-ETCS Entity Off-line KM FIS	https://www.era.europa.eu/system/files/2023-09/index079_-_SUBSET_114_v400.pdf	
+Set4_B4R1		Train Interface FFFIS	https://www.era.europa.eu/system/files/2023-09/index081_-_SUBSET-119_v400.pdf	
+Set4_B4R1		Train Interface - Safety requirements	https://www.era.europa.eu/system/files/2023-09/index082_-_SUBSET-120_v400.pdf	
+Set4_B4R1		Train Interface – Safety requirements – fault trees	https://www.era.europa.eu/system/files/2023-11/index082_-_SUBSET-120_v400_fault_trees.zip	
+Set4_B4R1		On-line Key Management FFFIS	https://www.era.europa.eu/system/files/2023-09/index083_-_SUBSET-137_v400.pdf	
+Set4_B4R1		ERTMS/ATO System Requirement Specification	https://www.era.europa.eu/sites/default/files/2026-04/index084_subset-125%20v1.1.0.pdf	
+Set4_B4R1		ATO-OB / ATO-TS FFFIS Application Layer	https://www.era.europa.eu/sites/default/files/2026-04/index085_subset-126%20v1.1.0.pdf	
+Set4_B4R1		ATO-OB / ATO-TS FFFIS Transport and Security Layers	https://www.era.europa.eu/system/files/2023-09/index086_-_SUBSET-148_v100.pdf	
+Set4_B4R1		ATO-OB / ETCS-OB FFFIS Application Layer	https://www.era.europa.eu/system/files/2023-09/index087_-_SUBSET-130_v100.pdf	
+Set4_B4R1		ATO OB / Rolling Stock FFFIS Application Layer	https://www.era.europa.eu/system/files/2023-09/index088_-_SUBSET-139_v100.pdf	
+Set4_B4R1		Interface Specification Communication Layers for On-board Communication	https://www.era.europa.eu/system/files/2023-09/index089_-_SUBSET-143_v100.pdf	
+Set4_B4R1		CCS Consist network communication Layers FFFIS	https://www.era.europa.eu/system/files/2023-09/index090_-_SUBSET-147_v100.pdf	
+Set4_B4R1		FRMCS FFFIS	https://www.era.europa.eu/system/files/2023-09/index092_-_FRMCS_FFFIS_%28FFFIS-7950%29_v100.pdf	
+Set4_B4R1		FRMCS FRS	https://www.era.europa.eu/system/files/2023-09/index093_-_FRMCS_FRS_%28FU-7120%29_v100.pdf	
+Set4_B4R1		FRMCS SRS	https://www.era.europa.eu/system/files/2023-09/index094_-_FRMCS_SRS_%28AT-7800%29_v100.pdf	
+Set4_B4R1		FRMCS FIS	https://www.era.europa.eu/system/files/2023-09/index095_-_FRMCS_FIS_%28FIS-7970%29_v100.pdf	
+Set4_B4R1		[FFFIS for FRMCS profile placeholder]	https://www.era.europa.eu/system/files/2023-09/sos3_index96_reserved_document.pdf	
+Set4_B4R1		[FRMCS Test specifications placeholder]	https://www.era.europa.eu/system/files/2023-09/sos3_index97_reserved_document.pdf	
+Set4_B4R1		ATO-OB / ATO-TS Test Specifications	https://www.era.europa.eu/sites/default/files/2026-04/index098_subset-151%20v1.0.0.zip	
+Set4_B4R1		On-board FRMCS TOBA FRS	https://www.era.europa.eu/system/files/2023-09/index099_-_FRMCS_TOBA_FRS_%28TOBA-7510%29_v100.pdf	
+Set4_B4R1		Engineering rules for harmonised marker boards	https://www.era.europa.eu/sites/default/files/2026-04/index101%20-%2021e089_2_engineering%20rules%20for%20harmonised%20marker%20boards.pdf	
+Set4_B4R1		ERTMS/ATO Glossary	https://www.era.europa.eu/system/files/2023-09/index102_-_ATO_Glossary_v2-.pdf	
+Set4_B4R1		Exceptions for on-board reduced envelopes of system versions	https://www.era.europa.eu/sites/default/files/2026-04/index104_subset-153%20v100.pdf	
+Informative		Current working version of the application guide (V3.1)	https://www.era.europa.eu/sites/default/files/2024-12/ccs-tsi-2023-application-guide.pdf	
+Informative		here	https://www.era.europa.eu/sites/default/files/2026-01/transition%20regime%20app%20guide%203.0.zip	
+Informative		link.	https://www.era.europa.eu/system/files/2022-11/subset_113_1.pdf	
+Informative		readme_file_- informative_specs	https://www.era.europa.eu/sites/default/files/2024-12/readme_file_%20informative_specs.pdf	
+Informative		Methodology for testing FFFIS STM	https://www.era.europa.eu/sites/default/files/2024-12/index03_subset-074-1%20v400.pdf	
+Informative		ERTMIS GSM-R QoS test specification	https://www.era.europa.eu/sites/default/files/2026-01/index5_o_2475_v400.pdf	
+Informative		FFFIS STM Test specification traceability of test cases with specific transmission module FFFIS	https://www.era.europa.eu/sites/default/files/2024-12/index07_subset-074-3%20v400.pdf	
+Informative		FFFIS STM Test specification traceability of testing the packets specified in the FFFIS STM application layer	https://www.era.europa.eu/sites/default/files/2024-12/index08_subset-074-4%20v400.pdf	
+Informative		ERTMS/ETCS test plan and methodology	https://www.era.europa.eu/sites/default/files/2026-01/index09_era_ertms_040092%20v400.zip	
+Informative		Test database	https://www.era.europa.eu/sites/default/files/2024-12/reserved%20document_0.pdf	
+Informative		Unisig Causal Analysis Process	https://www.era.europa.eu/sites/default/files/2024-12/index19_subset-077%20v400.pdf	
+Informative		Failure Modes and Effects Analysis for the Interface to/from an Adjacent RBC – in Application Level 2	https://www.era.europa.eu/sites/default/files/2024-12/index20_subset-078%20v350.pdf	
+Informative		Failure Modes and Effects Analysis for DMI-Subsystem in Application Level 1	https://www.era.europa.eu/sites/default/files/2024-12/index21a_subset-079-1_v3.15.0.pdf	
+Informative		Failure Modes and Effects Analysis for DMI-Subsystem in Application Level 2	https://www.era.europa.eu/sites/default/files/2024-12/index21b_subset-079-2_v3.15.0.pdf	
+Informative		Failure Modes and Effects Analysis for TIU in Application Level 1 and Level 2	https://www.era.europa.eu/sites/default/files/2024-12/index22_subset-080%20v330.pdf	
+Informative		Failure Modes and Effects Analysis for Transmission System in Application Level 1	https://www.era.europa.eu/sites/default/files/2024-12/index23a_subset-081-1_v360.pdf	
+Informative		Failure Modes and Effects Analysis for Transmission System in Application Level 2	https://www.era.europa.eu/sites/default/files/2024-12/index23b_subset-081-2_v360.pdf	
+Informative		ETCS Application levels 1 & 2 — Safety Analysis	https://www.era.europa.eu/sites/default/files/2024-12/index24_subset-088%20v380.zip	
+Informative		Railway applications — Communication, signalling and processing systems — European Rail Traffic Management System — driver machine interface - Part 1 — General principles for the presentation of ERTMS/ETCS/GSM-R information	https://www.era.europa.eu/sites/default/files/2024-12/index25_cencenelec.pdf	
+Informative		Railway applications — Communication, signalling and processing systems — European Rail Traffic Management System — Driver Machine Interface - Part 2 — Ergonomic arrangements of ERTMS/GSM-R information	https://www.era.europa.eu/sites/default/files/2024-12/index27_cencenelec_0.pdf	
+Informative		Railway applications — Communication, signalling and processing systems — European Rail Traffic Management System — driver machine interface - Part 4 — Data entry for the ERTMS/ETCS/GSM-R systems	https://www.era.europa.eu/sites/default/files/2024-12/index28_cencenelec_1.pdf	
+Informative		Railway applications — Communication, signalling and processing systems — European Rail Traffic Management System — driver machine interface - Part 5 — Symbols	https://www.era.europa.eu/sites/default/files/2024-12/index29_cencenelec_0.pdf	
+Informative		Railway applications — Communication, signalling and processing systems — European Rail Traffic Management System — driver machine interface - Part 6 — Audible information	https://www.era.europa.eu/sites/default/files/2024-12/index30_cencenelec_0.pdf	
+Informative		GSM-R Interfaces — Class 1 requirements	https://www.era.europa.eu/sites/default/files/2026-01/index37_subset-093_v400.pdf	
+Informative		Test sequences evaluation and validation	https://www.era.europa.eu/sites/default/files/2026-01/index40_era_ertms_040063%20v400_0.zip	
+Informative		Safety requirements and requirements to safety analysis for interoperability for the control-command and signalling subsystem	https://www.era.europa.eu/sites/default/files/2024-12/index043_04e083_v10_0.pdf	
+Informative		Justification report for the safety requirements and requirements to safety analysis for interoperability for the control-command and signalling subsystem	https://www.era.europa.eu/sites/default/files/2024-12/index044_04e084_v10.pdf	
+Informative		ETCS Hazard Log	https://www.era.europa.eu/sites/default/files/2026-01/index47_subset-113_era%20website.pdf	
+Informative		Railway Applications – Technical Parameters of train detection systems for the interoperability of the trans-European Railway system : Part 1 Track Circuits	https://www.era.europa.eu/sites/default/files/2024-12/index48_cencenelec.pdf	
+Informative		Railway Applications – Technical Parameters of train detection systems for the interoperability of the trans-European Railway system : Part 2 Axle Counters	https://www.era.europa.eu/sites/default/files/2024-12/index49_cencenelec.pdf	
+Informative		Railway Applications – Testing of Rolling Stock for electromagnetic compatibility with axle counters	https://www.era.europa.eu/sites/default/files/2024-12/index49a_cencenelec.pdf	
+Informative		ETCS DMI objects - START / STOP conditions	https://www.era.europa.eu/sites/default/files/2026-04/index51%20etcs%20dmi%20objects%20-%20start_stop%20conditions%20v2.0.0_0.xlsx	
+Informative		Functional Safety Analysis of ETCS DMI for ETCS Auxiliary Hazard	https://www.era.europa.eu/sites/default/files/2024-12/index53_subset-118%20v170.pdf	
+Informative		FIS for the RBC/RBC Handover involving a Baseline2 RBC	https://www.era.europa.eu/sites/default/files/2024-12/index56_subset-129%20v400.pdf	
+Informative		Eurobalise On-board equipment susceptibility test specification	https://www.era.europa.eu/sites/default/files/2024-12/index057_subset-116_v110.zip	
+Informative		ERTMS/GSM-R Quality of Service test specification for EIRENE QoS requirements	https://www.era.europa.eu/sites/default/files/2024-12/index058_o-2875_v200_0.pdf	
+Informative		GSM-R Cab radio testcases catalogue	https://www.era.europa.eu/sites/default/files/2026-01/index59_o-3001-1_cab%20radio_2.0.0_cl.pdf	
+Informative		GSM-R EDOR testcases catalogue	https://www.era.europa.eu/sites/default/files/2026-01/index60_o-3001-2_edor_2.0.0_cl_0.pdf	
+Informative		GSM-R SIM card testcases catalogue	https://www.era.europa.eu/sites/default/files/2026-01/index61_o-3001-3_sim_2.0.0_cl.pdf	
+Informative		GSM-R Network testcases catalogue	https://www.era.europa.eu/sites/default/files/2026-01/index62_o-3001-4_network_2.0.0_cl.pdf	
+Informative		Railway applications — Environmental conditions for equipment — Part 1: equipment on board rolling stock	https://www.era.europa.eu/sites/default/files/2024-12/index63_cencenelec_0.pdf	
+Informative		ERTMS/ATO Operational Principles	https://www.era.europa.eu/sites/default/files/2024-12/index64_12e108_2_ato_operational_principles.pdf	
+Informative		ERTMS/ATO Operational Requirements	https://www.era.europa.eu/sites/default/files/2024-12/index65_13e137_2_ato_operational_requirements.pdf	
+Informative		ERTMS/ATO Operational Scenarios	https://www.era.europa.eu/sites/default/files/2024-12/index66_13e151_2_ato_operational_scenarios.pdf	
+Informative		ERTMS/ATO (GoA1+2) FMEA and functional analysis	https://www.era.europa.eu/sites/default/files/2024-12/index67_subset-144%20v100.pdf	
+Informative		ERTMS/ATO ATO OB / Recording-Monitoring devices FFFIS Application Layer	https://www.era.europa.eu/sites/default/files/2024-12/index68_subset-140-1.2.0.pdf	
+Informative		ERTMS/ETCS – ERTMS/ATO Online Monitoring System	https://www.era.europa.eu/sites/default/files/2024-12/index69_subset-149%20v120.pdf	
+Informative		Eurobalise On-board equipment, Procedure for evaluation of ambiguous metal masses in the track	https://www.era.europa.eu/sites/default/files/2026-01/index71_subset-152%20v100.zip	
+Informative		GSM-R Cross Reference Table	https://www.era.europa.eu/sites/default/files/2026-01/index72_o-3001-5_cross%20reference_v1.0.0_cl.pdf	
