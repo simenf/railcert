@@ -43,8 +43,33 @@ h3{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mute)
 .tag.lib{color:var(--acc)}.tag.paid{color:var(--acc2)}
 .xl{color:var(--mute);text-decoration:none;font-size:12px;margin-left:5px;white-space:nowrap;display:inline-flex;align-items:center}.xl:hover{color:var(--acc)}
 .open{display:inline-flex;align-items:center;gap:4px;margin:4px 14px 0 0;font-size:12.5px;color:var(--acc);cursor:pointer;text-decoration:none}.open:hover{text-decoration:underline}.path{display:block;margin-top:4px;font:11.5px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--mute);word-break:break-all}
-.theme{display:flex;gap:2px;background:var(--chip);border-radius:8px;padding:2px;align-self:center;flex:none}.theme button{border:0;background:none;color:var(--mute);font:inherit;font-size:12px;padding:3px 9px;border-radius:6px;cursor:pointer}.theme button:hover{color:var(--ink)}.theme button[aria-pressed=true]{background:var(--panel);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.theme{display:flex;gap:2px;background:var(--chip);border-radius:9px;padding:3px;align-self:center;flex:none;margin-left:auto}@media(max-width:1600px){.stats{display:none}}.theme button{border:0;background:none;color:var(--mute);font:inherit;font-size:12px;line-height:1.3;padding:5px 11px;border-radius:6px;cursor:pointer}.theme button:hover{color:var(--ink)}.theme button[aria-pressed=true]{background:var(--panel);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.1)}
 @media(max-width:700px){.theme{margin-left:auto}}
+/* vehicle authorisation */
+.va{display:grid;grid-template-columns:1fr minmax(340px,30%);gap:16px;height:calc(100vh - var(--hh) - 32px)}@media(max-width:1100px){.va{grid-template-columns:1fr;height:auto}.vacanvas{max-height:72vh}}
+.vamain{background:var(--panel);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.vabar{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;padding:10px;border-bottom:1px solid var(--line)}.vabar .seg{margin:0;flex:0 1 420px}
+.vahint{color:var(--mute);font-size:12px}.zoom{margin-left:auto;display:flex;gap:10px;font-size:13px}.zoom .lk{font-size:13px;min-width:18px;text-align:center}
+.vacanvas{overflow:auto;flex:1;min-height:0;padding:8px}.vacanvas svg{display:block;font:12.5px/1.3 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
+.vn{cursor:pointer}.vn rect,.vn polygon{fill:var(--panel);stroke:color-mix(in srgb,var(--mute) 55%,var(--panel));stroke-width:1.2}
+.vn text{fill:var(--ink)}.vn .sub{fill:var(--mute);font-size:11.5px}.vn .ttl{font-weight:600}
+.vn.k-start rect{fill:var(--chip);stroke:var(--ink)}.vn.k-stage .ttl{fill:var(--acc)}.vn.k-stage-opt rect,.vn.k-note rect{stroke-dasharray:5 4}
+.vn.k-decision polygon{fill:color-mix(in srgb,var(--acc) 7%,var(--panel))}.vn.k-outcome rect{fill:var(--chip)}.vn.k-note text{fill:var(--mute)}
+.vn.k-register rect{fill:color-mix(in srgb,var(--mute) 10%,var(--panel))}.vn.k-group>rect{fill:none;stroke-dasharray:2 3}.vn.k-group .ttl{fill:var(--mute);font-weight:500;font-size:11.5px}
+.vn.k-case rect{fill:var(--chip)}
+.vn:hover rect,.vn:hover polygon{stroke:var(--ink)}
+.vn.sel rect,.vn.sel polygon{stroke:var(--acc);stroke-width:2.5;fill:color-mix(in srgb,var(--acc) 14%,var(--panel))}
+.vn:focus{outline:none}.vn:focus-visible rect,.vn:focus-visible polygon{stroke:var(--acc);stroke-width:2.5}
+.ve path{fill:none;stroke:color-mix(in srgb,var(--mute) 70%,var(--panel));stroke-width:1.3}.ve.dash path{stroke-dasharray:5 4}
+.ve text{font-size:11px;fill:var(--mute);paint-order:stroke;stroke:var(--panel);stroke-width:4px;stroke-linejoin:round}
+.ve.yes text{fill:var(--acc)}
+svg.has-sel .vn:not(.on){opacity:.32}svg.has-sel .ve:not(.on){opacity:.15}svg.has-sel .ve.on path{stroke:var(--acc);stroke-width:2;marker-end:url(#va-arr-on)}.ah{fill:color-mix(in srgb,var(--mute) 70%,var(--panel))}.ah.on{fill:var(--acc)}svg.has-sel .ve.on text{fill:var(--acc)}
+.certs .ve text{display:none}.certs.has-sel .ve.on text{display:block}
+.lane rect{fill:color-mix(in srgb,var(--mute) 5%,var(--panel))}.lane:nth-of-type(even) rect{fill:var(--panel)}.lane text{fill:var(--mute);font-size:12px;font-weight:600}
+.colh{fill:var(--mute);font-size:11px;letter-spacing:.4px;text-transform:uppercase}
+.vadet-k{font-size:12px;color:var(--mute);margin:0 0 2px;text-transform:none}
+#vadet p{margin:0 0 9px;line-height:1.5;max-width:70ch}#vadet .refs{display:flex;flex-wrap:wrap;gap:5px 6px;margin:2px 0 6px}#vadet .lst{margin:0;padding:0;list-style:none}#vadet .lst li{padding:3px 0;border-bottom:1px dashed var(--line);font-size:13px}#vadet .lst .rel{color:var(--mute);font-size:12px}
+#vadet .xchips{display:flex;flex-wrap:wrap;gap:5px 6px}
 /* reference lists */
 .rf{border-bottom:1px dashed var(--line)}
 .rf>summary,.rf>.rs{display:flex;gap:6px;align-items:baseline;padding:4px 0;white-space:nowrap;min-width:0}.rf>summary{cursor:pointer;list-style:none}.rf>summary::-webkit-details-marker{display:none}
@@ -119,7 +144,7 @@ footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}f
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-file" viewBox="0 0 16 16"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></symbol><symbol id="i-ext" viewBox="0 0 16 16"><path d="M9 2.5h4.5V7"/><path d="M13.5 2.5 7 9"/><path d="M11.5 9.5v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/></symbol><symbol id="i-chev" viewBox="0 0 16 16"><path d="M6 3.5 10.5 8 6 12.5"/></symbol><symbol id="i-swap" viewBox="0 0 16 16"><path d="M2.5 5.5h10M10 3l2.5 2.5L10 8"/><path d="M13.5 10.5h-10M6 8l-2.5 2.5L6 13"/></symbol></defs></svg>
 <header><h1>Railcert <span>· reference map of EU &amp; Norwegian railway regulation</span></h1>
-<nav role="tablist" aria-label="Views"><button role="tab" data-v="nav" class="on" aria-selected="true" aria-controls="v-nav">Navigator</button><button role="tab" data-v="ex" aria-selected="false" aria-controls="v-ex">Explorer</button><button role="tab" data-v="gr" aria-selected="false" aria-controls="v-gr">Graph</button><button role="tab" data-v="st" aria-selected="false" aria-controls="v-st">Standards register</button></nav>
+<nav role="tablist" aria-label="Views"><button role="tab" data-v="nav" class="on" aria-selected="true" aria-controls="v-nav">Navigator</button><button role="tab" data-v="va" aria-selected="false" aria-controls="v-va">Vehicle authorisation</button><button role="tab" data-v="ex" aria-selected="false" aria-controls="v-ex">Explorer</button><button role="tab" data-v="gr" aria-selected="false" aria-controls="v-gr">Graph</button><button role="tab" data-v="st" aria-selected="false" aria-controls="v-st">Standards register</button></nav>
 <div class="stats" id="stats"></div>
 <div class="theme" id="theme" role="group" aria-label="Colour theme"><button data-th="system">System</button><button data-th="light">Light</button><button data-th="dark">Dark</button></div></header>
 <main>
@@ -128,6 +153,13 @@ footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}f
  <input type="search" id="nq" aria-label="Find in the Navigator" placeholder="Find a document or standard (title, number, SUBSET, EN…)">
  <div class="tools"><button class="lk" id="nexp">Expand all</button><button class="lk" id="ncol">Collapse</button><span class="key" id="nkey"><span class="lf"><svg class="ic"><use href="#i-file"/></svg>local copy</span><span><svg class="ic"><use href="#i-ext"/></svg>official source</span><span>no badge = in force · type to search · ↑↓←→ move</span></span></div></div>
  <div class="tree" id="tree" role="tree" aria-label="EU law"><div class="empty">Loading 991 documents…</div></div></div>
+</div></section>
+<section class="view" id="v-va" role="tabpanel" aria-label="Vehicle authorisation"><div class="va">
+ <div class="vamain"><div class="vabar"><div class="seg" id="vaseg" role="group" aria-label="View"><button data-m="process" aria-pressed="true">Process</button><button data-m="certs" aria-pressed="false">Certificates &amp; declarations</button></div>
+  <span class="vahint" id="vahint">Pick a box to see what it is, its legal basis and what it links to</span>
+  <span class="zoom" role="group" aria-label="Zoom"><button class="lk" data-z="-1" aria-label="Zoom out">−</button><button class="lk" data-z="0">Fit</button><button class="lk" data-z="1" aria-label="Zoom in">+</button></span></div>
+  <div class="vacanvas" id="vacanvas"><div class="empty">Loading…</div></div></div>
+ <aside class="detail" id="vadet" aria-live="polite"></aside>
 </div></section>
 <section class="view" id="v-ex" role="tabpanel" aria-label="Explorer"><div class="ex" id="exgrid">
  <div class="side"><div class="top"><input type="search" id="q" aria-label="Search the Explorer" placeholder="Search documents, standards (number or title), CELEX, SUBSET…">
@@ -167,7 +199,7 @@ const PAL=['#1f5f99','#d1495b','#4d9a3e','#8a5cc2','#e08a1e','#1aa3a3','#c2185b'
 const folders=[...new Set(D.docs.map(d=>folderTop(d.f)))].sort(); const fcol=f=>PAL[folders.indexOf(f)%PAL.length];
 const TCOL={'EU act':'#1f5f99','Norwegian law/regulation':'#c2185b','ERA document':'#8a5cc2','ERTMS subset':'#1aa3a3','ETSI spec':'#e08a1e','Standard':'#5c6b7a','UIC leaflet':'#b0702a'};
 // tabs
-document.querySelectorAll('header nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('header nav button').forEach(x=>{x.classList.toggle('on',x===b); x.setAttribute('aria-selected',x===b);});document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph();
+document.querySelectorAll('header nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('header nav button').forEach(x=>{x.classList.toggle('on',x===b); x.setAttribute('aria-selected',x===b);});document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph(); if(b.dataset.v==='va')initVA();
   const det=document.getElementById('detail'); if(b.dataset.v==='nav'){document.getElementById('nvgrid').appendChild(det); if(selId) navAfter(selId);} if(b.dataset.v==='ex'){ document.getElementById('exgrid').appendChild(det); if(!selId) det.innerHTML=EMPTY.ex; } if(b.dataset.v==='nav'&&!selId) det.innerHTML=EMPTY[nRoot]; if(b.dataset.v==='nav'||b.dataset.v==='ex'){ const eg=document.getElementById('egod'); if(eg) eg.open=egoOpt.show[b.dataset.v]; if(selId) drawEgo(selId); }});
 function show(tab){document.querySelector(`header nav button[data-v=${tab}]`).click();}
 // node resolution: a cited item that is a library file is shown as that file
@@ -503,6 +535,107 @@ const typeToSearch=e=>{ if(e.key.length!==1||e.metaKey||e.ctrlKey||e.altKey||e.k
 tree.addEventListener('keydown',e=>{ if(e.target.closest('.tr,.more')) typeToSearch(e); });
 detEl.addEventListener('keydown',e=>{ if(e.target.closest('.rf>summary,.rf>.rs')&&document.getElementById('v-nav').classList.contains('on')) typeToSearch(e); });
 { const m=location.hash.match(/^#doc=(.+)$/); if(m){ fromHistory=true; select(decodeURIComponent(m[1]),true); fromHistory=false; } }
+
+// ---------- vehicle authorisation: process flowchart + certificates & declarations map ----------
+const VA=D.nav.va; const vaCanvas=document.getElementById('vacanvas'), vaDet=document.getElementById('vadet');
+let vaMode='process', vaSel=null, vaZoom=0;   // vaZoom 0 = fit width (min 0.75 of natural size)
+const VP=new Map(VA.process.nodes.map(n=>[n.id,n])), VC=new Map(VA.certs.nodes.map(n=>[n.id,n]));
+function wrapText(s,max){ const w=s.split(/\s+/), out=[]; let line=''; for(const x of w){ if((line+' '+x).trim().length>max&&line){ out.push(line); line=x; } else line=(line+' '+x).trim(); } if(line) out.push(line); return out; }
+const tsp=(lines,x,y,lh,cls)=>lines.map((l,i)=>`<text x="${x}" y="${(y+i*lh).toFixed(1)}" text-anchor="middle"${cls?` class="${cls}"`:''}>${esc(l)}</text>`).join('');
+// --- process layout: explicit centres; case rows sit inside the 'cases' group box
+function procBoxes(){
+  const B=new Map(); for(const n of VA.process.nodes) if(!n.group) B.set(n.id,{x:n.x,y:n.y,w:n.w,h:n.h});
+  const g=B.get('cases'), rows=VA.process.nodes.filter(n=>n.group==='cases');
+  rows.forEach((n,i)=>B.set(n.id,{x:g.x,y:g.y-g.h/2+30+i*36+16,w:g.w-24,h:32}));
+  return B;
+}
+function anchors(a,b){   // orthogonal route between two boxes
+  if(b.y-b.h/2>a.y+a.h/2+6){ const y1=a.y+a.h/2, y2=b.y-b.h/2, my=(y1+y2)/2; return {d:a.x===b.x?`M${a.x} ${y1}V${y2}`:`M${a.x} ${y1}V${my}H${b.x}V${y2}`, lx:a.x===b.x?a.x+6:(a.x+b.x)/2, ly:a.x===b.x?(y1+y2)/2:my-5, la:a.x===b.x?'start':'middle'}; }
+  const right=b.x>a.x, x1=a.x+(right?1:-1)*a.w/2, x2=b.x-(right?1:-1)*b.w/2, mx=(x1+x2)/2;
+  return {d:a.y===b.y?`M${x1} ${a.y}H${x2}`:`M${x1} ${a.y}H${mx}V${b.y}H${x2}`, lx:(x1+mx)/2, ly:a.y-6, la:'middle'};
+}
+function procSvg(){
+  const B=procBoxes(); let e='', n='';
+  for(const [f,to,lab,st] of VA.process.edges){ const a=B.get(f), b=B.get(to); let r;
+    if(st==='loop'){ const x=Math.max(a.x+a.w/2,b.x+b.w/2)+70; r={d:`M${a.x+a.w/2} ${a.y}H${x}V${b.y}H${b.x+b.w/2}`, lx:x+6, ly:(a.y+b.y)/2, la:'start'}; }
+    else if(st==='skip'){ const x=a.x-a.w/2-24; r={d:`M${a.x-a.w/2} ${a.y}H${x}V${b.y}H${b.x-b.w/2}`, lx:x-6, ly:(a.y+b.y)/2, la:'end'}; }
+    else r=anchors(a,b);
+    e+=`<g class="ve${st==='dash'||st==='skip'?' dash':''}${st==='yes'?' yes':''}" data-a="${f}" data-b="${to}"><path d="${r.d}" marker-end="url(#va-arr)"/>${lab?`<text x="${r.lx}" y="${r.ly}" text-anchor="${r.la}">${esc(lab)}</text>`:''}</g>`; }
+  for(const nd of VA.process.nodes){ const b=B.get(nd.id), x0=b.x-b.w/2, y0=b.y-b.h/2, k=nd.kind;
+    let shape, body='';
+    if(k==='decision') shape=`<polygon points="${b.x},${y0} ${b.x+b.w/2},${b.y} ${b.x},${y0+b.h} ${x0},${b.y}"/>`;
+    else shape=`<rect x="${x0}" y="${y0}" width="${b.w}" height="${b.h}" rx="${k==='start'?b.h/2:k==='case'?6:8}"/>`;
+    if(k==='stage'||k==='stage-opt'){ body=`<text x="${x0+14}" y="${y0+22}" class="ttl">${esc(nd.t)}</text>`+(nd.sub||[]).map((s,i)=>`<text x="${x0+14}" y="${y0+42+i*17}" class="sub">· ${esc(s)}</text>`).join(''); }
+    else if(k==='group'){ body=`<text x="${b.x}" y="${y0+18}" text-anchor="middle" class="ttl">${esc(nd.t)}</text>`; }
+    else { const max=Math.floor((k==='decision'?b.w*0.62:b.w-22)/6.7), L=wrapText(nd.t,max), lh=15; body=tsp(L,b.x,b.y-(L.length-1)*lh/2+4,lh,k==='start'||k==='case'?'ttl':''); }
+    n+=`<g class="vn k-${k}" data-id="${nd.id}" tabindex="0" role="button" aria-label="${esc(nd.t)}">${shape}${body}</g>`; }
+  // groups first so their rows sit on top
+  const grp=n.match(/<g class="vn k-group"[\s\S]*?<\/g>/g)||[]; grp.forEach(g=>{ n=n.replace(g,''); }); n=grp.join('')+n;
+  return `<svg class="proc" viewBox="0 0 ${VA.process.w} ${VA.process.h}" data-w="${VA.process.w}" role="group" aria-label="Vehicle authorisation process">${ARROW}${e}${n}</svg>`;
+}
+const ARROW='<defs><marker id="va-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 1L9 5L0 9z"/></marker><marker id="va-arr-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah on" d="M0 1L9 5L0 9z"/></marker></defs>';
+// --- certificates map: lanes (rows) x columns
+function certBoxes(){
+  const LW=140, CW=190, LH=128, TOP=34, B=new Map(); const li=new Map(VA.certs.lanes.map((l,i)=>[l[0],i]));
+  for(const n of VA.certs.nodes){ const y=TOP+li.get(n.lane)*LH+LH/2+(n.slot||0)*31; B.set(n.id,{x:LW+n.col*CW+CW/2,y,w:172,h:54}); }
+  return {B,LW,CW,LH,TOP,W:LW+VA.certs.cols.length*CW+10,H:TOP+VA.certs.lanes.length*LH+10};
+}
+function certSvg(){
+  const {B,LW,CW,LH,TOP,W,H}=certBoxes(); let s='';
+  VA.certs.lanes.forEach(([id,lab],i)=>{ const y=TOP+i*LH; s+=`<g class="lane"><rect x="0" y="${y}" width="${W}" height="${LH}"/>${tsp(wrapText(lab,18),LW/2,y+LH/2-(wrapText(lab,18).length-1)*8+4,16)}</g>`; });
+  VA.certs.cols.forEach((c,i)=>{ s+=`<text class="colh" x="${LW+i*CW+CW/2}" y="20" text-anchor="middle">${esc(c)}</text>`; });
+  for(const [f,to,lab,st] of VA.certs.edges){ const a=B.get(f), b=B.get(to); let d, lx, ly;
+    if(Math.abs(a.x-b.x)<5){ const down=b.y>a.y, y1=a.y+(down?1:-1)*a.h/2, y2=b.y-(down?1:-1)*b.h/2, x=a.x+(down?-14:14); d=`M${x} ${y1}V${y2}`; lx=x+(down?-6:6); ly=(y1+y2)/2; }   // down on the left, up on the right
+    else { const r=b.x>a.x, x1=a.x+(r?1:-1)*a.w/2, x2=b.x-(r?1:-1)*b.w/2, c=Math.max(40,Math.abs(x2-x1)/2); d=`M${x1} ${a.y}C${x1+(r?c:-c)} ${a.y} ${x2-(r?c:-c)} ${b.y} ${x2} ${b.y}`; lx=(x1+x2)/2; ly=(a.y+b.y)/2-6; }
+    s+=`<g class="ve${st==='dash'?' dash':''}" data-a="${f}" data-b="${to}"><path d="${d}" marker-end="url(#va-arr)"/><text x="${lx}" y="${ly}" text-anchor="${Math.abs(a.x-b.x)<5?(b.y>a.y?'end':'start'):'middle'}">${esc(lab)}</text></g>`; }
+  for(const nd of VA.certs.nodes){ const b=B.get(nd.id), L=wrapText(nd.t,24);
+    s+=`<g class="vn k-cert" data-id="${nd.id}" tabindex="0" role="button" aria-label="${esc(nd.t)}"><rect x="${b.x-b.w/2}" y="${b.y-b.h/2}" width="${b.w}" height="${b.h}" rx="7"/>${tsp(L,b.x,b.y-(L.length-1)*7.5+4,15)}</g>`; }
+  return `<svg class="certs" viewBox="0 0 ${W} ${H}" data-w="${W}" role="group" aria-label="Certificates and declarations">${ARROW}${s}</svg>`;
+}
+function vaSize(){ const svg=vaCanvas.querySelector('svg'); if(!svg) return; const nat=+svg.dataset.w, avail=vaCanvas.clientWidth-16;
+  const fit=Math.max(Math.min(1,avail/nat),0.72), k=vaZoom===0?fit:Math.max(0.5,Math.min(2,fit*Math.pow(1.2,vaZoom))); svg.style.width=Math.round(nat*k)+'px'; }
+function vaRender(){
+  document.querySelectorAll('#vaseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===vaMode));
+  vaCanvas.innerHTML=vaMode==='process'?procSvg():certSvg(); vaSize(); vaHighlight();
+}
+function vaHighlight(){
+  const svg=vaCanvas.querySelector('svg'); if(!svg) return; const id=vaSel&&vaSel.m===vaMode?vaSel.id:null;
+  svg.classList.toggle('has-sel',!!id); svg.querySelectorAll('.vn').forEach(g=>{g.classList.remove('on','sel');});
+  svg.querySelectorAll('.ve').forEach(g=>g.classList.remove('on'));
+  if(!id) return; const on=new Set([id]);
+  svg.querySelectorAll('.ve').forEach(g=>{ if(g.dataset.a===id||g.dataset.b===id){ g.classList.add('on'); on.add(g.dataset.a); on.add(g.dataset.b); } });
+  const N=vaMode==='process'?VP:VC; const me=N.get(id); if(me&&me.group) on.add(me.group); if(me&&me.kind==='group') VA.process.nodes.filter(n=>n.group===id).forEach(n=>on.add(n.id));
+  svg.querySelectorAll('.vn').forEach(g=>{ if(on.has(g.dataset.id)) g.classList.add('on'); if(g.dataset.id===id) g.classList.add('sel'); });
+}
+const vaChip=(m,id)=>{ const n=(m==='process'?VP:VC).get(id); return n?`<span class="pref"><button class="lk" data-vm="${m}" data-vid="${id}">${esc(n.t)}</button></span>`:''; };
+const docChip=id=>`<span class="pref"><button class="lk" data-doc="${esc(id)}">${esc(chipLabel(id))}</button>${docs.has(id)?docLink(id):extLink(ext.get(id))}</span>`;
+function vaDetail(){
+  if(!vaSel){ vaDet.innerHTML=`<div class="kick">Vehicle authorisation · Regulation (EU) 2018/545</div><h2>From design to a vehicle in use</h2>
+    <p class="meta">Two linked views. <b>Process</b> follows the authorisation: choosing the case, the Art. 15(1) test for changes, the six stages, then registration and the route compatibility check. <b>Certificates &amp; declarations</b> shows who issues which document and how they build on each other up to the authorisations and the registers.</p>
+    <p class="meta">Pick any box for what it is, its legal basis with links to the documents, and what it connects to. Boxes in one view link to the matching boxes in the other.</p>
+    <div class="refs">${['Vehicle Authorisation Regulation','PA VA Guidelines','PA VA Guidelines – flowcharts','Interoperability Directive','EC Declaration Templates Regulation'].map(r=>{const c=[...byId.keys()].find(k=>NN[byId.get(k)[0]].l===r); return c?docChip(c):'';}).join('')}</div>`; return; }
+  const {m,id}=vaSel, N=m==='process'?VP:VC, n=N.get(id), E=m==='process'?VA.process.edges:VA.certs.edges;
+  const kindName={start:'Start',step:'Step',decision:'Decision',outcome:'Outcome',case:'Authorisation case',group:'Authorisation cases',stage:'Stage','stage-opt':'Optional stage',note:'Note',register:'Register',cert:(VA.certs.lanes.find(l=>l[0]===n.lane)||['',''])[1]}[n.kind]||'';
+  const outs=E.filter(e=>e[0]===id), ins=E.filter(e=>e[1]===id);
+  const rel=(e,dir)=>`<li><button class="lk" data-vm="${m}" data-vid="${dir>0?e[1]:e[0]}">${esc(N.get(dir>0?e[1]:e[0]).t)}</button>${e[2]?` <span class="rel">– ${esc(e[2])}</span>`:''}</li>`;
+  const cross=m==='process'?(n.certs||[]).map(c=>vaChip('certs',c)).join(''):(n.steps||[]).map(s=>vaChip('process',s)).join('');
+  vaDet.innerHTML=`<div class="vadet-k">${esc(kindName)}</div><h2>${esc(n.t)}</h2>`+(n.d||[]).map(p=>`<p>${esc(p)}</p>`).join('')
+    +(n.refs&&n.refs.length?`<h3>Legal basis and documents</h3><div class="refs">${n.refs.map(docChip).join('')}</div>`:'')
+    +(cross?`<h3>${m==='process'?'Certificates and declarations involved':'Where it appears in the process'}</h3><div class="xchips">${cross}</div>`:'')
+    +(ins.length?`<h3>${m==='process'?'Comes from':'Built on'}</h3><ul class="lst">${ins.map(e=>rel(e,-1)).join('')}</ul>`:'')
+    +(outs.length?`<h3>${m==='process'?'Leads to':'Feeds into'}</h3><ul class="lst">${outs.map(e=>rel(e,1)).join('')}</ul>`:'');
+  vaDet.scrollTop=0;
+}
+function vaPick(m,id,focus){ if(m!==vaMode){ vaMode=m; vaRender(); } vaSel={m,id}; vaHighlight(); vaDetail();
+  const g=vaCanvas.querySelector(`.vn[data-id="${id}"]`); if(g){ if(focus) g.focus({preventScroll:true}); const r=g.getBoundingClientRect(), c=vaCanvas.getBoundingClientRect(); if(r.top<c.top||r.bottom>c.bottom||r.left<c.left||r.right>c.right) g.scrollIntoView({block:'center',inline:'center'}); } }
+vaCanvas.addEventListener('click',e=>{ const g=e.target.closest('.vn'); if(g){ vaPick(vaMode,g.dataset.id); if(stacked()) vaDet.scrollIntoView({block:'start'}); } else if(vaSel){ vaSel=null; vaHighlight(); vaDetail(); } });
+vaCanvas.addEventListener('keydown',e=>{ const g=e.target.closest('.vn'); if(!g) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); vaPick(vaMode,g.dataset.id,true); } else if(e.key==='Escape'){ vaSel=null; vaHighlight(); vaDetail(); } });
+vaDet.addEventListener('click',e=>{ const v=e.target.closest('[data-vid]'); if(v){ vaPick(v.dataset.vm,v.dataset.vid,true); return; }
+  const d=e.target.closest('[data-doc]'); if(d){ show('nav'); nSel=-1; select(d.dataset.doc,true); } });
+document.getElementById('vaseg').onclick=e=>{ const b=e.target.closest('button'); if(!b||b.dataset.m===vaMode) return; vaMode=b.dataset.m; vaRender(); if(vaSel&&vaSel.m!==vaMode){ vaSel=null; vaDetail(); } };
+document.querySelector('.zoom').onclick=e=>{ const b=e.target.closest('[data-z]'); if(!b) return; const z=+b.dataset.z; vaZoom=z===0?0:vaZoom+z; vaSize(); };
+window.addEventListener('resize',()=>{ if(document.getElementById('v-va').classList.contains('on')) vaSize(); });
+let vaReady=false; function initVA(){ if(!vaReady){ vaReady=true; vaRender(); vaDetail(); } else vaSize(); }
 // ---------- standards register ----------
 const STD=D.ext.filter(e=>STDT.includes(e.ty));
 const sa=document.getElementById('sa'); [...new Set(STD.map(e=>e.a))].sort().forEach(a=>sa.add(new Option(a,a)));

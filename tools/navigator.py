@@ -352,13 +352,40 @@ def build_nav(data, verbose=True):
             steps.append([text, ids])
         paths.append({"id": p["id"], "t": p["t"], "d": p.get("d", ""), "s": steps})
 
+    # ---------------- vehicle authorisation tab ----------------
+    import va_config as V
+    def refs_of(node, where):
+        ids = []
+        for r in node.get("refs", []):
+            i = resolve(r)
+            if i: ids.append(i)
+            else: warn.append(f"{where} {node['id']}: unresolved {r!r}")
+        return ids
+    va = {"process": {"w": V.PROCESS["w"], "h": V.PROCESS["h"], "edges": V.PROCESS["edges"], "nodes": []},
+          "certs": {"lanes": V.CERTS["lanes"], "cols": V.CERTS["cols"], "edges": V.CERTS["edges"], "nodes": []}}
+    for n in V.PROCESS["nodes"]:
+        va["process"]["nodes"].append({**{k: v for k, v in n.items() if k != "refs"}, "refs": refs_of(n, "va process")})
+    for n in V.CERTS["nodes"]:
+        va["certs"]["nodes"].append({**{k: v for k, v in n.items() if k != "refs"}, "refs": refs_of(n, "va certs")})
+    pid = {n["id"] for n in V.PROCESS["nodes"]}; cid = {n["id"] for n in V.CERTS["nodes"]}
+    for a_, b_, *_ in V.PROCESS["edges"]:
+        if a_ not in pid or b_ not in pid: warn.append(f"va process edge {a_}->{b_}: unknown node")
+    for a_, b_, *_ in V.CERTS["edges"]:
+        if a_ not in cid or b_ not in cid: warn.append(f"va certs edge {a_}->{b_}: unknown node")
+    for n in V.PROCESS["nodes"]:
+        for c in n.get("certs", []):
+            if c not in cid: warn.append(f"va process {n['id']}: unknown certificate {c!r}")
+    for n in V.CERTS["nodes"]:
+        for s in n.get("steps", []):
+            if s not in pid: warn.append(f"va certs {n['id']}: unknown step {s!r}")
+
     unplaced = [i for i in docs if i not in placed]
     if verbose:
         print(f"navigator: {len(out)} rows · docs placed {len(placed)}/{len(docs)} · cited items {len(placed_ext)} · "
               f"placement {dict(stats)} · paths {len(paths)}")
         for w in warn: print("  warning:", w)
         for i in unplaced: print("  unplaced:", i)
-    return {"n": out, "paths": paths}
+    return {"n": out, "paths": paths, "va": va}
 
 
 def write_html(out_dir, data):
