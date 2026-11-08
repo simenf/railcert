@@ -70,7 +70,8 @@ The map comes in two editions built from the same data:
 
 Both editions are regenerated every time the map is rebuilt. Upload only the `online` folder. Don't upload the PDF folders or the local edition.
 
-- Both editions have four views:
+- Both editions have five views. The map opens on the first one:
+  - *Navigator*: the library as a hierarchy that starts at the top and works down. **EU law** starts from the basic acts (Interoperability Directive, Railway Safety Directive, ERA Regulation, SERA, train drivers, CRA, AI Act). Below them come the implementing and delegated acts (TSIs, CSMs, 2018/545, 2010/713, registers), then the mandatory specifications (CCS TSI Annex A sets), then guidance (ERA guides, clarification notes, RFUs), and finally the standards and referenced documents. **Norway** starts from Jernbaneloven, and each regulation shows the EU act it implements (⇄, click to jump there). Each document appears once: under the higher-level act it shares the most citations with, or where a hand-set rule puts it. Other parents are listed as "Also used by" in the detail panel. Amending, correcting, consolidated and superseded acts fold under the current act ("Versions, amendments & superseded acts"). Each list shows its eight most-cited items first, with "show more" for the rest. Rows carry a status badge (in force, amended, repealed, superseded, draft) and the 📄 / ↗ links. Clicking a row opens the Explorer's detail panel with a breadcrumb trail, and the search box jumps to a document's place in the tree. **Task paths** gives step-by-step routes with links for eight common jobs: authorising a vehicle, putting ETCS on-board or trackside CCS into service in Norway, CSM RA and the AsBo, the ATC-2 STM, the CRA for rail products, juridical recording, and the single safety certificate with SMS. The rules are in `tools/nav_config.py`; after editing them, run `python3 tools/build_nav.py`. It re-renders both editions from the data already in the map, so it needs neither the documents nor pdftotext.
   - *Explorer*: pick a document or a standard (search by number or by title). A citation graph centred on it shows the documents that cite it on the left and what it cites on the right. Click any node to re-centre the graph on it. Below the graph are the full lists, grouped by type. In the local edition, "📄 Open local file" opens the PDF.
   - *Graph*: an overview of citations between library documents. You can optionally add the standards cited by five or more documents. The layout is computed when the map is built, so it doesn't move. Zoom, pan and drag nodes; double-click a node to open it in the Explorer.
   - *Standards register*: a sortable list of every cited standard, with its title, availability, versions cited and how many documents cite it.
@@ -114,6 +115,7 @@ The GitHub repository holds **the map, the catalogue and the tools, not the docu
 | `99_Reference_Map/` | Local and online editions of the map, plus the CSV exports |
 | `99_Reference_Map/online/` | The folder Cloudflare Pages publishes (see `online/DEPLOY.md`) |
 | `tools/` | Harvesting and build scripts. `tools/data/` holds the per-source catalogue TSVs that `finalize.sh` merges |
+| `tools/nav_config.py`, `tools/navigator.py` | Navigator rules (top of the hierarchy, Norway ⇄ EU links, placement overrides, task paths) and the code that builds the tree |
 
 **Rebuilding from a fresh clone:**
 1. `bash download_all.sh`

@@ -50,13 +50,42 @@ td a{color:var(--acc);cursor:pointer}
 #gwrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;position:relative;height:calc(100vh - 170px)}
 canvas{width:100%;height:100%;display:block;cursor:grab}
 .empty{color:var(--mute);padding:40px;text-align:center}
+/* navigator */
+.nv{display:grid;grid-template-columns:minmax(400px,46%) 1fr;gap:16px;height:calc(100vh - 92px)}@media(max-width:1100px){.nv{grid-template-columns:1fr;height:auto}}
+.seg{display:flex;gap:2px;background:var(--chip);border-radius:8px;padding:2px;margin-bottom:7px}.seg button{flex:1;border:0;background:none;color:var(--mute);font:inherit;padding:5px 8px;border-radius:6px;cursor:pointer}.seg button.on{background:var(--panel);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.tools{display:flex;gap:10px;align-items:center;margin-top:6px;font-size:12px;color:var(--mute)}.tools a{color:var(--acc);cursor:pointer}.tools span{margin-left:auto}
+.tree{padding:4px 0 24px;font-size:13.5px}
+.tr{display:flex;align-items:baseline;gap:6px;padding:3px 10px 3px 0;cursor:pointer;white-space:nowrap;border-left:3px solid transparent}
+.tr:hover{background:var(--chip)}.tr.sel{background:var(--chip);border-left-color:var(--acc)}
+.tw{width:16px;flex:none;text-align:center;color:var(--mute);font-size:10px;user-select:none}.tw:hover{color:var(--ink)}
+.tr .lb{font-weight:600}.tr.g .lb{font-weight:500;color:var(--ink);opacity:.8}.tr.g0 .lb{font-weight:700;opacity:1}.tr.r .lb{font-weight:400}
+.tr.x .lb{font-weight:400;color:var(--acc)}.tr .ds{color:var(--mute);overflow:hidden;text-overflow:ellipsis;min-width:0;flex:0 1 auto;font-size:12.5px}
+.tr .cnt{color:var(--mute);font-size:11px;flex:none}.tr .xl{flex:none}
+.bd{font-size:10.5px;padding:0 6px;border-radius:9px;white-space:nowrap;flex:none;background:var(--chip);color:var(--mute)}
+.bd.in-force{background:#e2f1e5;color:#1e6b38}.bd.amended{background:#e3edf7;color:#1f5f99}.bd.repealed{background:#fbe5e1;color:#a5311d}.bd.draft,.bd.unverified{background:#fbf0d9;color:#8a5a00}.bd.paid{color:var(--acc2)}
+@media (prefers-color-scheme:dark){.bd.in-force{background:#1f3a28;color:#8fd3a3}.bd.amended{background:#1d2f44;color:#8cbcea}.bd.repealed{background:#45231d;color:#f0a090}.bd.draft,.bd.unverified{background:#3f3219;color:#e8c37a}}
+.jmp{font-size:11.5px;color:var(--acc);cursor:pointer;flex:none}.jmp:hover{text-decoration:underline}
+.more{padding:2px 0 4px;color:var(--acc);cursor:pointer;font-size:12.5px}.more:hover{text-decoration:underline}
+.hit{padding:6px 12px;cursor:pointer;border-bottom:1px solid var(--line)}.hit:hover{background:var(--chip)}.hit small{display:block;color:var(--mute);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumbs{font-size:12.5px;color:var(--mute);margin:0 0 4px;line-height:1.6}.crumbs a{color:var(--acc);cursor:pointer}.crumbs a:hover{text-decoration:underline}
+.place{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 14px;background:var(--bg);font-size:12.5px}.place .lbl{color:var(--mute)}.place a{color:var(--acc);cursor:pointer}
+.paths{padding:6px 10px 24px}.pc{border:1px solid var(--line);border-radius:9px;margin:0 0 8px;background:var(--panel)}
+.pc h4{margin:0;padding:9px 12px;font-size:14px;cursor:pointer;display:flex;gap:8px;align-items:baseline}.pc h4 .cnt{margin-left:auto;color:var(--mute);font-weight:400;font-size:12px}.pc h4:hover{background:var(--chip);border-radius:9px}
+.pc .pd{margin:-4px 12px 6px 34px;color:var(--mute);font-size:12.5px}.pc ol{margin:4px 12px 12px 10px;padding-left:24px}.pc li{margin:0 0 9px}.pc li::marker{color:var(--mute);font-weight:600}
+.prefs{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:3px}.pref{font-size:12.5px;background:var(--chip);border-radius:6px;padding:1px 7px;white-space:nowrap}.pref a{color:var(--acc);cursor:pointer;text-decoration:none}.pref a:hover{text-decoration:underline}
 footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}footer a{color:var(--acc)}
 </style></head><body>
 <header><h1>Railcert <span>· reference map of EU &amp; Norwegian railway regulation</span></h1>
-<nav><button data-v="ex" class="on">Explorer</button><button data-v="gr">Graph</button><button data-v="st">Standards register</button><button data-v="mi">Missing / external</button></nav>
+<nav><button data-v="nav" class="on">Navigator</button><button data-v="ex">Explorer</button><button data-v="gr">Graph</button><button data-v="st">Standards register</button><button data-v="mi">Missing / external</button></nav>
 <div class="stats" id="stats"></div></header>
 <main>
-<section class="view on" id="v-ex"><div class="ex">
+<section class="view on" id="v-nav"><div class="nv" id="nvgrid">
+ <div class="side"><div class="top"><div class="seg" id="nseg"><button data-r="eu" class="on">EU law</button><button data-r="no">Norway</button><button data-r="paths">Task paths</button></div>
+ <input type="search" id="nq" placeholder="Find a document or standard and jump to its place…">
+ <div class="tools"><a id="nexp">Expand all</a><a id="ncol">Collapse</a><span id="nhint">▸ folds · click a row for details · 📄 local file · ↗ source</span></div></div>
+ <div class="tree" id="tree"></div></div>
+</div></section>
+<section class="view" id="v-ex"><div class="ex" id="exgrid">
  <div class="side"><div class="top"><input type="search" id="q" placeholder="Search documents, standards (number or title), CELEX, SUBSET…">
  <div class="row2"><select id="scope"><option value="lib">Library documents</option><option value="std">Standards (EN, IEC, ISO, ETSI, UIC)</option><option value="all">Everything cited</option></select></div></div>
  <div class="list" id="list"></div></div>
@@ -98,7 +127,8 @@ const PAL=['#1f5f99','#d1495b','#4d9a3e','#8a5cc2','#e08a1e','#1aa3a3','#c2185b'
 const folders=[...new Set(D.docs.map(d=>folderTop(d.f)))].sort(); const fcol=f=>PAL[folders.indexOf(f)%PAL.length];
 const TCOL={'EU act':'#1f5f99','Norwegian law/regulation':'#c2185b','ERA document':'#8a5cc2','ERTMS subset':'#1aa3a3','ETSI spec':'#e08a1e','Standard':'#5c6b7a','UIC leaflet':'#b0702a'};
 // tabs
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph();});
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph();
+  const det=document.getElementById('detail'); if(b.dataset.v==='nav'){document.getElementById('nvgrid').appendChild(det); if(selId) navAfter(selId);} if(b.dataset.v==='ex') document.getElementById('exgrid').appendChild(det); if(selId&&(b.dataset.v==='nav'||b.dataset.v==='ex')) drawEgo(selId);});
 function show(tab){document.querySelector(`nav button[data-v=${tab}]`).click();}
 // node resolution: a cited item that is a library file is shown as that file
 const numOfExt=e=>{const m=(e.l||'').match(/\d{1,4}\/\d{2,4}/); return m?m[0]:'';};
@@ -228,6 +258,97 @@ f.innerHTML='Online edition · This site hosts no copies of the documents — ev
 'Norwegian legislation via <a href="https://lovdata.no" target="_blank" rel="noopener">Lovdata</a>. Standards are © their publishers (CEN/CENELEC, IEC, ISO, ETSI, UIC, UNISIG) and are listed by reference only. '+
 'The reference map, short names and classifications are an independent compilation and not an official publication of any of these bodies; always verify against the official text.';})();
 renderList();
+// ---------- navigator: hierarchy from the law down to specs, guides and standards ----------
+const NN=D.nav.n, NP=D.nav.paths;
+const kidsOf=NN.map(()=>[]); NN.forEach((r,i)=>{if(r.p>=0) kidsOf[r.p].push(i);});
+const nroots={}; NN.forEach((r,i)=>{if(r.p<0) nroots[r.k==='@no'?'no':'eu']=i;});
+const desc=NN.map(()=>0); for(let i=NN.length-1;i>=0;i--){ if(NN[i].p>=0) desc[NN[i].p]+=1+desc[i]; }
+const byId=new Map(); NN.forEach((r,i)=>{ if(r.id&&r.ty!=='x') (byId.get(r.id)||byId.set(r.id,[]).get(r.id)).push(i); });
+const nrootOf=i=>{while(NN[i].p>=0) i=NN[i].p; return i;};
+const depthOf=i=>{let d=0; while(NN[i].p>=0){i=NN[i].p; d++;} return d;};
+const nopen=new Set(), nmore=new Set(), popen=new Set([NP.length?NP[0].id:'']); let nRoot='eu', nSel=-1;
+function defaultOpen(){ nopen.clear(); for(const r of Object.values(nroots)){ nopen.add(r); for(const c of kidsOf[r]) nopen.add(c); } }
+defaultOpen();
+const tree=document.getElementById('tree'), nq=document.getElementById('nq');
+const rowLinks=r=>(r.ty==='doc'||r.ty==='fam'||r.ty==='parts')?docLink(r.id):(r.ty==='ext'?extLink(ext.get(r.id)):'');
+function rowHtml(i,d){
+  const r=NN[i], ch=kidsOf[i], op=nopen.has(i), g=r.ty==='grp';
+  const cls='tr'+(g?' g'+(d===0?' g0':''):'')+(r.ty==='x'?' x':'')+(r.role==='r'||r.role==='v'||r.role==='s'?' r':'')+(i===nSel?' sel':'');
+  const tw=ch.length?`<span class="tw" data-t="${i}">${op?'▾':'▸'}</span>`:'<span class="tw"></span>';
+  const num=r.n&&r.n!==r.l?`<span class="num">${esc(r.n)}</span>`:'';
+  const bd=r.b?`<span class="bd ${esc(r.b.replace(/ /g,'-'))}">${esc(r.b)}</span>`:'';
+  const cons=r.c?`<span class="cnt">${esc(r.c)}</span>`:'';
+  const imp=r.imp!=null?`<a class="jmp" data-j="${r.imp}" title="Implements this EU act – click to see it in the EU tree">⇄ ${esc(NN[r.imp].l)}</a>`:'';
+  const cnt=ch.length&&!op?`<span class="cnt">${desc[i]}</span>`:'';
+  const ds=r.d&&!g?`<span class="ds">${esc(r.d)}</span>`:'';
+  return `<div class="${cls}" data-i="${i}" style="padding-left:${d*16+4}px">${tw}<span class="lb">${esc(r.l)}</span>${num}${bd}${cons}${imp}${rowLinks(r)}${cnt}${ds}</div>`;
+}
+function renderTree(){
+  document.querySelectorAll('#nseg button').forEach(b=>b.classList.toggle('on',b.dataset.r===nRoot));
+  const s=nq.value.trim().toLowerCase(); if(s) return renderHits(s);
+  if(nRoot==='paths') return renderPaths();
+  let h=''; const walk=(i,d)=>{ h+=rowHtml(i,d); if(!nopen.has(i)) return; kids(i,d); };
+  const kids=(i,d)=>{ const ch=kidsOf[i], vis=nmore.has(i)?ch:ch.filter(c=>!NN[c].h); for(const c of vis) walk(c,d+1); const hid=ch.length-vis.length; if(hid>0) h+=`<div class="more" data-m="${i}" style="padding-left:${(d+1)*16+24}px">show ${hid} more…</div>`; };
+  kids(nroots[nRoot],-1); tree.innerHTML=h;
+}
+const crumbOf=i=>{const a=[]; for(let j=NN[i].p;j>=0&&NN[j].p>=0;j=NN[j].p) a.unshift(j); return a;};
+function renderHits(s){
+  const w=s.split(/\s+/), out=[];
+  NN.forEach((r,i)=>{ if(r.p<0||r.ty==='x') return; const t=(r.l+' '+(r.n||'')+' '+(r.d||'')+' '+(r.id||'')).toLowerCase(); if(w.every(x=>t.includes(x))) out.push(i); });
+  const rank={grp:0,fam:1,parts:2,doc:2,ext:3}; out.sort((a,b)=>(rank[NN[a].ty]-rank[NN[b].ty])||((NN[a].t??5)-(NN[b].t??5))||depthOf(a)-depthOf(b));
+  tree.innerHTML=out.length?`<div class="grp">${out.length>200?'First 200 of ':''}${out.length} matches – click to jump to its place</div>`+out.slice(0,200).map(i=>{const r=NN[i]; return `<div class="hit" data-h="${i}"><span class="sn">${esc(r.l)}</span>${r.n&&r.n!==r.l?`<span class="num">${esc(r.n)}</span>`:''}${r.b?` <span class="bd ${esc(r.b.replace(/ /g,'-'))}">${esc(r.b)}</span>`:''}${rowLinks(r)}<small>${esc([nrootOf(i),...crumbOf(i)].map(j=>NN[j].l).join(' › '))}</small></div>`;}).join(''):'<div class="empty">No matches</div>';
+}
+const chipLabel=id=>{ const c=byId.get(id); if(!c) return shortOf(id); const r=NN[c[0]]; return r.l+(r.n&&r.n!==r.l&&!/parts$/.test(r.n)?' ('+r.n+')':''); };
+function renderPaths(){
+  tree.innerHTML='<div class="paths">'+NP.map(p=>{ const op=popen.has(p.id);
+    return `<div class="pc"><h4 data-p="${esc(p.id)}"><span class="tw">${op?'▾':'▸'}</span>${esc(p.t)}<span class="cnt">${p.s.length} steps</span></h4>`+(op?`<div class="pd">${esc(p.d)}</div><ol>`+p.s.map(([txt,ids])=>`<li>${esc(txt)}<div class="prefs">${ids.map(id=>`<span class="pref"><a data-go2="${esc(id)}">${esc(chipLabel(id))}</a>${docs.has(id)?docLink(id):extLink(ext.get(id))}</span>`).join('')}</div></li>`).join('')+'</ol>':'')+'</div>';}).join('')+'</div>';
+}
+function reveal(i){
+  const r=nrootOf(i); const rk=r===nroots.no?'no':'eu'; if(nRoot!==rk) nRoot=rk; nq.value='';
+  for(let j=NN[i].p;j>=0;j=NN[j].p){ nopen.add(j); }
+  for(let j=i;NN[j].p>=0;j=NN[j].p){ if(NN[j].h) nmore.add(NN[j].p); }
+  nSel=i; renderTree(); const el=tree.querySelector(`.tr[data-i="${i}"]`); if(el) el.scrollIntoView({block:'nearest'});
+}
+function navGo(i){ const r=NN[i]; if(r.ty==='x') return navGo(r.x); nSel=i; if(r.id) select(r.id,true); else { reveal(i); placeOnly(i); } }
+function placeHtml(i,id){
+  if(i<0) return `<div class="place"><span class="lbl">Not in the Navigator tree</span> – cited by fewer than two documents, or not a standard. Use the Explorer for its citations.</div>`;
+  const r=NN[i], cr=[nrootOf(i),...crumbOf(i)];
+  let h=`<div class="crumbs">${cr.map(j=>`<a data-j="${j}">${esc(NN[j].l)}</a>`).join(' › ')} › <b>${esc(r.l)}</b></div>`;
+  const bits=[];
+  if(r.imp!=null) bits.push(`<span class="lbl">Implements</span> <a data-j="${r.imp}">${esc(NN[r.imp].l)}</a>`);
+  const no=kidsOf[i].find(c=>NN[c].ty==='x'); if(no!=null) bits.push(`<span class="lbl">In Norway</span> <a data-j="${NN[no].x}">${esc(NN[NN[no].x].l)}</a>`);
+  if(r.also&&r.also.length) bits.push(`<span class="lbl">Also used by</span> `+r.also.map(j=>`<a data-j="${j}">${esc(NN[j].l)}</a>`).join(' · '));
+  const ch=kidsOf[i].filter(c=>NN[c].ty!=='x'); if(ch.length) bits.push(`<span class="lbl">Below it</span> ${desc[i]} item${desc[i]===1?'':'s'} in ${ch.length} branch${ch.length===1?'':'es'}`);
+  return h+(bits.length?`<div class="place">${bits.join('<br>')}</div>`:'');
+}
+function placeOnly(i){ const r=NN[i]; document.getElementById('detail').innerHTML=placeHtml(i)+`<h2>${esc(r.l)}</h2><div class="meta">${desc[i]} items below this group. Expand it in the tree, or click a row.</div>`; }
+function navAfter(id){
+  if(!document.getElementById('v-nav').classList.contains('on')) return;
+  let i=(nSel>=0&&NN[nSel].id===id)?nSel:-1;
+  if(i<0){ const c=byId.get(id)||[]; i=c.find(j=>nrootOf(j)===nroots[nRoot])??c[0]??-1; }
+  if(i>=0&&nRoot!=='paths') reveal(i); else nSel=i;
+  document.getElementById('detail').insertAdjacentHTML('afterbegin',placeHtml(i,id));
+}
+const _select=select; select=function(id,fg){ _select(id,fg); navAfter(id); };
+tree.addEventListener('click',e=>{
+  if(e.target.closest('a.xl')) return;
+  const j=e.target.closest('[data-j]'); if(j){ e.preventDefault(); return navGo(+j.dataset.j); }
+  const t=e.target.closest('[data-t]'); if(t){ const i=+t.dataset.t; nopen.has(i)?nopen.delete(i):nopen.add(i); return renderTree(); }
+  const m=e.target.closest('[data-m]'); if(m){ nmore.add(+m.dataset.m); return renderTree(); }
+  const hh=e.target.closest('[data-h]'); if(hh) return navGo(+hh.dataset.h);
+  const p=e.target.closest('[data-p]'); if(p){ popen.has(p.dataset.p)?popen.delete(p.dataset.p):popen.add(p.dataset.p); return renderPaths(); }
+  const g2=e.target.closest('[data-go2]'); if(g2){ nSel=-1; return select(g2.dataset.go2,true); }
+  const row=e.target.closest('.tr'); if(row){ const i=+row.dataset.i; if(kidsOf[i].length) nopen.add(i); navGo(i); }
+});
+document.getElementById('detail').addEventListener('click',e=>{const j=e.target.closest('[data-j]'); if(j){e.preventDefault(); e.stopPropagation(); if(nRoot==='paths') nRoot=nrootOf(+j.dataset.j)===nroots.no?'no':'eu'; navGo(+j.dataset.j);}},true);
+document.getElementById('nseg').onclick=e=>{const b=e.target.closest('button'); if(!b) return; nRoot=b.dataset.r; nq.value=''; renderTree(); if(nSel>=0&&nRoot!=='paths'){const el=tree.querySelector(`.tr[data-i="${nSel}"]`); if(el) el.scrollIntoView({block:'nearest'});}};
+nq.oninput=renderTree;
+document.getElementById('nexp').onclick=()=>{ if(nRoot==='paths'){NP.forEach(p=>popen.add(p.id));} else { const st=[nroots[nRoot]]; while(st.length){const i=st.pop(); nopen.add(i); st.push(...kidsOf[i]);} } renderTree(); };
+document.getElementById('ncol').onclick=()=>{ if(nRoot==='paths') popen.clear(); else defaultOpen(); nmore.clear(); renderTree(); };
+document.getElementById('nvgrid').appendChild(document.getElementById('detail'));
+document.getElementById('detail').innerHTML='<div class="empty">Start at the top: the law is on the left, with the acts, specifications, guidance and standards below it.<br>Click a row to see where it sits, its links and what cites it — or open <b>Task paths</b> for step-by-step routes through common jobs.</div>';
+if(!LOCAL) document.getElementById('nhint').textContent='▸ folds · click a row for details · ↗ official source';
+renderTree();
 // ---------- standards register ----------
 const STD=D.ext.filter(e=>STDT.includes(e.ty));
 const sa=document.getElementById('sa'); [...new Set(STD.map(e=>e.a))].sort().forEach(a=>sa.add(new Option(a,a)));

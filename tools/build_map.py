@@ -152,10 +152,8 @@ with open(os.path.join(out, "standards_register.csv"), "w", newline="", encoding
         if n["ty"] in STDTYPES:
             w.writerow([n["l"], n.get("t", ""), n.get("ts", ""), n["ty"], n["a"], n.get("u", ""), " ".join(n.get("v", [])), n["n"], " | ".join(citing[n["id"]]), ";".join(n["lib"])])
 
-HTML = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "map_template.html"), encoding="utf-8").read()
-_js = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
-open(os.path.join(out, "reference_map.html"), "w", encoding="utf-8").write(HTML.replace("__MODE__", "local").replace("__DATA__", _js))
-os.makedirs(os.path.join(out, "online"), exist_ok=True)
-open(os.path.join(out, "online", "index.html"), "w", encoding="utf-8").write(HTML.replace("__MODE__", "online").replace("__DATA__", _js))
+from navigator import build_nav, write_html
+data["nav"] = build_nav(data)
+_kb = write_html(out, data) // 1024
 print("short names: docs", sum(1 for d in docs.values() if d.get("s")), "cited items", sum(1 for e in ext.values() if e.get("s")), "|",  "ext", len(ext), "edges", len(E), "titled std", sum(1 for e in ext.values() if e["ty"] in STDTYPES and e["t"]),
-      "graph nodes", len(G["docs"]["pos"]), len(G["std"]["pos"]), "html KB", len(_js) // 1024)
+      "graph nodes", len(G["docs"]["pos"]), len(G["std"]["pos"]), "html KB", _kb)
