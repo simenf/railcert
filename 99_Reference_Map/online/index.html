@@ -2,35 +2,52 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Railcert – Reference map</title>
 <style>
-:root{--bg:#f6f5f1;--panel:#fff;--ink:#1d2127;--mute:#69707a;--line:#e3e1db;--acc:#0b5d7a;--acc2:#c2410c;--chip:#eef2f4;--edge:rgba(90,100,110,.28)}
+:root{--hh:52px;--bg:#f6f5f1;--panel:#fff;--ink:#1d2127;--mute:#69707a;--line:#e3e1db;--acc:#0b5d7a;--acc2:#c2410c;--chip:#eef2f4;--edge:rgba(90,100,110,.28)}
 @media (prefers-color-scheme:dark){:root{--bg:#15171a;--panel:#1d2024;--ink:#e8e6e1;--mute:#9aa1aa;--line:#2d3136;--acc:#5fb3cf;--acc2:#f08a4b;--chip:#262a2f;--edge:rgba(170,180,190,.25)}}
-*{box-sizing:border-box}body{margin:0;font:14px/1.45 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+*{box-sizing:border-box}body{margin:0;font:14px/1.45 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);caret-color:var(--acc);accent-color:var(--acc)}
+:root{--sel:color-mix(in srgb,var(--acc) 13%,var(--panel));scrollbar-color:var(--line) transparent}
+::selection{background:color-mix(in srgb,var(--acc) 28%,transparent)}
+::placeholder{color:var(--mute);opacity:1}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+.num,.cnt,.c,td.n{font-variant-numeric:tabular-nums}
+.ic{width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.lk{border:0;background:none;padding:0;font:inherit;color:var(--acc);cursor:pointer;text-align:left}.lk:hover{text-decoration:underline}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 header{display:flex;align-items:baseline;gap:18px;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5;flex-wrap:wrap}
 h1{font-size:17px;margin:0;letter-spacing:.2px}h1 span{color:var(--mute);font-weight:400}
-nav button{border:0;background:none;color:var(--mute);font:inherit;padding:6px 10px;border-radius:6px;cursor:pointer}
-nav button.on{background:var(--chip);color:var(--ink);font-weight:600}
+header nav button{border:0;background:none;color:var(--mute);font:inherit;padding:6px 10px;border-radius:6px;cursor:pointer}
+header nav button.on{background:var(--chip);color:var(--ink);font-weight:600}
 .stats{margin-left:auto;color:var(--mute);font-size:12.5px}
 main{padding:16px 22px}.view{display:none}.view.on{display:block}
-.ex{display:grid;grid-template-columns:340px 1fr;gap:16px;height:calc(100vh - 92px)}
+.ex{display:grid;grid-template-columns:340px 1fr;gap:16px;height:calc(100vh - var(--hh) - 32px)}
 .side,.detail{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto}
 .side{display:flex;flex-direction:column}.side .top{padding:10px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel);z-index:1}
 input[type=search],select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font:inherit}
 .row2{display:flex;gap:6px;margin-top:6px}.row2 select{flex:1}
 .list{padding:4px 0}.grp{padding:8px 12px 3px;font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--mute)}
-.it{padding:5px 12px;cursor:pointer;border-left:3px solid transparent}.it:hover{background:var(--chip)}.it.sel{border-left-color:var(--acc);background:var(--chip)}
+.it{padding:5px 12px;cursor:pointer}.it:hover{background:var(--chip)}.it.sel{background:var(--sel)}.it.sel .sn{color:var(--acc)}.it:focus-visible{outline-offset:-2px;border-radius:0}
 .it b{font-weight:600}.sn{font-weight:600;color:var(--ink)}.num{color:var(--mute);font-size:12px;margin-left:4px}.detail .kick{font-size:12px;letter-spacing:.4px;color:var(--mute);margin:0 0 2px}.it .tt{color:var(--ink);opacity:.85}
 .it small{display:block;color:var(--mute);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.detail{padding:18px 22px}.detail h2{margin:0 0 2px;font-size:18px}.detail .sub{font-size:14.5px;margin:0 0 4px}.meta{color:var(--mute);font-size:12.5px;margin-bottom:10px}
+.detail{padding:18px 22px}.detail h2{margin:0 0 2px;font-size:19px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.detail .sub{font-size:14.5px;margin:0 0 4px}.meta{color:var(--mute);font-size:12.5px;margin-bottom:10px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:1100px){.cols{grid-template-columns:1fr}.ex{grid-template-columns:1fr;height:auto}}
 h3{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mute);margin:14px 0 6px}
 .ty{font-weight:600;font-size:12.5px;margin:10px 0 4px}
 .ref{display:flex;gap:8px;align-items:baseline;padding:3px 0;border-bottom:1px dashed var(--line)}
 .ref a{color:var(--acc);cursor:pointer;text-decoration:none}.ref a:hover{text-decoration:underline}
 .ref .c{margin-left:auto;color:var(--mute);font-size:11.5px;white-space:nowrap}
-.tag{font-size:10.5px;padding:1px 6px;border-radius:9px;background:var(--chip);color:var(--mute);white-space:nowrap}
+.tag{font-size:11.5px;padding:1px 6px;border-radius:9px;background:var(--chip);color:var(--mute);white-space:nowrap}
 .tag.lib{color:var(--acc)}.tag.paid{color:var(--acc2)}
-.xl{color:var(--mute);text-decoration:none;font-size:12px;margin-left:4px;white-space:nowrap}.xl:hover{color:var(--acc)}
-.open{display:inline-block;margin:2px 10px 0 0;font-size:12.5px;color:var(--acc);cursor:pointer}
+.xl{color:var(--mute);text-decoration:none;font-size:12px;margin-left:5px;white-space:nowrap;display:inline-flex;align-items:center}.xl:hover{color:var(--acc)}
+.open{display:inline-flex;align-items:center;gap:4px;margin:4px 14px 0 0;font-size:12.5px;color:var(--acc);cursor:pointer;text-decoration:none}.open:hover{text-decoration:underline}.path{display:block;margin-top:4px;font:11.5px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--mute);word-break:break-all}
+/* reference lists */
+.rf{border-bottom:1px dashed var(--line)}
+.rf>summary,.rf>.rs{display:flex;gap:6px;align-items:baseline;padding:4px 0;white-space:nowrap;min-width:0}.rf>summary{cursor:pointer;list-style:none}.rf>summary::-webkit-details-marker{display:none}
+.rf .tw{align-self:center}.rf[open]>summary .tw .ic{transform:rotate(90deg)}.rf>summary:hover .tw{color:var(--ink)}
+.rf .rn{color:var(--acc);text-decoration:none;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}.rf .rn:hover{text-decoration:underline}
+.rf .num{flex:none;margin-left:0}.rf .xl,.rf .tag{flex:none}.rf .c{margin-left:auto;padding-left:8px;color:var(--mute);font-size:11.5px;flex:none}
+.rf>summary:focus,.rf>.rs:focus{outline:none;box-shadow:inset 0 0 0 2px var(--acc);background:color-mix(in srgb,var(--acc) 22%,var(--panel))}.rf>summary:focus .rn,.rf>.rs:focus .rn{text-decoration:none}
+.rfx{padding:0 0 7px 22px;color:var(--mute);font-size:12.5px;line-height:1.45;white-space:normal}
+.lhead{display:flex;align-items:baseline;justify-content:flex-end;gap:12px;margin:6px 0 -4px}.lhead h3{margin-right:auto}.alltitles{font-size:12.5px}
 /* ego graph */
 .egobar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mute);margin:6px 0 4px}
 .egobar label{display:flex;gap:5px;align-items:center;cursor:pointer}.egobar select{width:auto;padding:3px 6px}
@@ -44,66 +61,81 @@ h3{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mute)
 /* tables */
 table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
 th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{cursor:pointer;background:var(--chip);font-size:12px;white-space:nowrap}
-td.n{text-align:right;font-variant-numeric:tabular-nums}td.ti{max-width:520px}td.ti small{color:var(--mute);display:block;font-size:11px}
+th[aria-sort]::after{content:"";display:inline-block;margin-left:6px;border:4px solid transparent;vertical-align:1px}th[aria-sort=ascending]::after{border-bottom-color:currentColor;vertical-align:3px}th[aria-sort=descending]::after{border-top-color:currentColor;vertical-align:-1px}
+td.n{text-align:right;font-variant-numeric:tabular-nums}td.ti{max-width:520px}td.ti small{color:var(--mute);display:block;font-size:11.5px}
 td a{color:var(--acc);cursor:pointer}
 .bar{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center}.bar input{max-width:360px}.bar select{max-width:260px}.bar .note{color:var(--mute);font-size:12px}
 #gwrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;position:relative;height:calc(100vh - 170px)}
 canvas{width:100%;height:100%;display:block;cursor:grab}
 .empty{color:var(--mute);padding:40px;text-align:center}
 /* navigator */
-.nv{display:grid;grid-template-columns:minmax(400px,46%) 1fr;gap:16px;height:calc(100vh - 92px)}@media(max-width:1100px){.nv{grid-template-columns:1fr;height:auto}}
-.seg{display:flex;gap:2px;background:var(--chip);border-radius:8px;padding:2px;margin-bottom:7px}.seg button{flex:1;border:0;background:none;color:var(--mute);font:inherit;padding:5px 8px;border-radius:6px;cursor:pointer}.seg button.on{background:var(--panel);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
-.tools{display:flex;gap:10px;align-items:center;margin-top:6px;font-size:12px;color:var(--mute)}.tools a{color:var(--acc);cursor:pointer}.tools span{margin-left:auto}
+.nv{display:grid;grid-template-columns:minmax(400px,46%) 1fr;gap:16px;height:calc(100vh - var(--hh) - 32px)}@media(max-width:1100px){.nv{grid-template-columns:1fr;height:auto}.nv .side{max-height:70vh}}
+.seg{display:flex;gap:2px;background:var(--chip);border-radius:8px;padding:2px;margin-bottom:7px}.seg button{flex:1;border:0;background:none;color:var(--mute);font:inherit;padding:5px 8px;border-radius:6px;cursor:pointer}.seg button[aria-pressed=true]{background:var(--panel);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.tools{display:flex;gap:4px 14px;align-items:center;flex-wrap:wrap;margin-top:7px;font-size:12px;color:var(--mute)}.tools .lk{font-size:12px}.tools .key{margin-left:auto;display:flex;gap:12px;align-items:center}.tools .key span{display:inline-flex;gap:4px;align-items:center}
 .tree{padding:4px 0 24px;font-size:13.5px}
-.tr{display:flex;align-items:baseline;gap:6px;padding:3px 10px 3px 0;cursor:pointer;white-space:nowrap;border-left:3px solid transparent}
-.tr:hover{background:var(--chip)}.tr.sel{background:var(--chip);border-left-color:var(--acc)}
-.tw{width:16px;flex:none;text-align:center;color:var(--mute);font-size:10px;user-select:none}.tw:hover{color:var(--ink)}
-.tr .lb{font-weight:600}.tr.g .lb{font-weight:500;color:var(--ink);opacity:.8}.tr.g0 .lb{font-weight:700;opacity:1}.tr.r .lb{font-weight:400}
-.tr.x .lb{font-weight:400;color:var(--acc)}.tr .ds{color:var(--mute);overflow:hidden;text-overflow:ellipsis;min-width:0;flex:0 1 auto;font-size:12.5px}
-.tr .cnt{color:var(--mute);font-size:11px;flex:none}.tr .xl{flex:none}
-.bd{font-size:10.5px;padding:0 6px;border-radius:9px;white-space:nowrap;flex:none;background:var(--chip);color:var(--mute)}
+.tr{display:flex;align-items:baseline;gap:7px;padding:4px 12px 4px 0;cursor:pointer;white-space:nowrap;min-width:0;line-height:1.4;position:relative}
+/* depth guides: one hairline under each ancestor's chevron */
+.tr::before{content:"";position:absolute;left:0;top:0;bottom:0;width:calc(var(--d,0)*16px);pointer-events:none;--g:color-mix(in srgb,var(--mute) 32%,transparent);background:linear-gradient(90deg,transparent 11.5px,var(--g) 11.5px 12.5px,transparent 12.5px) 0 0/16px 100% repeat-x}
+.tr:hover{background-color:var(--chip)}.tr.sel{background-color:var(--sel)}.tr.sel .lb{color:var(--acc)}
+.tr:focus,.more:focus{outline:none;box-shadow:inset 0 0 0 2px var(--acc);background-color:color-mix(in srgb,var(--acc) 22%,var(--panel))}.tr:focus .lb{color:var(--acc)}
+.tree:focus-within .tr.sel:not(:focus){background-color:color-mix(in srgb,var(--acc) 8%,var(--panel))}
+.tw{width:16px;flex:none;align-self:center;display:flex;justify-content:center;color:var(--mute)}.tw .ic{width:11px;height:11px;stroke-width:2;transition:transform .12s ease-out}.tw.op .ic{transform:rotate(90deg)}.tr:hover .tw{color:var(--ink)}
+.tr .lb{font-weight:400;min-width:0;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}.tr.f .lb{font-weight:600}.tr.top .lb{font-size:14.5px}.tr.top{padding-top:6px;padding-bottom:6px}.tr.g .lb{font-weight:500;color:var(--mute)}.tr.g.op .lb,.tr.g0 .lb{color:var(--ink)}.tr.r .lb{font-weight:400;color:var(--mute);font-size:12.5px}
+.tr.x .lb{font-weight:400;color:var(--acc)}.tr .ds{color:var(--mute);overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1 1 0;font-size:12.5px}
+.tr .cnt{color:var(--mute);font-size:11.5px;flex:none}.tr .xl,.tr .num{flex:none}.tr .num{font-size:12px}
+.tr .rt{margin-left:auto;padding-left:10px;display:flex;gap:8px;align-items:baseline;flex:none}.tr .rt .xl{margin-left:0}
+.tr .lnk{display:inline-flex;gap:6px;justify-content:flex-end;min-width:var(--lnkw,32px)}.tr .rt .cnt{min-width:2.6em;text-align:right}
+.tr .ds{font-size:12px;opacity:.9}
+.bd{font-size:11.5px;line-height:1.5;padding:0 7px;border-radius:9px;white-space:nowrap;flex:none;background:var(--chip);color:var(--mute)}
 .bd.in-force{background:#e2f1e5;color:#1e6b38}.bd.amended{background:#e3edf7;color:#1f5f99}.bd.repealed{background:#fbe5e1;color:#a5311d}.bd.draft,.bd.unverified{background:#fbf0d9;color:#8a5a00}.bd.paid{color:var(--acc2)}
 @media (prefers-color-scheme:dark){.bd.in-force{background:#1f3a28;color:#8fd3a3}.bd.amended{background:#1d2f44;color:#8cbcea}.bd.repealed{background:#45231d;color:#f0a090}.bd.draft,.bd.unverified{background:#3f3219;color:#e8c37a}}
-.jmp{font-size:11.5px;color:var(--acc);cursor:pointer;flex:none}.jmp:hover{text-decoration:underline}
-.more{padding:2px 0 4px;color:var(--acc);cursor:pointer;font-size:12.5px}.more:hover{text-decoration:underline}
-.hit{padding:6px 12px;cursor:pointer;border-bottom:1px solid var(--line)}.hit:hover{background:var(--chip)}.hit small{display:block;color:var(--mute);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.crumbs{font-size:12.5px;color:var(--mute);margin:0 0 4px;line-height:1.6}.crumbs a{color:var(--acc);cursor:pointer}.crumbs a:hover{text-decoration:underline}
-.place{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 14px;background:var(--bg);font-size:12.5px}.place .lbl{color:var(--mute)}.place a{color:var(--acc);cursor:pointer}
-.paths{padding:6px 10px 24px}.pc{border:1px solid var(--line);border-radius:9px;margin:0 0 8px;background:var(--panel)}
-.pc h4{margin:0;padding:9px 12px;font-size:14px;cursor:pointer;display:flex;gap:8px;align-items:baseline}.pc h4 .cnt{margin-left:auto;color:var(--mute);font-weight:400;font-size:12px}.pc h4:hover{background:var(--chip);border-radius:9px}
-.pc .pd{margin:-4px 12px 6px 34px;color:var(--mute);font-size:12.5px}.pc ol{margin:4px 12px 12px 10px;padding-left:24px}.pc li{margin:0 0 9px}.pc li::marker{color:var(--mute);font-weight:600}
-.prefs{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:3px}.pref{font-size:12.5px;background:var(--chip);border-radius:6px;padding:1px 7px;white-space:nowrap}.pref a{color:var(--acc);cursor:pointer;text-decoration:none}.pref a:hover{text-decoration:underline}
+.jmp{font-size:12px;color:var(--acc);flex:none;display:inline-flex;gap:3px;align-items:center}
+.more{display:block;border:0;background:none;font:inherit;width:100%;text-align:left;padding:3px 0 5px;color:var(--acc);cursor:pointer;font-size:12.5px}.more:hover{text-decoration:underline}
+.hit{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;font:inherit;color:inherit;padding:6px 12px;cursor:pointer}.hit:hover{background:var(--chip)}.hit small{display:block;color:var(--mute);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nohit{padding:28px 20px;color:var(--mute);line-height:1.6}.nohit b{color:var(--ink)}
+.crumbs{font-size:12.5px;color:var(--mute);margin:0 0 6px;line-height:1.7}.crumbs .lk{font-size:12.5px}
+.place{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 14px;background:var(--bg);font-size:12.5px;line-height:1.7}.place .lbl{color:var(--mute);display:inline-block;min-width:92px}
+.back{display:none;margin:0 0 10px;font-size:13px}
+.paths{padding:6px 10px 24px}.pc{border-bottom:1px solid var(--line)}.pc:last-child{border-bottom:0}
+.pc h4{margin:0;font-size:14px}.pc h4 button{display:flex;gap:8px;align-items:baseline;width:100%;border:0;background:none;font:inherit;font-weight:600;color:var(--ink);text-align:left;padding:10px 6px;cursor:pointer;border-radius:6px}.pc h4 button:hover{background:var(--chip)}.pc h4 .tw{align-self:center}.pc h4 .cnt{margin-left:auto;color:var(--mute);font-weight:400;font-size:12px}
+.pc .pd{margin:-2px 6px 8px 30px;color:var(--mute);font-size:12.5px;max-width:68ch}.pc ol{margin:4px 6px 14px 4px;padding-left:26px}.pc li{margin:0 0 10px;max-width:72ch}.pc li::marker{color:var(--mute);font-weight:600;font-variant-numeric:tabular-nums}
+.prefs{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:4px}.pref{font-size:12.5px;background:var(--chip);border-radius:6px;padding:1px 7px;display:inline-flex;align-items:center;max-width:100%}.pref .lk{font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+details.egod{margin:8px 0 4px}details.egod>summary{cursor:pointer;font-size:12.5px;color:var(--acc);padding:4px 0;list-style-position:inside}details.egod>summary span{color:var(--mute)}
+@media(max-width:700px){
+ header{position:static;padding:10px 12px;gap:6px 12px}h1 span,.stats{display:none}
+ header nav{display:flex;overflow-x:auto;width:100%;scrollbar-width:none}header nav button{white-space:nowrap;flex:none}
+ main{padding:10px}.nv .side{max-height:62vh}.detail{padding:14px}
+ .tr .ds,.tools .key{display:none}.back{display:inline-block}
+ .cols{grid-template-columns:1fr}
+}
 footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}footer a{color:var(--acc)}
 </style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-file" viewBox="0 0 16 16"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></symbol><symbol id="i-ext" viewBox="0 0 16 16"><path d="M9 2.5h4.5V7"/><path d="M13.5 2.5 7 9"/><path d="M11.5 9.5v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/></symbol><symbol id="i-chev" viewBox="0 0 16 16"><path d="M6 3.5 10.5 8 6 12.5"/></symbol><symbol id="i-swap" viewBox="0 0 16 16"><path d="M2.5 5.5h10M10 3l2.5 2.5L10 8"/><path d="M13.5 10.5h-10M6 8l-2.5 2.5L6 13"/></symbol></defs></svg>
 <header><h1>Railcert <span>· reference map of EU &amp; Norwegian railway regulation</span></h1>
-<nav><button data-v="nav" class="on">Navigator</button><button data-v="ex">Explorer</button><button data-v="gr">Graph</button><button data-v="st">Standards register</button><button data-v="mi">Missing / external</button></nav>
+<nav role="tablist" aria-label="Views"><button role="tab" data-v="nav" class="on" aria-selected="true" aria-controls="v-nav">Navigator</button><button role="tab" data-v="ex" aria-selected="false" aria-controls="v-ex">Explorer</button><button role="tab" data-v="gr" aria-selected="false" aria-controls="v-gr">Graph</button><button role="tab" data-v="st" aria-selected="false" aria-controls="v-st">Standards register</button></nav>
 <div class="stats" id="stats"></div></header>
 <main>
-<section class="view on" id="v-nav"><div class="nv" id="nvgrid">
- <div class="side"><div class="top"><div class="seg" id="nseg"><button data-r="eu" class="on">EU law</button><button data-r="no">Norway</button><button data-r="paths">Task paths</button></div>
- <input type="search" id="nq" placeholder="Find a document or standard and jump to its place…">
- <div class="tools"><a id="nexp">Expand all</a><a id="ncol">Collapse</a><span id="nhint">▸ folds · click a row for details · 📄 local file · ↗ source</span></div></div>
- <div class="tree" id="tree"></div></div>
+<section class="view on" id="v-nav" role="tabpanel" aria-label="Navigator"><div class="nv" id="nvgrid">
+ <div class="side"><div class="top"><div class="seg" id="nseg" role="group" aria-label="Hierarchy"><button data-r="eu" aria-pressed="true">EU law</button><button data-r="no" aria-pressed="false">Norway</button><button data-r="paths" aria-pressed="false">Task paths</button></div>
+ <input type="search" id="nq" aria-label="Find in the Navigator" placeholder="Find a document or standard (title, number, SUBSET, EN…)">
+ <div class="tools"><button class="lk" id="nexp">Expand all</button><button class="lk" id="ncol">Collapse</button><span class="key" id="nkey"><span class="lf"><svg class="ic"><use href="#i-file"/></svg>local copy</span><span><svg class="ic"><use href="#i-ext"/></svg>official source</span><span>no badge = in force · type to search · ↑↓←→ move</span></span></div></div>
+ <div class="tree" id="tree" role="tree" aria-label="EU law"><div class="empty">Loading 991 documents…</div></div></div>
 </div></section>
-<section class="view" id="v-ex"><div class="ex" id="exgrid">
- <div class="side"><div class="top"><input type="search" id="q" placeholder="Search documents, standards (number or title), CELEX, SUBSET…">
- <div class="row2"><select id="scope"><option value="lib">Library documents</option><option value="std">Standards (EN, IEC, ISO, ETSI, UIC)</option><option value="all">Everything cited</option></select></div></div>
- <div class="list" id="list"></div></div>
+<section class="view" id="v-ex" role="tabpanel" aria-label="Explorer"><div class="ex" id="exgrid">
+ <div class="side"><div class="top"><input type="search" id="q" aria-label="Search the Explorer" placeholder="Search documents, standards (number or title), CELEX, SUBSET…">
+ <div class="row2"><select id="scope" aria-label="Search scope"><option value="all" selected>Everything (library and cited)</option><option value="lib">Library documents</option><option value="std">Standards (EN, IEC, ISO, ETSI, UIC)</option></select></div></div>
+ <div class="list" id="list" role="listbox" aria-label="Documents"></div></div>
  <div class="detail" id="detail"><div class="empty">Select a document or standard on the left to see its citation graph, what it cites and what cites it.</div></div>
 </div></section>
-<section class="view" id="v-gr">
+<section class="view" id="v-gr" role="tabpanel" aria-label="Graph">
  <div class="bar"><select id="gmode"><option value="docs">Library documents (document → document citations)</option><option value="std">Library documents + standards cited by ≥ 5 documents</option></select>
  <select id="gfold"><option value="">All folders</option></select><span class="note">Scroll to zoom · drag background to pan · drag a node to move it · double-click a node to open it in the Explorer</span></div>
  <div class="legend" id="legend"></div>
- <div id="gwrap"><canvas id="cv"></canvas></div>
+ <div id="gwrap"><canvas id="cv" role="img" aria-label="Overview graph of citations between library documents. Use the Explorer or Navigator for a text view."></canvas></div>
 </section>
-<section class="view" id="v-st">
- <div class="bar"><input type="search" id="sq" placeholder="Filter by number or title (e.g. 50126, fire, GSM-R)"><select id="sa"><option value="">All availability</option></select><select id="sty"><option value="">All types</option><option>Standard</option><option>ETSI spec</option><option>UIC leaflet</option></select><span class="note" id="scount"></span></div>
+<section class="view" id="v-st" role="tabpanel" aria-label="Standards register">
+ <div class="bar"><input type="search" id="sq" aria-label="Filter standards" placeholder="Filter by number or title (e.g. 50126, fire, GSM-R)"><select id="sa"><option value="">All availability</option></select><select id="sty"><option value="">All types</option><option>Standard</option><option>ETSI spec</option><option>UIC leaflet</option></select><span class="note" id="scount"></span></div>
  <table id="stab"><thead><tr><th data-k="l">Standard</th><th data-k="t">Title</th><th data-k="ty">Type</th><th data-k="a">Availability</th><th>Link</th><th data-k="v">Versions cited</th><th data-k="n">Cited by</th></tr></thead><tbody></tbody></table>
-</section>
-<section class="view" id="v-mi">
- <div class="bar"><input type="search" id="mq" placeholder="Filter"><select id="mt"><option value="">All types</option></select></div>
- <table id="mtab"><thead><tr><th>Cited item</th><th>Title</th><th>Type</th><th>Status</th><th>Link</th><th>Cited by</th></tr></thead><tbody></tbody></table>
 </section>
 </main>
 <footer id="foot"></footer>
@@ -127,9 +159,9 @@ const PAL=['#1f5f99','#d1495b','#4d9a3e','#8a5cc2','#e08a1e','#1aa3a3','#c2185b'
 const folders=[...new Set(D.docs.map(d=>folderTop(d.f)))].sort(); const fcol=f=>PAL[folders.indexOf(f)%PAL.length];
 const TCOL={'EU act':'#1f5f99','Norwegian law/regulation':'#c2185b','ERA document':'#8a5cc2','ERTMS subset':'#1aa3a3','ETSI spec':'#e08a1e','Standard':'#5c6b7a','UIC leaflet':'#b0702a'};
 // tabs
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph();
-  const det=document.getElementById('detail'); if(b.dataset.v==='nav'){document.getElementById('nvgrid').appendChild(det); if(selId) navAfter(selId);} if(b.dataset.v==='ex') document.getElementById('exgrid').appendChild(det); if(selId&&(b.dataset.v==='nav'||b.dataset.v==='ex')) drawEgo(selId);});
-function show(tab){document.querySelector(`nav button[data-v=${tab}]`).click();}
+document.querySelectorAll('header nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('header nav button').forEach(x=>{x.classList.toggle('on',x===b); x.setAttribute('aria-selected',x===b);});document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph();
+  const det=document.getElementById('detail'); if(b.dataset.v==='nav'){document.getElementById('nvgrid').appendChild(det); if(selId) navAfter(selId);} if(b.dataset.v==='ex'){ document.getElementById('exgrid').appendChild(det); if(!selId) det.innerHTML=EMPTY.ex; } if(b.dataset.v==='nav'&&!selId) det.innerHTML=EMPTY[nRoot]; if(b.dataset.v==='nav'||b.dataset.v==='ex'){ const eg=document.getElementById('egod'); if(eg) eg.open=egoOpt.show[b.dataset.v]; if(selId) drawEgo(selId); }});
+function show(tab){document.querySelector(`header nav button[data-v=${tab}]`).click();}
 // node resolution: a cited item that is a library file is shown as that file
 const numOfExt=e=>{const m=(e.l||'').match(/\d{1,4}\/\d{2,4}/); return m?m[0]:'';};
 const sNameOf=id=>{ if(docs.has(id)) return docs.get(id).s||''; const e=ext.get(id); return e&&e.s||''; };
@@ -139,30 +171,48 @@ const shortOf=id=>{ if(docs.has(id)){const d=docs.get(id); if(d.s) return d.s+(d
 // ---------- explorer list ----------
 const q=document.getElementById('q'), scope=document.getElementById('scope'), list=document.getElementById('list');
 let selId=null;
+const folderName=f=>f.split('/').map(s=>s.replace(/^\d\d_/,'').replace(/_/g,' ')).join(' › ');
+// search text for a library file also carries the labels it is cited under (e.g. "Directive 2016/797/EU", "SUBSET-026")
+const docAlias=new Map(); for(const e of D.ext) if(e.lib.length){ const f=e.lib[0]; docAlias.set(f,(docAlias.get(f)||'')+' '+e.l+' '+(e.s||'')); }
+const docItem=d=>({id:d.id,h:d.s?`<span class="sn">${esc(d.s)}</span>${d.n?`<span class="num">${esc(d.n)}</span>`:''}<br><span class="tt">${esc(d.t||d.id)}</span>`:`<span class="tt">${esc(d.t||d.id)}</span>`,txt:((d.s||'')+' '+d.t+' '+d.id+' '+d.ref+' '+(d.n||'')+(docAlias.get(d.id)||'')),sub:d.id,g:'0'+d.f,gl:folderName(d.f),key:(d.s||'~'+d.t),n:0});
+const extItem=e=>({id:e.id,h:(e.s?`<span class="sn">${esc(e.s)}</span><span class="num">${esc(e.l)}</span>`:`<b>${esc(e.l)}</b>`)+(e.t?' <span class="tt">'+esc(e.t)+'</span>':''),txt:(e.s||'')+' '+e.l+' '+(e.t||''),sub:`${e.ty} · cited by ${e.n} · ${e.a}`,g:'1'+e.ty,gl:(e.lib.length?'':'Cited, not in library · ')+e.ty,key:'',n:e.n});
 function items(){
-  const s=q.value.toLowerCase().trim(), sc=scope.value; let arr=[];
-  if(sc==='lib') arr=D.docs.map(d=>({id:d.id,h:d.s?`<span class="sn">${esc(d.s)}</span>${d.n?`<span class="num">${esc(d.n)}</span>`:''}<br><span class="tt">${esc(d.t||d.id)}</span>`:`<span class="tt">${esc(d.t||d.id)}</span>`,txt:((d.s||'')+' '+d.t+' '+d.id+' '+d.ref+' '+(d.n||'')),sub:d.id,g:d.f,key:(d.s||'~'+d.t)}));
-  else arr=D.ext.filter(e=>sc==='all'||STDT.includes(e.ty)).map(e=>({id:e.id,h:(e.s?`<span class="sn">${esc(e.s)}</span><span class="num">${esc(e.l)}</span>`:`<b>${esc(e.l)}</b>`)+(e.t?' <span class="tt">'+esc(e.t)+'</span>':''),txt:(e.s||'')+' '+e.l+' '+(e.t||''),sub:`${e.ty} · cited by ${e.n} · ${e.a}`,g:e.ty,n:e.n}));
+  const s=q.value.toLowerCase().trim(), sc=scope.value; let arr;
+  if(sc==='lib') arr=D.docs.map(docItem);
+  else if(sc==='std') arr=D.ext.filter(e=>STDT.includes(e.ty)).map(extItem);
+  else arr=D.docs.map(docItem).concat(D.ext.filter(e=>!e.lib.length).map(extItem));   // everything: each library file once, plus what is cited but not held
   if(s){const words=s.split(/\s+/); arr=arr.filter(x=>{const t=x.txt.toLowerCase(); return words.every(w=>t.includes(w));});}
-  if(sc==='lib') arr.sort((a,b)=>a.g.localeCompare(b.g)||a.key.localeCompare(b.key)); else arr.sort((a,b)=>a.g.localeCompare(b.g)||b.n-a.n);
+  arr.sort((a,b)=>a.g.localeCompare(b.g)||(b.n-a.n)||a.key.localeCompare(b.key));
   return arr;
 }
 function renderList(){
   const arr=items(); let h='',g=null;
-  for(const x of arr.slice(0,1500)){ if(x.g!==g){g=x.g;h+=`<div class="grp">${esc(g)}</div>`;} h+=`<div class="it${x.id===selId?' sel':''}" data-id="${esc(x.id)}">${x.h}<small>${esc(x.sub)}</small></div>`; }
+  const LIM=1500; if(arr.length>LIM) h+=`<div class="grp" role="status">Showing ${LIM} of ${arr.length} – type to narrow</div>`;
+  for(const x of arr.slice(0,LIM)){ if(x.g!==g){g=x.g;h+=`<div class="grp" role="presentation">${esc(x.gl)}</div>`;} h+=`<div class="it${x.id===selId?' sel':''}" role="option" tabindex="0" aria-selected="${x.id===selId}" data-id="${esc(x.id)}">${x.h}<small>${esc(x.sub)}</small></div>`; }
   list.innerHTML=h||'<div class="empty">No matches</div>';
 }
 list.onclick=e=>{const it=e.target.closest('.it'); if(it) select(it.dataset.id,false);};
+list.onkeydown=e=>{const it=e.target.closest('.it'); if(!it) return; if(e.key==='ArrowRight'){ e.preventDefault(); if(it.dataset.id===selId) focusDet(detFocus); else { kbdDet=true; select(it.dataset.id,false); } return; } if(e.key==='Enter'||e.key===' '){e.preventDefault(); select(it.dataset.id,false); list.querySelector('.it.sel')?.focus();} else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault(); let n=it; do{ n=e.key==='ArrowDown'?n.nextElementSibling:n.previousElementSibling; }while(n&&!n.classList.contains('it')); n?.focus();}};
 q.oninput=renderList; scope.onchange=renderList;
 const MODE='online'; const LOCAL=MODE==='local';
 const fileUrl=id=>encodeURI('../'+id).replace(/#/g,'%23').replace(/\?/g,'%3F');
-const flink=id=>LOCAL&&docs.has(id)?`<a class="xl" href="${fileUrl(id)}" target="_blank" title="Open local file">📄</a>`:'';
-const xlink=(u,t)=>u?`<a class="xl" href="${esc(u)}" target="_blank" rel="noopener" title="${esc(t||'Open source')}">↗</a>`:'';
-const docLink=id=>{const d=docs.get(id); return d?flink(id)+xlink(d.u,'Official source'):'';};
-const extLink=e=>e?xlink(e.u,e.uk):'';
+const IC=n=>`<svg class="ic" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const flink=(id,nm)=>LOCAL&&docs.has(id)?`<a class="xl" href="${fileUrl(id)}" target="_blank" title="Open local file" aria-label="Open local file${nm?': '+esc(nm):''}">${IC('file')}</a>`:'';
+const xlink=(u,t,nm)=>u?`<a class="xl" href="${esc(u)}" target="_blank" rel="noopener" title="${esc(t||'Open source')}" aria-label="${esc(t||'Open source')}${nm?': '+esc(nm):''}">${IC('ext')}</a>`:'';
+const docLink=id=>{const d=docs.get(id); if(!d) return ''; const nm=d.s||d.t; return flink(id,nm)+xlink(d.u,'Official source',nm);};
+const extLink=e=>e?xlink(e.u,e.uk,e.s||e.l):'';
 const typeOrder=['EU act','Norwegian law/regulation','ERA document','ERTMS subset','ETSI spec','Standard','UIC leaflet'];
 function tagFor(e){ if(e.lib.length) return '<span class="tag lib">'+(LOCAL?'in library':'in collection')+'</span>'; if(/Paid/.test(e.a)) return '<span class="tag paid">'+(e.ty==='UIC leaflet'?'UIC – paid':'paid standard')+'</span>'; return '<span class="tag">not in library</span>'; }
-function linkExt(e){ const lbl=(e.s?`<b>${esc(e.s)}</b> <span class="num">${esc(e.l)}</span>`:esc(e.l))+(e.t?` <span style="color:var(--mute)">— ${esc(e.t.slice(0,110))}</span>`:''); return `<a data-go="${esc(resolve(e.id))}">${lbl}</a>`; }
+// one even line per reference: short name, number, links, tag, count; unfolds to the full title
+function refRow(go,nm,num,full,links,tag,cnt){
+  const more=full&&full!==nm&&!(num&&full===num);
+  const head=`<span class="tw" aria-hidden="true">${more?IC('chev'):''}</span><a href="#" tabindex="-1" class="rn" data-go="${esc(go)}" title="${esc(full||nm)}">${esc(nm)}</a>${num&&num!==nm?`<span class="num">${esc(num)}</span>`:''}${links}${tag||''}<span class="c">${cnt}</span>`;
+  return more?`<details class="rf"><summary tabindex="-1">${head}</summary><div class="rfx">${esc(full)}</div></details>`:`<div class="rf"><div class="rs" tabindex="-1">${head}</div></div>`;
+}
+const extRow=(e,cnt)=>refRow(resolve(e.id),e.s||e.l,e.s?(numOfExt(e)||e.l):'',e.t||(e.s?e.l:''),extLink(e),e.lib.length?'':tagFor(e),cnt);   // 'in library' is the norm: tag only what isn't
+const docRow=(s,cnt)=>{const d=docs.get(s); if(!d) return refRow(s,s,'','','','',cnt); return refRow(s,d.s||d.t||s,d.s?(d.n||''):'',d.t||'',docLink(s),'',cnt);};
+const titlesBtn='<button class="lk alltitles" data-alltitles>Show full titles</button>';
+function linkExt(e){ const lbl=(e.s?`<b>${esc(e.s)}</b> <span class="num">${esc(e.l)}</span>`:esc(e.l))+(e.t?` <span style="color:var(--mute)">— ${esc(e.t.slice(0,110))}</span>`:''); return `<a href="#" data-go="${esc(resolve(e.id))}">${lbl}</a>`; }
 const docLabel=s=>{const d=docs.get(s); if(!d) return esc(s); return d.s?`<b>${esc(d.s)}</b>${d.n?` <span class="num">${esc(d.n)}</span>`:''} <span style="color:var(--mute)">— ${esc((d.t||'').slice(0,100))}</span>`:esc(d.t||s);};
 // ---------- ego graph data ----------
 function neighbours(id){
@@ -181,9 +231,10 @@ function neighbours(id){
   return {inc,outg};
 }
 function nodeColor(id,ty){ if(docs.has(id)) return fcol(folderTop(docs.get(id).f)); const e=ext.get(id); return TCOL[(e&&e.ty)||ty]||'#888'; }
-const egoOpt={inc:true,outg:true,lim:'40'};
+const egoOpt={inc:true,outg:true,lim:'40',show:{nav:false,ex:true}};
+const curView=()=>document.getElementById('v-nav').classList.contains('on')?'nav':'ex';
 function drawEgo(id){
-  const svg=document.getElementById('ego'); if(!svg) return;
+  const svg=document.getElementById('ego'); if(!svg||!svg.closest('details').open) return;
   const W=svg.clientWidth||900, cx=W/2;
   const {inc,outg}=neighbours(id);
   const lim=egoOpt.lim==='all'?1e9:+egoOpt.lim;
@@ -206,8 +257,8 @@ function drawEgo(id){
   // centre
   const cl=shortOf(id);
   s+=`<g><circle cx="${cx}" cy="${cy}" r="13" fill="${nodeColor(id)}" stroke="var(--acc2)" stroke-width="3"/></g>`;
-  const cw=cl.length>60?cl.slice(0,58)+'…':cl;
-  s+=`<text x="${cx}" y="${cy+30}" text-anchor="middle" style="font-weight:600;font-size:11.5px">${esc(cw)}</text>`;
+  const cw=cl.length>44?cl.slice(0,42)+'…':cl;
+  s+=`<text x="${cx}" y="${cy-22}" text-anchor="middle" style="font-weight:600;font-size:11.5px">${esc(cw)}</text>`;
   if(egoOpt.inc) s+=`<text x="14" y="18" class="lbl-mute">◀ cited by ${inc.length}${inc.length>L.length?` (showing ${L.length})`:''}</text>`;
   if(egoOpt.outg&&outg.length) s+=`<text x="${W-14}" y="18" text-anchor="end" class="lbl-mute">cites ${outg.length}${outg.length>R.length?` (showing ${R.length})`:''} ▶</text>`;
   if(!all.length) s+=`<text x="${cx}" y="${cy-30}" text-anchor="middle" class="lbl-mute">No citations in this direction</text>`;
@@ -226,32 +277,33 @@ function drawEgo(id){
 function select(id,fromGraph){
   if(!docs.has(id)&&!ext.has(id)) return;
   selId=id;
-  if(fromGraph){ const want=docs.has(id)?'lib':(STDT.includes(ext.get(id).ty)?'std':'all'); if(scope.value!==want&&!(want!=='lib'&&scope.value==='all')){scope.value=want;} }
+  if(fromGraph&&scope.value!=='all'){ const inLib=docs.has(id), isStd=!inLib&&STDT.includes(ext.get(id).ty); if(!((scope.value==='lib'&&inLib)||(scope.value==='std'&&isStd))) scope.value='all'; }
   if(!items().some(x=>x.id===id)) q.value='';
   renderList(); const el=list.querySelector('.it.sel'); if(el) el.scrollIntoView({block:'nearest'});
   const det=document.getElementById('detail');
-  const egoHtml=`<div class="egobar"><label><input type="checkbox" id="eIn" ${egoOpt.inc?'checked':''}> cited by (left)</label><label><input type="checkbox" id="eOut" ${egoOpt.outg?'checked':''}> cites (right)</label><label>show <select id="eLim">${['20','40','80','all'].map(v=>`<option ${egoOpt.lim===v?'selected':''}>${v}</option>`).join('')}</select> per side</label><span>Hover a node for details · click to centre on it</span></div><svg id="ego"></svg><div class="legend" id="egoleg"></div>`;
+  const egoOpen=egoOpt.show[curView()]; const egoHtml=`<details class="egod" id="egod"${egoOpen?' open':''}><summary>Citation graph <span>· cited by left, cites right</span></summary><div class="egobar"><label><input type="checkbox" id="eIn" ${egoOpt.inc?'checked':''}> cited by (left)</label><label><input type="checkbox" id="eOut" ${egoOpt.outg?'checked':''}> cites (right)</label><label>show <select id="eLim">${['20','40','80','all'].map(v=>`<option ${egoOpt.lim===v?'selected':''}>${v}</option>`).join('')}</select> per side</label><span>Hover a node for details · click to centre on it</span></div><svg id="ego" role="img" aria-label="Citation graph; the same documents are listed below as text"></svg><div class="legend" id="egoleg"></div></details>`;
   if(docs.has(id)){
     const d=docs.get(id), o=(out.get(id)||[]).map(([t,c])=>[ext.get(t),c]).filter(x=>x[0]);
     const by={}; for(const [e,c] of o)(by[e.ty]=by[e.ty]||[]).push([e,c]);
     let left='<h3>Cites ('+o.length+')</h3>';
-    for(const ty of typeOrder) if(by[ty]){ by[ty].sort((a,b)=>b[1]-a[1]); left+=`<div class="ty">${esc(ty)} (${by[ty].length})</div>`+by[ty].map(([e,c])=>`<div class="ref"><span>${linkExt(e)}${extLink(e)}</span> ${tagFor(e)}<span class="c">${c}×${e.v?' · '+esc(e.v.slice(0,3).join(', ')):''}</span></div>`).join(''); }
+    for(const ty of typeOrder) if(by[ty]){ by[ty].sort((a,b)=>b[1]-a[1]); left+=`<div class="ty">${esc(ty)} (${by[ty].length})</div>`+by[ty].map(([e,c])=>extRow(e,`${c}×`)).join(''); }
     if(!o.length) left+='<div class="meta">No machine-readable references found (link file, spreadsheet, archive or scanned PDF).</div>';
     const ci=[...(fileIn.get(id)||new Map())].sort((a,b)=>b[1]-a[1]);
-    let right='<h3>Cited by ('+ci.length+')</h3>'+ci.map(([s,c])=>`<div class="ref"><span><a data-go="${esc(s)}">${docLabel(s)}</a>${docLink(s)}</span><span class="c">${c}×</span></div>`).join('');
+    let right='<h3>Cited by ('+ci.length+')</h3>'+ci.map(([s,c])=>docRow(s,`${c}×`)).join('');
     if(!ci.length) right+='<div class="meta">Not cited by any other document in the library.</div>';
-    det.innerHTML=(d.s?`<div class="kick">${esc(d.n||'')}</div><h2>${esc(d.s)}</h2><div class="sub">${esc(d.t)}</div>`:`<h2>${esc(d.t)}</h2>`)+`<div class="meta">${esc(d.ref)} · ${esc(d.st)}<br>${LOCAL?`<a class="open" href="${fileUrl(d.id)}" target="_blank">📄 Open local file</a>`:''}${d.u?`<a class="open" href="${esc(d.u)}" target="_blank" rel="noopener">Official source ↗</a>`:''}<span>${esc(d.id)}</span></div>${egoHtml}<div class="cols"><div>${left}</div><div>${right}</div></div>`;
+    det.innerHTML=(d.s?`<div class="kick">${esc(d.n||'')}</div><h2>${esc(d.s)}</h2><div class="sub">${esc(d.t)}</div>`:`<h2>${esc(d.t)}</h2>`)+`<div class="meta">${esc(d.ref)} · ${esc(d.st)}<br>${LOCAL?`<a class="open" href="${fileUrl(d.id)}" target="_blank">${IC('file')}Open local file</a>`:''}${d.u?`<a class="open" href="${esc(d.u)}" target="_blank" rel="noopener">${IC('ext')}Official source</a>`:''}<span class="path">${esc(d.id)}</span></div>${egoHtml}${o.length||ci.length?`<div class="lhead">${titlesBtn}</div>`:''}<div class="cols"><div>${left}</div><div>${right}</div></div>`;
   } else {
     const e=ext.get(id), ci=(inn.get(id)||[]).slice().sort((a,b)=>b[1]-a[1]);
-    det.innerHTML=(e.s?`<div class="kick">${esc(e.l)}</div><h2>${esc(e.s)}</h2>`:`<h2>${esc(e.l)}</h2>`)+`${e.t?`<div class="sub">${esc(e.t)}</div>`:''}<div class="meta">${esc(e.ty)} · ${tagFor(e)} ${esc(e.a)}${e.ts?' · title: '+esc(e.ts):''}${e.v?'<br>Versions cited: '+esc(e.v.join(', ')):''}<br>${e.u?`<a class="open" href="${esc(e.u)}" target="_blank" rel="noopener">${esc(e.uk)} ↗</a>`:''}${e.lib.map(f=>`<a class="open" data-go="${esc(f)}">${LOCAL?'Library file':'Collection entry'}: ${esc(f)}</a>${LOCAL?`<a class="open" href="${fileUrl(f)}" target="_blank">📄 Open</a>`:''}`).join('')}</div>${egoHtml}<h3>Cited by ${ci.length} documents</h3>`+ci.map(([s,c])=>`<div class="ref"><span><a data-go="${esc(s)}">${docLabel(s)}</a>${docLink(s)}</span><span class="c">${c}×</span></div>`).join('');
+    det.innerHTML=(e.s?`<div class="kick">${esc(e.l)}</div><h2>${esc(e.s)}</h2>`:`<h2>${esc(e.l)}</h2>`)+`${e.t?`<div class="sub">${esc(e.t)}</div>`:''}<div class="meta">${esc(e.ty)} · ${tagFor(e)} ${esc(e.a)}${e.ts?' · title: '+esc(e.ts):''}${e.v?'<br>Versions cited: '+esc(e.v.join(', ')):''}<br>${e.u?`<a class="open" href="${esc(e.u)}" target="_blank" rel="noopener">${IC('ext')}${esc(e.uk)}</a>`:''}${e.lib.map(f=>`<a class="open" href="#" data-go="${esc(f)}">${LOCAL?'Library file':'Collection entry'}: ${esc(f)}</a>${LOCAL?`<a class="open" href="${fileUrl(f)}" target="_blank">${IC('file')}Open</a>`:''}`).join('')}</div>${egoHtml}<div class="lhead"><h3>Cited by ${ci.length} documents</h3>${ci.length?titlesBtn:''}</div>`+ci.map(([s,c])=>docRow(s,`${c}×`)).join('');
   }
   const eIn=document.getElementById('eIn'), eOut=document.getElementById('eOut'), eLim=document.getElementById('eLim');
   eIn.onchange=()=>{egoOpt.inc=eIn.checked; drawEgo(selId);}; eOut.onchange=()=>{egoOpt.outg=eOut.checked; drawEgo(selId);}; eLim.onchange=()=>{egoOpt.lim=eLim.value; drawEgo(selId);};
-  drawEgo(id); det.scrollTop=0;
+  const egod=document.getElementById('egod'); egod.addEventListener('toggle',()=>{ egoOpt.show[curView()]=egod.open; if(egod.open) drawEgo(selId); });
+  if(egod.open) drawEgo(id); det.scrollTop=0;
 }
-document.getElementById('detail').addEventListener('click',e=>{const a=e.target.closest('[data-go]'); if(a){e.preventDefault(); select(a.dataset.go,true);}});
+document.getElementById('detail').addEventListener('click',e=>{const tb=e.target.closest('[data-alltitles]'); if(tb){ const all=[...e.currentTarget.querySelectorAll('details.rf')], open=!all.every(d=>d.open); all.forEach(d=>d.open=open); e.currentTarget.querySelectorAll('[data-alltitles]').forEach(b=>b.textContent=open?'Hide full titles':'Show full titles'); return; } const a=e.target.closest('[data-go]'); if(a){e.preventDefault(); select(a.dataset.go,true);}});
 window.addEventListener('resize',()=>{if(selId) drawEgo(selId);});
-(function(){const f=document.getElementById('foot'); if(LOCAL){f.innerHTML='Local edition · 📄 opens your downloaded copy · ↗ opens the official source';return;}
+(function(){const f=document.getElementById('foot'); if(LOCAL){f.innerHTML=`Local edition · ${IC('file')} opens your downloaded copy · ${IC('ext')} opens the official source`;return;}
 f.innerHTML='Online edition · This site hosts no copies of the documents — every link goes to the official publisher. '+
 'EU legislation: © European Union, <a href="https://eur-lex.europa.eu" target="_blank" rel="noopener">EUR-Lex</a>, reuse under Commission Decision 2011/833/EU. '+
 'ERA documents: © European Union Agency for Railways, source <a href="https://www.era.europa.eu" target="_blank" rel="noopener">era.europa.eu</a>. '+
@@ -265,90 +317,176 @@ const nroots={}; NN.forEach((r,i)=>{if(r.p<0) nroots[r.k==='@no'?'no':'eu']=i;})
 const desc=NN.map(()=>0); for(let i=NN.length-1;i>=0;i--){ if(NN[i].p>=0) desc[NN[i].p]+=1+desc[i]; }
 const byId=new Map(); NN.forEach((r,i)=>{ if(r.id&&r.ty!=='x') (byId.get(r.id)||byId.set(r.id,[]).get(r.id)).push(i); });
 const nrootOf=i=>{while(NN[i].p>=0) i=NN[i].p; return i;};
+const rootKey=i=>nrootOf(i)===nroots.no?'no':'eu';
 const depthOf=i=>{let d=0; while(NN[i].p>=0){i=NN[i].p; d++;} return d;};
-const nopen=new Set(), nmore=new Set(), popen=new Set([NP.length?NP[0].id:'']); let nRoot='eu', nSel=-1;
-function defaultOpen(){ nopen.clear(); for(const r of Object.values(nroots)){ nopen.add(r); for(const c of kidsOf[r]) nopen.add(c); } }
+const nopen=new Set(), nmore=new Set(), popen=new Set(); let nRoot='eu', nSel=-1, nFocus=-1, kbd=false, pickedFrom='';
+function defaultOpen(){ nopen.clear(); for(const r of Object.values(nroots)) nopen.add(r); }   // top level only
 defaultOpen();
-const tree=document.getElementById('tree'), nq=document.getElementById('nq');
-const rowLinks=r=>(r.ty==='doc'||r.ty==='fam'||r.ty==='parts')?docLink(r.id):(r.ty==='ext'?extLink(ext.get(r.id)):'');
+const tree=document.getElementById('tree'), nq=document.getElementById('nq'), detEl=document.getElementById('detail');
+const ROOTNAME={eu:'EU law',no:'Norway',paths:'Task paths'};
+const EMPTY={
+  eu:'<div class="empty">Start at the top: EU law is on the left, with the implementing acts, specifications, guidance and standards below it.<br>Pick a row to see where it sits, its links and what cites it.</div>',
+  no:'<div class="empty">Norwegian law, starting from Jernbaneloven. Each regulation shows the EU act it implements.<br>Pick a row to see where it sits and its links.</div>',
+  paths:'<div class="empty">Step-by-step routes through common jobs. Pick a document in any step to see it here.</div>',
+  ex:'<div class="empty">Pick a document or standard on the left to see its citation graph, what it cites and what cites it.</div>'};
+const FORMAL=/^(Commission |Council |Regulation |Directive |Decision |Implementing |Delegated )|consolidated text$/;
+const QUIET=new Set(['in force','amended']);   // the normal state: only exceptions get a badge in the list
+const bdg=b=>b?`<span class="bd ${esc(b.replace(/ /g,'-'))}">${esc(b)}</span>`:'';
+const rowLinks=r=>((r.ty==='doc'||r.ty==='fam'||r.ty==='parts')?docLink(r.id):(r.ty==='ext'?extLink(ext.get(r.id)):''));
 function rowHtml(i,d){
   const r=NN[i], ch=kidsOf[i], op=nopen.has(i), g=r.ty==='grp';
-  const cls='tr'+(g?' g'+(d===0?' g0':''):'')+(r.ty==='x'?' x':'')+(r.role==='r'||r.role==='v'||r.role==='s'?' r':'')+(i===nSel?' sel':'');
-  const tw=ch.length?`<span class="tw" data-t="${i}">${op?'▾':'▸'}</span>`:'<span class="tw"></span>';
+  const cls='tr'+(g?' g'+(d===0?' g0':'')+(op?' op':''):'')+(r.ty==='fam'?' f':'')+(d===0?' top':'')+(r.ty==='x'?' x':'')+(r.role==='r'||r.role==='v'||r.role==='s'?' r':'')+(i===nSel?' sel':'');
+  const tw=`<span class="tw${op?' op':''}" aria-hidden="true"${ch.length?` data-t="${i}"`:''}>${ch.length?IC('chev'):''}</span>`;
   const num=r.n&&r.n!==r.l?`<span class="num">${esc(r.n)}</span>`:'';
-  const bd=r.b?`<span class="bd ${esc(r.b.replace(/ /g,'-'))}">${esc(r.b)}</span>`:'';
-  const cons=r.c?`<span class="cnt">${esc(r.c)}</span>`:'';
-  const imp=r.imp!=null?`<a class="jmp" data-j="${r.imp}" title="Implements this EU act – click to see it in the EU tree">⇄ ${esc(NN[r.imp].l)}</a>`:'';
+  const imp=r.imp!=null?`<span class="jmp" data-j="${r.imp}" title="Implements this EU act – click to see it in the EU tree">${IC('swap')}${esc(NN[r.imp].l)}</span>`:'';
   const cnt=ch.length&&!op?`<span class="cnt">${desc[i]}</span>`:'';
-  const ds=r.d&&!g?`<span class="ds">${esc(r.d)}</span>`:'';
-  return `<div class="${cls}" data-i="${i}" style="padding-left:${d*16+4}px">${tw}<span class="lb">${esc(r.l)}</span>${num}${bd}${cons}${imp}${rowLinks(r)}${cnt}${ds}</div>`;
+  const ds=r.d&&!g&&!FORMAL.test(r.d)?`<span class="ds">${esc(r.d)}</span>`:'';   // a formal title only repeats the number: leave it to the detail panel
+  const aria=`role="treeitem" aria-level="${d+1}"${ch.length?` aria-expanded="${op}"`:''} aria-selected="${i===nSel}" tabindex="${i===nFocus?0:-1}"`;
+  return `<div class="${cls}" data-i="${i}" ${aria} title="${esc(r.l+(r.n&&r.n!==r.l?' '+r.n:''))}" style="--d:${d};padding-left:${d*16+4}px">${tw}<span class="lb">${esc(r.l)}</span>${num}${imp}${ds}<span class="rt">${cnt}${QUIET.has(r.b)?'':bdg(r.b)}<span class="lnk">${rowLinks(r).replace(/<a /g,'<a tabindex="-1" ')}</span></span></div>`;
 }
 function renderTree(){
-  document.querySelectorAll('#nseg button').forEach(b=>b.classList.toggle('on',b.dataset.r===nRoot));
-  const s=nq.value.trim().toLowerCase(); if(s) return renderHits(s);
+  document.querySelectorAll('#nseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.r===nRoot));
+  const s=nq.value.trim().toLowerCase();
+  tree.setAttribute('role',s||nRoot==='paths'?'region':'tree'); tree.setAttribute('aria-label',s?'Search results':ROOTNAME[nRoot]);
+  if(s) return renderHits(s);
   if(nRoot==='paths') return renderPaths();
   let h=''; const walk=(i,d)=>{ h+=rowHtml(i,d); if(!nopen.has(i)) return; kids(i,d); };
-  const kids=(i,d)=>{ const ch=kidsOf[i], vis=nmore.has(i)?ch:ch.filter(c=>!NN[c].h); for(const c of vis) walk(c,d+1); const hid=ch.length-vis.length; if(hid>0) h+=`<div class="more" data-m="${i}" style="padding-left:${(d+1)*16+24}px">show ${hid} more…</div>`; };
+  const kids=(i,d)=>{ const ch=kidsOf[i], vis=nmore.has(i)?ch:ch.filter(c=>!NN[c].h); for(const c of vis) walk(c,d+1); const hid=ch.length-vis.length; if(hid>0) h+=`<button class="more" data-m="${i}" role="treeitem" aria-level="${d+2}" tabindex="-1" style="padding-left:${(d+1)*16+24}px">Show ${hid} more…</button>`; };
+  const had=kbd||tree.contains(document.activeElement);   // keep focus in the tree across redraws (a click replaces the focused row)
   kids(nroots[nRoot],-1); tree.innerHTML=h;
+  if(!tree.querySelector('[tabindex="0"]')){ const f=tree.querySelector('.tr'); if(f){ f.tabIndex=0; nFocus=+f.dataset.i; } }
+  kbd=false; if(had){ const el=tree.querySelector(`.tr[data-i="${nFocus}"]`)||tree.querySelector('.tr[tabindex="0"]'); if(el){ el.focus({preventScroll:true}); el.scrollIntoView({block:'nearest'}); } }
 }
 const crumbOf=i=>{const a=[]; for(let j=NN[i].p;j>=0&&NN[j].p>=0;j=NN[j].p) a.unshift(j); return a;};
 function renderHits(s){
   const w=s.split(/\s+/), out=[];
   NN.forEach((r,i)=>{ if(r.p<0||r.ty==='x') return; const t=(r.l+' '+(r.n||'')+' '+(r.d||'')+' '+(r.id||'')).toLowerCase(); if(w.every(x=>t.includes(x))) out.push(i); });
   const rank={grp:0,fam:1,parts:2,doc:2,ext:3}; out.sort((a,b)=>(rank[NN[a].ty]-rank[NN[b].ty])||((NN[a].t??5)-(NN[b].t??5))||depthOf(a)-depthOf(b));
-  tree.innerHTML=out.length?`<div class="grp">${out.length>200?'First 200 of ':''}${out.length} matches – click to jump to its place</div>`+out.slice(0,200).map(i=>{const r=NN[i]; return `<div class="hit" data-h="${i}"><span class="sn">${esc(r.l)}</span>${r.n&&r.n!==r.l?`<span class="num">${esc(r.n)}</span>`:''}${r.b?` <span class="bd ${esc(r.b.replace(/ /g,'-'))}">${esc(r.b)}</span>`:''}${rowLinks(r)}<small>${esc([nrootOf(i),...crumbOf(i)].map(j=>NN[j].l).join(' › '))}</small></div>`;}).join(''):'<div class="empty">No matches</div>';
+  tree.innerHTML=out.length?`<div class="grp" role="status">${out.length>200?'First 200 of ':''}${out.length} match${out.length===1?'':'es'} – pick one to jump to its place</div>`+out.slice(0,200).map(i=>{const r=NN[i]; return `<button class="hit" data-h="${i}"><span class="sn">${esc(r.l)}</span>${r.n&&r.n!==r.l?`<span class="num">${esc(r.n)}</span>`:''} ${QUIET.has(r.b)?'':bdg(r.b)}<small>${esc([nrootOf(i),...crumbOf(i)].map(j=>NN[j].l).join(' › '))}</small></button>`;}).join('')
+    :`<div class="nohit" role="status"><b>Nothing in the Navigator matches “${esc(nq.value.trim())}”.</b><br>The Navigator holds library documents and standards cited by two or more documents. Try a number such as 2016/797, 50126 or SUBSET-026, or <button class="lk" data-exq>search everything in the Explorer</button>.</div>`;
 }
 const chipLabel=id=>{ const c=byId.get(id); if(!c) return shortOf(id); const r=NN[c[0]]; return r.l+(r.n&&r.n!==r.l&&!/parts$/.test(r.n)?' ('+r.n+')':''); };
 function renderPaths(){
   tree.innerHTML='<div class="paths">'+NP.map(p=>{ const op=popen.has(p.id);
-    return `<div class="pc"><h4 data-p="${esc(p.id)}"><span class="tw">${op?'▾':'▸'}</span>${esc(p.t)}<span class="cnt">${p.s.length} steps</span></h4>`+(op?`<div class="pd">${esc(p.d)}</div><ol>`+p.s.map(([txt,ids])=>`<li>${esc(txt)}<div class="prefs">${ids.map(id=>`<span class="pref"><a data-go2="${esc(id)}">${esc(chipLabel(id))}</a>${docs.has(id)?docLink(id):extLink(ext.get(id))}</span>`).join('')}</div></li>`).join('')+'</ol>':'')+'</div>';}).join('')+'</div>';
+    return `<div class="pc"><h4><button data-p="${esc(p.id)}" aria-expanded="${op}" aria-controls="pp-${esc(p.id)}"><span class="tw${op?' op':''}" aria-hidden="true">${IC('chev')}</span>${esc(p.t)}<span class="cnt">${p.s.length} steps</span></button></h4>`
+      +(op?`<div id="pp-${esc(p.id)}"><div class="pd">${esc(p.d)}</div><ol>`+p.s.map(([txt,ids])=>`<li>${esc(txt)}<div class="prefs">${ids.map(id=>`<span class="pref"><button class="lk" data-go2="${esc(id)}">${esc(chipLabel(id))}</button>${docs.has(id)?docLink(id):extLink(ext.get(id))}</span>`).join('')}</div></li>`).join('')+'</ol></div>':'')+'</div>';}).join('')+'</div>';
 }
 function reveal(i){
-  const r=nrootOf(i); const rk=r===nroots.no?'no':'eu'; if(nRoot!==rk) nRoot=rk; nq.value='';
+  const rk=rootKey(i); if(nRoot!==rk) nRoot=rk; nq.value='';
   for(let j=NN[i].p;j>=0;j=NN[j].p){ nopen.add(j); }
   for(let j=i;NN[j].p>=0;j=NN[j].p){ if(NN[j].h) nmore.add(NN[j].p); }
-  nSel=i; renderTree(); const el=tree.querySelector(`.tr[data-i="${i}"]`); if(el) el.scrollIntoView({block:'nearest'});
+  nSel=i; nFocus=i; renderTree(); const el=tree.querySelector(`.tr[data-i="${i}"]`); if(el) el.scrollIntoView({block:'nearest'});
 }
-function navGo(i){ const r=NN[i]; if(r.ty==='x') return navGo(r.x); nSel=i; if(r.id) select(r.id,true); else { reveal(i); placeOnly(i); } }
+const stacked=()=>matchMedia('(max-width:1100px)').matches;
+function navGo(i){ const r=NN[i]; if(r.ty==='x') return navGo(r.x); const byKey=kbd; nSel=i; pickedFrom='tree'; if(r.id) select(r.id,true); else { reveal(i); placeOnly(i); } if(stacked()&&!byKey) detEl.scrollIntoView({block:'start'}); }
 function placeHtml(i,id){
-  if(i<0) return `<div class="place"><span class="lbl">Not in the Navigator tree</span> – cited by fewer than two documents, or not a standard. Use the Explorer for its citations.</div>`;
-  const r=NN[i], cr=[nrootOf(i),...crumbOf(i)];
-  let h=`<div class="crumbs">${cr.map(j=>`<a data-j="${j}">${esc(NN[j].l)}</a>`).join(' › ')} › <b>${esc(r.l)}</b></div>`;
+  const back='<button class="lk back" data-back>‹ Back to the list</button>';
+  if(i<0) return `<div class="navplace">${back}<div class="place"><span class="lbl">Not in the Navigator</span> It's cited by fewer than two documents, or it isn't a standard. The Explorer below has its citations.</div></div>`;
+  const r=NN[i], cr=[nrootOf(i),...crumbOf(i)], last=r.l.length>70?r.l.slice(0,68)+'…':r.l;
   const bits=[];
-  if(r.imp!=null) bits.push(`<span class="lbl">Implements</span> <a data-j="${r.imp}">${esc(NN[r.imp].l)}</a>`);
-  const no=kidsOf[i].find(c=>NN[c].ty==='x'); if(no!=null) bits.push(`<span class="lbl">In Norway</span> <a data-j="${NN[no].x}">${esc(NN[NN[no].x].l)}</a>`);
-  if(r.also&&r.also.length) bits.push(`<span class="lbl">Also used by</span> `+r.also.map(j=>`<a data-j="${j}">${esc(NN[j].l)}</a>`).join(' · '));
+  if(r.b||r.c) bits.push(`<span class="lbl">Status</span> ${bdg(r.b)}${r.c?` ${esc(r.c)}`:''}`);
+  if(r.imp!=null) bits.push(`<span class="lbl">Implements</span> <button class="lk" data-j="${r.imp}">${esc(NN[r.imp].l)}</button>`);
+  const no=kidsOf[i].find(c=>NN[c].ty==='x'); if(no!=null) bits.push(`<span class="lbl">In Norway</span> <button class="lk" data-j="${NN[no].x}">${esc(NN[NN[no].x].l)}</button>`);
+  if(r.also&&r.also.length) bits.push(`<span class="lbl">Also used by</span> `+r.also.map(j=>`<button class="lk" data-j="${j}">${esc(NN[j].l)}</button>`).join(' · '));
   const ch=kidsOf[i].filter(c=>NN[c].ty!=='x'); if(ch.length) bits.push(`<span class="lbl">Below it</span> ${desc[i]} item${desc[i]===1?'':'s'} in ${ch.length} branch${ch.length===1?'':'es'}`);
-  return h+(bits.length?`<div class="place">${bits.join('<br>')}</div>`:'');
+  return `<div class="navplace">${back}<nav class="crumbs" aria-label="Place in the hierarchy">${cr.map(j=>`<button class="lk" data-j="${j}">${esc(NN[j].l)}</button>`).join(' › ')} › <b aria-current="true">${esc(last)}</b></nav>`+(bits.length?`<div class="place">${bits.join('<br>')}</div>`:'')+'</div>';
 }
-function placeOnly(i){ const r=NN[i]; document.getElementById('detail').innerHTML=placeHtml(i)+`<h2>${esc(r.l)}</h2><div class="meta">${desc[i]} items below this group. Expand it in the tree, or click a row.</div>`; }
+function placeOnly(i){ const r=NN[i]; selId=null; detEl.innerHTML=placeHtml(i)+`<h2>${esc(r.l)}</h2><div class="meta">${desc[i]} items below this group. Expand it in the list, or pick a row.</div>`; }
 function navAfter(id){
   if(!document.getElementById('v-nav').classList.contains('on')) return;
   let i=(nSel>=0&&NN[nSel].id===id)?nSel:-1;
   if(i<0){ const c=byId.get(id)||[]; i=c.find(j=>nrootOf(j)===nroots[nRoot])??c[0]??-1; }
   if(i>=0&&nRoot!=='paths') reveal(i); else nSel=i;
-  document.getElementById('detail').insertAdjacentHTML('afterbegin',placeHtml(i,id));
+  detEl.querySelector('.navplace')?.remove();
+  detEl.insertAdjacentHTML('afterbegin',placeHtml(i,id));
 }
-const _select=select; select=function(id,fg){ _select(id,fg); navAfter(id); };
+// ---------- keyboard in the right-hand reference lists ----------
+// ↑↓ move · → unfolds the title · ← folds it, or goes back to the left pane · Enter opens the document
+let detFocus=0, kbdDet=false, lastPane='tree';
+const detRows=()=>[...detEl.querySelectorAll('.rf>summary,.rf>.rs')];
+function detRoving(){ const r=detRows(); detFocus=Math.min(detFocus,Math.max(r.length-1,0)); r.forEach((x,k)=>x.tabIndex=k===detFocus?0:-1); }
+function focusDet(k){ const r=detRows(); if(!r.length) return false; k=Math.max(0,Math.min(k,r.length-1)); r.forEach(x=>x.tabIndex=-1); r[k].tabIndex=0; detFocus=k; r[k].focus({preventScroll:true}); r[k].scrollIntoView({block:'nearest'}); return true; }
+function focusLeft(){
+  if(document.getElementById('v-nav').classList.contains('on')){ const el=tree.querySelector(`.tr[data-i="${nSel}"]`)||tree.querySelector(`.tr[data-i="${nFocus}"]`)||tree.querySelector('.tr'); if(el) moveFocus(el); }
+  else { const el=list.querySelector('.it.sel')||list.querySelector('.it'); if(el){ el.focus({preventScroll:true}); el.scrollIntoView({block:'nearest'}); } }
+}
+detEl.addEventListener('keydown',e=>{
+  const cur=e.target.closest('.rf>summary,.rf>.rs'); if(!cur) return;
+  const rows=detRows(), k=rows.indexOf(cur), d=cur.parentElement.tagName==='DETAILS'?cur.parentElement:null;
+  const stop=()=>{e.preventDefault(); e.stopPropagation();};
+  if(e.key==='ArrowDown'){ stop(); focusDet(k+1); }
+  else if(e.key==='ArrowUp'){ stop(); focusDet(k-1); }
+  else if(e.key==='Home'){ stop(); focusDet(0); }
+  else if(e.key==='End'){ stop(); focusDet(rows.length-1); }
+  else if(e.key==='ArrowRight'){ stop(); if(d&&!d.open) d.open=true; }
+  else if(e.key==='ArrowLeft'){ stop(); if(d&&d.open) d.open=false; else focusLeft(); }
+  else if(e.key==='Enter'){ stop(); const go=cur.querySelector('[data-go]')?.dataset.go; if(go){ kbdDet=true; detFocus=0; select(go,true); } }
+});
+detEl.addEventListener('focusin',e=>{ const cur=e.target.closest?.('.rf>summary,.rf>.rs'); if(cur){ const k=detRows().indexOf(cur); if(k>=0){ detFocus=k; detRows().forEach((x,j)=>x.tabIndex=j===k?0:-1); } } });
+document.addEventListener('mousedown',e=>{ lastPane=detEl.contains(e.target)?'det':(e.target.closest?.('#nvgrid .side,#exgrid .side')?'tree':lastPane); },true);
+// deep links: #doc=<id>; back/forward move between documents
+let fromHistory=false;
+let hashReplace=false;
+function syncHash(id){ if(fromHistory) return; const h='#doc='+encodeURIComponent(id); if(location.hash!==h) history[hashReplace?'replaceState':'pushState'](null,'',h); }
+window.addEventListener('popstate',()=>{ const m=location.hash.match(/^#doc=(.+)$/); if(m){ fromHistory=true; nSel=-1; select(decodeURIComponent(m[1]),true); fromHistory=false; } });
+const _select=select; select=function(id,fg){ _select(id,fg); navAfter(id); syncHash(id); detRoving(); if(kbdDet){ kbdDet=false; if(!focusDet(0)) focusLeft(); } };
+function treeItems(){ return [...tree.querySelectorAll('.tr,.more')]; }
+let followT=0;
+function moveFocus(el){ if(!el) return; tree.querySelectorAll('[tabindex="0"]').forEach(x=>x.tabIndex=-1); el.tabIndex=0; if(el.dataset.i) nFocus=+el.dataset.i; el.focus({preventScroll:true}); el.scrollIntoView({block:'nearest'});
+  clearTimeout(followT); if(el.dataset.i==null) return; const i=+el.dataset.i; if(NN[i].ty==='x'||i===nSel) return;
+  followT=setTimeout(()=>{ if(nFocus!==i||!tree.contains(document.activeElement)) return; kbd=true; hashReplace=true; navGo(i); hashReplace=false; },140); }
+tree.addEventListener('keydown',e=>{
+  const cur=e.target.closest('.tr,.more'); if(!cur||!tree.contains(cur)) return;
+  const items=treeItems(), k=items.indexOf(cur), i=cur.dataset.i!=null?+cur.dataset.i:-1;
+  const stop=()=>{e.preventDefault(); e.stopPropagation();};
+  if(e.key==='ArrowDown'){ stop(); moveFocus(items[k+1]); }
+  else if(e.key==='ArrowUp'){ stop(); moveFocus(items[k-1]); }
+  else if(e.key==='Home'){ stop(); moveFocus(items[0]); }
+  else if(e.key==='End'){ stop(); moveFocus(items[items.length-1]); }
+  else if(e.key==='ArrowRight'&&i>=0&&kidsOf[i].length&&!nopen.has(i)){ stop(); nopen.add(i); nFocus=i; kbd=true; renderTree(); }
+  else if(e.key==='ArrowRight'&&i>=0){ stop(); if(i===nSel&&focusDet(detFocus)) return; if(kidsOf[i].length) moveFocus(items[k+1]); else if(NN[i].ty!=='x'){ clearTimeout(followT); kbdDet=true; navGo(i); } }
+  else if(e.key==='ArrowLeft'&&i>=0){ stop(); if(nopen.has(i)&&kidsOf[i].length){ nopen.delete(i); nFocus=i; kbd=true; renderTree(); } else moveFocus(tree.querySelector(`.tr[data-i="${NN[i].p}"]`)); }
+  else if(e.key==='Enter'||e.key===' '){ stop(); if(cur.classList.contains('more')){ nmore.add(+cur.dataset.m); kbd=true; renderTree(); } else { kbd=true; navGo(i); } }
+});
 tree.addEventListener('click',e=>{
   if(e.target.closest('a.xl')) return;
+  const ex=e.target.closest('[data-exq]'); if(ex){ q.value=nq.value; scope.value='all'; show('ex'); renderList(); q.focus(); return; }
   const j=e.target.closest('[data-j]'); if(j){ e.preventDefault(); return navGo(+j.dataset.j); }
-  const t=e.target.closest('[data-t]'); if(t){ const i=+t.dataset.t; nopen.has(i)?nopen.delete(i):nopen.add(i); return renderTree(); }
+  const t=e.target.closest('[data-t]'); if(t){ const i=+t.dataset.t; nopen.has(i)?nopen.delete(i):nopen.add(i); nFocus=i; return renderTree(); }
   const m=e.target.closest('[data-m]'); if(m){ nmore.add(+m.dataset.m); return renderTree(); }
-  const hh=e.target.closest('[data-h]'); if(hh) return navGo(+hh.dataset.h);
-  const p=e.target.closest('[data-p]'); if(p){ popen.has(p.dataset.p)?popen.delete(p.dataset.p):popen.add(p.dataset.p); return renderPaths(); }
-  const g2=e.target.closest('[data-go2]'); if(g2){ nSel=-1; return select(g2.dataset.go2,true); }
+  const hh=e.target.closest('[data-h]'); if(hh){ kbd=e.detail===0; return navGo(+hh.dataset.h); }
+  const p=e.target.closest('[data-p]'); if(p){ const id=p.dataset.p; popen.has(id)?popen.delete(id):popen.add(id); renderPaths(); tree.querySelector(`[data-p="${CSS.escape(id)}"]`)?.focus(); return; }
+  const g2=e.target.closest('[data-go2]'); if(g2){ nSel=-1; pickedFrom='paths'; select(g2.dataset.go2,true); if(stacked()) detEl.scrollIntoView({block:'start'}); return; }
   const row=e.target.closest('.tr'); if(row){ const i=+row.dataset.i; if(kidsOf[i].length) nopen.add(i); navGo(i); }
 });
-document.getElementById('detail').addEventListener('click',e=>{const j=e.target.closest('[data-j]'); if(j){e.preventDefault(); e.stopPropagation(); if(nRoot==='paths') nRoot=nrootOf(+j.dataset.j)===nroots.no?'no':'eu'; navGo(+j.dataset.j);}},true);
-document.getElementById('nseg').onclick=e=>{const b=e.target.closest('button'); if(!b) return; nRoot=b.dataset.r; nq.value=''; renderTree(); if(nSel>=0&&nRoot!=='paths'){const el=tree.querySelector(`.tr[data-i="${nSel}"]`); if(el) el.scrollIntoView({block:'nearest'});}};
+detEl.addEventListener('click',e=>{
+  if(e.target.closest('[data-back]')){ e.preventDefault(); const side=document.querySelector('#nvgrid .side'); side.scrollIntoView({block:'start'}); (tree.querySelector('.tr.sel')||tree.querySelector('[tabindex="0"]'))?.focus({preventScroll:true}); return; }
+  const j=e.target.closest('[data-j]'); if(j){e.preventDefault(); e.stopPropagation(); if(nRoot==='paths') nRoot=rootKey(+j.dataset.j); navGo(+j.dataset.j);}
+},true);
+document.getElementById('nseg').onclick=e=>{const b=e.target.closest('button'); if(!b) return; nRoot=b.dataset.r; nq.value='';
+  const keep=nSel>=0&&(nRoot==='paths'?pickedFrom==='paths':rootKey(nSel)===nRoot);
+  if(!keep){ const alt=selId&&nRoot!=='paths'?(byId.get(selId)||[]).find(j=>rootKey(j)===nRoot):undefined; if(alt!=null){ nSel=alt; select(NN[alt].id,true); return; } nSel=-1; selId=null; detEl.innerHTML=EMPTY[nRoot]; }
+  renderTree(); if(nSel>=0&&nRoot!=='paths'){const el=tree.querySelector(`.tr[data-i="${nSel}"]`); if(el) el.scrollIntoView({block:'nearest'});}};
 nq.oninput=renderTree;
+nq.onkeydown=e=>{ if(e.key==='ArrowDown'){ e.preventDefault(); const f=tree.querySelector('.hit,.tr[tabindex="0"],[data-p]'); f?.focus(); } else if(e.key==='Escape'&&nq.value){ nq.value=''; renderTree(); } };
 document.getElementById('nexp').onclick=()=>{ if(nRoot==='paths'){NP.forEach(p=>popen.add(p.id));} else { const st=[nroots[nRoot]]; while(st.length){const i=st.pop(); nopen.add(i); st.push(...kidsOf[i]);} } renderTree(); };
 document.getElementById('ncol').onclick=()=>{ if(nRoot==='paths') popen.clear(); else defaultOpen(); nmore.clear(); renderTree(); };
-document.getElementById('nvgrid').appendChild(document.getElementById('detail'));
-document.getElementById('detail').innerHTML='<div class="empty">Start at the top: the law is on the left, with the acts, specifications, guidance and standards below it.<br>Click a row to see where it sits, its links and what cites it — or open <b>Task paths</b> for step-by-step routes through common jobs.</div>';
-if(!LOCAL) document.getElementById('nhint').textContent='▸ folds · click a row for details · ↗ official source';
+document.addEventListener('keydown',e=>{ if(!/^Arrow(Up|Down|Left|Right)$/.test(e.key)) return;
+  const v=document.getElementById('v-nav').classList.contains('on')?'nav':document.getElementById('v-ex').classList.contains('on')?'ex':''; if(!v) return;
+  const a=document.activeElement; if(a&&a!==document.body&&a!==detEl&&!(a.closest?.('.detail')&&!a.closest('.rf'))) return;
+  e.preventDefault(); if(lastPane==='det'&&focusDet(detFocus)) return; if(v==='nav'&&(nRoot==='paths'||nq.value)) return; if(v==='nav'){ const el=tree.querySelector(`.tr[data-i="${nFocus}"]`)||tree.querySelector('.tr'); if(el) moveFocus(el); } else focusLeft(); });
+document.addEventListener('keydown',e=>{ if(e.key!=='/'||e.metaKey||e.ctrlKey||e.altKey||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  const v=document.querySelector('.view.on')?.id, f={'v-nav':'nq','v-ex':'q','v-st':'sq'}[v]; if(f){ e.preventDefault(); document.getElementById(f).focus(); } });
+document.getElementById('nvgrid').appendChild(detEl);
+detEl.innerHTML=EMPTY.eu;
+if(!LOCAL){ document.querySelector('#nkey .lf')?.remove(); tree.style.setProperty('--lnkw','13px'); }
+const setHH=()=>document.documentElement.style.setProperty('--hh',document.querySelector('header').offsetHeight+'px'); setHH(); window.addEventListener('resize',setHH);
 renderTree();
+if(!location.hash&&!matchMedia('(max-width:1100px)').matches) nq.focus({preventScroll:true});
+const typeToSearch=e=>{ if(e.key.length!==1||e.metaKey||e.ctrlKey||e.altKey||e.key===' '||e.key==='/') return; e.preventDefault(); show('nav'); nq.focus(); nq.value=e.key; renderTree(); };
+tree.addEventListener('keydown',e=>{ if(e.target.closest('.tr,.more')) typeToSearch(e); });
+detEl.addEventListener('keydown',e=>{ if(e.target.closest('.rf>summary,.rf>.rs')&&document.getElementById('v-nav').classList.contains('on')) typeToSearch(e); });
+{ const m=location.hash.match(/^#doc=(.+)$/); if(m){ fromHistory=true; select(decodeURIComponent(m[1]),true); fromHistory=false; } }
 // ---------- standards register ----------
 const STD=D.ext.filter(e=>STDT.includes(e.ty));
 const sa=document.getElementById('sa'); [...new Set(STD.map(e=>e.a))].sort().forEach(a=>sa.add(new Option(a,a)));
@@ -359,17 +497,12 @@ function renderStd(){
   const arr=STD.filter(e=>{const t=(e.l+' '+(e.t||'')).toLowerCase(); return words.every(w=>t.includes(w))&&(!a||e.a===a)&&(!ty||e.ty===ty);})
     .sort((x,y)=>{const A=sk==='v'?(x.v||[]).join():(x[sk]??''),B=sk==='v'?(y.v||[]).join():(y[sk]??'');return (A>B?1:A<B?-1:0)*sdir;});
   document.getElementById('scount').textContent=`${arr.length} of ${STD.length} · ${STD.filter(e=>e.t).length} with title`;
-  document.querySelector('#stab tbody').innerHTML=arr.map(e=>`<tr><td style="white-space:nowrap"><a data-sel="${esc(e.id)}">${esc(e.l)}</a></td><td class="ti">${esc(e.t||'')}${e.ts?`<small>${esc(e.ts)}</small>`:''}</td><td>${esc(e.ty)}</td><td>${tagFor(e)} ${esc(e.a)}</td><td style="white-space:nowrap">${e.u?`<a href="${esc(e.u)}" target="_blank" rel="noopener">${esc(e.uk)} ↗</a>`:''}</td><td>${esc((e.v||[]).join(', '))}</td><td class="n">${e.n}</td></tr>`).join('');
+  document.querySelector('#stab tbody').innerHTML=arr.map(e=>`<tr><td style="white-space:nowrap"><a href="#" data-sel="${esc(e.id)}">${esc(e.l)}</a></td><td class="ti">${esc(e.t||'')}${e.ts?`<small>${esc(e.ts)}</small>`:''}</td><td>${esc(e.ty)}</td><td>${esc(e.a)}</td><td style="white-space:nowrap">${e.u?`<a class="open" href="${esc(e.u)}" target="_blank" rel="noopener">${IC('ext')}${esc(e.uk)}</a>`:''}</td><td>${esc((e.v||[]).join(', '))}</td><td class="n">${e.n}</td></tr>`).join('');
 }
-document.querySelectorAll('#stab th').forEach(th=>th.onclick=()=>{const k=th.dataset.k; sdir=(sk===k)?-sdir:(k==='n'?-1:1); sk=k; renderStd();});
+const sortMark=()=>document.querySelectorAll('#stab th[data-k]').forEach(th=>{ if(th.dataset.k===sk) th.setAttribute('aria-sort',sdir>0?'ascending':'descending'); else th.removeAttribute('aria-sort'); });
+document.querySelectorAll('#stab th[data-k]').forEach(th=>{ th.tabIndex=0; const go=()=>{const k=th.dataset.k; sdir=(sk===k)?-sdir:(k==='n'?-1:1); sk=k; sortMark(); renderStd();}; th.onclick=go; th.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault(); go();}}; }); sortMark();
 document.getElementById('sq').oninput=renderStd; sa.onchange=renderStd; document.getElementById('sty').onchange=renderStd; renderStd();
-document.addEventListener('click',e=>{const a=e.target.closest('[data-sel]'); if(a){show('ex'); select(a.dataset.sel,true);}});
-// ---------- missing ----------
-const MI=D.ext.filter(e=>!e.lib.length);
-const mt=document.getElementById('mt'); [...new Set(MI.map(e=>e.ty))].sort().forEach(a=>mt.add(new Option(a,a)));
-function renderMi(){const s=document.getElementById('mq').value.toLowerCase(), t=mt.value;
-  document.querySelector('#mtab tbody').innerHTML=MI.filter(e=>(!t||e.ty===t)&&(!s||(e.l+' '+(e.t||'')).toLowerCase().includes(s))).sort((a,b)=>b.n-a.n).slice(0,2000).map(e=>`<tr><td style="white-space:nowrap"><a data-sel="${esc(e.id)}">${esc(e.l)}</a></td><td class="ti">${esc(e.t||'')}</td><td>${esc(e.ty)}</td><td>${esc(e.a)}</td><td style="white-space:nowrap">${e.u?`<a href="${esc(e.u)}" target="_blank" rel="noopener">${esc(e.uk)} ↗</a>`:''}</td><td class="n">${e.n}</td></tr>`).join('');}
-document.getElementById('mq').oninput=renderMi; mt.onchange=renderMi; renderMi();
+document.addEventListener('click',e=>{const a=e.target.closest('[data-sel]'); if(a){e.preventDefault(); show('ex'); select(a.dataset.sel,true);}});
 // ---------- static graph (layout precomputed when the map was built) ----------
 const gf=document.getElementById('gfold'); folders.forEach(f=>gf.add(new Option(f,f)));
 document.getElementById('legend').innerHTML=folders.map(f=>`<span><i style="background:${fcol(f)}"></i>${esc(f)}</span>`).join('')+'<span><i style="background:#5c6b7a"></i>Standards</span>';
