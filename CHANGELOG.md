@@ -8,6 +8,7 @@ Add a new `## x.y.z – date` section for each release, then rebuild the map.
 - Each step shows the legal requirement, ERA guidance, practice notes, evidence and linked documents
 - Role lens for RU/IM, ECM, manufacturer/applicant and AsBo
 - Guided assessment with a decision record saved in the browser, exportable as Markdown or JSON
+- "Where this applies" lists: the CCS, LOC&PAS, WAG and SRT TSI points that require CSM RA, and the vehicle authorisation cases under Regulation (EU) 2018/545
 
 ## 1.4.0 – 2026-11-14
 - Footer with version number, change log, GitHub link and feedback address
