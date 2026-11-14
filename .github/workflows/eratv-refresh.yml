@@ -7,8 +7,9 @@ on:
   push:
     branches:
       - codex/eratv-pane
-    - main
+      - main
     paths:
+      - .github/workflows/eratv-refresh.yml
       - tools/eratv_refresh.py
       - tools/data/eratv.json
       - tools/map_template.html
