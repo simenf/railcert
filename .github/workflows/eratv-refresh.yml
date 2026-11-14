@@ -1,0 +1,53 @@
+name: Refresh ERATV register
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 3 * * *"
+  push:
+    branches:
+      - codex/eratv-pane
+      - main
+    paths:
+      - .github/workflows/eratv-refresh.yml
+      - tools/eratv_refresh.py
+      - tools/data/eratv.json
+      - tools/map_template.html
+      - tools/navigator.py
+      - tools/requirements-eratv.txt
+
+permissions:
+  contents: write
+
+concurrency:
+  group: eratv-refresh-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install refresh dependencies
+        run: |
+          python -m pip install -r tools/requirements-eratv.txt
+          python -m playwright install --with-deps chromium
+      - name: Download public ERATV records
+        run: python tools/eratv_refresh.py
+      - name: Rebuild both map editions
+        run: python tools/build_nav.py
+      - name: Commit refreshed register
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/data/eratv.json 99_Reference_Map/reference_map.html 99_Reference_Map/online/index.html
+          if git diff --cached --quiet; then
+            echo "ERATV data is unchanged."
+          else
+            git commit -m "Refresh ERATV public register data"
+            git push
+          fi

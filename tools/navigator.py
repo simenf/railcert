@@ -7,7 +7,7 @@
 Top of the tree (tiers 0-1) is hand-set in nav_config.py. Everything else is placed by rule:
 folder default -> file-name override -> the higher-tier node it shares most citations with.
 Amending, correcting, consolidated and superseded acts fold into their current family."""
-import json, os, re, sys
+import base64, gzip, json, os, re, sys
 from collections import defaultdict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nav_config as C
@@ -410,9 +410,17 @@ def write_html(out_dir, data):
     here = os.path.dirname(os.path.abspath(__file__))
     html = open(os.path.join(here, "map_template.html"), encoding="utf-8").read()
     js = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    eratv_path = os.path.join(here, "data", "eratv.json")
+    try:
+        with open(eratv_path, "rb") as f:
+            eratv_data = f.read()
+    except (OSError, ValueError):
+        eratv_data = b'{"updatedAt":null,"records":[]}'
+    eratv = json.dumps(base64.b64encode(gzip.compress(eratv_data, mtime=0)).decode("ascii"))
     ver, log = changelog_html(os.path.join(here, "..", "CHANGELOG.md"))
     html = html.replace("__VERSION__", ver).replace("__CHANGELOG__", log)
     os.makedirs(os.path.join(out_dir, "online"), exist_ok=True)
+    html = html.replace("__ERATV__", eratv)
     open(os.path.join(out_dir, "reference_map.html"), "w", encoding="utf-8").write(html.replace("__MODE__", "local").replace("__DATA__", js))
     open(os.path.join(out_dir, "online", "index.html"), "w", encoding="utf-8").write(html.replace("__MODE__", "online").replace("__DATA__", js))
     return len(js)
