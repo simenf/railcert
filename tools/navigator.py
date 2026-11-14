@@ -379,13 +379,30 @@ def build_nav(data, verbose=True):
         for s in n.get("steps", []):
             if s not in pid: warn.append(f"va certs {n['id']}: unknown step {s!r}")
 
+    # ---------------- CSM RA tab ----------------
+    import csmra_config as R
+    cr = {"roles": R.ROLES, "w": R.PROCESS["w"], "h": R.PROCESS["h"], "edges": R.PROCESS["edges"], "nodes": [],
+          "home": refs_of({"id": "home", "refs": R.HOME_REFS}, "csmra"), "criteria": R.CRITERIA, "guide": R.GUIDE}
+    for n in R.PROCESS["nodes"]:
+        cr["nodes"].append({**{k: v for k, v in n.items() if k != "refs"}, "refs": refs_of(n, "csmra")})
+    rid = {n["id"] for n in R.PROCESS["nodes"]}; roles = {r[0] for r in R.ROLES}
+    for a_, b_, *_ in R.PROCESS["edges"]:
+        if a_ not in rid or b_ not in rid: warn.append(f"csmra edge {a_}->{b_}: unknown node")
+    for n in R.PROCESS["nodes"]:
+        for m_, i_ in n.get("va", []):
+            if i_ not in (pid if m_ == "process" else cid): warn.append(f"csmra {n['id']}: unknown VA box {m_}/{i_}")
+        for k in n.get("r", {}):
+            if k not in roles: warn.append(f"csmra {n['id']}: unknown role {k!r}")
+    for g in R.GUIDE:
+        if g["node"] not in rid: warn.append(f"csmra guide {g['id']}: unknown node {g['node']!r}")
+
     unplaced = [i for i in docs if i not in placed]
     if verbose:
         print(f"navigator: {len(out)} rows · docs placed {len(placed)}/{len(docs)} · cited items {len(placed_ext)} · "
               f"placement {dict(stats)} · paths {len(paths)}")
         for w in warn: print("  warning:", w)
         for i in unplaced: print("  unplaced:", i)
-    return {"n": out, "paths": paths, "va": va}
+    return {"n": out, "paths": paths, "va": va, "csmra": cr}
 
 
 def changelog_html(path):

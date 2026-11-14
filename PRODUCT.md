@@ -37,6 +37,7 @@ Three things set it apart from ERA's website, EUR-Lex and Lovdata:
   - Explorer: a citation graph and lists for one document;
   - Graph: an overview of citations between library documents;
   - Standards register;
+  - CSM RA: process map of Regulation (EU) 402/2013 and a guided assessment that keeps an exportable decision record;
   - ERATV register, with public authorisation entries, searchable summary fields, filters and official record links;
   - Missing / external.
 - **Content:** EU acts (TSIs, CSMs, 2018/545, 2010/713, registers, the CRA), ERA guidance, ERTMS specification sets 1–4, Norwegian law and SJT guidance, ATC-2 STM specifications, and Bane NOR documents. Short names like "CCS TSI" and "Samtrafikkforskriften" are the shared vocabulary.
