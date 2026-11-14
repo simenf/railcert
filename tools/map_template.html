@@ -68,6 +68,37 @@ svg.has-sel .vn:not(.on){opacity:.32}svg.has-sel .ve:not(.on){opacity:.15}svg.ha
 .lane rect{fill:color-mix(in srgb,var(--mute) 5%,var(--panel))}.lane:nth-of-type(even) rect{fill:var(--panel)}.lane text{fill:var(--mute);font-size:12px;font-weight:600}
 .colh{fill:var(--mute);font-size:11px;letter-spacing:.4px;text-transform:uppercase}
 .vadet-k{font-size:12px;color:var(--mute);margin:0 0 2px;text-transform:none}
+/* CSM RA */
+.vabar select{width:auto;padding:5px 8px}.crrole,.crshow{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--mute);white-space:nowrap}.crmapt{display:contents}.crmapt[hidden]{display:none}
+.vn.k-lane rect{fill:color-mix(in srgb,var(--acc2) 6%,var(--panel));stroke-dasharray:2 3}.vn.k-group>rect{fill:color-mix(in srgb,var(--acc) 5%,var(--panel))}.vn.k-lane .ttl{font-size:12px}.vn.k-doc rect{fill:var(--chip);stroke:var(--ink)}
+svg.cr .vn.k-group .ttl{fill:var(--ink);font-weight:600;font-size:12px}
+svg.cr.has-role .vn.rdim{opacity:.42}svg.cr .vn.crp rect,svg.cr .vn.crp polygon{stroke:var(--acc);stroke-width:2}svg.cr .ve.crp path{stroke:var(--acc)}
+svg.cr.has-sel .ve.on path{marker-end:url(#cr-arr-on)}
+#crdet p{margin:0 0 9px;line-height:1.5;max-width:70ch}#crdet .refs,#crdet .xchips{display:flex;flex-wrap:wrap;gap:5px 6px;margin:2px 0 6px}#crdet .lst{margin:0;padding:0;list-style:none}#crdet .lst li{padding:3px 0;border-bottom:1px dashed var(--line);font-size:13px}#crdet .lst .rel{color:var(--mute);font-size:12px}
+.crrolebox{border-left:3px solid var(--acc);background:var(--sel);border-radius:0 7px 7px 0;padding:8px 11px;margin:8px 0 4px;line-height:1.5}.crrolebox b{display:block;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--acc);margin-bottom:2px}
+#crdet .crprac{border-left:2px solid var(--line);padding-left:10px;color:color-mix(in srgb,var(--ink) 82%,var(--mute))}.crnb{font-size:10.5px;letter-spacing:.3px;background:var(--chip);color:var(--acc2);border-radius:9px;padding:1px 7px;margin-left:4px;text-transform:none}
+.crex{margin:0}.crex dt{font-weight:600;font-size:13px;margin-top:9px}.crex dd{margin:2px 0 0;padding:0 0 8px;border-bottom:1px dashed var(--line);line-height:1.5;max-width:70ch}
+.cract{margin:6px 0 4px!important}.crfine{font-size:12px!important;color:var(--mute);margin-top:14px!important}
+.crbtn{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit;font-size:13px;padding:7px 13px;border-radius:7px;cursor:pointer}.crbtn:hover{border-color:var(--mute)}.crbtn.pri{background:var(--acc);border-color:var(--acc);color:var(--panel);font-weight:600}.crbtn.pri:hover{filter:brightness(1.08)}.crbtn.danger{color:var(--acc2)}
+.crguide{flex:1;min-height:0;display:grid;grid-template-columns:232px 1fr}.crguide[hidden],.vacanvas[hidden]{display:none}
+.crsteps{list-style:none;margin:0;padding:10px 8px;border-right:1px solid var(--line);overflow:auto}.crsteps button{display:flex;gap:9px;align-items:flex-start;width:100%;border:0;background:none;color:var(--ink);font:inherit;font-size:13px;text-align:left;padding:7px 8px;border-radius:7px;cursor:pointer;line-height:1.35}
+.crsteps button:hover{background:var(--chip)}.crsteps button.cur{background:var(--sel);font-weight:600}.crsteps button.skip{color:var(--mute)}.crsteps small{display:block;font-weight:400;font-size:11.5px;color:var(--mute)}
+.crn{flex:none;width:21px;height:21px;border-radius:50%;border:1.3px solid var(--mute);display:inline-flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--mute)}.crsteps .cur .crn{border-color:var(--acc);color:var(--acc)}.crsteps .done:not(.skip) .crn{background:var(--acc);border-color:var(--acc);color:var(--panel)}.crsteps .skip .crn{border-style:dashed}
+.crform{overflow:auto;padding:18px 24px 28px;min-width:0}.crform h2{margin:0 0 4px;font-size:19px}.crform>.meta{max-width:72ch;margin-bottom:14px}.crform>*{max-width:820px}
+.crf{display:block;border:0;padding:0;margin:0 0 15px;min-width:0}.crf>span,.crf>legend{display:block;font-weight:600;font-size:13px;margin-bottom:5px;padding:0}.crf small,.crc small{display:block;color:var(--mute);font-size:12px;margin-top:4px;line-height:1.4}
+.crform input[type=text],.crform textarea,.crform select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font:inherit}.crform textarea{resize:vertical;line-height:1.45;display:block}.crform select{width:auto}
+.cropts{display:flex;flex-wrap:wrap;gap:6px}.cropts label{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:7px;padding:6px 11px;cursor:pointer;background:var(--panel)}.cropts label:has(:checked){border-color:var(--acc);background:var(--sel);font-weight:600}
+.crchk label{display:flex;gap:9px;align-items:flex-start;padding:5px 0;border-bottom:1px dashed var(--line);cursor:pointer;line-height:1.4}.crchk input{margin-top:3px;flex:none}
+.crc{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:8px}.crch{display:flex;align-items:center;gap:10px;justify-content:space-between}.crc textarea{margin-top:7px}
+.crh{border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin-bottom:8px}.crhh{display:flex;gap:9px;align-items:center}.crhh b{flex:none;min-width:26px;color:var(--acc);font-variant-numeric:tabular-nums}.crhh .lk{font-size:12px;color:var(--mute);flex:none}
+.crhg{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:7px;margin-top:7px;align-items:center}.crhg select{width:100%}.crba{display:inline-flex;gap:7px;align-items:center;font-size:13px}
+.crban{border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:0 8px 8px 0;background:var(--sel);padding:10px 13px;margin:4px 0 14px;line-height:1.5}.crban.warn{border-left-color:var(--acc2);background:color-mix(in srgb,var(--acc2) 9%,var(--panel))}
+.crnav{display:flex;gap:8px;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}.crsaved{margin-left:auto;font-size:12px;color:var(--mute)}
+.crsum h4{font-size:13.5px;margin:18px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}.crsum h4 .lk{font-weight:400;font-size:12px;margin-left:6px}.crsum dl{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:5px 16px;margin:0}.crsum dt{color:var(--mute);font-size:12.5px}.crsum dd{margin:0;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere}.crsum dd div{white-space:normal;padding:1px 0}.crsum dd .n{color:var(--mute)}
+.crout{border:1px solid var(--line);border-radius:8px;padding:10px 13px;background:var(--chip)}.crout span{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--mute)}.cropen{margin:0;padding-left:18px;line-height:1.55}
+.crexp{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+@media(max-width:1100px){.crguide{grid-template-columns:1fr}.crsteps{display:flex;gap:2px;border-right:0;border-bottom:1px solid var(--line);padding:6px}.crsteps button span:last-child{display:none}.crsteps button{width:auto;padding:6px}.crsum dl{grid-template-columns:1fr}}
+@media print{header,footer,.vabar,.crsteps,.crnav,.crexp,#crdet,.crsum .lk{display:none!important}main{padding:0}.va,.crguide{display:block;height:auto}.vamain,.crform{border:0;overflow:visible}}
 #vadet p{margin:0 0 9px;line-height:1.5;max-width:70ch}#vadet .refs{display:flex;flex-wrap:wrap;gap:5px 6px;margin:2px 0 6px}#vadet .lst{margin:0;padding:0;list-style:none}#vadet .lst li{padding:3px 0;border-bottom:1px dashed var(--line);font-size:13px}#vadet .lst .rel{color:var(--mute);font-size:12px}
 #vadet .xchips{display:flex;flex-wrap:wrap;gap:5px 6px}
 /* reference lists */
@@ -149,7 +180,7 @@ footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}f
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-file" viewBox="0 0 16 16"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></symbol><symbol id="i-ext" viewBox="0 0 16 16"><path d="M9 2.5h4.5V7"/><path d="M13.5 2.5 7 9"/><path d="M11.5 9.5v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/></symbol><symbol id="i-chev" viewBox="0 0 16 16"><path d="M6 3.5 10.5 8 6 12.5"/></symbol><symbol id="i-swap" viewBox="0 0 16 16"><path d="M2.5 5.5h10M10 3l2.5 2.5L10 8"/><path d="M13.5 10.5h-10M6 8l-2.5 2.5L6 13"/></symbol></defs></svg>
 <header><h1>Railcert <span>· reference map of EU &amp; Norwegian railway regulation</span></h1>
-<nav role="tablist" aria-label="Views"><button role="tab" data-v="nav" class="on" aria-selected="true" aria-controls="v-nav">Navigator</button><button role="tab" data-v="va" aria-selected="false" aria-controls="v-va">Vehicle authorisation</button><button role="tab" data-v="eratv" aria-selected="false" aria-controls="v-eratv">ERATV register</button><button role="tab" data-v="ex" aria-selected="false" aria-controls="v-ex">Explorer</button><button role="tab" data-v="gr" aria-selected="false" aria-controls="v-gr">Graph</button><button role="tab" data-v="st" aria-selected="false" aria-controls="v-st">Standards register</button></nav>
+<nav role="tablist" aria-label="Views"><button role="tab" data-v="nav" class="on" aria-selected="true" aria-controls="v-nav">Navigator</button><button role="tab" data-v="va" aria-selected="false" aria-controls="v-va">Vehicle authorisation</button><button role="tab" data-v="cr" aria-selected="false" aria-controls="v-cr">CSM RA</button><button role="tab" data-v="eratv" aria-selected="false" aria-controls="v-eratv">ERATV register</button><button role="tab" data-v="ex" aria-selected="false" aria-controls="v-ex">Explorer</button><button role="tab" data-v="gr" aria-selected="false" aria-controls="v-gr">Graph</button><button role="tab" data-v="st" aria-selected="false" aria-controls="v-st">Standards register</button></nav>
 <div class="stats" id="stats"></div>
 <div class="theme" id="theme" role="group" aria-label="Colour theme"><button data-th="system">System</button><button data-th="light">Light</button><button data-th="dark">Dark</button></div></header>
 <main>
@@ -165,6 +196,14 @@ footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}f
   <span class="zoom" role="group" aria-label="Zoom"><button class="lk" data-z="-1" aria-label="Zoom out">−</button><button class="lk" data-z="0">Fit</button><button class="lk" data-z="1" aria-label="Zoom in">+</button></span></div>
   <div class="vacanvas" id="vacanvas"><div class="empty">Loading…</div></div></div>
  <aside class="detail" id="vadet" aria-live="polite"></aside>
+</div></section>
+<section class="view" id="v-cr" role="tabpanel" aria-label="CSM RA"><div class="va">
+ <div class="vamain"><div class="vabar"><div class="seg" id="crseg" role="group" aria-label="View"><button data-m="map" aria-pressed="true">Process map</button><button data-m="guide" aria-pressed="false">Guided assessment</button></div>
+  <label class="crrole">Role <select id="crrole"></select></label>
+  <span class="crmapt" id="crmapt"><label class="crshow"><input type="checkbox" id="crshow" checked> Mark my assessment</label>
+  <span class="zoom" id="crzoom" role="group" aria-label="Zoom"><button class="lk" data-z="-1" aria-label="Zoom out">−</button><button class="lk" data-z="0">Fit</button><button class="lk" data-z="1" aria-label="Zoom in">+</button></span></span></div>
+  <div class="vacanvas" id="crcanvas"><div class="empty">Loading…</div></div><div class="crguide" id="crguide" hidden></div></div>
+ <aside class="detail" id="crdet" aria-live="polite"></aside>
 </div></section>
 <section class="view" id="v-eratv" role="tabpanel" aria-label="ERATV register">
  <div class="bar"><input type="search" id="eratv-q" aria-label="Search ERATV records" placeholder="Search type ID, name, authorisation reference…"><select id="eratv-country" aria-label="Filter by authorised area"><option value="">All areas of use</option></select><select id="eratv-status" aria-label="Filter by authorisation status"><option value="">All statuses</option></select><span class="note" id="eratv-count"></span></div>
@@ -213,7 +252,7 @@ const PAL=['#1f5f99','#d1495b','#4d9a3e','#8a5cc2','#e08a1e','#1aa3a3','#c2185b'
 const folders=[...new Set(D.docs.map(d=>folderTop(d.f)))].sort(); const fcol=f=>PAL[folders.indexOf(f)%PAL.length];
 const TCOL={'EU act':'#1f5f99','Norwegian law/regulation':'#c2185b','ERA document':'#8a5cc2','ERTMS subset':'#1aa3a3','ETSI spec':'#e08a1e','Standard':'#5c6b7a','UIC leaflet':'#b0702a'};
 // tabs
-document.querySelectorAll('header nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('header nav button').forEach(x=>{x.classList.toggle('on',x===b); x.setAttribute('aria-selected',x===b);});document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph(); if(b.dataset.v==='va')initVA(); if(b.dataset.v==='eratv')initEratv();
+document.querySelectorAll('header nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('header nav button').forEach(x=>{x.classList.toggle('on',x===b); x.setAttribute('aria-selected',x===b);});document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph(); if(b.dataset.v==='va')initVA(); if(b.dataset.v==='cr')initCR(); if(b.dataset.v==='eratv')initEratv();
   const det=document.getElementById('detail'); if(b.dataset.v==='nav'){document.getElementById('nvgrid').appendChild(det); if(selId) navAfter(selId);} if(b.dataset.v==='ex'){ document.getElementById('exgrid').appendChild(det); if(!selId) det.innerHTML=EMPTY.ex; } if(b.dataset.v==='nav'&&!selId) det.innerHTML=EMPTY[nRoot]; if(b.dataset.v==='nav'||b.dataset.v==='ex'){ const eg=document.getElementById('egod'); if(eg) eg.open=egoOpt.show[b.dataset.v]; if(selId) drawEgo(selId); }});
 function show(tab){document.querySelector(`header nav button[data-v=${tab}]`).click();}
 // node resolution: a cited item that is a library file is shown as that file
@@ -650,6 +689,192 @@ document.getElementById('vaseg').onclick=e=>{ const b=e.target.closest('button')
 document.querySelector('.zoom').onclick=e=>{ const b=e.target.closest('[data-z]'); if(!b) return; const z=+b.dataset.z; vaZoom=z===0?0:vaZoom+z; vaSize(); };
 window.addEventListener('resize',()=>{ if(document.getElementById('v-va').classList.contains('on')) vaSize(); });
 let vaReady=false; function initVA(){ if(!vaReady){ vaReady=true; vaRender(); vaDetail(); } else vaSize(); }
+// ---------- CSM RA: process map of Regulation (EU) 402/2013 + guided assessment ----------
+const CR=D.nav.csmra, crCanvas=document.getElementById('crcanvas'), crDet=document.getElementById('crdet'), crGuide=document.getElementById('crguide');
+const CN=new Map(CR.nodes.map(n=>[n.id,n])), CRKEY='railcert-csmra-v1';
+const crStepOf=new Map(); CR.guide.forEach((g,i)=>[g.node,...(g.also||[])].forEach(id=>{ if(!crStepOf.has(id)) crStepOf.set(id,i); }));
+let crMode='map', crSel=null, crZoom=0, crRole='', crStep=0, crShow=true, crRec=crLoad();
+try{ const r=localStorage.getItem('railcert-csmra-role'); if(CR.roles.some(x=>x[0]===r)) crRole=r; }catch(e){}
+function crBlank(){ return {v:1,f:{},crit:{},haz:[]}; }
+function crLoad(){ try{ const r=JSON.parse(localStorage.getItem(CRKEY)); if(r&&r.v===1&&r.f&&Array.isArray(r.haz)){ r.crit=r.crit||{}; return r; } }catch(e){} return crBlank(); }
+function crSave(){ crRec.updated=new Date().toISOString(); try{ localStorage.setItem(CRKEY,JSON.stringify(crRec)); }catch(e){} }
+const crEmpty=()=>!Object.values(crRec.f).some(v=>Array.isArray(v)?v.length:v)&&!crRec.haz.length&&!Object.keys(crRec.crit).length;
+// --- where the record stands: which steps are needed, and which boxes of the map it has reached
+function crFlow(){ const f=crRec.f, trig=(f.trig||[]).length>0; let end=null;
+  if(!trig){ if(f.type==='organisational'&&f.orgimp==='no') end='noorg'; else if(f.safety==='no') end='nosafe'; else if(f.safety==='yes'&&f.sig==='no') end='notsig'; }
+  const need=new Set(end==='noorg'?[0,7]:end==='nosafe'?[0,1,7]:end==='notsig'?[0,1,2,7]:f.safety==='no'?[0,1,3,4,5,6,7]:[0,1,2,3,4,5,6,7]);
+  return {end,trig,need}; }
+const crHas=id=>{ const v=crRec.f[id]; return Array.isArray(v)?v.length>0:!!(v&&(''+v).trim()); };
+const crDone=i=>{ const g=CR.guide[i]; return g.req.length>0&&g.req.every(k=>k==='haz'?crRec.haz.some(h=>h.d):crHas(k)); };
+function crPath(){ const f=crRec.f, s=new Set(), trig=f.trig||[], a=f.acc||[]; if(crEmpty()) return s; s.add('chg'); if(crHas('desc')||f.safety) s.add('prelim');
+  if(trig.includes('va')) s.add('t_va'); if(trig.includes('tsi')) s.add('t_tsi');
+  if(f.safety){ s.add('q_safety'); if(f.safety==='no') s.add('o_nosafe'); else if(f.sig){ s.add('q_sig'); if(f.sig==='no') s.add('o_notsig'); } }
+  if(!((f.safety==='yes'&&f.sig==='yes')||trig.length)) return s;
+  if(crHas('asbo_st')||crHas('org')){ s.add('plan'); if(f.asbo_st&&f.asbo_st!=='none'){ s.add('asbo'); s.add('a_appoint'); } }
+  if(crHas('sd_ref')||crHas('sd')) s.add('sysdef');
+  const H=crRec.haz.filter(h=>h.d); if(H.length){ ['hazid','hr','q_ba'].forEach(x=>s.add(x)); if(H.some(h=>!h.ba)) s.add('sel'); H.forEach(h=>{ if(!h.ba&&h.p) s.add(h.p); }); if(H.some(h=>!h.ba&&h.m)){ s.add('q_acc'); s.add('sreq'); } }
+  if(a.includes('demo')) s.add('demo'); if(a.includes('sar')) s.add('sar'); if(a.includes('resp')) s.add('acc'); if(a.includes('decl')) s.add('decl'); if(a.includes('hand')) s.add('u_sms');
+  return s; }
+// --- map
+function crRoute(a,b,rt){
+  if(rt==='lane'){ const r=b.x>a.x, x1=a.x+(r?1:-1)*a.w/2, x2=b.x-(r?1:-1)*b.w/2; return {d:`M${x1} ${a.y}H${x2}`,lx:(x1+x2)/2,ly:a.y-6,la:'middle'}; }
+  if(rt==='elbow'){ const y1=a.y+a.h/2, x2=b.x-(b.x>a.x?1:-1)*b.w/2; return {d:`M${a.x} ${y1}V${b.y}H${x2}`,lx:a.x+6,ly:(y1+b.y)/2,la:'start'}; }
+  const x1=a.x+(rt>a.x?1:-1)*a.w/2, x2=b.x+(rt>b.x?1:-1)*b.w/2; return {d:`M${x1} ${a.y}H${rt}V${b.y}H${x2}`,lx:(x1+rt)/2,ly:a.y-6,la:'middle'};
+}
+const CRARROW='<defs><marker id="cr-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 1L9 5L0 9z"/></marker><marker id="cr-arr-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah on" d="M0 1L9 5L0 9z"/></marker></defs>';
+function crSvg(){
+  const path=crShow?crPath():new Set(); let e='', n='', back='';
+  for(const [f,to,lab,st,rt] of CR.edges){ const a=CN.get(f), b=CN.get(to), r=rt==null?anchors(a,b):crRoute(a,b,rt);
+    e+=`<g class="ve${st==='dash'?' dash':''}${st==='yes'?' yes':''}${path.has(f)&&path.has(to)?' crp':''}" data-a="${f}" data-b="${to}"><path d="${r.d}" marker-end="url(#cr-arr)"/>${lab?`<text x="${r.lx}" y="${r.ly}" text-anchor="${r.la}">${esc(lab)}</text>`:''}</g>`; }
+  for(const nd of CR.nodes){ const b=nd, x0=b.x-b.w/2, y0=b.y-b.h/2, k=nd.kind; let shape, body='';
+    if(k==='decision') shape=`<polygon points="${b.x},${y0} ${b.x+b.w/2},${b.y} ${b.x},${y0+b.h} ${x0},${b.y}"/>`;
+    else shape=`<rect x="${x0}" y="${y0}" width="${b.w}" height="${b.h}" rx="${k==='start'?b.h/2:k==='doc'?2:8}"/>`;
+    if(k==='stage') body=`<text x="${x0+14}" y="${y0+22}" class="ttl">${esc(nd.t)}</text>`+(nd.sub||[]).map((s,i)=>`<text x="${x0+14}" y="${y0+42+i*17}" class="sub">· ${esc(s)}</text>`).join('');
+    else if(k==='group'||k==='lane'){ const L=wrapText(nd.t,Math.floor((b.w-16)/6.6)); body=tsp(L,b.x,y0+20,15,'ttl')+(nd.sub||[]).map((s,i)=>`<text x="${x0+14}" y="${y0+34+L.length*15+i*17}" class="sub">· ${esc(s)}</text>`).join(''); }
+    else { const max=Math.floor((k==='decision'?b.w*0.62:b.w-22)/6.7), L=wrapText(nd.t,max), lh=15; body=tsp(L,b.x,b.y-(L.length-1)*lh/2+4,lh,k==='start'||k==='doc'?'ttl':''); }
+    const g=`<g class="vn k-${k}${crRole&&!(nd.r&&nd.r[crRole])?' rdim':''}${path.has(nd.id)?' crp':''}" data-id="${nd.id}" tabindex="0" role="button" aria-label="${esc(nd.t)}">${shape}${body}</g>`;
+    if(k==='group'||k==='lane') back+=g; else n+=g; }
+  return `<svg class="proc cr" viewBox="0 0 ${CR.w} ${CR.h}" data-w="${CR.w}" role="group" aria-label="CSM RA risk management process">${CRARROW}${back}${e}${n}</svg>`;
+}
+function crSize(){ const svg=crCanvas.querySelector('svg'); if(!svg) return; const nat=+svg.dataset.w, avail=crCanvas.clientWidth-16;
+  const fit=Math.max(Math.min(1,avail/nat),0.72), k=crZoom===0?fit:Math.max(0.5,Math.min(2,fit*Math.pow(1.2,crZoom))); svg.style.width=Math.round(nat*k)+'px'; }
+function crHighlight(){ const svg=crCanvas.querySelector('svg'); if(!svg) return; const id=crSel;
+  svg.classList.toggle('has-sel',!!id); svg.querySelectorAll('.vn').forEach(g=>g.classList.remove('on','sel')); svg.querySelectorAll('.ve').forEach(g=>g.classList.remove('on'));
+  if(!id) return; const on=new Set([id]), me=CN.get(id);
+  svg.querySelectorAll('.ve').forEach(g=>{ if(g.dataset.a===id||g.dataset.b===id){ g.classList.add('on'); on.add(g.dataset.a); on.add(g.dataset.b); } });
+  if(me.g) on.add(me.g); if(me.kind==='group') CR.nodes.filter(n=>n.g===id).forEach(n=>on.add(n.id));
+  svg.querySelectorAll('.vn').forEach(g=>{ if(on.has(g.dataset.id)) g.classList.add('on'); if(g.dataset.id===id) g.classList.add('sel'); });
+}
+// --- detail panel
+const crKind={start:'Start',step:'Step',decision:'Decision',outcome:'Outcome',stage:'Phase',note:'Other route into the process',lane:'Runs alongside the whole process',group:'Runs alongside the whole process',doc:'Document'};
+const crRoleName=r=>(CR.roles.find(x=>x[0]===r)||['',''])[1];
+function crNodeHtml(n,guide){
+  const ps=(h,a,cls)=>a&&a.length?`<h3>${h}</h3>`+a.map(p=>`<p${cls?` class="${cls}"`:''}>${esc(p)}</p>`).join(''):'';
+  const outs=CR.edges.filter(e=>e[0]===n.id), ins=CR.edges.filter(e=>e[1]===n.id), st=crStepOf.get(n.id);
+  const rel=(e,dir)=>`<li><button class="lk" data-cid="${dir>0?e[1]:e[0]}">${esc(CN.get(dir>0?e[1]:e[0]).t)}</button>${e[2]?` <span class="rel">– ${esc(e[2])}</span>`:''}</li>`;
+  return `<div class="vadet-k">${guide?'Guidance for this step':esc(crKind[n.kind]||'')}</div><h2>${esc(n.t)}</h2>`
+    +(guide?`<p class="cract"><button class="lk" data-cmap="${n.id}">Show on the map</button></p>`:st!=null?`<p class="cract"><button class="lk" data-cstep="${st}">Open in the guided assessment · step ${st+1}</button></p>`:'')
+    +(crRole&&n.r&&n.r[crRole]?`<div class="crrolebox"><b>${esc(crRoleName(crRole))}</b>${esc(n.r[crRole])}</div>`:'')
+    +ps('What the Regulation requires',n.law)+(n.ex&&n.ex.length?`<h3>Where this applies</h3><dl class="crex">${n.ex.map(([w,x])=>`<dt>${esc(w)}</dt><dd>${esc(x)}</dd>`).join('')}</dl>`:'')+ps('ERA guidance',n.era)
+    +(n.prac&&n.prac.length?`<h3>Practice notes <span class="crnb">not binding</span></h3>`+n.prac.map(p=>`<p class="crprac">${esc(p)}</p>`).join(''):'')
+    +(n.ev&&n.ev.length?`<h3>Evidence this step leaves</h3><ul class="lst">${n.ev.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'')
+    +(n.cen?`<h3>In EN 50126 / EN 50129 terms</h3><p>${esc(n.cen)}</p>`:'')
+    +(n.refs&&n.refs.length?`<h3>Legal basis and documents</h3><div class="refs">${n.refs.map(docChip).join('')}</div>`:'')
+    +(n.va&&n.va.length?`<h3>In the Vehicle authorisation tab</h3><div class="xchips">${n.va.map(([m,id])=>vaChip(m,id)).join('')}</div>`:'')
+    +(guide?'':(ins.length?`<h3>Comes from</h3><ul class="lst">${ins.map(e=>rel(e,-1)).join('')}</ul>`:'')+(outs.length?`<h3>Leads to</h3><ul class="lst">${outs.map(e=>rel(e,1)).join('')}</ul>`:''));
+}
+function crDetail(){
+  if(crMode==='guide'){ crDet.innerHTML=crNodeHtml(CN.get(CR.guide[crStep].node),true); crDet.scrollTop=0; return; }
+  if(crSel){ crDet.innerHTML=crNodeHtml(CN.get(crSel)); crDet.scrollTop=0; return; }
+  crDet.innerHTML=`<div class="kick">CSM RA · Regulation (EU) 402/2013 as amended by (EU) 2015/1136</div><h2>Risk evaluation and assessment, step by step</h2>
+    <p class="meta">The map follows the Appendix figure of Annex I: the significance test, system definition, hazard identification, the three risk acceptance principles, safety requirements and the demonstration of compliance. The hazard record runs alongside on the left, the assessment body's independent assessment on the right.</p>
+    <p class="meta">Pick any box for what the Regulation requires, what ERA guidance adds, practice notes, the evidence to keep and links to the documents. <b>Role</b> puts forward what matters to you. <b>Guided assessment</b> takes one change through the process and keeps a decision record you can export.</p>
+    <p class="cract"><button class="crbtn pri" data-cstep="${crEmpty()?0:crStep}">${crEmpty()?'Start a guided assessment':'Continue the guided assessment'}</button></p>
+    <h3>Start with</h3><div class="refs">${CR.home.map(docChip).join('')}</div>
+    <h3>Reading the map</h3><ul class="lst"><li>Diamonds are decisions the proposer takes and documents.</li><li>Dashed arrows are records, loops and optional routes.</li><li>Boxes with an accent outline are where your saved assessment has been.</li></ul>
+    <p class="meta crfine">An aid to applying the Regulation, not a substitute for it. Practice notes are the compilers' reading and are not binding. Check the official text before relying on a requirement.</p>`;
+}
+function crPick(id,focus){ if(crMode!=='map') crSetMode('map'); crSel=id; crHighlight(); crDetail();
+  const g=crCanvas.querySelector(`.vn[data-id="${id}"]`); if(g){ if(focus) g.focus({preventScroll:true}); const r=g.getBoundingClientRect(), c=crCanvas.getBoundingClientRect(); if(r.top<c.top||r.bottom>c.bottom||r.left<c.left||r.right>c.right) g.scrollIntoView({block:'center',inline:'center'}); } }
+function crRender(){ crCanvas.innerHTML=crSvg(); crCanvas.querySelector('svg').classList.toggle('has-role',!!crRole); crSize(); crHighlight(); }
+function crSetMode(m){ crMode=m; document.querySelectorAll('#crseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===m));
+  crCanvas.hidden=m!=='map'; crGuide.hidden=m!=='guide'; document.getElementById('crmapt').hidden=m!=='map';
+  if(m==='map') crRender(); else crGuideRender(); crDetail(); }
+// --- guided assessment
+const crA=(s,k)=>`data-k="${k}"${s}`;
+function crField(fd){ const f=crRec.f, v=f[fd.id], help=fd.h?`<small>${esc(fd.h)}</small>`:'';
+  if(fd.show&&f[fd.show[0]]!==fd.show[1]) return '';
+  if(fd.k==='text') return `<label class="crf"><span>${esc(fd.l)}</span><input type="text" ${crA('',fd.id)} data-f="${fd.id}" value="${esc(v||'')}">${help}</label>`;
+  if(fd.k==='area') return `<label class="crf"><span>${esc(fd.l)}</span><textarea rows="4" ${crA('',fd.id)} data-f="${fd.id}">${esc(v||'')}</textarea>${help}</label>`;
+  if(fd.k==='choice') return `<fieldset class="crf"><legend>${esc(fd.l)}</legend><div class="cropts">${fd.opts.map(([k,l])=>`<label><input type="radio" name="cr-${fd.id}" ${crA('',fd.id+':'+k)} data-f="${fd.id}" value="${k}"${v===k?' checked':''}>${esc(l)}</label>`).join('')}</div>${help}</fieldset>`;
+  if(fd.k==='checks') return `<fieldset class="crf"><legend>${esc(fd.l)}</legend><div class="crchk">${fd.items.map(([k,l])=>`<label><input type="checkbox" ${crA('',fd.id+':'+k)} data-c="${fd.id}" value="${k}"${(v||[]).includes(k)?' checked':''}><span>${esc(l)}</span></label>`).join('')}</div>${help}</fieldset>`;
+  if(fd.k==='criteria') return `<div class="crcrit">${CR.criteria.map(([k,t,d])=>{ const c=crRec.crit[k]||{}; return `<div class="crc"><div class="crch"><b>(${k}) ${esc(t)}</b><select ${crA('',`crit:${k}:l`)} data-crit="${k}" data-p="l" aria-label="Level of concern, ${esc(t)}">${[['','Concern…'],['low','Low'],['medium','Medium'],['high','High']].map(([x,l])=>`<option value="${x}"${(c.l||'')===x?' selected':''}>${l}</option>`).join('')}</select></div><small>${esc(d)}</small><textarea rows="2" ${crA('',`crit:${k}:n`)} data-crit="${k}" data-p="n" aria-label="Assessment, ${esc(t)}" placeholder="Your assessment">${esc(c.n||'')}</textarea></div>`; }).join('')}</div>`;
+  if(fd.k==='hazards'){ const P=[['','Principle…'],['cop','Codes of practice'],['ref','Reference system'],['ere','Explicit risk estimation']], S=[['open','Open'],['controlled','Controlled'],['transferred','Transferred and accepted']];
+    const sel=(i,p,o,v,lab,dis)=>`<select ${crA('',`haz:${i}:${p}`)} data-h="${i}" data-p="${p}" aria-label="${lab}"${dis?' disabled':''}>${o.map(([x,l])=>`<option value="${x}"${(v||o[0][0])===x?' selected':''}>${l}</option>`).join('')}</select>`;
+    const inp=(i,p,v,lab,dis)=>`<input type="text" ${crA('',`haz:${i}:${p}`)} data-h="${i}" data-p="${p}" value="${esc(v||'')}" aria-label="${lab}" placeholder="${lab}"${dis?' disabled':''}>`;
+    return `<div class="crhaz">${crRec.haz.map((h,i)=>`<div class="crh"><div class="crhh"><b>H${i+1}</b>${inp(i,'d',h.d,'Hazard')}<button class="lk" data-hdel="${i}" aria-label="Remove hazard H${i+1}">Remove</button></div>
+      <div class="crhg"><label class="crba"><input type="checkbox" ${crA('',`haz:${i}:ba`)} data-h="${i}" data-p="ba"${h.ba?' checked':''}>Broadly acceptable</label>${h.ba?inp(i,'j',h.j,'Justification (Annex I 2.2.2)'):sel(i,'p',P,h.p,'Risk acceptance principle')+inp(i,'m',h.m,'Safety measure / requirement')}${inp(i,'a',h.a,'Actor in charge')}${sel(i,'s',S,h.s,'Status')}</div></div>`).join('')}
+      <button class="crbtn" data-hadd="1">Add a hazard</button></div>`; }
+  return '';
+}
+function crBanner(i){ const {end,trig}=crFlow(), f=crRec.f, B=(t,cls)=>`<div class="crban${cls?' '+cls:''}">${t}${end?` <button class="lk" data-cstep="7">Go to the decision record</button>`:''}</div>`;
+  if(i===0&&end==='noorg') return B('<b>Outside Art. 4.</b> An organisational change that cannot affect operational or maintenance processes is not considered under the Regulation (Art. 2(1)). Keep this record.');
+  if(i===1&&end==='nosafe') return B('<b>No impact on safety.</b> The risk management process need not be applied (Art. 4(1)). Keep the reasons (Art. 4(3)).');
+  if(i===1&&f.safety==='no'&&trig) return B('The risk management process still applies for the scope the vehicle authorisation or the TSI requires. Continue with step 4.','warn');
+  if(i===1&&f.nnr==='yes') return B('A notified national rule defines significance here. Apply it, and record its result in the next step.','warn');
+  if(i===2&&end==='notsig') return B('<b>Not significant.</b> Keeping adequate documentation of the decision is sufficient (Art. 2(2)(b)). Manage the change under your safety management system.');
+  if(i===2&&f.sig==='no'&&trig) return B('The risk management process still applies for the scope the vehicle authorisation or the TSI requires. Continue with the next step.','warn');
+  if(i===3&&f.mr==='yes'&&f.asbo_st==='rel') return B('An assessment under the relaxed criteria of Art. 12 is not mutually recognised. Use an accredited or recognised assessment body.','warn');
+  if(i===5){ const o=crRec.haz.filter(h=>h.d&&!h.ba&&!h.p).length, j=crRec.haz.filter(h=>h.d&&h.ba&&!h.j).length; if(o||j) return B(`${o?`${o} hazard${o>1?'s':''} without a risk acceptance principle. `:''}${j?`${j} broadly acceptable hazard${j>1?'s':''} without a justification (Annex I 2.2.2).`:''}`,'warn'); }
+  return ''; }
+const crVal=(fd)=>{ const v=crRec.f[fd.id]; if(fd.k==='choice') return (fd.opts.find(o=>o[0]===v)||['',''])[1]; return v||''; };
+function crRecordHtml(){ const {end,need}=crFlow(), f=crRec.f; let h='';
+  const out={noorg:'Outside Art. 4 – organisational change with no effect on operational or maintenance processes',nosafe:'No impact on safety – Annex I not applied (Art. 4(1))',notsig:'Not significant – decision documented (Art. 2(2)(b))'}[end]||(f.sig==='yes'?'Significant – risk management process of Annex I applied':(f.trig||[]).length?'Risk management process applied for the vehicle authorisation / TSI scope':'In progress');
+  const open=[]; CR.guide.forEach((g,i)=>{ if(i<7&&need.has(i)){ if(!crDone(i)) open.push(`Step ${i+1} · ${g.t}: not complete`); g.fields.filter(x=>x.k==='checks'&&x.id!=='trig').forEach(x=>x.items.forEach(([k,l])=>{ if(!(f[x.id]||[]).includes(k)) open.push(l); })); } });
+  h+=`<div class="crsum"><div class="crout"><span>Outcome</span><b>${esc(out)}</b></div>`;
+  CR.guide.forEach((g,i)=>{ if(i===7||!need.has(i)) return; h+=`<h4>${i+1} · ${esc(g.t)} <button class="lk" data-cstep="${i}">edit</button></h4><dl>`;
+    for(const fd of g.fields){ if(fd.show&&f[fd.show[0]]!==fd.show[1]) continue;
+      if(fd.k==='checks'){ const on=fd.items.filter(([k])=>(f[fd.id]||[]).includes(k)); if(fd.id==='trig'&&!on.length) continue; h+=`<dt>${esc(fd.l)}</dt><dd>${fd.items.map(([k,l])=>`<div class="${(f[fd.id]||[]).includes(k)?'y':'n'}">${(f[fd.id]||[]).includes(k)?'✓':'–'} ${esc(l)}</div>`).join('')}</dd>`; }
+      else if(fd.k==='criteria') h+=`<dt>Art. 4(2) criteria</dt><dd>${CR.criteria.map(([k,t])=>{ const c=crRec.crit[k]||{}; return `<div><b>(${k}) ${esc(t)}</b>${c.l?` · ${c.l} concern`:''}${c.n?` – ${esc(c.n)}`:''}${!c.l&&!c.n?' – <i>not assessed</i>':''}</div>`; }).join('')}</dd>`;
+      else if(fd.k==='hazards') h+=`<dt>Hazards</dt><dd>${crRec.haz.filter(x=>x.d).map((x,j)=>`<div><b>H${j+1}</b> ${esc(x.d)} – ${x.ba?'broadly acceptable'+(x.j?`: ${esc(x.j)}`:''):esc(({cop:'codes of practice',ref:'reference system',ere:'explicit risk estimation'})[x.p]||'no principle yet')+(x.m?`; ${esc(x.m)}`:'')}${x.a?` · ${esc(x.a)}`:''} · ${esc(({controlled:'controlled',transferred:'transferred and accepted'})[x.s]||'open')}</div>`).join('')||'<i>none listed</i>'}</dd>`;
+      else h+=`<dt>${esc(fd.l)}</dt><dd>${esc(crVal(fd))||'<i>–</i>'}</dd>`; }
+    h+='</dl>'; });
+  h+=open.length?`<h4>Still open (${open.length})</h4><ul class="cropen">${open.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>`:'<h4>Nothing open in this record</h4>';
+  return h+`</div><div class="crexp"><button class="crbtn pri" data-cexp="md">Download the record (Markdown)</button><button class="crbtn" data-cexp="json">Save as file (JSON)</button><label class="crbtn">Open a saved file<input type="file" id="crimp" accept="application/json,.json" hidden></label><button class="crbtn" data-cexp="print">Print</button><button class="crbtn danger" data-cexp="reset">Start a new assessment</button></div>
+  <p class="crfine">A working record of the proposer's decisions. It does not replace the hazard record, the safety assessment report or the declaration under Art. 16.</p>`; }
+function crGuideRender(keep){ const {need}=crFlow(), g=CR.guide[crStep], foc=keep&&document.activeElement&&document.activeElement.dataset?document.activeElement.dataset.k:null, sc=crGuide.querySelector('.crform'), top=keep&&sc?sc.scrollTop:0;
+  const nxt=[...need].filter(i=>i>crStep).sort((a,b)=>a-b)[0], prv=[...need].filter(i=>i<crStep).sort((a,b)=>b-a)[0];
+  crGuide.innerHTML=`<ol class="crsteps" aria-label="Steps">${CR.guide.map((s,i)=>`<li><button data-cstep="${i}" class="${i===crStep?'cur':''}${need.has(i)?'':' skip'}${crDone(i)?' done':''}"${i===crStep?' aria-current="step"':''}><span class="crn">${crDone(i)&&need.has(i)?'✓':i+1}</span><span>${esc(s.t)}${need.has(i)?'':'<small>not required</small>'}</span></button></li>`).join('')}</ol>
+   <div class="crform"><div class="kick">Step ${crStep+1} of ${CR.guide.length}${crRec.f.title?` · ${esc(crRec.f.title)}`:''}</div><h2>${esc(g.t)}</h2><p class="meta">${esc(g.intro)}</p>
+   ${need.has(crStep)?'':'<div class="crban">Not required for this change with the answers given so far. You can still fill it in if you apply the process voluntarily.</div>'}
+   ${g.id==='record'?crRecordHtml():g.fields.map(crField).join('')}${crBanner(crStep)}
+   <div class="crnav">${prv!=null?`<button class="crbtn" data-cstep="${prv}">Back</button>`:''}${nxt!=null?`<button class="crbtn pri" data-cstep="${nxt}">Next · ${esc(CR.guide[nxt].t)}</button>`:''}<span class="crsaved">${crRec.updated?'Saved in this browser':''}</span></div></div>`;
+  if(foc){ const el=crGuide.querySelector(`[data-k="${foc}"]`); if(el) el.focus({preventScroll:true}); } const s2=crGuide.querySelector('.crform'); if(s2) s2.scrollTop=top; }
+function crGo(i){ crStep=Math.max(0,Math.min(CR.guide.length-1,+i)); if(crMode!=='guide') crSetMode('guide'); else { crGuideRender(); crDetail(); } }
+function crStore(t){ const d=t.dataset;
+  if(d.f) crRec.f[d.f]=t.value;
+  else if(d.c){ const a=new Set(crRec.f[d.c]||[]); t.checked?a.add(t.value):a.delete(t.value); crRec.f[d.c]=[...a]; }
+  else if(d.crit){ (crRec.crit[d.crit]=crRec.crit[d.crit]||{})[d.p]=t.value; }
+  else if(d.h!=null&&d.p){ const h=crRec.haz[+d.h]; if(h) h[d.p]=t.type==='checkbox'?t.checked:t.value; }
+  else return false; crSave(); return true; }
+crGuide.addEventListener('input',e=>{ const t=e.target; if(t.matches('input[type=text],textarea')&&crStore(t)){ const s=crGuide.querySelector('.crsaved'); if(s) s.textContent='Saved in this browser'; } });
+crGuide.addEventListener('change',e=>{ const t=e.target; if(t.id==='crimp'){ const file=t.files[0]; if(!file) return; file.text().then(x=>{ try{ const r=JSON.parse(x); if(!(r&&r.v===1&&r.f&&Array.isArray(r.haz))) throw 0; r.crit=r.crit||{}; if(!crEmpty()&&!confirm('Replace the assessment saved in this browser with the one in the file?')) return; crRec=r; crSave(); crGo(7); }catch(err){ alert('That file is not a Railcert CSM RA record.'); } }); return; }
+  if(crStore(t)) crGuideRender(true); });
+function crDownload(name,type,text){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type})); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); }
+function crMd(){ const {end,need}=crFlow(), f=crRec.f, L=[], t=s=>(s||'').toString().replace(/\s*\n\s*/g,' ').replace(/\|/g,'/');
+  L.push(`# CSM RA decision record – ${f.title||'untitled change'}`,'',`Regulation (EU) No 402/2013 as amended by Implementing Regulation (EU) 2015/1136`,`Last updated: ${(crRec.updated||new Date().toISOString()).slice(0,10)}`,'');
+  CR.guide.forEach((g,i)=>{ if(i===7||!need.has(i)) return; L.push(`## ${i+1}. ${g.t}`,'');
+    for(const fd of g.fields){ if(fd.show&&f[fd.show[0]]!==fd.show[1]) continue;
+      if(fd.k==='checks'){ if(fd.id==='trig'&&!(f.trig||[]).length) continue; L.push(`**${fd.l}**`,'',...fd.items.map(([k,l])=>`- [${(f[fd.id]||[]).includes(k)?'x':' '}] ${l}`),''); }
+      else if(fd.k==='criteria'){ L.push('| Art. 4(2) criterion | Concern | Assessment |','|---|---|---|',...CR.criteria.map(([k,n])=>{ const c=crRec.crit[k]||{}; return `| (${k}) ${n} | ${c.l||'–'} | ${t(c.n)||'–'} |`; }),''); }
+      else if(fd.k==='hazards'){ L.push('| ID | Hazard | Risk acceptance | Safety measure / requirement or justification | Actor in charge | Status |','|---|---|---|---|---|---|',...crRec.haz.filter(h=>h.d).map((h,j)=>`| H${j+1} | ${t(h.d)} | ${h.ba?'Broadly acceptable':({cop:'Codes of practice',ref:'Reference system',ere:'Explicit risk estimation'})[h.p]||'–'} | ${t(h.ba?h.j:h.m)||'–'} | ${t(h.a)||'–'} | ${({controlled:'Controlled',transferred:'Transferred and accepted'})[h.s]||'Open'} |`),''); }
+      else L.push(`**${fd.l}${/\?$/.test(fd.l)?'':':'}** ${fd.k==='area'?'\n\n'+(f[fd.id]||'–'):crVal(fd)||'–'}`,''); } });
+  const out={noorg:'Outside Art. 4: organisational change with no effect on operational or maintenance processes (Art. 2(1)).',nosafe:'No impact on safety; the risk management process is not applied (Art. 4(1)).',notsig:'Not significant; the decision is documented (Art. 2(2)(b)).'}[end];
+  if(out) L.push('## Outcome','',out,'');
+  L.push('---','Working record made with the Railcert reference map. It does not replace the hazard record, the safety assessment report or the declaration under Art. 16. Verify requirements against the official text.');
+  return L.join('\n'); }
+function crClick(e){ const b=e.target.closest('[data-cstep],[data-cmap],[data-cid],[data-vid],[data-doc],[data-hadd],[data-hdel],[data-cexp]'); if(!b) return false; const d=b.dataset;
+  if(d.cstep!=null) crGo(d.cstep);
+  else if(d.cmap){ crPick(d.cmap,true); }
+  else if(d.cid) crPick(d.cid,true);
+  else if(d.vid){ show('va'); vaPick(d.vm,d.vid,true); }
+  else if(d.doc){ show('nav'); nSel=-1; select(d.doc,true); }
+  else if(d.hadd){ crRec.haz.push({d:'',s:'open'}); crSave(); crGuideRender(true); const el=crGuide.querySelector(`[data-k="haz:${crRec.haz.length-1}:d"]`); if(el) el.focus(); }
+  else if(d.hdel!=null){ const h=crRec.haz[+d.hdel]; if(!h.d||confirm(`Remove hazard H${+d.hdel+1}?`)){ crRec.haz.splice(+d.hdel,1); crSave(); crGuideRender(true); } }
+  else if(d.cexp==='md'||d.cexp==='json'){ const slug=(crRec.f.title||'change').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'change'; d.cexp==='md'?crDownload(`csm-ra-record-${slug}.md`,'text/markdown',crMd()):crDownload(`csm-ra-record-${slug}.json`,'application/json',JSON.stringify(crRec,null,1)); }
+  else if(d.cexp==='print') window.print();
+  else if(d.cexp==='reset'){ if(crEmpty()||confirm('Start a new assessment? The one saved in this browser will be removed. Download it first if you need it.')){ crRec=crBlank(); try{ localStorage.removeItem(CRKEY); }catch(err){} crGo(0); } }
+  return true; }
+crGuide.addEventListener('click',crClick); crDet.addEventListener('click',crClick);
+crCanvas.addEventListener('click',e=>{ const g=e.target.closest('.vn'); if(g){ crPick(g.dataset.id); if(stacked()) crDet.scrollIntoView({block:'start'}); } else if(crSel){ crSel=null; crHighlight(); crDetail(); } });
+crCanvas.addEventListener('keydown',e=>{ const g=e.target.closest('.vn'); if(!g) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); crPick(g.dataset.id,true); } else if(e.key==='Escape'){ crSel=null; crHighlight(); crDetail(); } });
+document.getElementById('crseg').onclick=e=>{ const b=e.target.closest('button'); if(b&&b.dataset.m!==crMode) crSetMode(b.dataset.m); };
+const crRoleSel=document.getElementById('crrole'); crRoleSel.innerHTML='<option value="">All roles</option>'+CR.roles.map(([k,l])=>`<option value="${k}">${esc(l)}</option>`).join(''); crRoleSel.value=crRole;
+crRoleSel.onchange=()=>{ crRole=crRoleSel.value; try{ crRole?localStorage.setItem('railcert-csmra-role',crRole):localStorage.removeItem('railcert-csmra-role'); }catch(e){} crRoleSel.title=(CR.roles.find(x=>x[0]===crRole)||[])[2]||''; if(crMode==='map') crRender(); crDetail(); };
+document.getElementById('crshow').onchange=e=>{ crShow=e.target.checked; crRender(); };
+document.getElementById('crzoom').onclick=e=>{ const b=e.target.closest('[data-z]'); if(!b) return; const z=+b.dataset.z; crZoom=z===0?0:crZoom+z; crSize(); };
+window.addEventListener('resize',()=>{ if(document.getElementById('v-cr').classList.contains('on')&&crMode==='map') crSize(); });
+let crReady=false; function initCR(){ if(!crReady){ crReady=true; crSetMode('map'); } else if(crMode==='map') crSize(); }
 // ---------- standards register ----------
 const STD=D.ext.filter(e=>STDT.includes(e.ty));
 const sa=document.getElementById('sa'); [...new Set(STD.map(e=>e.a))].sort().forEach(a=>sa.add(new Option(a,a)));

@@ -3,6 +3,12 @@
 Newest first. The top entry sets the version shown in the footer of the map.
 Add a new `## x.y.z – date` section for each release, then rebuild the map.
 
+## 1.5.0 – 2026-11-14
+- CSM RA tab: clickable process map of Regulation (EU) 402/2013 with the hazard record and the assessment body alongside
+- Each step shows the legal requirement, ERA guidance, practice notes, evidence and linked documents
+- Role lens for RU/IM, ECM, manufacturer/applicant and AsBo
+- Guided assessment with a decision record saved in the browser, exportable as Markdown or JSON
+
 ## 1.4.0 – 2026-11-14
 - Footer with version number, change log, GitHub link and feedback address
 - Citation audit: corrected and completed reference links (17,133 links)
