@@ -140,6 +140,8 @@ details.egod{margin:8px 0 4px}details.egod>summary{cursor:pointer;font-size:12.5
  .tr .ds,.tools .key{display:none}.back{display:inline-block}
  .cols{grid-template-columns:1fr}
 }
+.ft{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:0 0 8px;font-size:12.5px}.ft button{font:inherit;color:var(--acc);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+#clog{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);max-width:560px;width:calc(100% - 32px);max-height:80vh;padding:16px 20px}#clog::backdrop{background:rgba(0,0,0,.4)}#clog h3{margin:0 0 8px;font-size:16px}#clog h4{margin:14px 0 4px;font-size:13px}#clog h4 span{color:var(--mute);font-weight:400}#clog ul{margin:0;padding-left:18px}#clog li{margin:2px 0}#clog .x{float:right;font:inherit;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:6px;padding:2px 10px;cursor:pointer}
 footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}footer a{color:var(--acc)}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-file" viewBox="0 0 16 16"><path d="M9.5 1.5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5z"/><path d="M9.5 1.5V5H13"/></symbol><symbol id="i-ext" viewBox="0 0 16 16"><path d="M9 2.5h4.5V7"/><path d="M13.5 2.5 7 9"/><path d="M11.5 9.5v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/></symbol><symbol id="i-chev" viewBox="0 0 16 16"><path d="M6 3.5 10.5 8 6 12.5"/></symbol><symbol id="i-swap" viewBox="0 0 16 16"><path d="M2.5 5.5h10M10 3l2.5 2.5L10 8"/><path d="M13.5 10.5h-10M6 8l-2.5 2.5L6 13"/></symbol></defs></svg>
@@ -179,6 +181,7 @@ footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}f
 </section>
 </main>
 <footer id="foot"></footer>
+<dialog id="clog"><button class="x" onclick="this.closest('dialog').close()">Close</button><h3>Change log</h3>__CHANGELOG__</dialog>
 <div class="tip" id="tip"></div>
 <script>
 const D=__DATA__;
@@ -344,8 +347,8 @@ function select(id,fromGraph){
 }
 document.getElementById('detail').addEventListener('click',e=>{const tb=e.target.closest('[data-alltitles]'); if(tb){ const all=[...e.currentTarget.querySelectorAll('details.rf')], open=!all.every(d=>d.open); all.forEach(d=>d.open=open); e.currentTarget.querySelectorAll('[data-alltitles]').forEach(b=>b.textContent=open?'Hide full titles':'Show full titles'); return; } const a=e.target.closest('[data-go]'); if(a){e.preventDefault(); select(a.dataset.go,true);}});
 window.addEventListener('resize',()=>{if(selId) drawEgo(selId);});
-(function(){const f=document.getElementById('foot'); if(LOCAL){f.innerHTML=`Local edition · ${IC('file')} opens your downloaded copy · ${IC('ext')} opens the official source`;return;}
-f.innerHTML='Online edition · This site hosts no copies of the documents — every link goes to the official publisher. '+
+(function(){const f=document.getElementById('foot'); const FT='<div class="ft"><button type="button" onclick="document.getElementById(\'clog\').showModal()" title="Show change log">Version __VERSION__</button><a href="https://github.com/simenf/railcert" target="_blank" rel="noopener">GitHub</a><span>Feedback: <a href="mailto:rails@simenf.com">rails@simenf.com</a></span></div>'; if(LOCAL){f.innerHTML=FT+`Local edition · ${IC('file')} opens your downloaded copy · ${IC('ext')} opens the official source`;return;}
+f.innerHTML=FT+'Online edition · This site hosts no copies of the documents — every link goes to the official publisher. '+
 'EU legislation: © European Union, <a href="https://eur-lex.europa.eu" target="_blank" rel="noopener">EUR-Lex</a>, reuse under Commission Decision 2011/833/EU. '+
 'ERA documents: © European Union Agency for Railways, source <a href="https://www.era.europa.eu" target="_blank" rel="noopener">era.europa.eu</a>. '+
 'Norwegian legislation via <a href="https://lovdata.no" target="_blank" rel="noopener">Lovdata</a>. Standards are © their publishers (CEN/CENELEC, IEC, ISO, ETSI, UIC, UNISIG) and are listed by reference only. '+

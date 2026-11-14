@@ -388,11 +388,30 @@ def build_nav(data, verbose=True):
     return {"n": out, "paths": paths, "va": va}
 
 
+def changelog_html(path):
+    """Version (top entry) and change log HTML from CHANGELOG.md."""
+    import html as H
+    ver, out, open_ul = "0.0.0", [], False
+    for ln in open(path, encoding="utf-8").read().splitlines():
+        m = re.match(r"##\s+(\S+)\s+[–-]\s+(.+)", ln)
+        if m:
+            if open_ul: out.append("</ul>"); open_ul = False
+            if ver == "0.0.0": ver = m.group(1)
+            out.append("<h4>v%s <span>%s</span></h4>" % (H.escape(m.group(1)), H.escape(m.group(2))))
+        elif ln.startswith("- "):
+            if not open_ul: out.append("<ul>"); open_ul = True
+            out.append("<li>%s</li>" % H.escape(ln[2:]))
+    if open_ul: out.append("</ul>")
+    return ver, "".join(out)
+
+
 def write_html(out_dir, data):
     """Render both editions of the map from tools/map_template.html."""
     here = os.path.dirname(os.path.abspath(__file__))
     html = open(os.path.join(here, "map_template.html"), encoding="utf-8").read()
     js = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    ver, log = changelog_html(os.path.join(here, "..", "CHANGELOG.md"))
+    html = html.replace("__VERSION__", ver).replace("__CHANGELOG__", log)
     os.makedirs(os.path.join(out_dir, "online"), exist_ok=True)
     open(os.path.join(out_dir, "reference_map.html"), "w", encoding="utf-8").write(html.replace("__MODE__", "local").replace("__DATA__", js))
     open(os.path.join(out_dir, "online", "index.html"), "w", encoding="utf-8").write(html.replace("__MODE__", "online").replace("__DATA__", js))
