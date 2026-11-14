@@ -88,9 +88,19 @@ Both editions are regenerated every time the map is rebuilt. Upload only the `on
 - EN/IEC/ISO/CLC/CEN/ETSI/UIC numbers, with years and amendments;
 - SUBSET-xxx, ERA document IDs, and FOR/LOV identifiers.
 
-Hyphens that some ERA PDFs drop (for example "EN 455454" for EN 45545-4) are repaired using the hyphenated forms seen elsewhere in the corpus. Self-citations are removed. Limits:
-- Zip archives (SUBSET-026, the DMI spec, some test specifications), spreadsheets and link files are not parsed. Each ETCS set cites its own subset versions, and on the map a cited SUBSET resolves to the current (B4) version first; older versions are listed with it.
-- References are found by pattern, not read by a person, so a few false positives remain. They show up in the Explorer as rarely cited items under "Cited, not in library".
+Further rules:
+- **Act numbers.** Old two-digit years are read correctly (Directive 96/48/EC, Regulation (EEC) No 1191/69), and so is the year/number order (pre-2015 regulations are "No number/year", everything else "year/number"). Every act in a list is captured ("Regulations (EU) 1302/2014, 321/2013 and 1299/2014"). Recommendations and Framework Decisions are included, as are "(Euratom)"-style brackets and words split across lines.
+- **ERTMS and ETSI identifiers.** SUBSET parts keep their part number when the library has that part (SUBSET-037-2, SUBSET-076-6-3), and "SS-026"-style abbreviations are recognised. 3GPP numbers are mapped to their ETSI twins (3GPP TS 24.008 = ETSI TS 124 008), and ETSI numbers written without "ETSI" are recognised. MORANE, FRMCS, O-numbered and ERA "nnEnnn" documents are recognised too. ATC-2 STM documents' bracket labels ([ESRS], [ESTM] ...) map to the subsets they stand for.
+- **Non-EU decisions.** Decisions of the EEA Joint Committee, the EU–Switzerland Inland Transport Committee and ERA boards look like EU acts ("Decision No 2/2019") and are not turned into EU-act links; the EU–Switzerland committee decisions link to their own Official Journal entries.
+- **Names.** TSIs cited by name ("CCS TSI", "TSI LOC&PAS") link to the TSI that was in force when the citing document was adopted, for example 2016/919 for a 2019 act. Norwegian laws and regulations cited by short name (samtrafikkforskriften, jernbaneloven and others) link to their Lovdata ID. EIRENE FRS/SRS and `ERA/ERTMS/0nnnnn` IDs are recognised in every spelling.
+- **Checked against EUR-Lex.** Every cited CELEX number is checked against the Publications Office database (`tools/validate_celex.py`, cached in `tools/data/celex_check.tsv`). Numbers that don't exist, such as a footnote digit glued to an act number (2016/7972), are dropped or corrected.
+- **Same-set ERTMS links.** In the map, a SUBSET or ERA/ERTMS citation from a document inside an ERTMS set opens that set's version of the cited specification; Informative specs count as Set 4. The 2016/919 CCS TSI and its amendments open Set 3, and each ATC-2 STM version opens the set of its time (v5.x Set 1, v6.0 Set 2, v6.1 Set 3). Other citations open the current Set 4 version, and older versions are listed with it.
+- **Repairs and manual corrections.** Hyphens that some ERA PDFs drop (for example "EN 455454" for EN 45545-4) are repaired using the hyphenated forms seen elsewhere in the corpus. Self-citations are removed; a consolidated text counts as the act itself. One-off corrections (add, remove or retarget a citation) go in `tools/data/edge_overrides.tsv` and are applied on every rebuild.
+- **Source links** for items that aren't in the library: ETSI links point to the exact deliverable folder (`tools/etsi_dirs.py`, cached in `tools/data/etsi_dirs.tsv`). Lovdata links use the short form (lovdata.no/forskrift/…), which redirects to the right collection, and titles come from `tools/data/lovdata_titles.tsv` (refresh with `tools/lovdata_titles.py` from your own machine).
+
+Limits:
+- The PDFs and Word files inside zip archives (SUBSET-026 chapters, the DMI spec, test specifications) are parsed. Spreadsheets, scanned pages and link files are not.
+- References are found by pattern and spot-checked by section (audit November 2026), not read in full by a person, so a few false positives remain. They show up in the Explorer as rarely cited items under "Cited, not in library".
 
 ## 5. What could not be downloaded
 

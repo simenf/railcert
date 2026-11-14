@@ -184,9 +184,10 @@ footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}f
 const D=__DATA__;
 const docs=new Map(D.docs.map(d=>[d.id,d])), ext=new Map(D.ext.map(e=>[e.id,e]));
 const out=new Map(), inn=new Map();
-for(const [s,t,c] of D.edges){(out.get(s)||out.set(s,[]).get(s)).push([t,c]);(inn.get(t)||inn.set(t,[]).get(t)).push([s,c]);}
+const edgeFile=new Map();   // per-edge library file when it differs from the item's default (ERTMS: same specification set)
+for(const [s,t,c,f] of D.edges){(out.get(s)||out.set(s,[]).get(s)).push([t,c]);(inn.get(t)||inn.set(t,[]).get(t)).push([s,c]); if(f) edgeFile.set(s+'\u0000'+t,f);}
 const fileIn=new Map();   // library file -> Map(citing doc -> mentions)
-for(const e of D.ext) for(const f of e.lib){ for(const [s,c] of (inn.get(e.id)||[])){ if(s===f) continue; const m=fileIn.get(f)||fileIn.set(f,new Map()).get(f); m.set(s,(m.get(s)||0)+c);} }
+for(const e of D.ext) for(const f of e.lib){ for(const [s,c] of (inn.get(e.id)||[])){ if(s===f) continue; const ef=edgeFile.get(s+'\u0000'+e.id); if(ef&&ef!==f) continue; const m=fileIn.get(f)||fileIn.set(f,new Map()).get(f); m.set(s,(m.get(s)||0)+c);} }
 const esc=s=>(s??'').toString().replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const folderTop=f=>f.split('/')[0];
 const STDT=['Standard','UIC leaflet','ETSI spec'];
@@ -249,7 +250,7 @@ function refRow(go,nm,num,full,links,tag,cnt){
   const head=`<span class="tw" aria-hidden="true">${more?IC('chev'):''}</span><a href="#" tabindex="-1" class="rn" data-go="${esc(go)}" title="${esc(full||nm)}">${esc(nm)}</a>${num&&num!==nm?`<span class="num">${esc(num)}</span>`:''}${links}${tag||''}<span class="c">${cnt}</span>`;
   return more?`<details class="rf"><summary tabindex="-1">${head}</summary><div class="rfx">${esc(full)}</div></details>`:`<div class="rf"><div class="rs" tabindex="-1">${head}</div></div>`;
 }
-const extRow=(e,cnt)=>refRow(resolve(e.id),e.s||e.l,e.s?(numOfExt(e)||e.l):'',e.t||(e.s?e.l:''),extLink(e),e.lib.length?'':tagFor(e),cnt);   // 'in library' is the norm: tag only what isn't
+const extRow=(e,cnt,rf)=>refRow(rf||resolve(e.id),e.s||e.l,e.s?(numOfExt(e)||e.l):'',e.t||(e.s?e.l:''),rf&&docs.has(rf)?docLink(rf):extLink(e),e.lib.length?'':tagFor(e),cnt);   // 'in library' is the norm: tag only what isn't
 const docRow=(s,cnt)=>{const d=docs.get(s); if(!d) return refRow(s,s,'','','','',cnt); return refRow(s,d.s||d.t||s,d.s?(d.n||''):'',d.t||'',docLink(s),'',cnt);};
 const titlesBtn='<button class="lk alltitles" data-alltitles>Show full titles</button>';
 function linkExt(e){ const lbl=(e.s?`<b>${esc(e.s)}</b> <span class="num">${esc(e.l)}</span>`:esc(e.l))+(e.t?` <span style="color:var(--mute)">— ${esc(e.t.slice(0,110))}</span>`:''); return `<a href="#" data-go="${esc(resolve(e.id))}">${lbl}</a>`; }
@@ -260,7 +261,7 @@ function neighbours(id){
   let inc=[], outg=[];
   if(docs.has(id)){
     inc=[...(fileIn.get(id)||new Map())];
-    for(const [t,c] of (out.get(id)||[])){ const e=ext.get(t); if(!e) continue; const r=resolve(t); if(r===id) continue; outg.push([r,c,e.ty]); }
+    for(const [t,c] of (out.get(id)||[])){ const e=ext.get(t); if(!e) continue; const r=edgeFile.get(id+'\u0000'+t)||resolve(t); if(r===id) continue; outg.push([r,c,e.ty]); }
   } else if(ext.has(id)){
     inc=(inn.get(id)||[]).map(x=>[x[0],x[1]]);
   }
@@ -326,7 +327,7 @@ function select(id,fromGraph){
     const d=docs.get(id), o=(out.get(id)||[]).map(([t,c])=>[ext.get(t),c]).filter(x=>x[0]);
     const by={}; for(const [e,c] of o)(by[e.ty]=by[e.ty]||[]).push([e,c]);
     let left='<h3>Cites ('+o.length+')</h3>';
-    for(const ty of typeOrder) if(by[ty]){ by[ty].sort((a,b)=>b[1]-a[1]); left+=`<div class="ty">${esc(ty)} (${by[ty].length})</div>`+by[ty].map(([e,c])=>extRow(e,`${c}×`)).join(''); }
+    for(const ty of typeOrder) if(by[ty]){ by[ty].sort((a,b)=>b[1]-a[1]); left+=`<div class="ty">${esc(ty)} (${by[ty].length})</div>`+by[ty].map(([e,c])=>extRow(e,`${c}×`,edgeFile.get(id+'\u0000'+e.id))).join(''); }
     if(!o.length) left+='<div class="meta">No machine-readable references found (link file, spreadsheet, archive or scanned PDF).</div>';
     const ci=[...(fileIn.get(id)||new Map())].sort((a,b)=>b[1]-a[1]);
     let right='<h3>Cited by ('+ci.length+')</h3>'+ci.map(([s,c])=>docRow(s,`${c}×`)).join('');

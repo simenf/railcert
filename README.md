@@ -1,6 +1,6 @@
 # Railcert – European & Norwegian railway regulation library
 
-Collected 2026-11-08 · 991 documents (1.01 GB) · reference map with 12,026 citation links
+Collected 2026-11-14 · 988 documents (1.02 GB) · reference map with 17,133 citation links
 
 Open **`99_Reference_Map/reference_map.html`** in a browser to explore which document cites which. A copy with source links only, ready for public hosting, is in `99_Reference_Map/online/`. All source URLs are in **`catalogue.tsv`**. To refresh or re-download, run `bash download_all.sh` from this folder; it skips files that are already present.
 
@@ -50,14 +50,14 @@ Open **`99_Reference_Map/reference_map.html`** in a browser to explore which doc
 
 ## 3. Standards (EN / IEC / ISO / CLC / UIC)
 
-The TSIs and guides cite 659 distinct EN/IEC/ISO/CLC/CEN standards and 137 UIC leaflets. These are **copyrighted and sold** by CEN/CENELEC, IEC, ISO and UIC (in Norway through Standard Norge), so they are **listed, not downloaded**. `99_Reference_Map/standards_register.csv` gives, for each standard:
+The TSIs and guides cite 671 distinct EN/IEC/ISO/CLC/CEN standards and 155 UIC leaflets. These are **copyrighted and sold** by CEN/CENELEC, IEC, ISO and UIC (in Norway through Standard Norge), so they are **listed, not downloaded**. `99_Reference_Map/standards_register.csv` gives, for each standard:
 - the versions cited (for example EN 50126-1:2017),
 - how many documents cite it,
 - exactly which documents cite it.
 
 Free standards were downloaded: 31 ETSI specifications (GSM-R, FRMCS, 3GPP, EN 301 515 and others) are in `09_Referenced_Documents/ETSI`. ERA's own list of standards cited in the TSIs is `06_ERA_Guides/TSI_Application_Guides` (xlsx).
 
-Most cited: EN 50129 (59), EN 50126 (52), EN 50159 (41), EN 50128 (40), EN 50125-1 (35), EN 50155 (33), EN 50121-3-2 (24), EN 14363 (22), EN 15528 (21), ISO 9001 (21), EN 50126-1 (20), EN 50367 (18), EN 50121-4 (18), EN 50125-3 (18), EN 13979-1 (17)
+Most cited: EN 50129 (65), EN 50126 (54), EN 50128 (45), EN 50159 (42), ISO 9001 (36), EN 50125-1 (35), EN 50155 (33), EN 50121-3-2 (24), EN 50126-1 (23), EN 14363 (22), EN 15528 (21), EN 50367 (21), ISO/IEC 17025 (20), EN 50163 (18), EN 50121-4 (18)
 
 ## 4. Reference map (`99_Reference_Map`)
 
@@ -81,16 +81,26 @@ Both editions are regenerated every time the map is rebuilt. Upload only the `on
 - **references_edges.csv**: one row per (citing document → cited item), with mention count and versions cited.
 - **standards_register.csv**: the standards list described in section 3, with titles and where each title came from.
 
-**Standard titles** come from, in order of priority: ERA's *Standards quoted in TSIs* list (official titles); ETSI cover pages for specs in the library; a curated list of widely used standards (marked "check edition"); and the title printed next to the reference in the citing documents. Series references such as EN 13103 take the series title from their parts. 486 of the 1022 cited standards have a title. Together they account for about 78% of all citations to standards.
+**Standard titles** come from, in order of priority: ERA's *Standards quoted in TSIs* list (official titles); ETSI cover pages for specs in the library; a curated list of widely used standards (marked "check edition"); and the title printed next to the reference in the citing documents. Series references such as EN 13103 take the series title from their parts. 486 of the 1239 cited standards have a title. Together they account for about 74% of all citations to standards.
 
 **Method.** Text was extracted from every PDF and HTML file with pdftotext. Citations were matched with patterns for:
 - EU acts, in English and Norwegian wording ("forordning (EU) nr. 402/2013", "forskrift 9. september 2021 nr. 2742");
 - EN/IEC/ISO/CLC/CEN/ETSI/UIC numbers, with years and amendments;
 - SUBSET-xxx, ERA document IDs, and FOR/LOV identifiers.
 
-Hyphens that some ERA PDFs drop (for example "EN 455454" for EN 45545-4) are repaired using the hyphenated forms seen elsewhere in the corpus. Self-citations are removed. Limits:
-- Zip archives (SUBSET-026, the DMI spec, some test specifications), spreadsheets and link files are not parsed. Each ETCS set cites its own subset versions, and on the map a cited SUBSET resolves to the current (B4) version first; older versions are listed with it.
-- References are found by pattern, not read by a person, so a few false positives remain. They show up in the Explorer as rarely cited items under "Cited, not in library".
+Further rules:
+- **Act numbers.** Old two-digit years are read correctly (Directive 96/48/EC, Regulation (EEC) No 1191/69), and so is the year/number order (pre-2015 regulations are "No number/year", everything else "year/number"). Every act in a list is captured ("Regulations (EU) 1302/2014, 321/2013 and 1299/2014"). Recommendations and Framework Decisions are included, as are "(Euratom)"-style brackets and words split across lines.
+- **ERTMS and ETSI identifiers.** SUBSET parts keep their part number when the library has that part (SUBSET-037-2, SUBSET-076-6-3), and "SS-026"-style abbreviations are recognised. 3GPP numbers are mapped to their ETSI twins (3GPP TS 24.008 = ETSI TS 124 008), and ETSI numbers written without "ETSI" are recognised. MORANE, FRMCS, O-numbered and ERA "nnEnnn" documents are recognised too. ATC-2 STM documents' bracket labels ([ESRS], [ESTM] ...) map to the subsets they stand for.
+- **Non-EU decisions.** Decisions of the EEA Joint Committee, the EU–Switzerland Inland Transport Committee and ERA boards look like EU acts ("Decision No 2/2019") and are not turned into EU-act links; the EU–Switzerland committee decisions link to their own Official Journal entries.
+- **Names.** TSIs cited by name ("CCS TSI", "TSI LOC&PAS") link to the TSI that was in force when the citing document was adopted, for example 2016/919 for a 2019 act. Norwegian laws and regulations cited by short name (samtrafikkforskriften, jernbaneloven and others) link to their Lovdata ID. EIRENE FRS/SRS and `ERA/ERTMS/0nnnnn` IDs are recognised in every spelling.
+- **Checked against EUR-Lex.** Every cited CELEX number is checked against the Publications Office database (`tools/validate_celex.py`, cached in `tools/data/celex_check.tsv`). Numbers that don't exist, such as a footnote digit glued to an act number (2016/7972), are dropped or corrected.
+- **Same-set ERTMS links.** In the map, a SUBSET or ERA/ERTMS citation from a document inside an ERTMS set opens that set's version of the cited specification; Informative specs count as Set 4. The 2016/919 CCS TSI and its amendments open Set 3, and each ATC-2 STM version opens the set of its time (v5.x Set 1, v6.0 Set 2, v6.1 Set 3). Other citations open the current Set 4 version, and older versions are listed with it.
+- **Repairs and manual corrections.** Hyphens that some ERA PDFs drop (for example "EN 455454" for EN 45545-4) are repaired using the hyphenated forms seen elsewhere in the corpus. Self-citations are removed; a consolidated text counts as the act itself. One-off corrections (add, remove or retarget a citation) go in `tools/data/edge_overrides.tsv` and are applied on every rebuild.
+- **Source links** for items that aren't in the library: ETSI links point to the exact deliverable folder (`tools/etsi_dirs.py`, cached in `tools/data/etsi_dirs.tsv`). Lovdata links use the short form (lovdata.no/forskrift/…), which redirects to the right collection, and titles come from `tools/data/lovdata_titles.tsv` (refresh with `tools/lovdata_titles.py` from your own machine).
+
+Limits:
+- The PDFs and Word files inside zip archives (SUBSET-026 chapters, the DMI spec, test specifications) are parsed. Spreadsheets, scanned pages and link files are not.
+- References are found by pattern and spot-checked by section (audit November 2026), not read in full by a person, so a few false positives remain. They show up in the Explorer as rarely cited items under "Cited, not in library".
 
 ## 5. What could not be downloaded
 
@@ -168,5 +178,5 @@ The GitHub repository holds **the map, the catalogue and the tools, not the docu
 | `09_Referenced_Documents/ERA_Documents` | 48 | 84.5 MB |
 | `09_Referenced_Documents/ERTMS_Subsets` | 1 | 0.0 MB |
 | `09_Referenced_Documents/ETSI` | 34 | 15.8 MB |
-| `09_Referenced_Documents/EU_Acts` | 230 | 239.3 MB |
+| `09_Referenced_Documents/EU_Acts` | 227 | 237.2 MB |
 | `10_Cybersecurity_CRA` | 11 | 5.8 MB |

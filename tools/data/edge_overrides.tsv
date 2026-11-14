@@ -1,0 +1,509 @@
+# Manual citation corrections applied by extract_refs.py after pattern matching.
+# action: add | remove | retarget ; source_file "*" = every citing document (retarget/remove)
+action	source_file	target_id	new_target_id	note
+add	01_EU_Framework/Reg_2016-796_ERA_Agency.pdf	EU:31958R0001		Regulation No 1 (language regime) has no year in the citation
+add	05_Vehicle_Authorisation_Registers/Dec_2023-1696_ERATV_amendment.pdf	ERA:ERA-REC1175-1218-2022		cited as "ERA 1175-1218" (audit 2026-11)
+# ---- citation audit 14 Nov 2026 (sub-agent review per library section; each row checked against the document text)
+add	02_TSI/Amending_packages/Reg_2019-776_TSI_alignment_4RP.pdf	EU:32011D0291		tsi: CR RS TSI footnote, bare number in parentheses
+add	02_TSI/CCS/Reg_2016-919_CCS_TSI_repealed.pdf	EU:32008D0217		tsi: HS/CR TSI decision written as bare '(YYYY/NNN/EU)' or 'is YYYY/NNN/EC: Commission Decision'
+add	02_TSI/CCS/Reg_2016-919_CCS_TSI_repealed.pdf	EU:32008D0232		tsi: HS/CR TSI decision written as bare '(YYYY/NNN/EU)' or 'is YYYY/NNN/EC: Commission Decision'
+add	02_TSI/CCS/Reg_2016-919_CCS_TSI_repealed.pdf	EU:32008D0284		tsi: HS/CR TSI decision written as bare '(YYYY/NNN/EU)' or 'is YYYY/NNN/EC: Commission Decision'
+add	02_TSI/CCS/Reg_2016-919_CCS_TSI_repealed.pdf	EU:32011D0274		tsi: HS/CR TSI decision written as bare '(YYYY/NNN/EU)' or 'is YYYY/NNN/EC: Commission Decision'
+add	02_TSI/CCS/Reg_2016-919_CCS_TSI_repealed.pdf	EU:32011D0275		tsi: HS/CR TSI decision written as bare '(YYYY/NNN/EU)' or 'is YYYY/NNN/EC: Commission Decision'
+add	02_TSI/CCS/Reg_2016-919_CCS_TSI_repealed.pdf	EU:32011D0291		tsi: HS/CR TSI decision written as bare '(YYYY/NNN/EU)' or 'is YYYY/NNN/EC: Commission Decision'
+add	02_TSI/CCS/Reg_2023-1695_CCS_TSI.pdf	LIB:07_ERTMS_Specifications/ESC-RSC_Technical_Document.pdf		nodes: ERA doc cited by title
+add	02_TSI/CCS/Reg_2023-1695_CCS_TSI_consolidated_20260505.pdf	LIB:07_ERTMS_Specifications/ESC-RSC_Technical_Document.pdf		nodes: ERA doc cited by title
+add	02_TSI/PRM/Reg_1300-2014_PRM_TSI.pdf	STD:CEN/TS 16635		tsi: 'TS 16635:2014' universal toilet module = CEN/TS 16635
+add	02_TSI/TELEMATICS/Reg_1305-2014_TAF_TSI_consolidated_20210418.pdf	EU:32014R1299		tsi: TSI cited by long/English name not in TSI_NAME pattern
+add	02_TSI/TELEMATICS/Reg_1305-2014_TAF_TSI_repealed.pdf	EU:32014R1299		tsi: TSI cited by long/English name not in TSI_NAME pattern
+add	02_TSI/TELEMATICS/Reg_2021-541_TAF_TSI_amendment.pdf	EU:32014R1299		tsi: TSI cited by long/English name not in TSI_NAME pattern
+add	02_TSI/TELEMATICS/Reg_2026-253_TEL_TSI.pdf	ERA:ERA/TD/2023-01		tsi: App. C index [2] 'ERA/TD/CCT - Version 2'; library has v1.1 (ERA-TD-2023-01)
+add	02_TSI/WAG/Reg_321-2013_WAG_TSI.pdf	STD:CEN/TS 45545-7		tsi: written 'TS 45545-7:2009' without CEN/
+add	03_CSM_Safety/Reg_2019-779_ECM_Certification.pdf	ERA:007REC1004		euframework: ERA recommendation number in the newer NNNREC#### form; not in library.
+add	05_Vehicle_Authorisation_Registers/Reg_2019-777_RINF_consolidated_20230928.pdf	ERA:ERA/TD/Vocabulary		euframework: ERA vocabulary technical document; ERADOC needs a trailing digit, so it is not matched.
+add	06_ERA_Guides/CSM_RA/AsBo_RFU02_report_template.pdf	LIB:06_ERA_Guides/CSM_RA/AsBo_RFU01_working_method.pdf		nodes: AsBo RFU cited by number
+add	06_ERA_Guides/CSM_RA/AsBo_RFU03_competence.pdf	LIB:06_ERA_Guides/CSM_RA/CSM_RA_Application_Guide_EN.pdf		eraguides: Title only.
+add	06_ERA_Guides/CSM_RA/AsBo_RFU03_competence.pdf	LIB:06_ERA_Guides/CSM_RA/CSM_RA_Collection_of_examples_EN.pdf		eraguides: Title only.
+add	06_ERA_Guides/CSM_RA/AsBo_RFU03_competence.pdf	LIB:06_ERA_Guides/CSM_RA/Explanatory_note_CSM_AsBo.pdf		eraguides: Title only.
+add	06_ERA_Guides/CSM_RA/AsBo_RFU08_hiring_experts.pdf	LIB:06_ERA_Guides/CSM_RA/AsBo_RFU01_working_method.pdf		nodes: AsBo RFU cited by number
+add	06_ERA_Guides/CSM_RA/AsBo_RFU11_issue_tracking.pdf	LIB:06_ERA_Guides/CSM_RA/AsBo_RFU01_working_method.pdf		nodes: AsBo RFU cited by number
+add	06_ERA_Guides/CSM_RA/CSM_RA_Application_Guide_EN.pdf	EU:32009R0352		eraguides: Guide v1.1 (2009) is for the then-draft CSM Regulation, adopted as 352/2009 (voted RISC 25/11/2008). Note: catalogue reference \\\\\\\"Reg. 402/2013\\
+add	06_ERA_Guides/NoBo_DeBo_NNTR/ERA-PRG-006_NR_fixed_installations_CCS.pdf	EU:32014L0030		eraguides: Bare act (EMC Directive).
+add	06_ERA_Guides/NoBo_DeBo_NNTR/ERA-PRG-006_NR_fixed_installations_CCS.pdf	EU:32016R0919		eraguides: Bare act.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-CCS-067_Subset-076_tests.pdf	EU:32012D0088		eraguides: Bare act.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-CCS-067_Subset-076_tests.pdf	EU:32016R0919		eraguides: Bare act.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-CCS-067_Subset-076_tests.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-702_Application_of_RFUs.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-CCS-077_Conditions_limits_of_use.pdf	EU:32016R0919		eraguides: Bare act.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-CCS-077_Conditions_limits_of_use.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-CCS-077_Conditions_limits_of_use.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-702_Application_of_RFUs.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-CCS-505_lowest_ETCS_system_version.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-702_Application_of_RFUs.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-RST-300_Train_detection_compatibility.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-702_Application_of_RFUs.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-RST-300_Train_detection_compatibility.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf		eraguides: 
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf	EU:32004L0049		eraguides: Bare act (no keyword).
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf	EU:32011D0275		eraguides: Bare act (no keyword).
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf	EU:32012D0088		eraguides: Bare act (no keyword).
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf	EU:32016R0919		eraguides: Bare act (no keyword).
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf	EU:32020R0387		eraguides: Bare act (no keyword).
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-CCS-077_Conditions_limits_of_use.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-702_Application_of_RFUs.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32011D0229		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32011D0274		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32011D0275		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32011D0291		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32012D0088		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32012D0464		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32012D0696		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32013R1236		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32015D0014		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32015R0924		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32016R0912		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32016R0919		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32018R0868		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32019R0772		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32019R0774		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32019R0776		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32020R0387		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32020R0420		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32023R1694		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	EU:32026R0693		eraguides: Upper-case validity table; bare \\\\\\\"(EU) YYYY/NNN\\\\\\\" not matched.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-060_Validity_of_certificates.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-702_Application_of_RFUs.pdf		nodes: NB-Rail RFU ids never extracted; target = library file
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-702_Application_of_RFUs.pdf	EU:32008L0057		eraguides: Bare act.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-702_Application_of_RFUs.pdf	EU:32016R0919		eraguides: Bare act (wrong suffix in source).
+add	06_ERA_Guides/NoBo_DeBo_NNTR/SRD_user_manual_MS.pdf	EU:32016L0797		eraguides: Short-form continuation list.
+add	06_ERA_Guides/NoBo_DeBo_NNTR/SRD_user_manual_MS.pdf	EU:32016L0798		eraguides: Short-form continuation list.
+add	06_ERA_Guides/Registers/EVR_Guidelines_application_guide_draft.pdf	EU:32016L0798		eraguides: URL text glued to \\\\\\\"Directive\\\\\\\" defeats \\\\\\\\b; reference [R7].
+add	06_ERA_Guides/Registers/Harmonised_national_restriction_codes.pdf	LIB:06_ERA_Guides/Registers/ERATV_Application_Guide_2016-797.pdf		nodes: ERA guide cited by title; no id pattern
+add	06_ERA_Guides/Registers/RINF_Application_Guide_3.1.0.pdf	EU:32012D0464		eraguides: Bare act.
+add	06_ERA_Guides/Registers/RINF_Application_Guide_3.1.0.pdf	EU:32020L0700		eraguides: Bare act.
+add	06_ERA_Guides/Safety_Certification/ECM_SAIT_guidance.pdf	LIB:06_ERA_Guides/Safety_Certification/ECM_certification_guidance_v10.pdf		eraguides: Title of ECM certification guidance.
+add	06_ERA_Guides/Safety_Certification/ECM_certification_guidance_v10.pdf	LIB:06_ERA_Guides/Safety_Certification/Guide_CSM_monitoring.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/ECM_certification_guidance_v10.pdf	LIB:06_ERA_Guides/Safety_Certification/Guide_on_supervision_EN.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/ECM_certification_guidance_v10.pdf	LIB:06_ERA_Guides/Safety_Certification/Guide_on_supervision_EN.pdf		nodes: ERA guide cited by title; no id pattern
+add	06_ERA_Guides/Safety_Certification/Guide_on_supervision_EN.pdf	LIB:06_ERA_Guides/Safety_Certification/Management_Maturity_Model_EN.pdf		eraguides: Also L696.
+add	06_ERA_Guides/Safety_Certification/Guide_on_supervision_EN.pdf	LIB:06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/Guide_on_supervision_EN.pdf	LIB:06_ERA_Guides/Safety_Certification/SSC_Application_Guide_2025.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/Management_Maturity_Model_EN.pdf	LIB:06_ERA_Guides/Safety_Certification/SSC_Application_Guide_2025.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf	LIB:06_ERA_Guides/CSM_RA/CSM_RA_Application_Guide_EN.pdf		eraguides: Also L2016.
+add	06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf	LIB:06_ERA_Guides/CSM_RA/ERA1209-063_safe_integration.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf	LIB:06_ERA_Guides/CSM_RA/Guide_harmonised_design_targets.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf	LIB:06_ERA_Guides/Safety_Certification/SSC_Application_Guide_2025.pdf		eraguides: Also L560, L995.
+add	06_ERA_Guides/Safety_Certification/SSC_Application_Guide_2025.pdf	LIB:06_ERA_Guides/Safety_Certification/Guide_on_supervision_EN.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/SSC_Application_Guide_2025.pdf	LIB:06_ERA_Guides/Safety_Certification/Guide_on_supervision_EN.pdf		nodes: ERA guide cited by title; no id pattern
+add	06_ERA_Guides/Safety_Certification/SSC_Application_Guide_2025.pdf	LIB:06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf		eraguides: Also L835.
+add	06_ERA_Guides/Safety_Certification/SSC_Application_Guide_2025.pdf	LIB:06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf		nodes: ERA guide cited by title; no id pattern
+add	06_ERA_Guides/Safety_Certification/SSC_assessors_toolkit.pdf	LIB:06_ERA_Guides/CSM_RA/CSM_RA_Application_Guide_EN.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/SSC_assessors_toolkit.pdf	LIB:06_ERA_Guides/Safety_Certification/Guide_CSM_monitoring.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/SSC_assessors_toolkit.pdf	LIB:06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf		eraguides: 
+add	06_ERA_Guides/Safety_Certification/SSC_assessors_toolkit.pdf	LIB:06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_EN.pdf		nodes: ERA guide cited by title; no id pattern
+add	06_ERA_Guides/Safety_Certification/SSC_assessors_toolkit.pdf	LIB:06_ERA_Guides/Safety_Certification/SSC_Application_Guide_2025.pdf		eraguides: 
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_2023_Application_Guide_v3.1.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32002D0731		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32004D0447		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32006D0679		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32006D0860		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32007D0153		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32009D0561		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32010D0079		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32012D0088		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32012D0462		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32012D0463		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32012D0696		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32015D0014		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions); source writes 2014/15/EU, the CCS TSI amendment is Decision (EU) 2015/14.
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32016R0919		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32019R0776		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32020R0387		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_AppD_template_guide.pdf	EU:32020R0420		eraguides: List of \\\\\\\"Applicable Regulation\\\\\\\" choices (CCS TSI versions).
+add	06_ERA_Guides/TSI_Application_Guides/ENE_TSI_Guide_2023.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	EU:32013R1236		eraguides: Reference table, \\\\\\\"Reg.\\\\\\\" abbreviation (line numbers approx., table at L210-245).
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	EU:32015R0924		eraguides: Reference table, \\\\\\\"Reg.\\\\\\\" abbreviation (line numbers approx., table at L210-245).
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	EU:32018R0868		eraguides: Reference table, \\\\\\\"Reg.\\\\\\\" abbreviation (line numbers approx., table at L210-245).
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	EU:32019R0776		eraguides: Reference table, \\\\\\\"Reg.\\\\\\\" abbreviation (line numbers approx., table at L210-245).
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	EU:32020R0387		eraguides: Reference table, \\\\\\\"Reg.\\\\\\\" abbreviation (line numbers approx., table at L210-245).
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	EU:32023R1694		eraguides: Reference table, \\\\\\\"Reg.\\\\\\\" abbreviation (line numbers approx., table at L210-245).
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/CCS_TSI_2023_Application_Guide_v3.1.pdf		eraguides: 
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/CCS_TSI_2023_Application_Guide_v3.1.pdf		nodes: ERA guide cited by title; no id pattern
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf		eraguides: Reference table.
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/WAG_TSI_Guide_2023.pdf		eraguides: Reference table.
+add	06_ERA_Guides/TSI_Application_Guides/INF_TSI_Guide_2023.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/NOI_TSI_Guide_2023.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/OPE_TSI_Guide_2024.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/PRM_TSI_Guide_2023.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf		eraguides: 
+add	06_ERA_Guides/TSI_Application_Guides/PRM_TSI_Guide_2023.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/SRT_TSI_Guide_2023.pdf	EU:32008L0057		eraguides: Bare act.
+add	06_ERA_Guides/TSI_Application_Guides/SRT_TSI_Guide_2023.pdf	EU:32019R0776		eraguides: Bare act.
+add	06_ERA_Guides/TSI_Application_Guides/SRT_TSI_Guide_2023.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf	EU:32016R0919		eraguides: \\\\\\\"Reg\\\\\\\" abbreviation.
+add	06_ERA_Guides/TSI_Application_Guides/WAG_TSI_Guide_2023.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: General TSI guide GUI/TSI/2023 cited by title (systematic, see rule).
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-146_requirements_capture.pdf	STD:EN 50129		eraguides: Slash/comma list.
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	ERA:ERA1209/063		eraguides: Typo in source; target 06_ERA_Guides/CSM_RA/ERA1209-063_safe_integration.pdf
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:22021D0035		nodes: 
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/CSM_RA/AsBo_RFU01_working_method.pdf		eraguides: AsBo RFUs listed by title.
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/CSM_RA/AsBo_RFU03_competence.pdf		eraguides: 
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/CSM_RA/AsBo_RFU08_hiring_experts.pdf		eraguides: 
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/CSM_RA/AsBo_RFU11_issue_tracking.pdf		eraguides: 
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/CCS_TSI_2023_Application_Guide_v3.1.pdf		eraguides: Also L11849.
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf		eraguides: Reference table.
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: Reference table [40]; also L4175, L6439.
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/WAG_TSI_Guide_2023.pdf		eraguides: Reference table.
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/WAG_TSI_Guide_2023.pdf		nodes: ERA guide cited by title; no id pattern
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	LIB:07_ERTMS_Specifications/ESC-RSC_Technical_Document.pdf		eraguides: ESC/RSC technical document; library file 07_ERTMS_Specifications/ESC-RSC_Technical_Document.pdf
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	STD:EN 50129		eraguides: Slash list.
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-292_conditions_for_use.pdf	LIB:06_ERA_Guides/NoBo_DeBo_NNTR/RFU-STR-001_Content_EC_certificates.pdf		nodes: 
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-292_conditions_for_use.pdf	LIB:06_ERA_Guides/Registers/ERATV_Application_Guide_2016-797.pdf		eraguides: Title only.
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-292_conditions_for_use.pdf	LIB:06_ERA_Guides/Registers/ERATV_Application_Guide_2016-797.pdf		nodes: ERA guide cited by title; no id pattern
+add	06_ERA_Guides/Vehicle_Authorisation/ERA1209-322_wagons_electrical_equipment.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/TSI_General_Guide_2023.pdf		eraguides: Title only.
+add	07_ERTMS_Specifications/ESC-RSC_Technical_Document.pdf	ERA:O-2475		ertms_current: in Informative 005
+add	07_ERTMS_Specifications/ESC-RSC_phase_out_report_2024.pdf	LIB:06_ERA_Guides/TSI_Application_Guides/CCS_TSI_2023_Application_Guide_v3.1.pdf		nodes: ERA guide cited by title; no id pattern
+add	07_ERTMS_Specifications/Informative_specs/043_04e083_v10_0_Safety_requirements_and_requirements_to_safety_analysis_for_.pdf	ERA:ERA/ERTMS/003204		ertms_current: ETCS FRS by name; in library
+add	07_ERTMS_Specifications/Informative_specs/044_04e084_v10_Justification_report_for_the_safety_requirements_and_require.pdf	ERA:ERA/ERTMS/003204		ertms_current: ETCS FRS by name
+add	07_ERTMS_Specifications/Informative_specs/064_12e108_2_ato_operational_principles_ERTMS_ATO_Operational_Principles.pdf	ERA:13E137		ertms_current: named doc in library (no id pattern); x2
+add	07_ERTMS_Specifications/Informative_specs/072_o-3001-5_cross_reference_v1.0.0_cl_GSM-R_Cross_Reference_Table.pdf	ERA:MORANE-P38T9001		ertms_current: named doc in library (no id pattern); x1
+add	07_ERTMS_Specifications/Informative_specs/ccs-tsi-2023-application-guide_Current_working_version_of_the_application_guide_V3_1.pdf	ERA:FRMCS-FU-7120		ertms_current: named doc in library (no id pattern); x1
+add	07_ERTMS_Specifications/Informative_specs/ccs-tsi-2023-application-guide_Current_working_version_of_the_application_guide_V3_1.pdf	STD:CLC/TS 50459-1		ertms_current: also -2,-4,-5,-6 (l4038-4103); stubs 025/027-030
+add	07_ERTMS_Specifications/Introduction_ETCS_braking_curves.pdf	ERA:ERA/ERTMS/015560		ertms_current: number split by line break; Set3 v360
+add	07_ERTMS_Specifications/Set3_ETCS_B3_R2/003_SUBSET-023_v330_Glossary_of_Terms_and_Abbreviations.pdf	ERA:ERA-REC-123-2015		ertms_old: missed: hyphen dropped ("ERAREC"); history table, same as 027/091 which do have the edge
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/010c_SUBSET-037-3_v400_EuroRadio_FIS_Part_3_FRMCS_interface.pdf	ERA:FRMCS-FFFIS-7950		ertms_current: named doc in library (no id pattern); x15
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/033_EIRENE_SRS_v1610_GSM-R_System_requirements_specification.pdf	ERA:O-2875		ertms_current: named doc in library (no id pattern); x1
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/069_morane_f10t6002_v50_FFFS_for_Confirmation_of_High_Priority_Calls.pdf	ERA:MORANE-P38T9001		ertms_current: named doc in library (no id pattern); x1
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/070_morane_f12t6002_v50_FIS_for_Confirmation_of_High_Priority_Calls.pdf	ERA:MORANE-P38T9001		ertms_current: named doc in library (no id pattern); x1
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/086_SUBSET-148_v100_ATO-OB_ATO-TS_FFFIS_Transport_and_Security_Layers.pdf	ERA:MORANE-A11T6001		ertms_current: named doc in library (no id pattern); x1
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/093_FRMCS_FRS_(FU-7120)_v100.pdf	ERA:FRMCS-TOBA-7510		ertms_current: named doc in library (no id pattern); x1
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/094_FRMCS_SRS_(AT-7800)_v100.pdf	ERA:FRMCS-FFFIS-7950		ertms_current: named doc in library (no id pattern); x2
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/095_FRMCS_FIS_(FIS-7970)_v100.pdf	ERA:FRMCS-FFFIS-7950		ertms_current: named doc in library (no id pattern); x15
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/099_FRMCS_TOBA_FRS_(TOBA-7510)_v100_On-board_FRMCS_TOBA_FRS.pdf	ERA:FRMCS-AT-7800		ertms_current: named doc in library (no id pattern); x13
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/099_FRMCS_TOBA_FRS_(TOBA-7510)_v100_On-board_FRMCS_TOBA_FRS.pdf	ERA:FRMCS-FFFIS-7950		ertms_current: named doc in library (no id pattern); x7
+add	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/101_21e089_2_engineering_rules_for_harmonised_marker_boards.pdf	ERA:ERA/ERTMS/015560		ertms_current: space-separated form
+add	08_Norway/ATC2_STM_Specifications/v5.1_2009/STM_FRS_BVS544.65001_v5.1_innledning.pdf	LIB:08_Norway/ATC2_STM_Specifications/v5.1_2009/STM_GRS_100200-E004_v5.1.pdf		norway: no id convention for 100 200 E 004; target = same-version library file
+add	08_Norway/ATC2_STM_Specifications/v5.1_2009/STM_FRS_BVS544.65001_v5.1_innledning.pdf	SS:SUBSET-074		norway: resolve to Set1_ETCS_B2 edition
+add	08_Norway/ATC2_STM_Specifications/v5.1_2009/STM_FRS_BVS544.65001_v5.1_innledning.pdf	SS:SUBSET-076		norway: resolve to Set1_ETCS_B2 edition
+add	08_Norway/ATC2_STM_Specifications/v5.1_2009/STM_FRS_BVS544.65001_v5.1_innledning.pdf	STD:CLC/TS 50459-2		norway: 
+add	08_Norway/ATC2_STM_Specifications/v5.1_2009/STM_FRS_BVS544.65001_v5.1_kap5.pdf	LIB:08_Norway/ATC2_STM_Specifications/v5.1_2009/STM_GRS_100200-E004_v5.1.pdf		norway: same-version GRS file
+add	08_Norway/ATC2_STM_Specifications/v5.2_2014/STM_FRS_BVS544.65001_v5.2_innledning.pdf	LIB:08_Norway/ATC2_STM_Specifications/v5.2_2014/STM_GRS_100200-E004_v5.2.pdf		norway: no id convention for 100 200 E 004; target = same-version library file
+add	08_Norway/ATC2_STM_Specifications/v5.2_2014/STM_FRS_BVS544.65001_v5.2_innledning.pdf	SS:SUBSET-074		norway: resolve to Set1_ETCS_B2 edition
+add	08_Norway/ATC2_STM_Specifications/v5.2_2014/STM_FRS_BVS544.65001_v5.2_innledning.pdf	SS:SUBSET-076		norway: resolve to Set1_ETCS_B2 edition
+add	08_Norway/ATC2_STM_Specifications/v5.2_2014/STM_FRS_BVS544.65001_v5.2_innledning.pdf	SS:SUBSET-108		norway: resolve to Set1_ETCS_B2 edition
+add	08_Norway/ATC2_STM_Specifications/v5.2_2014/STM_FRS_BVS544.65001_v5.2_kap5.pdf	LIB:08_Norway/ATC2_STM_Specifications/v5.2_2014/STM_GRS_100200-E004_v5.2.pdf		norway: same-version GRS file
+add	08_Norway/ATC2_STM_Specifications/v6.0_2014/STM_FRS_BVS544.65001_v6.0_innledning.pdf	ERA:ERA/ERTMS/015560		norway: id split over line break; resolve to Set2_ETCS_B3_MR1
+add	08_Norway/ATC2_STM_Specifications/v6.0_2014/STM_FRS_BVS544.65001_v6.0_innledning.pdf	LIB:08_Norway/ATC2_STM_Specifications/v6.0_2014/STM_GRS_100200-E004_v6.0.pdf		norway: no id convention for 100 200 E 004; target = same-version library file
+add	08_Norway/ATC2_STM_Specifications/v6.0_2014/STM_FRS_BVS544.65001_v6.0_innledning.pdf	SS:SUBSET-074		norway: resolve to Set2_ETCS_B3_MR1 edition
+add	08_Norway/ATC2_STM_Specifications/v6.0_2014/STM_FRS_BVS544.65001_v6.0_innledning.pdf	SS:SUBSET-076		norway: resolve to Set2_ETCS_B3_MR1 edition
+add	08_Norway/ATC2_STM_Specifications/v6.0_2014/STM_FRS_BVS544.65001_v6.0_kap5.pdf	LIB:08_Norway/ATC2_STM_Specifications/v6.0_2014/STM_GRS_100200-E004_v6.0.pdf		norway: same-version GRS file
+add	08_Norway/ATC2_STM_Specifications/v6.1_2017/STM_FRS_BVS544.65001_v6.1_innledning.pdf	LIB:08_Norway/ATC2_STM_Specifications/v6.1_2017/STM_GRS_100200-E004_v6.1.pdf		norway: no id convention for 100 200 E 004; target = same-version library file
+add	08_Norway/ATC2_STM_Specifications/v6.1_2017/STM_FRS_BVS544.65001_v6.1_innledning.pdf	SS:SUBSET-074		norway: resolve to Set3_ETCS_B3_R2 edition
+add	08_Norway/ATC2_STM_Specifications/v6.1_2017/STM_FRS_BVS544.65001_v6.1_innledning.pdf	SS:SUBSET-076		norway: resolve to Set3_ETCS_B3_R2 edition
+add	08_Norway/ATC2_STM_Specifications/v6.1_2017/STM_FRS_BVS544.65001_v6.1_kap5.pdf	LIB:08_Norway/ATC2_STM_Specifications/v6.1_2017/STM_GRS_100200-E004_v6.1.pdf		norway: same-version GRS file
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_EN.pdf	EU:32019R0773		norway: 
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_EN.pdf	NO:FOR-2014-02-17-188		norway: NO version has this edge
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_EN.pdf	NO:FOR-2015-07-23-913		norway: NO version has this edge
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_EN.pdf	NO:FOR-2019-06-12-721		norway: cited by full title (in library)
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_EN.pdf	NO:FOR-2021-06-30-2315		norway: plus ~100 "Railway Regulations" mentions
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_EN.pdf	NO:FOR-2021-08-07-2361		norway: same id as NO version; 404 on Lovdata - see url row
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_EN.pdf	NO:FOR-2021-09-09-2742		norway: English short name of samtrafikkforskriften
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_NO.pdf	EU:32019R0773		norway: 
+add	08_Norway/Bane_NOR/BaneNOR_Network_Statement_2027_NO.pdf	NO:FOR-2019-06-12-721		norway: cited by full title (in library)
+add	08_Norway/Bane_NOR/SJT_Horingssvar_Network_Statement_2028.pdf	EU:32017R2177		norway: 
+add	08_Norway/Lover_og_forskrifter/Forerforskriften_FOR-2009-11-27-1414.html	EU:32010D0017		norway: 
+add	08_Norway/Lover_og_forskrifter/Jernbaneforskriften_FOR-2021-06-30-2315.html	NO:LOV-1967-02-10		norway: forvaltningsloven; id has no serial number
+add	08_Norway/Lover_og_forskrifter/Jernbaneloven_LOV-1993-06-11-100.html	NO:LOV-1967-02-10		norway: forvaltningsloven; id has no serial number
+add	08_Norway/Lover_og_forskrifter/Jernbaneundersokelsesloven_LOV-2005-06-03-34.html	NO:LOV-1967-02-10		norway: forvaltningsloven; id has no serial number
+add	08_Norway/Lover_og_forskrifter/Lov_tekniske_kontrollorgan_LOV-1994-06-16-20.html	NO:LOV-1967-02-10		norway: forvaltningsloven (nynorsk)
+add	08_Norway/Lover_og_forskrifter/Samtrafikkforskriften_FOR-2021-09-09-2742.html	NO:LOV-1967-02-10		norway: forvaltningsloven; id has no serial number
+add	08_Norway/Lover_og_forskrifter/Sikkerhetsforskriften_FOR-2021-09-08-2740.html	NO:LOV-1967-02-10		norway: forvaltningsloven; id has no serial number
+add	08_Norway/Lover_og_forskrifter/TSI_LOC_PAS_FOR-2015-07-23-913.html	EU:32008D0232		norway: 
+add	08_Norway/SJT_Veiledninger/ERA_Guide_SMS_requirements_NO.pdf	ERA:ERA/GUI/01-2008		norway: ERA guide cited by title (library CSM_RA_Application_Guide_EN.pdf)
+add	08_Norway/SJT_Veiledninger/ERA_Guide_SMS_requirements_NO.pdf	ERA:ERA1209/063		norway: clarification note on safe integration, library 06_ERA_Guides/CSM_RA/ERA1209-063_safe_integration.pdf
+add	08_Norway/SJT_Veiledninger/SJT_Horingsnotat_TSI_CCS_2026.pdf	EU:32014R1302		norway: 
+add	08_Norway/SJT_Veiledninger/SJT_Horingsnotat_TSI_CCS_2026.pdf	SS:SUBSET-126		norway: list continuation after "subset 125" not followed
+add	08_Norway/SJT_Veiledninger/SJT_Horingsnotat_TSI_CCS_2026.pdf	SS:SUBSET-151		norway: list continuation after "subset 125" not followed
+add	08_Norway/SJT_Veiledninger/SJT_Horingsnotat_forskrifter_jernbanekjoretoy.pdf	EU:32011D0765		norway: 
+add	09_Referenced_Documents/ERA_Documents/ERA-1172-002_ECM_sectorial_accreditation_scheme_v3.1.pdf	EU:31993R0339		referenced: 
+add	09_Referenced_Documents/ERA_Documents/ERA-1172-002_ECM_sectorial_accreditation_scheme_v3.1.pdf	EU:32011R0445		referenced: -> Reg_445-2011.pdf
+add	09_Referenced_Documents/ERA_Documents/ERA-OPI-2016-3_certification_withdrawn_TSIs.pdf	EU:32008D0164		referenced: -> Dec_2008-164.pdf
+add	09_Referenced_Documents/ETSI/ETSI_TS_122082_v19.00.00.pdf	STD:ETSI TS 122 083		referenced: 3GPP number = ETSI TS 1xx xxx, in library
+add	09_Referenced_Documents/EU_Acts/Dec_2014-880.pdf	LIB:06_ERA_Guides/Registers/RINF_Application_Guide_3.1.0.pdf		nodes: ERA guide cited by title; no id pattern
+add	09_Referenced_Documents/EU_Acts/Reg_1-2003.pdf	EU:31965R0019		referenced: Regulation No 19/65/EEC; not parsed
+add	10_Cybersecurity_CRA/CRA_Guidance_C2026-5252_Annex.pdf	EU:31993D0465		referenced: no suffix two-digit year
+remove	*	ERA:ERA_ERTMS_000		nodes: noise
+remove	*	ERA:ERA_FRS_TAF_D_2		nodes: file name of TAF annex, not ERA doc id
+remove	*	STD:EN 50		nodes: noise
+remove	*	STD:EN 5012		nodes: noise
+remove	*	STD:ISO 10		nodes: noise
+remove	*	STD:UIC 60		nodes: noise
+remove	06_ERA_Guides/CSM_RA/Guide_harmonised_design_targets.pdf	STD:EN 5012		eraguides: Series placeholder.
+remove	06_ERA_Guides/Vehicle_Authorisation/ERA1209-047_CH_authorisations.pdf	EU:32013D0001		referenced: non-EU joint committee decision
+remove	06_ERA_Guides/Vehicle_Authorisation/ERA1209-047_CH_authorisations.pdf	EU:32019D0002		referenced: non-EU joint committee decision
+remove	06_ERA_Guides/Vehicle_Authorisation/ERA1209-146_requirements_capture.pdf	STD:EN 5012		eraguides: Series placeholder, not a standard.
+remove	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32013D0001		referenced: non-EU joint committee decision
+remove	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32019D0002		referenced: non-EU joint committee decision
+remove	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32021D0002		referenced: non-EU joint committee decision
+remove	07_ERTMS_Specifications/Informative_specs/023a_SUBSET-081-1_v360_Failure_Modes_and_Effects_Analysis_for_Transmission_System_i.pdf	SS:SUBSET-030		ertms_current: history: removed reference
+remove	07_ERTMS_Specifications/Informative_specs/023a_SUBSET-081-1_v360_Failure_Modes_and_Effects_Analysis_for_Transmission_System_i.pdf	STD:EN 50159-1		ertms_current: history: replaced by EN 50159
+remove	07_ERTMS_Specifications/Informative_specs/023b_SUBSET-081-2_v360_Failure_Modes_and_Effects_Analysis_for_Transmission_System_i.pdf	SS:SUBSET-030		ertms_current: history: removed reference
+remove	07_ERTMS_Specifications/Informative_specs/023b_SUBSET-081-2_v360_Failure_Modes_and_Effects_Analysis_for_Transmission_System_i.pdf	STD:EN 50159-1		ertms_current: history: replaced by EN 50159
+remove	07_ERTMS_Specifications/Informative_specs/053_SUBSET-118_v170_Functional_Safety_Analysis_of_ETCS_DMI_for_ETCS_Auxiliary_Ha.pdf	ERA:ERA-OPI2014-8		ertms_current: duplicate of ERA:ERA/OPI/2014-8 (history); or retarget
+remove	07_ERTMS_Specifications/Introduction_ETCS_braking_curves.pdf	ERA:ERA/ERTMS/040026		ertms_current: self
+remove	07_ERTMS_Specifications/Introduction_ETCS_braking_curves.pdf	ERA:ERA_ERTMS_015		ertms_current: truncated; see add ERA/ERTMS/015560
+remove	07_ERTMS_Specifications/Set1_ETCS_B2/027_SUBSET-091_v250_Safety_requirements_for_the_Technical_Interoperability_of_ET.pdf	SS:SUBSET-113		ertms_old: history entry stating the reference was removed
+remove	07_ERTMS_Specifications/Set1_ETCS_B2/065_ts102281_v300_Detailed_requirements_for_GSM_operation_on_railways.pdf	STD:ETSI TR 102 281		ertms_old: earlier edition of this same document, history table
+remove	07_ERTMS_Specifications/Set2_ETCS_B3_MR1/012_SUBSET-039_v310_FIS_for_the_RBC_RBC_handover.pdf	SS:SUBSET-108		ertms_old: only mentions (l.111,121) are in modification history
+remove	07_ERTMS_Specifications/Set2_ETCS_B3_MR1/013_SUBSET-040_v330_Dimensioning_and_Engineering_rules.pdf	SS:SUBSET-037		ertms_old: history row; doc explicitly does not refer to SUBSET-037
+remove	07_ERTMS_Specifications/Set2_ETCS_B3_MR1/052_SUBSET-058_v310_FFFIS_STM_Application_layer.pdf	SS:SUBSET-040		ertms_old: sole mention is in modification history
+remove	07_ERTMS_Specifications/Set2_ETCS_B3_MR1/065_ts102281_v300_Detailed_requirements_for_GSM_operation_on_railways.pdf	STD:ETSI TR 102 281		ertms_old: earlier edition of this same document, history table
+remove	07_ERTMS_Specifications/Set3_ETCS_B3_R2/012_SUBSET-039_v320_FIS_for_RBC_RBC_handover.pdf	SS:SUBSET-108		ertms_old: only mentions (l.111,121) are in modification history
+remove	07_ERTMS_Specifications/Set3_ETCS_B3_R2/013_SUBSET-040_v340_Dimensioning_and_Engineering_rules.pdf	SS:SUBSET-037		ertms_old: history row; doc explicitly does not refer to SUBSET-037
+remove	07_ERTMS_Specifications/Set3_ETCS_B3_R2/052_SUBSET-058_v320_FFFIS_STM_Application_Layer.pdf	SS:SUBSET-040		ertms_old: sole mention is in modification history
+remove	07_ERTMS_Specifications/Set3_ETCS_B3_R2/065_ts102281_v300_Detailed_requirements_for_GSM_operation_on_railways.pdf	STD:ETSI TR 102 281		ertms_old: earlier edition of this same document, history table
+remove	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/012_SUBSET-039_v400_FIS_for_the_RBC_RBC_handover.pdf	SS:SUBSET-108		ertms_current: history only
+remove	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/013_SUBSET-040_v400_Dimensioning_and_Engineering_rules.pdf	SS:SUBSET-037		ertms_current: history only, explicitly not referenced
+remove	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/016_SUBSET-044_v240_FFFIS_for_Euroloop.pdf	STD:UIC 60		ertms_current: rail profile, not a UIC leaflet
+remove	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/065_ETSI_TS_102281_v311_Detailed_requirements_for_GSM_operation_on_railways.pdf	STD:ETSI TR 102 281		ertms_current: self (earlier TR edition)
+remove	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/084_SUBSET-125_v1.1.0_ERTMS_ATO_System_Requirement_Specification.pdf	SS:SUBSET-131		ertms_current: history only
+remove	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/085_SUBSET-126_v1.1.0_ATO-OB_ATO-TS_FFFIS_Application_Layer.pdf	SS:SUBSET-130		ertms_current: working-paper id, not a citation
+remove	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/087_SUBSET-130_v100_ATO-OB_ETCS-OB_FFFIS_Application_Layer.pdf	SS:SUBSET-139		ertms_current: CR/review id in history
+remove	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/089_SUBSET-143_v100_Interface_Specification_Communication_Layers_for_On-board_Co.pdf	SS:SUBSET-139		ertms_current: CR/review id in history
+remove	08_Norway/Lover_og_forskrifter/Arbeidsmaskinforskriften_FOR-2022-05-25-924.html	NO:FOR-2021-09-08-2740		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Lover_og_forskrifter/CSM_RA_forskriften_FOR-2014-10-27-1344.html	NO:FOR-2021-06-30-2315		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Lover_og_forskrifter/Forerforskriften_FOR-2009-11-27-1414.html	NO:FOR-2021-06-30-2315		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Lover_og_forskrifter/Forskrift_sikkerhet_tekniske_forhold_jernbanen_FOR-2021-09-03-2675.html	NO:FOR-2021-09-09-2742		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Lover_og_forskrifter/Jernbaneinfrastrukturforskriften_FOR-2011-04-11-388.html	NO:FOR-2021-06-30-2315		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Lover_og_forskrifter/Jernbaneinfrastrukturforskriften_FOR-2011-04-11-388.html	NO:FOR-2021-09-08-2740		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Lover_og_forskrifter/Museumsbaneforskriften_FOR-2014-12-10-1574.html	NO:FOR-2014-12-10-1572		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Lover_og_forskrifter/Sidesporforskriften_FOR-2014-12-10-1573.html	NO:FOR-2014-12-10-1572		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Lover_og_forskrifter/TSI_LOC_PAS_FOR-2015-07-23-913.html	NO:FOR-2021-09-09-2742		norway: short name refers to the repealed act already linked by its date citation
+remove	08_Norway/Nasjonale_regler_NNTR/Jernbanekjoretoyforskriften_horingsutkast.pdf	NO:FOR-2021-09-08-2740		norway: only mention; old act FOR-2005-12-19-1621 already linked
+remove	08_Norway/Nasjonale_regler_NNTR/Jernbanekjoretoyforskriften_horingsutkast.pdf	STD:UIC 540-549		norway: a leaflet series range, not one document; drop or expand to the series
+remove	09_Referenced_Documents/ERA_Documents/ERA-ADV-2014-1_GE_marking.pdf	ERA:ERA/ADV/2014-1		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-OPI-2014-4_PRM_staircases.pdf	ERA:ERA/OPI/2014-4		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-OPI-2016-3_certification_withdrawn_TSIs.pdf	ERA:ERA/OPI/201		nodes: self citation / truncated
+remove	09_Referenced_Documents/ERA_Documents/ERA-OPI-2016-3_certification_withdrawn_TSIs.pdf	ERA:ERA/OPI/201		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-OPI-2016-3_certification_withdrawn_TSIs.pdf	ERA:ERA/OPI/20163		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-OPI-2016-3_certification_withdrawn_TSIs.pdf	ERA:ERA/OPI/2O16-3		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-REC-102-2016_NVR_organisation_codes.pdf	ERA:ERA-REC-102-2016		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-REC-102-2016_NVR_organisation_codes.pdf	ERA:ERA-REC-1O2-2016		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-REC-115_CSM_conformity_assessment_supervision.pdf	ERA:ERA-REC-115-2017		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-REC-128_PRM_TSI_amendment.pdf	ERA:ERA-REC-I28		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-100_Telematics.pdf	ERA:ERA_TD_100		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-102_Telematics.pdf	ERA:ERA_TD_102		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-103_Telematics.pdf	ERA:ERA_TD_103		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-104_Telematics.pdf	ERA:ERA_TD_104		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-105_Telematics.pdf	ERA:ERA_TD_105		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-106_Telematics.pdf	ERA:ERA_TD_106		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-2013-01_running_dynamics_procedures.pdf	ERA:ERA/TD/2013-01		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-2023-01_CCT_codification_combined_transport.pdf	STD:ISO 10		referenced: dimension, not a standard
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-B10_Telematics.pdf	ERA:ERA_TD_B10		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-B11_Telematics.pdf	ERA:ERA_TD_B11		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-B12_Telematics.pdf	ERA:ERA_TD_B12		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-B14_Telematics.pdf	ERA:ERA_TD_B14		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-B15_Telematics.pdf	ERA:ERA_TD_B15		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-B16_Telematics.pdf	ERA:ERA_TD_B16		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-B17_Telematics.pdf	ERA:ERA_TD_B17		referenced: 
+remove	09_Referenced_Documents/ERA_Documents/ERA-TD-B5_Telematics.pdf	ERA:ERA_TD_B5		referenced: 
+retarget	*	ERA:ERA-OPI-2020-2	ERA:ERA/OPI/2020-2	ertms_current: in library as 07_ERTMS_Specifications/ERA_OPI_2020-2_error_corrections.url.txt (reference ERA/OPI/2020-2, no matched_ids)
+retarget	*	ERA:ERA-OPI-2020/2	ERA:ERA-OPI-2020-2	nodes: merge ERA id variants
+retarget	*	ERA:ERA-OPI2014-8	ERA:ERA/OPI/2014-8	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-02-20I3	ERA:ERA-REC-02-2013	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-022007	ERA:ERA-REC-02-2007	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-1012014	ERA:ERA-REC-101-2014	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-1022016	ERA:ERA-REC-102-2016	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-1092014	ERA:ERA-REC-109-2014	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-115-2017	ERA:ERA-REC-115	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-1232015	ERA:ERA-REC-123-2015	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-128-2	ERA:ERA-REC-128	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-1O2-2016	ERA:ERA-REC-102-2016	nodes: merge ERA id variants
+retarget	*	ERA:ERA-REC-I28	ERA:ERA-REC-128	nodes: merge ERA id variants
+retarget	*	ERA:ERA-TD-B.12	ERA:ERA/TD/B.12	nodes: merge ERA id variants
+retarget	*	ERA:ERA-TD105	ERA:ERA-TD-105	nodes: merge ERA id variants
+retarget	*	ERA:ERA-TDTAP_B12	ERA:ERA/TD/B.12	nodes: merge ERA id variants
+retarget	*	ERA:ERA/ADV/2014-1	ERA:ERA-ADV2014-1	nodes: merge ERA id variants
+retarget	*	ERA:ERA/ERTM/033281	ERA:ERA/ERTMS/033281	nodes: merge ERA id variants
+retarget	*	ERA:ERA/GUI/012008	ERA:ERA/GUI/01-2008	nodes: merge ERA id variants
+retarget	*	ERA:ERA/OPI/2014-4	ERA:ERA-OPI-2014-4	nodes: merge ERA id variants
+retarget	*	ERA:ERA/OPI/2014-43	ERA:ERA-OPI-2014-4	nodes: merge ERA id variants
+retarget	*	ERA:ERA/OPI/2016-34	ERA:ERA/OPI/2016-3	nodes: merge ERA id variants
+retarget	*	ERA:ERA/OPI/20163	ERA:ERA/OPI/2016-3	nodes: merge ERA id variants
+retarget	*	ERA:ERA/OPI/2O16-3	ERA:ERA/OPI/2016-3	nodes: merge ERA id variants
+retarget	*	ERA:ERA/REC/092012	ERA:ERA/REC/09-2012	nodes: merge ERA id variants
+retarget	*	ERA:ERA/REC/200902	ERA:ERA/REC/2009-02	nodes: merge ERA id variants
+retarget	*	ERA:ERA/REC/200903	ERA:ERA/REC/2009-03	nodes: merge ERA id variants
+retarget	*	ERA:ERA/TD/2	ERA:ERA/TD/2013-02	nodes: merge ERA id variants
+retarget	*	ERA:ERA/TD/2011-009	ERA:ERA/TD/2011-09	nodes: merge ERA id variants
+retarget	*	ERA:ERA/TD/201109	ERA:ERA/TD/2011-09	nodes: merge ERA id variants
+retarget	*	ERA:ERA/TD/201111	ERA:ERA/TD/2011-11	nodes: merge ERA id variants
+retarget	*	ERA:ERA/TD/2013	ERA:ERA/TD/2013-02	nodes: merge ERA id variants
+retarget	*	ERA:ERA/TD/2013-01	ERA:ERA/TD/2013/01	nodes: merge ERA id variants
+retarget	*	ERA:ERA_ERTMS_015	ERA:ERA/ERTMS/015560	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_100	ERA:ERA-TD-100	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_102	ERA:ERA-TD-102	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_103	ERA:ERA-TD-103	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_104	ERA:ERA-TD-104	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_105	ERA:ERA-TD-105	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_106	ERA:ERA-TD-106	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_2011-11	ERA:ERA/TD/2011-11	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_B10	ERA:ERA/TD/B.10	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_B11	ERA:ERA/TD/B.11	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_B12	ERA:ERA/TD/B.12	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_B14	ERA:ERA/TD/B.14	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_B15	ERA:ERA/TD/B.15	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_B16	ERA:ERA/TD/B.16	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_B17	ERA:ERA/TD/B.17	nodes: merge ERA id variants
+retarget	*	ERA:ERA_TD_B5	ERA:ERA/TD/B.5	nodes: merge ERA id variants
+retarget	*	EU:32024R2847	EU:32024R2847	referenced: resolve to 10_Cybersecurity_CRA/Reg_2024-2847_Cyber_Resilience_Act.pdf, not the corrigendum
+retarget	*	STD:EN 121501	STD:EN 12150-1	nodes: hyphen lost, not repaired (base unknown)
+retarget	*	STD:EN 121502	STD:EN 12150-2	nodes: 
+retarget	*	STD:EN 122 067	STD:ETSI TS 122 067	nodes: ETSI number without prefix
+retarget	*	STD:EN 13103-11	STD:EN 13103-1	nodes: glued footnote digit
+retarget	*	STD:EN 15085-1-5	STD:EN 15085	nodes: range of parts
+retarget	*	STD:EN 19011	STD:ISO 19011	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:EN 19912	STD:EN 1991-2	nodes: 
+retarget	*	STD:EN 3095	STD:EN ISO 3095	nodes: 
+retarget	*	STD:EN 5016-1	STD:EN 50126-1	nodes: 
+retarget	*	STD:EN 60721-35	STD:EN 60721-3-5	nodes: 
+retarget	*	STD:EN 607213-5	STD:EN 60721-3-5	nodes: 
+retarget	*	STD:EN ISO 19011	STD:ISO 19011	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:EN ISO 65061	STD:EN ISO 6506-1	nodes: 
+retarget	*	STD:EN ISO 9001	STD:ISO 9001	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ETSI EN 310 515	STD:ETSI EN 301 515	nodes: 
+retarget	*	STD:ETSI TS 122	STD:ETSI TS 122 030	nodes: dotted 3GPP-style number
+retarget	*	STD:IEC 118-11	STD:IEC 60118-11	nodes: 
+retarget	*	STD:IEC 17000	STD:ISO/IEC 17000	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:IEC 17011	STD:ISO/IEC 17011	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:IEC 17021-1	STD:ISO/IEC 17021-1	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:IEC 17025	STD:ISO/IEC 17025	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:IEC 416	STD:IEC 60416	nodes: old IEC numbering
+retarget	*	STD:IEC 50811-33-02	STD:IEC 60050-811-33-02	nodes: 
+retarget	*	STD:IEC 611581	STD:IEC 61158-1	nodes: 
+retarget	*	STD:IEC 61375-21	STD:IEC 61375-2-1	nodes: 
+retarget	*	STD:IEC 61375-23	STD:IEC 61375-2-3	nodes: 
+retarget	*	STD:IEC 61375-26	STD:IEC 61375-2-6	nodes: 
+retarget	*	STD:IEC 61375-31	STD:IEC 61375-3-1	nodes: 
+retarget	*	STD:IEC 61375-33	STD:IEC 61375-3-3	nodes: 
+retarget	*	STD:IEC 61375-34	STD:IEC 61375-3-4	nodes: 
+retarget	*	STD:IEC 62443-33	STD:IEC 62443-3-3	nodes: 
+retarget	*	STD:IEC 68	STD:IEC 60068	nodes: old IEC numbering
+retarget	*	STD:IEC 9797-1	STD:ISO/IEC 9797-1	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 10646	STD:ISO/IEC 10646	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 15408	STD:ISO/IEC 15408	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 17549-1	STD:ISO/IEC 17549-1	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 18000-3	STD:ISO/IEC 18000-3	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 27001	STD:ISO/IEC 27001	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 29115	STD:ISO/IEC 29115	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 3095	STD:EN ISO 3095	nodes: merge spelling variants
+retarget	*	STD:ISO 31661	STD:ISO 3166-1	nodes: 
+retarget	*	STD:ISO 3309	STD:ISO/IEC 3309	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 38641	STD:ISO 3864-1	nodes: 
+retarget	*	STD:ISO 4335	STD:ISO/IEC 4335	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 646	STD:ISO/IEC 646	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 7776	STD:ISO/IEC 7776	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 7809	STD:ISO/IEC 7809	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO 90014	STD:ISO 9001	nodes: footnote 4 glued
+retarget	*	STD:ISO 9797-1	STD:ISO/IEC 9797-1	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO/IEC 14001	STD:ISO 14001	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO/IEC 31010	STD:ISO 31010	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:ISO/IEC 9001	STD:ISO 9001	nodes: duplicate spelling of same standard; merge
+retarget	*	STD:UIC 4382	STD:UIC 438-2	nodes: 
+retarget	*	STD:UIC 50596-6	STD:IRS 50596-6	nodes: 
+retarget	*	STD:UIC 5302	STD:UIC 530-2	nodes: 
+retarget	*	STD:UIC 54108	STD:UIC 541-08	nodes: 
+retarget	*	STD:UIC 5441	STD:UIC 544-1	nodes: 
+retarget	*	STD:UIC 6154	STD:UIC 615-4	nodes: 
+retarget	02_TSI/Amending_packages/Reg_2019-776_TSI_alignment_4RP.pdf	ERA:ERA/TD/201111	ERA:ERA/TD/2011-11	tsi: duplicate id without hyphen
+retarget	02_TSI/Amending_packages/Reg_2019-776_TSI_alignment_4RP.pdf	STD:EN ISO 65061	STD:EN ISO 6506-1	tsi: hyphen lost; Brinell hardness test
+retarget	02_TSI/Amending_packages/Reg_2019-776_TSI_alignment_4RP.pdf	STD:ISO 5658	STD:ISO 5658-2	tsi: 'ISO 5658- 2' (space after hyphen) cut to base number
+retarget	02_TSI/Amending_packages/Reg_2019-776_TSI_alignment_4RP.pdf	STD:UIC 5441	STD:UIC 544-1	tsi: hyphen lost in PDF text
+retarget	02_TSI/Amending_packages/Reg_2023-1694_TSI_package_amendment.pdf	STD:ISO 5658	STD:ISO 5658-2	tsi: 'ISO 5658- 2' (space after hyphen) cut to base number
+retarget	02_TSI/OPE/Reg_2023-1693_OPE_TSI_amendment.pdf	EU:32016R0091	EU:32016R0919	referenced: truncated; Reg_2016-91.pdf is a wrong download
+retarget	02_TSI/WAG/Reg_2015-924_WAG_TSI_amendment.pdf	ERA:ERA/TD/2013	ERA:ERA/TD/2013-02	tsi: 'ERA/TD/2013-' + line break '02/INT'
+retarget	02_TSI/WAG/Reg_321-2013_WAG_TSI.pdf	STD:EN 15085-1-5	STD:EN 15085-1	tsi: 'EN 15085-1-5:2007' = parts 1 to 5; also add EN 15085-2..-5
+retarget	02_TSI/WAG/Reg_321-2013_WAG_TSI_consolidated_20251104.pdf	STD:ISO 5658	STD:ISO 5658-2	tsi: 'ISO 5658- 2' (space after hyphen) cut to base number
+retarget	06_ERA_Guides/CSM_RA/Explanatory_note_CSM_AsBo.pdf	EU:32020R0378	EU:32020R0387	eraguides: Amendment of CCS TSI 2016/919 is 2020/387; 2020/378 is a source typo.
+retarget	06_ERA_Guides/CSM_RA/Guide_harmonised_design_targets.pdf	EU:32013R0403	EU:32013R0402	eraguides: Source typo; 403/2013 is a feed-additive authorisation.
+retarget	06_ERA_Guides/CSM_RA/Guide_harmonised_design_targets.pdf	EU:32013R0403	EU:32013R0402	referenced: source typo; CSM RA is 402/2013; Reg_403-2013.pdf wrong download
+retarget	06_ERA_Guides/Registers/ERATV_Application_Guide_2016-797.pdf	ERA:ERA/TD/201109	ERA:ERA/TD/2011-09	eraguides: Hyphen lost; id duplicate.
+retarget	06_ERA_Guides/Registers/Harmonised_national_restriction_codes.pdf	ERA:ERA-REC-1022016	ERA:ERA-REC-102-2016	eraguides: Hyphen lost; id duplicate.
+retarget	06_ERA_Guides/Registers/RINF_Application_Guide_3.1.0.pdf	ERA:ERA_TD_2011-11	ERA:ERA/TD/2011-11	eraguides: Separator variant; id duplicate.
+retarget	06_ERA_Guides/Safety_Certification/ECM_certification_guidance_v10.pdf	STD:IEC 17011	STD:ISO/IEC 17011	eraguides: \\\\\\\"ISO IEC\\\\\\\" without slash.
+retarget	06_ERA_Guides/Safety_Certification/Guide_CSM_monitoring.pdf	ERA:ERA/GUI/012008	ERA:ERA/GUI/01-2008	eraguides: Hyphen lost; resolves to correct file already, id duplicate.
+retarget	06_ERA_Guides/Safety_Certification/SMS_Requirements_Guide_v1.3_NO.pdf	STD:EN 5016-1	STD:EN 50126-1	eraguides: Typo in Norwegian translation; EN version L3500 has EN 50126-1.
+retarget	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_2023_Application_Guide_v3.1.pdf	EU:31995L0005	EU:31999L0005	eraguides: RED repeals Directive 1999/5/EC (R&TTE); 95/5/EEC is a veterinary act. Same for the 07_ERTMS_Specifications copy.
+retarget	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_2023_Application_Guide_v3.1.pdf	EU:31995L0005	EU:31999L0005	referenced: RED repealed 1999/5/EC; Dir_1995-5.pdf wrong download
+retarget	06_ERA_Guides/TSI_Application_Guides/CCS_TSI_2023_Application_Guide_v3.1.pdf	EU:32018R0113	EU:32018R1139	eraguides: Truncated 2018/1139 (EASA regulation amending RED); 2018/113 is a pesticide act. Same for the 07 copy.
+retarget	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	ERA:ERA/ERTMS/003328	ERA:ERA/ERTMS/033281	eraguides: Truncated number.
+retarget	06_ERA_Guides/TSI_Application_Guides/Guide_ERA_ERTMS_033281.pdf	ERA:ERA/ERTMS/003328	ERA:ERA/ERTMS/033281	nodes: 
+retarget	06_ERA_Guides/TSI_Application_Guides/INF_TSI_Guide_2023.pdf	STD:EN 19912	STD:EN 1991-2	eraguides: Hyphen lost.
+retarget	06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf	STD:EN 121501	STD:EN 12150-1	eraguides: Hyphen lost (toughened glass).
+retarget	06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf	STD:EN 121502	STD:EN 12150-2	eraguides: Hyphen lost.
+retarget	06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf	STD:EN 13103-11	STD:EN 13103-1	eraguides: Footnote digit glued (EN 13103-1:2017+A1).
+retarget	06_ERA_Guides/TSI_Application_Guides/LOC-PAS_TSI_Guide_2023.pdf	STD:ISO 38641	STD:ISO 3864-1	eraguides: Hyphen lost.
+retarget	06_ERA_Guides/TSI_Application_Guides/PRM_TSI_Guide_2023.pdf	ERA:ERA/OPI/2014-43	ERA:ERA-OPI-2014-4	eraguides: Footnote digit glued.
+retarget	06_ERA_Guides/TSI_Application_Guides/PRM_TSI_Guide_2023.pdf	ERA:ERA/OPI/2016-34	ERA:ERA/OPI/2016-3	eraguides: Footnote digit glued.
+retarget	06_ERA_Guides/TSI_Application_Guides/WAG_TSI_Guide_2023.pdf	ERA:ERA/TD/2	ERA:ERA/TD/2013-02	eraguides: Line-break truncation; ERA/TD/2013-02 already an edge.
+retarget	06_ERA_Guides/TSI_Application_Guides/WAG_TSI_Guide_2023.pdf	STD:UIC 54108	STD:UIC 541-08	eraguides: Hyphen lost; UIC 541-08 already an edge.
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-039_changes_adversely_affect_safety.pdf	STD:EN 50216-1	STD:EN 50126-1	eraguides: Source typo (EN 50216 = transformer accessories); risk-acceptance Annex C of EN 50126-1.
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-047_CH_authorisations.pdf	EU:32013D0001	EU:22013D0804	eraguides: ITC Decision No 1/2013 = OJ 2013/804/EU (PA VA table L1966; ERA1209-047 L153 \\\\\\\"2013/804/EU: Decision No 1/2013\\\\\\\"). EU:32013D0001 is an unr
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-047_CH_authorisations.pdf	EU:32013D0001	EU:22013D0804	nodes: non-EU body decision mapped to CELEX
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-047_CH_authorisations.pdf	EU:32019D0002	EU:22020D0040	eraguides: ITC Decision No 2/2019 published as (EU) 2020/40 (PA VA table \\\\\\\"2020/40 13-12-2019\\\\\\\"); EU:32019D0002 is an ECB decision.
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-047_CH_authorisations.pdf	EU:32019D0002	EU:22020D0040	nodes: 
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-146_requirements_capture.pdf	STD:EN 50126	STD:EN 50126-1	eraguides: Footnote/hyphen lost; EN 50126-1 already an edge so this collapses into it. (L2725 \\\\\\\"EN 50126/50128/50129\\\\\\\" is the series - acceptable eit
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32013D0001	EU:22013D0804	eraguides: ITC Decision No 1/2013 = OJ 2013/804/EU (PA VA table L1966; ERA1209-047 L153 \\\\\\\"2013/804/EU: Decision No 1/2013\\\\\\\"). EU:32013D0001 is an unr
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32013D0001	EU:22013D0804	nodes: non-EU body decision mapped to CELEX
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32016R0545	EU:32018R0545	eraguides: Source typo for 2018/545 (new vehicle type after extension of area of use); 2016/545 is framework agreements for capacity. Effectively remove (2018/54
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32019D0002	EU:22020D0040	eraguides: ITC Decision No 2/2019 published as (EU) 2020/40 (PA VA table \\\\\\\"2020/40 13-12-2019\\\\\\\"); EU:32019D0002 is an ECB decision.
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32019D0002	EU:22020D0040	nodes: 
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32021D0002	EU:22022D0308	eraguides: ITC Decision No 2/2021 published as 2022/38; EU:32021D0002 is a Council decision on the UK withdrawal Joint Committee.
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	EU:32021D0002	EU:22022D0308	nodes: 
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-222_PA_VA_Guidelines_v2.1.pdf	STD:IEC 17000	STD:ISO/IEC 17000	eraguides: Space after slash splits the id.
+retarget	06_ERA_Guides/Vehicle_Authorisation/ERA1209-322_wagons_electrical_equipment.pdf	ERA:ERA/ERTM/033281	ERA:ERA/ERTMS/033281	eraguides: Source typo \\\\\\\"ERTM\\\\\\\" (x5); node resolves to nothing.
+retarget	07_ERTMS_Specifications/Informative_specs/060_o-3001-2_edor_2.0.0_cl_0_GSM-R_EDOR_testcases_catalogue.pdf	STD:EN 122 067	STD:ETSI TS 122 067	ertms_current: 
+retarget	07_ERTMS_Specifications/Informative_specs/SUBSET-113_1_link.pdf	ERA:ERA-OPI-2020/2	ERA:ERA/OPI/2020-2	ertms_current: same
+retarget	07_ERTMS_Specifications/Informative_specs/ccs-tsi-2023-application-guide_Current_working_version_of_the_application_guide_V3_1.pdf	EU:31995L0005	EU:31999L0005	referenced: RED repealed 1999/5/EC; Dir_1995-5.pdf wrong download
+retarget	07_ERTMS_Specifications/Introduction_ETCS_braking_curves.pdf	SS:SUBSET-026	SS:SUBSET-026	ertms_current: resolve to Set3_ETCS_B3_R2/004_SUBSET-026_v360 (cited version), not Set4 v400
+retarget	07_ERTMS_Specifications/Introduction_ETCS_braking_curves.pdf	SS:SUBSET-041	SS:SUBSET-041	ertms_current: resolve to Set3 014_SUBSET-041_v320
+retarget	07_ERTMS_Specifications/Set2_ETCS_B3_MR1/060_SUBSET-104_v320_ETCS_System_Version_Management.pdf	ERA:ERA_ERTMS_000	ERA:ERA/ERTMS/000001	ertms_old: id split across a table line break (ERA_ERTMS_0001, CCM process v2.0); extractor kept 3-digit stub; not in library
+retarget	07_ERTMS_Specifications/Set3_ETCS_B3_R2/027_SUBSET-091_v360_Safety_Requirements_for_the_Technical_Interoperability_of_ET.pdf	ERA:ERA-REC-1232015	ERA:ERA-REC-123-2015	ertms_old: hyphen lost in text; duplicate node of ERA-REC-123-2015 (both resolve to same file)
+retarget	07_ERTMS_Specifications/Set3_ETCS_B3_R2/060_SUBSET-104_v330_ETCS_System_Version_Management.pdf	ERA:ERA_ERTMS_000	ERA:ERA/ERTMS/000001	ertms_old: id split across a table line break (ERA_ERTMS_0001, CCM process v2.0); extractor kept 3-digit stub; not in library
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/025_SUBSET-056_v300_STM_FFFIS_Safe_time_layer.pdf	STD:EN 50170	STD:EN 50170-2	ertms_current: line-break split
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/026_SUBSET-057_v310_STM_FFFIS_Safe_link_layer.pdf	STD:EN 50170	STD:EN 50170-2	ertms_current: merge into existing EN 50170-2 edge
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/027_SUBSET-091_v400_Safety_Requirements_for_the_Technical_Interoperability_of_ET.pdf	ERA:ERA-REC-1232015	ERA:ERA-REC-123-2015	ertms_current: or remove as history-only
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/032_EIRENE_FRS_v810_GSM-R_Functional_requirements_specification.pdf	STD:ISO 90014	STD:ISO 9001	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/033_EIRENE_SRS_v1610_GSM-R_System_requirements_specification.pdf	STD:IEC 17025	STD:ISO/IEC 17025	ertms_current: merge into existing edge
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/067_morane_p38t9001_v600_FFFIS_for_GSM-R_SIM_Cards.pdf	STD:ETSI TS 122	STD:ETSI TS 122 030	ertms_current: dotted number
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/089_SUBSET-143_v100_Interface_Specification_Communication_Layers_for_On-board_Co.pdf	STD:IEC 61375-34	STD:IEC 61375-3-4	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/090_SUBSET-147_v100_CCS_Consist_network_communication_Layers_FFFIS.pdf	STD:IEC 611581	STD:IEC 61158-1	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/090_SUBSET-147_v100_CCS_Consist_network_communication_Layers_FFFIS.pdf	STD:IEC 61375-21	STD:IEC 61375-2-1	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/090_SUBSET-147_v100_CCS_Consist_network_communication_Layers_FFFIS.pdf	STD:IEC 61375-23	STD:IEC 61375-2-3	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/090_SUBSET-147_v100_CCS_Consist_network_communication_Layers_FFFIS.pdf	STD:IEC 61375-31	STD:IEC 61375-3-1	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/090_SUBSET-147_v100_CCS_Consist_network_communication_Layers_FFFIS.pdf	STD:IEC 61375-33	STD:IEC 61375-3-3	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/090_SUBSET-147_v100_CCS_Consist_network_communication_Layers_FFFIS.pdf	STD:IEC 61375-34	STD:IEC 61375-3-4	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/090_SUBSET-147_v100_CCS_Consist_network_communication_Layers_FFFIS.pdf	STD:IEC 62443-33	STD:IEC 62443-3-3	ertms_current: 
+retarget	07_ERTMS_Specifications/Set4_ETCS_B4_R1_current/093_FRMCS_FRS_(FU-7120)_v100.pdf	ERA:ERA-TD105	ERA:ERA-TD-105	ertms_current: resolves to ERA-TD-105_Telematics.pdf
+retarget	08_Norway/ATC2_STM_Specifications/v5.1_2009/STM_GRS_100200-E004_v5.1.pdf	STD:IEC 68	STD:IEC 60068-2-27	norway: old numbering IEC 68-2-27 = IEC 60068-2-27 (shock test)
+retarget	08_Norway/ATC2_STM_Specifications/v5.2_2014/STM_GRS_100200-E004_v5.2.pdf	STD:IEC 68	STD:IEC 60068-2-27	norway: old numbering IEC 68-2-27 = IEC 60068-2-27 (shock test)
+retarget	08_Norway/ATC2_STM_Specifications/v6.0_2014/STM_GRS_100200-E004_v6.0.pdf	STD:IEC 68	STD:IEC 60068-2-27	norway: old numbering IEC 68-2-27 = IEC 60068-2-27 (shock test)
+retarget	08_Norway/ATC2_STM_Specifications/v6.1_2017/STM_GRS_100200-E004_v6.1.pdf	STD:IEC 68	STD:IEC 60068-2-27	norway: old numbering IEC 68-2-27 = IEC 60068-2-27 (shock test)
+retarget	08_Norway/Lover_og_forskrifter/TSI_OPE_forskriften_FOR-2021-09-08-2714.html	EU:32012R0757	EU:32012D0757	norway: OPE TSI 2012/757/EU was a Commission Decision; text mislabels it, Lovdata link is eu/32012d0757
+retarget	08_Norway/Nasjonale_regler_NNTR/Jernbanekjoretoyforskriften_horingsutkast.pdf	STD:UIC 5302	STD:UIC 530-2	norway: dropped hyphen; UIC 530-2 (wagons running safety) fits context
+retarget	08_Norway/Nasjonale_regler_NNTR/Jernbanekjoretoyforskriften_horingsutkast.pdf	STD:UIC 6154	STD:UIC 615-4	norway: dropped hyphen in source; hyphen repair only handles >=6 digits
+retarget	08_Norway/SJT_Veiledninger/ERA_Guide_SMS_requirements_NO.pdf	STD:EN 50126	STD:EN 50126-1	norway: 2 of 3 mentions are explicitly Part 1; L4782 "EN50126/8/9" is generic
+retarget	08_Norway/SJT_Veiledninger/ERA_Guide_SMS_requirements_NO.pdf	STD:EN 5016-1	STD:EN 50126-1	norway: typo in source for EN 50126-1 (RAMS)
+retarget	08_Norway/SJT_Veiledninger/SJT_Horingsnotat_TSI_CCS_2026.pdf	NO:FOR-2025-03-15-450	NO:FOR-2025-03-14-450	nodes: date typo in source; library file TSI_CCS_forskriften_FOR-2025-03-14-450
+retarget	08_Norway/SJT_Veiledninger/SJT_Horingsnotat_TSI_CCS_2026.pdf	NO:FOR-2025-03-15-450	NO:FOR-2025-03-14-450	norway: date typo in the source; FOR-2025-03-15-450 is 404 on Lovdata, title matches FOR-2025-03-14-450 (TSI CCS-forskriften, in library)
+retarget	09_Referenced_Documents/ERA_Documents/ERA-1172-002_ECM_sectorial_accreditation_scheme_v3.1.pdf	STD:EN 19011	STD:EN ISO 19011	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-1172-002_ECM_sectorial_accreditation_scheme_v3.1.pdf	STD:ISO/IEC 9001	STD:ISO 9001	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-1172-003_ECM_certification_scheme_v1.1.pdf	STD:IEC 17021-1	STD:ISO/IEC 17021-1	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-1172-003_ECM_certification_scheme_v1.1.pdf	STD:ISO/IEC 14001	STD:ISO 14001	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-1172-003_ECM_certification_scheme_v1.1.pdf	STD:ISO/IEC 9001	STD:ISO 9001	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-OPI-2014-4_PRM_staircases.pdf	ERA:ERA-REC-02-20I3	ERA:ERA-REC-02-2013	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-TD-103_Telematics.pdf	ERA:ERA-TD105	ERA:ERA-TD-105	referenced: resolves to ERA-TD-105_Telematics.pdf
+retarget	09_Referenced_Documents/ERA_Documents/ERA-TD-105_Telematics.pdf	STD:ISO 31661	STD:ISO 3166-1	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-TD-105_Telematics.pdf	STD:UIC 4382	STD:UIC 438-2	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-TD-106_Telematics.pdf	ERA:ERA-TD-B.12	ERA:ERA-TD-B12	referenced: -> ERA-TD-B12_Telematics.pdf (check alias)
+retarget	09_Referenced_Documents/ERA_Documents/ERA-TD-106_Telematics.pdf	ERA:ERA-TDTAP_B12	ERA:ERA-TD-B12	referenced: same doc
+retarget	09_Referenced_Documents/ERA_Documents/ERA-TD-2013-02_friction_elements_wheel_tread_brakes_v3.pdf	ERA:ERA-REC-1092014	ERA:ERA-REC-109-2014	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-TD-2023-01_CCT_codification_combined_transport.pdf	STD:UIC 50596-6	STD:IRS 50596-6	referenced: 
+retarget	09_Referenced_Documents/ERA_Documents/ERA-TD-B16_Telematics.pdf	STD:EN 12986	STD:EN 12896	referenced: 
+retarget	09_Referenced_Documents/EU_Acts/Dec_2012-696.pdf	STD:ETSI TS 102	STD:ETSI TS 102 610	nodes: number split over line
+retarget	*	STD:UIC 92014	STD:UIC 920-14	verification: "UIC leaflet 92014" is a typo for 920-14

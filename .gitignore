@@ -20,3 +20,7 @@ Thumbs.db
 ._*
 .vscode/
 .idea/
+
+# local scratch
+/_to_delete/
+/.claude/

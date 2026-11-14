@@ -62,7 +62,7 @@ def build_nav(data, verbose=True):
     M = defaultdict(lambda: defaultdict(int))       # doc -> doc mentions (via resolved cited item)
     citers = defaultdict(set)                       # doc -> docs citing it (any of its versions)
     ext_by = defaultdict(lambda: defaultdict(int))  # ext id -> citing doc -> mentions
-    for s, t, c in data["edges"]:
+    for s, t, c, *_ in data["edges"]:
         e = ext.get(t)
         if not e or s not in docs: continue
         if e["lib"]:
