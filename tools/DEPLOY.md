@@ -36,6 +36,12 @@ bash tools/finalize.sh      # rebuild catalogue, both map editions and README
 git add -A && git commit -m "Update library" && git push
 ```
 
+The ERATV index is refreshed separately each night by `.github/workflows/eratv-refresh.yml`.
+It imports both public registration-regime result sets, rebuilds both map editions and commits
+only when the register changes. GitHub runs scheduled workflows from the default branch; the
+nightly schedule becomes active after this branch is merged there. A push to this feature branch
+also runs the workflow, and **Actions** must have permission to write repository contents.
+
 ## Alternatives
 - **Drag and drop**: Workers & Pages → Create → Pages → *Upload assets* → drop the `online` folder.
 - **Wrangler CLI**: `npx wrangler pages deploy 99_Reference_Map/online --project-name railcert`
