@@ -77,6 +77,7 @@ svg.cr.has-sel .ve.on path{marker-end:url(#cr-arr-on)}
 #crdet p{margin:0 0 9px;line-height:1.5;max-width:70ch}#crdet .refs,#crdet .xchips{display:flex;flex-wrap:wrap;gap:5px 6px;margin:2px 0 6px}#crdet .lst{margin:0;padding:0;list-style:none}#crdet .lst li{padding:3px 0;border-bottom:1px dashed var(--line);font-size:13px}#crdet .lst .rel{color:var(--mute);font-size:12px}
 .crrolebox{border-left:3px solid var(--acc);background:var(--sel);border-radius:0 7px 7px 0;padding:8px 11px;margin:8px 0 4px;line-height:1.5}.crrolebox b{display:block;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--acc);margin-bottom:2px}
 #crdet .crprac{border-left:2px solid var(--line);padding-left:10px;color:color-mix(in srgb,var(--ink) 82%,var(--mute))}.crnb{font-size:10.5px;letter-spacing:.3px;background:var(--chip);color:var(--acc2);border-radius:9px;padding:1px 7px;margin-left:4px;text-transform:none}
+.crex{margin:0}.crex dt{font-weight:600;font-size:13px;margin-top:9px}.crex dd{margin:2px 0 0;padding:0 0 8px;border-bottom:1px dashed var(--line);line-height:1.5;max-width:70ch}
 .cract{margin:6px 0 4px!important}.crfine{font-size:12px!important;color:var(--mute);margin-top:14px!important}
 .crbtn{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit;font-size:13px;padding:7px 13px;border-radius:7px;cursor:pointer}.crbtn:hover{border-color:var(--mute)}.crbtn.pri{background:var(--acc);border-color:var(--acc);color:var(--panel);font-weight:600}.crbtn.pri:hover{filter:brightness(1.08)}.crbtn.danger{color:var(--acc2)}
 .crguide{flex:1;min-height:0;display:grid;grid-template-columns:232px 1fr}.crguide[hidden],.vacanvas[hidden]{display:none}
@@ -754,7 +755,7 @@ function crNodeHtml(n,guide){
   return `<div class="vadet-k">${guide?'Guidance for this step':esc(crKind[n.kind]||'')}</div><h2>${esc(n.t)}</h2>`
     +(guide?`<p class="cract"><button class="lk" data-cmap="${n.id}">Show on the map</button></p>`:st!=null?`<p class="cract"><button class="lk" data-cstep="${st}">Open in the guided assessment · step ${st+1}</button></p>`:'')
     +(crRole&&n.r&&n.r[crRole]?`<div class="crrolebox"><b>${esc(crRoleName(crRole))}</b>${esc(n.r[crRole])}</div>`:'')
-    +ps('What the Regulation requires',n.law)+ps('ERA guidance',n.era)
+    +ps('What the Regulation requires',n.law)+(n.ex&&n.ex.length?`<h3>Where this applies</h3><dl class="crex">${n.ex.map(([w,x])=>`<dt>${esc(w)}</dt><dd>${esc(x)}</dd>`).join('')}</dl>`:'')+ps('ERA guidance',n.era)
     +(n.prac&&n.prac.length?`<h3>Practice notes <span class="crnb">not binding</span></h3>`+n.prac.map(p=>`<p class="crprac">${esc(p)}</p>`).join(''):'')
     +(n.ev&&n.ev.length?`<h3>Evidence this step leaves</h3><ul class="lst">${n.ev.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'')
     +(n.cen?`<h3>In EN 50126 / EN 50129 terms</h3><p>${esc(n.cen)}</p>`:'')
