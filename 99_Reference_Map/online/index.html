@@ -64,6 +64,9 @@ h3{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mute)
 .ve path{fill:none;stroke:color-mix(in srgb,var(--mute) 70%,var(--panel));stroke-width:1.3}.ve.dash path{stroke-dasharray:5 4}
 .ve text{font-size:11px;fill:var(--mute);paint-order:stroke;stroke:var(--panel);stroke-width:4px;stroke-linejoin:round}
 .ve.yes text{fill:var(--acc)}
+.vel{font-size:11px;fill:var(--mute);paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round;pointer-events:none}.vel.yes{fill:var(--acc)}
+svg.has-sel .vel:not(.on){opacity:.15}svg.has-sel .vel.on{fill:var(--acc);font-weight:600}svg.has-hit:not(.has-sel) .vel{opacity:.15}
+.certs .vel{display:none}.certs.has-sel .vel.on{display:block}svg.cr .vel.crp{fill:var(--acc)}
 svg.has-sel .vn:not(.on){opacity:.32}svg.has-sel .ve:not(.on){opacity:.15}svg.has-sel .ve.on path{stroke:var(--acc);stroke-width:2;marker-end:url(#va-arr-on)}.ah{fill:color-mix(in srgb,var(--mute) 70%,var(--panel))}.ah.on{fill:var(--acc)}svg.has-sel .ve.on text{fill:var(--acc)}
 .certs .ve text{display:none}.certs.has-sel .ve.on text{display:block}
 .lane rect{fill:color-mix(in srgb,var(--mute) 5%,var(--panel))}.lane:nth-of-type(even) rect{fill:var(--panel)}.lane text{fill:var(--mute);font-size:12px;font-weight:600}
@@ -599,6 +602,37 @@ tree.addEventListener('keydown',e=>{ if(e.target.closest('.tr,.more')) typeToSea
 detEl.addEventListener('keydown',e=>{ if(e.target.closest('.rf>summary,.rf>.rs')&&document.getElementById('v-nav').classList.contains('on')) typeToSearch(e); });
 { const m=location.hash.match(/^#doc=(.+)$/); if(m){ fromHistory=true; select(decodeURIComponent(m[1]),true); fromHistory=false; } }
 
+// ---------- arrow labels: drawn above the boxes, nudged apart so they stay readable ----------
+const velEdge=new WeakMap();
+function edgeLabels(svg){
+  let layer=svg.querySelector('g.vel-layer');
+  if(!layer){ layer=document.createElementNS('http://www.w3.org/2000/svg','g'); layer.setAttribute('class','vel-layer'); svg.appendChild(layer);
+    svg.querySelectorAll('.ve > text').forEach(t=>{ velEdge.set(t,t.parentNode); t.dataset.x0=t.getAttribute('x'); t.dataset.y0=t.getAttribute('y'); t.dataset.a0=t.getAttribute('text-anchor')||'start'; layer.appendChild(t); }); }
+  const labels=[...layer.children];
+  for(const t of labels){ const g=velEdge.get(t); t.setAttribute('class','vel'+['on','yes','dash','crp'].filter(c=>g.classList.contains(c)).map(c=>' '+c).join('')); t.setAttribute('x',t.dataset.x0); t.setAttribute('y',t.dataset.y0); t.setAttribute('text-anchor',t.dataset.a0); }
+  if(!svg.getBoundingClientRect().width) return;   // hidden tab: nothing to measure yet
+  const certs=svg.classList.contains('certs'), sel=svg.classList.contains('has-sel');
+  const shown=labels.filter(t=>!certs||(sel&&t.classList.contains('on')));
+  // obstacles: ordinary boxes (not the big stage / group / lane frames that contain other boxes)
+  const boxes=[...svg.querySelectorAll('.vn:not(.k-group):not(.k-stage):not(.k-stage-opt):not(.k-lane)')].map(g=>g.getBBox());
+  const hit=(a,b)=>a.x<b.x+b.width&&b.x<a.x+a.width&&a.y<b.y+b.height&&b.y<a.y+a.height;
+  // selected arrows first, so they get the best spots
+  shown.sort((a,b)=>b.classList.contains('on')-a.classList.contains('on'));
+  // candidate spots: where the label was drawn, then points along its arrow, each nudged up or down
+  const placed=[], offs=[0,-13,13,-26,26,-39,39];
+  for(const t of shown){ const bb=t.getBBox(), w=bb.width, h=bb.height, x0=+t.dataset.x0, y0=+t.dataset.y0, a0=t.dataset.a0;
+    const left=(x,a)=>a==='middle'?x-w/2:a==='end'?x-w:x, base=y0-bb.y;   // base: baseline offset within the box
+    const path=velEdge.get(t).querySelector('path'), L=path.getTotalLength(), spots=[{x:x0,y:y0,a:a0}];
+    for(const f of [.5,.35,.65,.2,.8]){ const p=path.getPointAtLength(L*f); spots.push({x:p.x,y:p.y+base-h/2,a:'middle'}); }
+    const cands=[]; for(const d of offs) for(const sp of spots) cands.push({...sp,y:sp.y+d});
+    const rect=c=>({x:left(c.x,c.a)-3,y:c.y-base-2,width:w+6,height:h+4});
+    // no free spot: least box area covered, among spots clear of other labels
+    const cover=r=>boxes.reduce((s,b)=>s+Math.max(0,Math.min(r.x+r.width,b.x+b.width)-Math.max(r.x,b.x))*Math.max(0,Math.min(r.y+r.height,b.y+b.height)-Math.max(r.y,b.y)),0);
+    let c=cands.find(c=>{ const r=rect(c); return !placed.some(p=>hit(r,p))&&!boxes.some(b=>hit(r,b)); });
+    if(!c){ let best=Infinity; for(const k of cands){ const r=rect(k); if(placed.some(p=>hit(r,p))) continue; const v=cover(r); if(v<best){ best=v; c=k; } } }
+    c=c||spots[0];
+    t.setAttribute('x',c.x); t.setAttribute('y',c.y); t.setAttribute('text-anchor',c.a); placed.push(rect(c)); }
+}
 // ---------- vehicle authorisation: process flowchart + certificates & declarations map ----------
 const VA=D.nav.va; const vaCanvas=document.getElementById('vacanvas'), vaDet=document.getElementById('vadet');
 let vaMode='process', vaSel=null, vaZoom=0;   // vaZoom 0 = fit width (min 0.75 of natural size)
@@ -640,7 +674,7 @@ const ARROW='<defs><marker id="va-arr" viewBox="0 0 10 10" refX="9" refY="5" mar
 // --- certificates map: lanes (rows) x columns
 function certBoxes(){
   // each lane is as tall as its slots need (slot step 31px, box 54px); boxes centre on the lane's slot range
-  const LW=140, CW=190, LH=128, ST=31, TOP=34, B=new Map(), L=new Map(); let y=TOP;
+  const LW=140, CW=236, LH=128, ST=31, TOP=34, B=new Map(), L=new Map(); let y=TOP;
   for(const [id] of VA.certs.lanes){ const sl=VA.certs.nodes.filter(n=>n.lane===id).map(n=>n.slot||0), lo=Math.min(0,...sl), hi=Math.max(0,...sl), h=Math.max(LH,(hi-lo)*ST+80);
     L.set(id,{y,h,mid:(lo+hi)/2}); y+=h; }
   for(const n of VA.certs.nodes){ const l=L.get(n.lane); B.set(n.id,{x:LW+n.col*CW+CW/2,y:l.y+l.h/2+((n.slot||0)-l.mid)*ST,w:172,h:54}); }
@@ -668,10 +702,11 @@ function vaHighlight(){
   const svg=vaCanvas.querySelector('svg'); if(!svg) return; const id=vaSel&&vaSel.m===vaMode?vaSel.id:null;
   svg.classList.toggle('has-sel',!!id); svg.querySelectorAll('.vn').forEach(g=>{g.classList.remove('on','sel');});
   svg.querySelectorAll('.ve').forEach(g=>g.classList.remove('on'));
-  if(!id) return; const on=new Set([id]);
+  if(!id) return edgeLabels(svg); const on=new Set([id]);
   svg.querySelectorAll('.ve').forEach(g=>{ if(g.dataset.a===id||g.dataset.b===id){ g.classList.add('on'); on.add(g.dataset.a); on.add(g.dataset.b); } });
   const N=vaMode==='process'?VP:VC; const me=N.get(id); if(me&&me.group) on.add(me.group); if(me&&me.kind==='group') VA.process.nodes.filter(n=>n.group===id).forEach(n=>on.add(n.id));
   svg.querySelectorAll('.vn').forEach(g=>{ if(on.has(g.dataset.id)) g.classList.add('on'); if(g.dataset.id===id) g.classList.add('sel'); });
+  edgeLabels(svg);
 }
 const vaChip=(m,id)=>{ const n=(m==='process'?VP:VC).get(id); return n?`<span class="pref"><button class="lk" data-vm="${m}" data-vid="${id}">${esc(n.t)}</button></span>`:''; };
 const docChip=id=>`<span class="pref"><button class="lk" data-doc="${esc(id)}">${esc(chipLabel(id))}</button>${docs.has(id)?docLink(id):extLink(ext.get(id))}</span>`;
@@ -768,10 +803,11 @@ function crSize(){ const svg=crCanvas.querySelector('svg'); if(!svg) return; con
   const fit=Math.max(Math.min(1,avail/nat),0.72), k=crZoom===0?fit:Math.max(0.5,Math.min(2,fit*Math.pow(1.2,crZoom))); svg.style.width=Math.round(nat*k)+'px'; }
 function crHighlight(){ const svg=crCanvas.querySelector('svg'); if(!svg) return; const id=crSel;
   svg.classList.toggle('has-sel',!!id); svg.querySelectorAll('.vn').forEach(g=>g.classList.remove('on','sel')); svg.querySelectorAll('.ve').forEach(g=>g.classList.remove('on'));
-  if(!id) return; const on=new Set([id]), me=CN.get(id);
+  if(!id) return edgeLabels(svg); const on=new Set([id]), me=CN.get(id);
   svg.querySelectorAll('.ve').forEach(g=>{ if(g.dataset.a===id||g.dataset.b===id){ g.classList.add('on'); on.add(g.dataset.a); on.add(g.dataset.b); } });
   if(me.g) on.add(me.g); if(me.kind==='group') CR.nodes.filter(n=>n.g===id).forEach(n=>on.add(n.id));
   svg.querySelectorAll('.vn').forEach(g=>{ if(on.has(g.dataset.id)) g.classList.add('on'); if(g.dataset.id===id) g.classList.add('sel'); });
+  edgeLabels(svg);
 }
 // --- detail panel
 const crKind={start:'Start',step:'Step',decision:'Decision',outcome:'Outcome',stage:'Phase',note:'Other route into the process',lane:'Runs alongside the whole process',group:'Runs alongside the whole process',doc:'Document'};
