@@ -49,7 +49,8 @@ h3{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mute)
 .va{display:grid;grid-template-columns:1fr minmax(340px,30%);gap:16px;height:calc(100vh - var(--hh) - 32px)}@media(max-width:1100px){.va{grid-template-columns:1fr;height:auto}.vacanvas{max-height:72vh}}
 .vamain{background:var(--panel);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .vabar{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;padding:10px;border-bottom:1px solid var(--line)}.vabar .seg{margin:0;flex:0 1 420px}
-.vahint{color:var(--mute);font-size:12px}.zoom{margin-left:auto;display:flex;gap:10px;font-size:13px}.zoom .lk{font-size:13px;min-width:18px;text-align:center}
+.vahint{color:var(--mute);font-size:12px}.vafind{display:inline-flex;align-items:center;gap:8px;flex:0 1 340px}.vafind input{width:100%;padding:5px 8px;font-size:13px}.vacount{color:var(--mute);font-size:12px;white-space:nowrap}
+.vn.hit rect,.vn.hit polygon{stroke:var(--acc2);stroke-width:3.5}svg.has-hit:not(.has-sel) .vn:not(.hit){opacity:.28}svg.has-hit:not(.has-sel) .ve{opacity:.15}.zoom{margin-left:auto;display:flex;gap:10px;font-size:13px}.zoom .lk{font-size:13px;min-width:18px;text-align:center}
 .vacanvas{overflow:auto;flex:1;min-height:0;padding:8px}.vacanvas svg{display:block;font:12.5px/1.3 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
 .vn{cursor:pointer}.vn rect,.vn polygon{fill:var(--panel);stroke:color-mix(in srgb,var(--mute) 55%,var(--panel));stroke-width:1.2}
 .vn text{fill:var(--ink)}.vn .sub{fill:var(--mute);font-size:11.5px}.vn .ttl{font-weight:600}
@@ -193,6 +194,7 @@ footer{padding:10px 22px 18px;color:var(--mute);font-size:12px;line-height:1.5}f
 </div></section>
 <section class="view" id="v-va" role="tabpanel" aria-label="Vehicle authorisation"><div class="va">
  <div class="vamain"><div class="vabar"><div class="seg" id="vaseg" role="group" aria-label="View"><button data-m="process" aria-pressed="true">Process</button><button data-m="certs" aria-pressed="false">Certificates &amp; declarations</button></div>
+  <span class="vafind"><input type="search" id="vaq" aria-label="Search the boxes" placeholder="Search boxes (e.g. ESC, test, risk declaration)"><span class="vacount" id="vacount" aria-live="polite"></span></span>
   <span class="vahint" id="vahint">Pick a box to see what it is, its legal basis and what it links to</span>
   <span class="zoom" role="group" aria-label="Zoom"><button class="lk" data-z="-1" aria-label="Zoom out">−</button><button class="lk" data-z="0">Fit</button><button class="lk" data-z="1" aria-label="Zoom in">+</button></span></div>
   <div class="vacanvas" id="vacanvas"><div class="empty">Loading…</div></div></div>
@@ -637,13 +639,16 @@ function procSvg(){
 const ARROW='<defs><marker id="va-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 1L9 5L0 9z"/></marker><marker id="va-arr-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah on" d="M0 1L9 5L0 9z"/></marker></defs>';
 // --- certificates map: lanes (rows) x columns
 function certBoxes(){
-  const LW=140, CW=190, LH=128, TOP=34, B=new Map(); const li=new Map(VA.certs.lanes.map((l,i)=>[l[0],i]));
-  for(const n of VA.certs.nodes){ const y=TOP+li.get(n.lane)*LH+LH/2+(n.slot||0)*31; B.set(n.id,{x:LW+n.col*CW+CW/2,y,w:172,h:54}); }
-  return {B,LW,CW,LH,TOP,W:LW+VA.certs.cols.length*CW+10,H:TOP+VA.certs.lanes.length*LH+10};
+  // each lane is as tall as its slots need (slot step 31px, box 54px); boxes centre on the lane's slot range
+  const LW=140, CW=190, LH=128, ST=31, TOP=34, B=new Map(), L=new Map(); let y=TOP;
+  for(const [id] of VA.certs.lanes){ const sl=VA.certs.nodes.filter(n=>n.lane===id).map(n=>n.slot||0), lo=Math.min(0,...sl), hi=Math.max(0,...sl), h=Math.max(LH,(hi-lo)*ST+80);
+    L.set(id,{y,h,mid:(lo+hi)/2}); y+=h; }
+  for(const n of VA.certs.nodes){ const l=L.get(n.lane); B.set(n.id,{x:LW+n.col*CW+CW/2,y:l.y+l.h/2+((n.slot||0)-l.mid)*ST,w:172,h:54}); }
+  return {B,L,LW,CW,TOP,W:LW+VA.certs.cols.length*CW+10,H:y+10};
 }
 function certSvg(){
-  const {B,LW,CW,LH,TOP,W,H}=certBoxes(); let s='';
-  VA.certs.lanes.forEach(([id,lab],i)=>{ const y=TOP+i*LH; s+=`<g class="lane"><rect x="0" y="${y}" width="${W}" height="${LH}"/>${tsp(wrapText(lab,18),LW/2,y+LH/2-(wrapText(lab,18).length-1)*8+4,16)}</g>`; });
+  const {B,L,LW,CW,TOP,W,H}=certBoxes(); let s='';
+  VA.certs.lanes.forEach(([id,lab])=>{ const {y,h}=L.get(id); s+=`<g class="lane"><rect x="0" y="${y}" width="${W}" height="${h}"/>${tsp(wrapText(lab,18),LW/2,y+h/2-(wrapText(lab,18).length-1)*8+4,16)}</g>`; });
   VA.certs.cols.forEach((c,i)=>{ s+=`<text class="colh" x="${LW+i*CW+CW/2}" y="20" text-anchor="middle">${esc(c)}</text>`; });
   for(const [f,to,lab,st] of VA.certs.edges){ const a=B.get(f), b=B.get(to); let d, lx, ly;
     if(Math.abs(a.x-b.x)<5){ const down=b.y>a.y, y1=a.y+(down?1:-1)*a.h/2, y2=b.y-(down?1:-1)*b.h/2, x=a.x+(down?-14:14); d=`M${x} ${y1}V${y2}`; lx=x+(down?-6:6); ly=(y1+y2)/2; }   // down on the left, up on the right
@@ -657,7 +662,7 @@ function vaSize(){ const svg=vaCanvas.querySelector('svg'); if(!svg) return; con
   const fit=Math.max(Math.min(1,avail/nat),0.72), k=vaZoom===0?fit:Math.max(0.5,Math.min(2,fit*Math.pow(1.2,vaZoom))); svg.style.width=Math.round(nat*k)+'px'; }
 function vaRender(){
   document.querySelectorAll('#vaseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===vaMode));
-  vaCanvas.innerHTML=vaMode==='process'?procSvg():certSvg(); vaSize(); vaHighlight();
+  vaCanvas.innerHTML=vaMode==='process'?procSvg():certSvg(); vaSize(); vaHighlight(); vaHits();
 }
 function vaHighlight(){
   const svg=vaCanvas.querySelector('svg'); if(!svg) return; const id=vaSel&&vaSel.m===vaMode?vaSel.id:null;
@@ -695,6 +700,21 @@ vaDet.addEventListener('click',e=>{ const v=e.target.closest('[data-vid]'); if(v
   const d=e.target.closest('[data-doc]'); if(d){ show('nav'); nSel=-1; select(d.dataset.doc,true); } });
 document.getElementById('vaseg').onclick=e=>{ const b=e.target.closest('button'); if(!b||b.dataset.m===vaMode) return; vaMode=b.dataset.m; vaRender(); if(vaSel&&vaSel.m!==vaMode){ vaSel=null; vaDetail(); } };
 document.querySelector('.zoom').onclick=e=>{ const b=e.target.closest('[data-z]'); if(!b) return; const z=+b.dataset.z; vaZoom=z===0?0:vaZoom+z; vaSize(); };
+// --- search: boxes whose title, text, sub-items, lane or linked documents contain every word typed
+const vaQ=document.getElementById('vaq'), vaCount=document.getElementById('vacount'); let vaHitIx=-1;
+const vaHayCache=new Map();
+function vaHay(m,n){ const k=m+':'+n.id; if(!vaHayCache.has(k)){ const lane=m==='certs'?(VA.certs.lanes.find(l=>l[0]===n.lane)||['',''])[1]:'';
+  vaHayCache.set(k,[n.t,lane,...(n.d||[]),...(n.sub||[]),...(n.refs||[]).map(chipLabel)].join(' ').toLowerCase()); } return vaHayCache.get(k); }
+function vaMatches(m){ const terms=vaQ.value.trim().toLowerCase().split(/\s+/).filter(Boolean); if(!terms.length) return [];
+  return VA[m].nodes.filter(n=>n.kind!=='group'||m==='certs').filter(n=>{ const h=vaHay(m,n); return terms.every(t=>h.includes(t)); }).map(n=>n.id); }
+function vaHits(){ const svg=vaCanvas.querySelector('svg'); if(!svg) return; const ids=new Set(vaMatches(vaMode)), q=vaQ.value.trim();
+  svg.querySelectorAll('.vn').forEach(g=>g.classList.toggle('hit',ids.has(g.dataset.id))); svg.classList.toggle('has-hit',!!q);
+  if(!q){ vaCount.textContent=''; return; } const other=vaMode==='process'?'certs':'process', no=vaMatches(other).length;
+  vaCount.textContent=`${ids.size} here`+(no?` · ${no} in ${other==='process'?'Process':'Certificates'}`:'')+(ids.size?' · Enter = next':''); }
+vaQ.addEventListener('input',()=>{ vaHitIx=-1; if(vaSel){ vaSel=null; vaHighlight(); vaDetail(); } vaHits(); });
+vaQ.addEventListener('keydown',e=>{ if(e.key==='Escape'){ vaQ.value=''; vaHitIx=-1; vaHits(); return; } if(e.key!=='Enter') return; e.preventDefault();
+  let ids=vaMatches(vaMode); if(!ids.length){ const other=vaMode==='process'?'certs':'process', o=vaMatches(other); if(!o.length) return; vaMode=other; vaRender(); ids=o; vaHitIx=-1; }
+  vaHitIx=(vaHitIx+(e.shiftKey?-1:1)+ids.length)%ids.length; vaPick(vaMode,ids[vaHitIx]); });
 window.addEventListener('resize',()=>{ if(document.getElementById('v-va').classList.contains('on')) vaSize(); });
 let vaReady=false; function initVA(){ if(!vaReady){ vaReady=true; vaRender(); vaDetail(); } else vaSize(); }
 // ---------- CSM RA: process map of Regulation (EU) 402/2013 + guided assessment ----------
@@ -902,16 +922,25 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-sel]'); if
 // ---------- ERATV public register ----------
 let erRows=[];const erBody=document.querySelector('#eratv-table tbody');
 let erSort='lastUpdate',erDir=-1,erSelected=null,erReady=false;
-const erVal=(r,k)=>({typeId:r.typeId||getEr(r,'Type ID'),name:r.name||getEr(r,'Type Name','Vehicle Type Name'),authorisationReference:r.authorisationReference||getEr(r,'Authorisation document reference (EIN)'),area:r.area||getEr(r,'Member States','Authorised area of use/country'),status:r.status||getEr(r,'Authorisation Status'),lastUpdate:r.lastUpdate||getEr(r,'Last Update')})[k]||'';
+const erValCache=new WeakMap();const erVal=(r,k)=>{let v=erValCache.get(r);if(!v){v=erVals(r);erValCache.set(r,v);}return v[k]||'';};
+const erVals=r=>({typeId:r.typeId||getEr(r,'Type ID'),name:r.name||getEr(r,'Type Name','Vehicle Type Name'),authorisationReference:r.authorisationReference||getEr(r,'Authorisation document reference (EIN)'),area:r.area||getEr(r,'Member States','Authorised area of use/country'),status:r.status||getEr(r,'Authorisation Status'),lastUpdate:r.lastUpdate||getEr(r,'Last Update')});
+const erCollator=new Intl.Collator(undefined,{numeric:true}),erHay=new WeakMap(),erAreas=new WeakMap();let erSorted=null,erSortedKey='',erShown=[],erRendered=0,erTimer=0;const ER_PAGE=200;
 function getEr(r,...keys){const norm=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');for(const k of keys){const f=Object.keys(r).find(x=>norm(x)===norm(k));if(f&&r[f])return r[f];}return '';}
-async function initEratv(){if(erReady)return;if(!eratvLoad)eratvLoad=(async()=>{const bytes=Uint8Array.from(atob(ERATV_GZIP_B64),c=>c.charCodeAt(0));const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));ERATV=await new Response(stream).json();erRows=Array.isArray(ERATV.records)?ERATV.records:[];erReady=true;const countries=[...new Set(erRows.flatMap(r=>String(erVal(r,'area')).split(/[,;]\s*/)).filter(Boolean))].sort();countries.forEach(x=>document.getElementById('eratv-country').add(new Option(x,x)));const statuses=[...new Set(erRows.map(r=>erVal(r,'status')).filter(Boolean))].sort();statuses.forEach(x=>document.getElementById('eratv-status').add(new Option(x,x)));document.getElementById('eratv-updated').textContent=ERATV.updatedAt?new Date(ERATV.updatedAt).toLocaleString(): 'not yet downloaded';renderEratv();})();return eratvLoad;}
-function renderEratv(){const q=document.getElementById('eratv-q').value.trim().toLowerCase(), country=document.getElementById('eratv-country').value,status=document.getElementById('eratv-status').value;const rows=erRows.filter(r=>{const a=erVal(r,'area'),s=erVal(r,'status'),hay=JSON.stringify(r).toLowerCase();return(!q||hay.includes(q))&&(!country||a.split(/[,;]\s*/).includes(country))&&(!status||s===status);}).sort((a,b)=>String(erVal(a,erSort)).localeCompare(String(erVal(b,erSort)),undefined,{numeric:true})*erDir);document.getElementById('eratv-count').textContent=`${rows.length.toLocaleString()} of ${erRows.length.toLocaleString()} records`;document.getElementById('eratv-empty').hidden=erRows.length>0;erBody.innerHTML=rows.map(r=>`<tr data-erid="${esc(r.typeId||'')}" class="${r===erSelected?'sel':''}"><td>${esc(erVal(r,'typeId'))}</td><td>${esc(erVal(r,'name'))}</td><td>${esc(erVal(r,'authorisationReference'))}</td><td>${esc(erVal(r,'area'))}</td><td>${esc(erVal(r,'status'))}</td><td>${esc(erVal(r,'lastUpdate'))}</td></tr>`).join('');erBody.querySelectorAll('tr').forEach(tr=>tr.onclick=()=>{erSelected=rows.find(r=>(r.typeId||'')===tr.dataset.erid);renderEratv();renderEratvDetail(erSelected);});document.querySelectorAll('#eratv-table th[data-ek]').forEach(th=>{th.onclick=()=>{erDir=erSort===th.dataset.ek?-erDir:1;erSort=th.dataset.ek;renderEratv();};});if(erSelected)renderEratvDetail(erSelected);}
+async function initEratv(){if(erReady)return;if(!eratvLoad)eratvLoad=(async()=>{const bytes=Uint8Array.from(atob(ERATV_GZIP_B64),c=>c.charCodeAt(0));const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));ERATV=await new Response(stream).json();erRows=Array.isArray(ERATV.records)?ERATV.records:[];for(const r of erRows){erHay.set(r,JSON.stringify(r).toLowerCase());erAreas.set(r,String(erVal(r,'area')).split(/[,;]\s*/));}erSorted=null;erReady=true;const countries=[...new Set(erRows.flatMap(r=>String(erVal(r,'area')).split(/[,;]\s*/)).filter(Boolean))].sort();countries.forEach(x=>document.getElementById('eratv-country').add(new Option(x,x)));const statuses=[...new Set(erRows.map(r=>erVal(r,'status')).filter(Boolean))].sort();statuses.forEach(x=>document.getElementById('eratv-status').add(new Option(x,x)));document.getElementById('eratv-updated').textContent=ERATV.updatedAt?new Date(ERATV.updatedAt).toLocaleString(): 'not yet downloaded';renderEratv();})();return eratvLoad;}
+function erSortedRows(){const key=erSort+':'+erDir;if(erSorted&&erSortedKey===key)return erSorted;erSortedKey=key;erSorted=erRows.slice().sort((a,b)=>erCollator.compare(erVal(a,erSort),erVal(b,erSort))*erDir);return erSorted;}
+function erRowHtml(r){return `<tr data-erid="${esc(r.typeId||'')}" class="${r===erSelected?'sel':''}"><td>${esc(erVal(r,'typeId'))}</td><td>${esc(erVal(r,'name'))}</td><td>${esc(erVal(r,'authorisationReference'))}</td><td>${esc(erVal(r,'area'))}</td><td>${esc(erVal(r,'status'))}</td><td>${esc(erVal(r,'lastUpdate'))}</td></tr>`;}
+function erMoreRows(){if(erRendered>=erShown.length)return;const next=erShown.slice(erRendered,erRendered+ER_PAGE);erRendered+=next.length;erBody.insertAdjacentHTML('beforeend',next.map(erRowHtml).join(''));}
+function renderEratv(){clearTimeout(erTimer);const q=document.getElementById('eratv-q').value.trim().toLowerCase(), country=document.getElementById('eratv-country').value,status=document.getElementById('eratv-status').value;erShown=erSortedRows().filter(r=>(!q||erHay.get(r).includes(q))&&(!country||erAreas.get(r).includes(country))&&(!status||erVal(r,'status')===status));document.getElementById('eratv-count').textContent=`${erShown.length.toLocaleString()} of ${erRows.length.toLocaleString()} records`;document.getElementById('eratv-empty').hidden=erRows.length>0;erBody.innerHTML='';erRendered=0;erList.scrollTop=0;erMoreRows();}
+function renderEratvSoon(){clearTimeout(erTimer);erTimer=setTimeout(renderEratv,120);}
+const erList=document.querySelector('.eratv-list');erList.addEventListener('scroll',()=>{if(erList.scrollTop+erList.clientHeight>erList.scrollHeight-600)erMoreRows();},{passive:true});
+erBody.addEventListener('click',event=>{const tr=event.target.closest('tr[data-erid]');if(!tr)return;erSelected=erShown.find(r=>(r.typeId||'')===tr.dataset.erid)||null;erBody.querySelector('tr.sel')?.classList.remove('sel');tr.classList.add('sel');renderEratvDetail(erSelected);});
+document.querySelectorAll('#eratv-table th[data-ek]').forEach(th=>{th.onclick=()=>{erDir=erSort===th.dataset.ek?-erDir:1;erSort=th.dataset.ek;renderEratv();};});
 function erSource(id){return 'https://eratv.era.europa.eu/Eratv/Home/View/'+encodeURIComponent(id);}
 function erFamilyLink(id,label,kind,count,name){return `<button type="button" class="eratv-ancestor" data-er-select="${esc(id)}"><small>${esc(kind)}${count?` · ${count} entries`:''}</small><code>${esc(id)}</code><span>${esc(name||label||'Select entry')}</span></button>`;}
 function erFamilyItem(r){return `<button type="button" class="eratv-family-item" data-er-select="${esc(r.typeId)}"><code>${esc(r.typeId)}</code><span>${esc(erVal(r,'name'))}</span><span class="c">${esc(erVal(r,'status'))}</span></button>`;}
 function erTreeNode(id,kind,name,count,current=false){return `<button type="button" class="eratv-tree-node${current?' is-current':''}" data-er-select="${esc(id)}"${current?' aria-pressed="true"':''}><small>${esc(kind)}${count?` · ${count} entries`:''}</small><code>${esc(id)}</code><strong>${esc(name||'Vehicle type name unavailable')}</strong></button>`;}
 function renderEratvFamily(r){
- const parts=String(r.typeId||'').split('-'),root=parts.slice(0,Math.min(4,parts.length)).join('-'),sortById=(a,b)=>a.typeId.localeCompare(b.typeId,undefined,{numeric:true});
+ const parts=String(r.typeId||'').split('-'),root=parts.slice(0,Math.min(4,parts.length)).join('-'),sortById=(a,b)=>erCollator.compare(a.typeId,b.typeId);
  const family=erRows.filter(x=>x.typeId===root||x.typeId.startsWith(root+'-')).sort(sortById),parentLen=parts.length>=6?5:Math.min(4,parts.length),parent=parts.slice(0,parentLen).join('-');
  const siblings=family.filter(x=>x.typeId!==r.typeId&&(x.typeId===parent||x.typeId.startsWith(parent+'-'))),variants=new Map();
  for(const x of family){const p=x.typeId.split('-');if(p.length<5)continue;const key=p.slice(0,5).join('-');if(key===parent)continue;if(!variants.has(key))variants.set(key,[]);variants.get(key).push(x);}
@@ -923,18 +952,18 @@ function renderEratvFamily(r){
  let tree=erTreeNode(root,'Vehicle type number',rootName,family.length,root===r.typeId);
  {
   const groups=new Map();for(const x of family){const p=x.typeId.split('-');if(p.length<5)continue;const id=p.slice(0,5).join('-');if(!groups.has(id))groups.set(id,[]);groups.get(id).push(x);}
-  const branches=[...groups.entries()].sort((a,b)=>a[0].localeCompare(b[0],undefined,{numeric:true}));
+  const branches=[...groups.entries()].sort((a,b)=>erCollator.compare(a[0],b[0]));
   tree+=`<div class="eratv-tree-branches">${branches.map(([id,items])=>{items.sort(sortById);const current=id===parent,parentRow=items.find(x=>x.typeId===id),name=erVal(parentRow||items[0],'name'),children=items.filter(x=>x.typeId!==id),branch=`<div class="eratv-tree-branch">${erTreeNode(id,'Variant / parent',name,items.length,current||id===r.typeId)}${children.length?`<div class="eratv-tree-leaves">${children.map(x=>`<div class="eratv-tree-leaf">${erTreeNode(x.typeId,'Version',erVal(x,'name'),0,x.typeId===r.typeId)}</div>`).join('')}</div>`:''}</div>`;return branch;}).join('')}</div>`;
  }
  h+=`<figure class="eratv-family-figure"><figcaption>Vehicle type family breakdown · all registration regimes</figcaption><div class="eratv-tree">${tree}</div><div class="eratv-tree-note">Names are shown from registered entries across regimes. Parent and version entries are listed under their shared variant prefix. Select a node to view its entry here.</div></figure>`;
  h+=`<div class="eratv-related"><h4>Related entries under same parent (${siblings.length})</h4><div class="eratv-related-list">${siblings.length?siblings.map(erFamilyItem).join(''):'<span class="meta">No related entries in this parent group.</span>'}</div></div>`;
- if(variants.size){h+=`<div class="eratv-related"><h4>Other variants in this type family (${variants.size})</h4>`;for(const [id,items] of [...variants.entries()].sort((a,b)=>a[0].localeCompare(b[0],undefined,{numeric:true}))){items.sort(sortById);h+=erFamilyLink(id,'View variant','Variant',items.length,erVal(items[0],'name'))+`<div class="eratv-related-list">${items.map(erFamilyItem).join('')}</div>`;}h+='</div>';}
+ if(variants.size){h+=`<div class="eratv-related"><h4>Other variants in this type family (${variants.size})</h4>`;for(const [id,items] of [...variants.entries()].sort((a,b)=>erCollator.compare(a[0],b[0]))){items.sort(sortById);h+=erFamilyLink(id,'View variant','Variant',items.length,erVal(items[0],'name'))+`<div class="eratv-related-list">${items.map(erFamilyItem).join('')}</div>`;}h+='</div>';}
  return h+'</section>';
 }
 function renderEratvDetail(r){const el=document.getElementById('eratv-detail');if(!r){el.innerHTML='<div class="empty">Select a vehicle type to see its published data.</div>';return;}const summaries=[['Type ID',erVal(r,'typeId')],['Vehicle type',erVal(r,'name')],['Manufacturer',erVal(r,'manufacturer')],['Area of use',erVal(r,'area')],['Authorisation status',erVal(r,'status')],['Last update',erVal(r,'lastUpdate')],['Authorisation document reference (EIN)',r.authorisationReference],['Registration regime',r.registrationRegime]].filter(x=>x[1]);let h=`<div class="kick">PUBLIC REGISTER ENTRY</div><h2>${esc(erVal(r,'name')||erVal(r,'typeId'))}</h2><div class="meta">${esc(erVal(r,'typeId'))}</div><a class="open" href="${esc(r.sourceUrl||'https://eratv.era.europa.eu/ERATV/') }" target="_blank" rel="noopener">Open official ERATV entry ↗</a><dl class="eratv-fields">${summaries.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;const details=Array.isArray(r.details)?r.details:[];let section='';if(!details.length&&r.sourceRow){h+='<h3 class="eratv-section">Public list data</h3>';for(const [k,v] of Object.entries(r.sourceRow))h+=`<div class="ref"><span>${esc(k.replace(/_/g,' '))}</span><span class="c">${esc(v)}</span></div>`;}for(const x of details){if(x.section!==section){section=x.section;h+=`<h3 class="eratv-section">${esc(section)}</h3>`;}h+=`<div class="ref"><span>${esc(x.label)}</span><span class="c">${esc(x.value)}</span></div>`;}h+=renderEratvFamily(r);el.innerHTML=h;}
-function selectEratvEntry(id){const r=erRows.find(x=>x.typeId===id)||erRows.filter(x=>x.typeId.startsWith(id+'-')).sort((a,b)=>a.typeId.localeCompare(b.typeId,undefined,{numeric:true}))[0];if(!r)return;erSelected=r;document.getElementById('eratv-q').value=r.typeId;document.getElementById('eratv-country').value='';document.getElementById('eratv-status').value='';renderEratv();erBody.querySelector(`tr[data-erid="${CSS.escape(r.typeId)}"]`)?.scrollIntoView({block:'nearest'});}
+function selectEratvEntry(id){const r=erRows.find(x=>x.typeId===id)||erRows.filter(x=>x.typeId.startsWith(id+'-')).sort((a,b)=>erCollator.compare(a.typeId,b.typeId))[0];if(!r)return;erSelected=r;document.getElementById('eratv-q').value=r.typeId;document.getElementById('eratv-country').value='';document.getElementById('eratv-status').value='';renderEratv();const i=erShown.indexOf(r);while(i>=erRendered&&erRendered<erShown.length)erMoreRows();renderEratvDetail(r);erBody.querySelector(`tr[data-erid="${CSS.escape(r.typeId)}"]`)?.scrollIntoView({block:'nearest'});}
 document.getElementById('eratv-detail').addEventListener('click',event=>{const button=event.target.closest('[data-er-select]');if(button)selectEratvEntry(button.dataset.erSelect);});
-['eratv-q','eratv-country','eratv-status'].forEach(id=>{const x=document.getElementById(id);x.addEventListener(id==='eratv-q'?'input':'change',renderEratv);});
+['eratv-q','eratv-country','eratv-status'].forEach(id=>{const x=document.getElementById(id);x.addEventListener(id==='eratv-q'?'input':'change',id==='eratv-q'?renderEratvSoon:renderEratv);});
 // ---------- static graph (layout precomputed when the map was built) ----------
 const gf=document.getElementById('gfold'); folders.forEach(f=>gf.add(new Option(f,f)));
 document.getElementById('legend').innerHTML=folders.map(f=>`<span><i style="background:${fcol(f)}"></i>${esc(f)}</span>`).join('')+'<span><i style="background:#5c6b7a"></i>Standards</span>';
