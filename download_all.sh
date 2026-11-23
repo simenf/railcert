@@ -23,6 +23,8 @@ is_html() { head -c 2048 "$1" 2>/dev/null | grep -qi '<html\|<!doctype'; }
 
 while IFS=$'\t' read -r folder filename title reference status url notes; do
   [ -z "${url:-}" ] && continue
+  # Bane NOR Teknisk regelverk is fetched by its own crawler below (pages are cleaned and cross-linked)
+  [[ "$folder" == 08_Norway/Bane_NOR/Teknisk_regelverk* ]] && continue
   mkdir -p "$folder"
   dest="$folder/$filename"
 
@@ -58,4 +60,8 @@ while IFS=$'\t' read -r folder filename title reference status url notes; do
 done < <(tail -n +2 "$CATALOGUE")
 
 echo
+if [ -f tools/trv_crawl.py ]; then
+  echo "Bane NOR Teknisk regelverk (trv.banenor.no, ~1 page per second) ..."
+  python3 -I tools/trv_crawl.py || echo "TRV crawl failed – re-run: python3 -I tools/trv_crawl.py"
+fi
 echo "Done. See $LOG; anything in $FAILED needs a manual download from the URL listed."

@@ -1,6 +1,6 @@
 # Railcert – European & Norwegian railway regulation library
 
-Collected 2026-11-14 · 988 documents (1.02 GB) · reference map with 17,133 citation links
+Collected 2026-11-23 · 1787 documents (1.16 GB) · reference map with 21,164 citation links
 
 Open **`99_Reference_Map/reference_map.html`** in a browser to explore which document cites which. A copy with source links only, ready for public hosting, is in `99_Reference_Map/online/`. All source URLs are in **`catalogue.tsv`**. To refresh or re-download, run `bash download_all.sh` from this folder; it skips files that are already present.
 
@@ -17,7 +17,7 @@ Open **`99_Reference_Map/reference_map.html`** in a browser to explore which doc
 | **Vehicle authorisation and registers** | Implementing Regulation 2018/545 (practical arrangements, incl. 2020/781), ERA fees 2018/764 (rev. 2024/2018), EVR 2018/1614, ERATV 2011/665, RINF 2019/777. | `05_Vehicle_Authorisation_Registers` |
 | **ERA guidance** | PA VA guidelines (ERA1209/222), OSS guides, clarification notes, SSC/SMS/supervision guides, the CSM RA guide and AsBo RFUs, TSI application guides, register guides, NB-Rail RFUs, SRD/national rules. | `06_ERA_Guides/<topic>` |
 | **ERTMS specifications – all baselines** | Every set of specifications ERA publishes for the CCS TSI, one folder per set: **Set 1** (ETCS B2, GSM-R B1), **Set 2** (ETCS B3 MR1), **Set 3** (ETCS B3 R2, system version 3.6.0, as deployed in Norway), **Set 4** (current: ETCS B4 R1, RMR GSM-R B1 MR1, FRMCS B0, ATO B1 R1) and the **informative** specifications (FMEAs, hazard log, safety analyses). Each set holds SUBSET-026 SRS, 027, 034–041, 054–058, 076 test specifications, 091, 104 and the others, plus the FRS, DMI and EIRENE in that set's version. Files keep ERA's index numbers so they sort as in ERA's lists. ESC/RSC documents and the braking-curve tool are at the folder root. | `07_ERTMS_Specifications/<set>` |
-| **Norway** | Jernbaneloven; samtrafikkforskriften FOR-2021-09-09-2742; sikkerhetsforskriften FOR-2021-09-08-2740; the NoBo/DeBo regulation FOR-2021-09-08-2705; CSM RA FOR-2014-10-27-1344; TSI CCS FOR-2025-03-14-450; other EEA implementing regulations; SJT guidance; Bane NOR (Network Statement 2027, TJN). **ATC-2 STM specifications** (STM FRS BVS 544.65001 and TR GRS 100200 E004) in every version SJT publishes: v6.1 (2017, current), v6.0 (2014), v5.2 (2014) and v5.1 (2009), one subfolder per version, plus the STM RAMS requirements (version A, 2008). The FRS consists of chapters 1 (innledning), 3, 4, 5 and 8; the numbering follows the ATC-2 handbook, so there are no chapters 2, 6 or 7. | `08_Norway/<area>`, `08_Norway/ATC2_STM_Specifications/<version>` |
+| **Norway** | Jernbaneloven; samtrafikkforskriften FOR-2021-09-09-2742; sikkerhetsforskriften FOR-2021-09-08-2740; the NoBo/DeBo regulation FOR-2021-09-08-2705; CSM RA FOR-2014-10-27-1344; TSI CCS FOR-2025-03-14-450; other EEA implementing regulations; SJT guidance; Bane NOR (Network Statement 2027, TJN) and Bane NOR's complete **Teknisk regelverk (TRV)** from trv.banenor.no: every book (501 Felles bestemmelser to 562 Ekom, plus 590 Rolling stock in English) with its chapters, appendices, change logs and attachments, one cleaned and cross-linked HTML file per page in `08_Norway/Bane_NOR/Teknisk_regelverk/<book>`. Each requirement keeps its anchor (`#TRV-07113`), and `tools/data/banenor_trv_requirements.tsv` indexes every requirement ID with its chapter, section and text. Refresh with `python3 -I tools/trv_crawl.py`. **ATC-2 STM specifications** (STM FRS BVS 544.65001 and TR GRS 100200 E004) in every version SJT publishes: v6.1 (2017, current), v6.0 (2014), v5.2 (2014) and v5.1 (2009), one subfolder per version, plus the STM RAMS requirements (version A, 2008). The FRS consists of chapters 1 (innledning), 3, 4, 5 and 8; the numbering follows the ATC-2 handbook, so there are no chapters 2, 6 or 7. | `08_Norway/<area>`, `08_Norway/ATC2_STM_Specifications/<version>` |
 | **Cybersecurity: Cyber Resilience Act** | Regulation (EU) 2024/2847 (CRA) and its EN corrigendum, Delegated Reg 2025/1535 (L-category exclusion), Implementing Reg 2025/2392 (important and critical products), Delegated Reg 2026/881 (delayed notifications), the Commission guidance C(2026) 5252 with its annex, and the Commission FAQ. Link files cover the M/606 standardisation request and ENISA's reporting platform. The instruments the CRA cites (per EUR-Lex) are in `09_Referenced_Documents/EU_Acts`: NLF, RED, NIS2, the Cybersecurity Act, eIDAS, GDPR, the AI Act, UNECE R155 and others. Rail is not among the exclusions in Art. 2(2)–(4), which cover only medical devices, motor vehicles under 2019/2144, certified aviation products and marine equipment. No Art. 2(5) delegated act limits the CRA for rail; the only one so far is 2025/1535, for L-category vehicles. Connected rail products with digital elements are therefore in scope from 11 Dec 2027. | `10_Cybersecurity_CRA` |
 | **Referenced documents** | Free documents cited by the core set and downloaded one level deep: older or related EU acts, ETSI GSM-R/FRMCS/3GPP specs, further UNISIG subsets and ERA technical documents. | `09_Referenced_Documents/<type>` |
 | **Reference map** | Interactive explorer, standards register and CSV exports. | `99_Reference_Map` |
@@ -50,14 +50,14 @@ Open **`99_Reference_Map/reference_map.html`** in a browser to explore which doc
 
 ## 3. Standards (EN / IEC / ISO / CLC / UIC)
 
-The TSIs and guides cite 671 distinct EN/IEC/ISO/CLC/CEN standards and 155 UIC leaflets. These are **copyrighted and sold** by CEN/CENELEC, IEC, ISO and UIC (in Norway through Standard Norge), so they are **listed, not downloaded**. `99_Reference_Map/standards_register.csv` gives, for each standard:
+The TSIs and guides cite 992 distinct EN/IEC/ISO/CLC/CEN standards and 216 UIC leaflets. These are **copyrighted and sold** by CEN/CENELEC, IEC, ISO and UIC (in Norway through Standard Norge), so they are **listed, not downloaded**. `99_Reference_Map/standards_register.csv` gives, for each standard:
 - the versions cited (for example EN 50126-1:2017),
 - how many documents cite it,
 - exactly which documents cite it.
 
 Free standards were downloaded: 31 ETSI specifications (GSM-R, FRMCS, 3GPP, EN 301 515 and others) are in `09_Referenced_Documents/ETSI`. ERA's own list of standards cited in the TSIs is `06_ERA_Guides/TSI_Application_Guides` (xlsx).
 
-Most cited: EN 50129 (65), EN 50126 (54), EN 50128 (45), EN 50159 (42), ISO 9001 (36), EN 50125-1 (35), EN 50155 (33), EN 50121-3-2 (24), EN 50126-1 (23), EN 14363 (22), EN 15528 (21), EN 50367 (21), ISO/IEC 17025 (20), EN 50163 (18), EN 50121-4 (18)
+Most cited: EN 50129 (71), EN 50126 (60), EN 50159 (51), EN 50128 (50), EN 50122-1 (48), EN 50149 (39), EN 50163 (39), ISO 9001 (39), EN 50125-1 (37), EN 50367 (35), EN 50155 (34), EN 50119 (30), EN 50388 (28), EN 50126-1 (28), EN 15528 (26)
 
 ## 4. Reference map (`99_Reference_Map`)
 
@@ -70,9 +70,10 @@ The map comes in two editions built from the same data:
 
 Both editions are regenerated every time the map is rebuilt. Upload only the `online` folder. Don't upload the PDF folders or the local edition.
 
-- Both editions have six views. The map opens on the first one:
+- Both editions have seven views. The map opens on the first one:
   - *Navigator*: the library as a hierarchy that starts at the top and works down. **EU law** starts from the basic acts (Interoperability Directive, Railway Safety Directive, ERA Regulation, SERA, train drivers, CRA, AI Act). Below them come the implementing and delegated acts (TSIs, CSMs, 2018/545, 2010/713, registers), then the mandatory specifications (CCS TSI Annex A sets), then guidance (ERA guides, clarification notes, RFUs), and finally the standards and referenced documents. **Norway** starts from Jernbaneloven, and each regulation shows the EU act it implements (⇄, click to jump there). Each document appears once: under the higher-level act it shares the most citations with, or where a hand-set rule puts it. Other parents are listed as "Also used by" in the detail panel. Amending, correcting, consolidated and superseded acts fold under the current act ("Versions, amendments & superseded acts"). Each list shows its eight most-cited items first, with "show more" for the rest. Rows carry a status badge (in force, amended, repealed, superseded, draft) and the 📄 / ↗ links. Clicking a row opens the Explorer's detail panel with a breadcrumb trail, and the search box jumps to a document's place in the tree. **Task paths** gives step-by-step routes with links for eight common jobs: authorising a vehicle, putting ETCS on-board or trackside CCS into service in Norway, CSM RA and the AsBo, the ATC-2 STM, the CRA for rail products, juridical recording, and the single safety certificate with SMS. The rules are in `tools/nav_config.py`; after editing them, run `python3 tools/build_nav.py`. It re-renders both editions from the data already in the map, so it needs neither the documents nor pdftotext.
   - *Vehicle authorisation*: two linked diagrams of Regulation (EU) 2018/545 and the PA VA guidelines. **Process** runs from choosing the authorisation case (Art. 14) and the Art. 15(1) test for changes (categories a–d, the Directive Art. 21(12) criteria and basic design characteristics), through the conformity-to-type fast track and the six stages (preparation, pre-engagement, conformity assessment, OSS application, assessment, decision), to ERATV, ERADIS and EVR registration and the route compatibility check. **Certificates & declarations** shows, in lanes by issuer (manufacturer, NoBo, DeBo, AsBo, applicant, authorising entity, registers), how certificates, intermediate statements, AsBo reports, EC declarations, the application file and the authorisations build on each other. Picking a box shows what it is, its legal basis with links to the documents, and what it connects to; process steps link to the documents they produce and back. The content is in `tools/va_config.py`, and every reference is checked when the map is built.
+  - *ERATV register*: a searchable, sortable register of public vehicle type authorisations with filters for authorised area and status. It includes each public result's Type ID, name, EIN reference, status and last update, plus a direct link to that record's complete official entry. Data is refreshed nightly by `.github/workflows/eratv-refresh.yml`; the harvester uses ERATV's whole-result XML export for both registration regimes and writes the new snapshot only after both exports complete.
   - *CSM RA*: the risk management process of Regulation (EU) 402/2013 (as amended by 2015/1136). **Process map** follows the Appendix figure of Annex I: the safety-impact and significance tests (Art. 4), system definition, hazard identification, the three risk acceptance principles with the harmonised design targets, safety requirements, demonstration of compliance, safety acceptance and the Art. 16 declaration. The hazard record runs alongside on the left and the assessment body's independent assessment (Art. 6, Annexes II–III) on the right; two side entries cover TSI-required risk assessments and requirements capture in vehicle authorisation. Picking a box shows what the Regulation requires, what ERA guidance and the AsBo RFUs add, practice notes (marked as not binding), the evidence the step leaves, the EN 50126 / EN 50129 equivalent, links to the documents and to the matching boxes of the Vehicle authorisation tab. **Role** (RU/IM, ECM, manufacturer/applicant, AsBo) puts forward the boxes and the advice for that role. **Guided assessment** takes one change through eight steps (the change, impact on safety, the six significance criteria, organisation and AsBo, system definition, hazards and risk acceptance, demonstration and acceptance, decision record). It never computes the significance decision. The record is kept only in the browser (localStorage) and can be downloaded as Markdown or JSON, reopened from a JSON file, or printed. The content is in `tools/csmra_config.py`, and every reference is checked when the map is built.
   - *Explorer*: pick a document or a standard (search by number or by title). By default the search covers everything: every library document, plus every cited item that is not in the library. The scope menu narrows it to library documents or to standards. A citation graph centred on it shows the documents that cite it on the left and what it cites on the right. Click any node to re-centre the graph on it. Below the graph are the full lists, grouped by type. In the local edition, "📄 Open local file" opens the PDF.
   - *Graph*: an overview of citations between library documents. You can optionally add the standards cited by five or more documents. The layout is computed when the map is built, so it doesn't move. Zoom, pan and drag nodes; double-click a node to open it in the Explorer.
@@ -82,7 +83,7 @@ Both editions are regenerated every time the map is rebuilt. Upload only the `on
 - **references_edges.csv**: one row per (citing document → cited item), with mention count and versions cited.
 - **standards_register.csv**: the standards list described in section 3, with titles and where each title came from.
 
-**Standard titles** come from, in order of priority: ERA's *Standards quoted in TSIs* list (official titles); ETSI cover pages for specs in the library; a curated list of widely used standards (marked "check edition"); and the title printed next to the reference in the citing documents. Series references such as EN 13103 take the series title from their parts. 486 of the 1239 cited standards have a title. Together they account for about 74% of all citations to standards.
+**Standard titles** come from, in order of priority: ERA's *Standards quoted in TSIs* list (official titles); ETSI cover pages for specs in the library; a curated list of widely used standards (marked "check edition"); and the title printed next to the reference in the citing documents. Series references such as EN 13103 take the series title from their parts. 517 of the 1626 cited standards have a title. Together they account for about 69% of all citations to standards.
 
 **Method.** Text was extracted from every PDF and HTML file with pdftotext. Citations were matched with patterns for:
 - EU acts, in English and Norwegian wording ("forordning (EU) nr. 402/2013", "forskrift 9. september 2021 nr. 2742");
@@ -105,7 +106,7 @@ Limits:
 
 ## 5. What could not be downloaded
 
-- **134 link files (`*.url.txt`)**: web pages, databases and portals with no downloadable file, such as ERA's SRD/RDD, the OSS portal, many SJT guidance pages and the ERTMS spec folders. Each holds the title and URL.
+- **132 link files (`*.url.txt`)**: web pages, databases and portals with no downloadable file, such as ERA's SRD/RDD, the OSS portal, many SJT guidance pages and the ERTMS spec folders. Each holds the title and URL.
 - **Paid standards**: EN/IEC/ISO/CLC and UIC are listed in `99_Reference_Map/standards_register.csv`, not downloaded.
 - **ETCS test-sequence archives** (SUBSET-076-6-3 test sequences and SUBSET-103 Euroloop TSOE parts, about 100–150 MB per part and roughly 5 GB in total across the four sets) are machine-readable test-lab data. They are linked, not downloaded: each part has a `.url.txt` in its set folder. The test specification documents themselves (SUBSET-076-x, SUBSET-103) are downloaded.
 - **Jernbanekjøretøyforskriften**: no Lovdata entry found under FOR-2022-05-25-923; SJT's text is linked instead. Bane NOR's ERTMS system descriptions on oppslagsverk.banenor.no block scripts, so they are linked.
@@ -173,7 +174,35 @@ The GitHub repository holds **the map, the catalogue and the tools, not the docu
 | `08_Norway/ATC2_STM_Specifications/v5.2_2014` | 6 | 6.1 MB |
 | `08_Norway/ATC2_STM_Specifications/v6.0_2014` | 6 | 6.3 MB |
 | `08_Norway/ATC2_STM_Specifications/v6.1_2017` | 6 | 8.7 MB |
-| `08_Norway/Bane_NOR` | 10 | 3.9 MB |
+| `08_Norway/Bane_NOR` | 8 | 3.9 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/501_Felles_bestemmelser` | 47 | 37.4 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/510_Felles_elektro_Prosjektering_og_bygging` | 28 | 3.5 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/515_Skilt_Plassering_av_skilt_langs_sporet` | 10 | 5.9 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/520_Underbygning_Prosjektering_og_bygging` | 25 | 2.3 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/521_Tunneler_Prosjektering_og_bygging` | 18 | 6.6 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/522_Underbygning_Vedlikehold` | 14 | 0.5 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/523_Tunneler_Vedlikehold` | 2 | 0.0 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/525_Bruer_og_konstruksjoner_Prosjektering_og_bygging` | 13 | 0.8 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/527_Bruer_og_konstruksjoner_Vedlikehold` | 3 | 0.0 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/530_Overbygning_Prosjektering` | 41 | 4.3 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/531_Overbygning_Bygging` | 33 | 4.9 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/532_Overbygning_Vedlikehold` | 133 | 4.8 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/540_Kontaktledning_Prosjektering_og_Bygging` | 70 | 22.5 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/542_Kontaktledning_Vedlikehold` | 39 | 0.9 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/543_Lavspenning_og_22_kV_Prosjektering` | 10 | 3.9 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/544_Lavspenning_og_22_kV_Bygging` | 6 | 0.1 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/545_Lavspenning_og_22_kV_Vedlikehold` | 8 | 0.1 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/546_Banestromforsyning_Prosjektering` | 27 | 1.1 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/547_Banestromforsyning_Bygging` | 7 | 0.0 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/548_Banestromforsyning_Vedlikehold` | 27 | 0.3 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/550_Signal_Prosjektering` | 36 | 4.6 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/551_Signal_Bygging` | 36 | 0.9 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/552_Signal_Vedlikehold` | 53 | 7.5 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/553_Signal_Kontroll` | 61 | 4.2 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/554_Signal_Kontroll_ERTMS` | 3 | 0.0 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/560_Ekom_Prosjektering_og_bygging` | 13 | 2.4 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/562_Ekom_Vedlikehold` | 9 | 0.1 MB |
+| `08_Norway/Bane_NOR/Teknisk_regelverk/590_Rolling_stock_Supplementary_information_and_regulations` | 29 | 5.2 MB |
 | `08_Norway/Lover_og_forskrifter` | 32 | 3.3 MB |
 | `08_Norway/Nasjonale_regler_NNTR` | 6 | 3.6 MB |
 | `08_Norway/SJT_Veiledninger` | 21 | 3.7 MB |

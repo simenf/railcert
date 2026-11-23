@@ -511,7 +511,7 @@ def ensure_node(nid):
     pre, lab = nid.split(":", 1)
     if pre == "LIB":           # a library document cited by title only (guides, RFUs ...): target is the file itself
         r = by_path.get(lab, {})
-        typ = "EU act" if "/EU_Acts/" in lab else ("ERTMS subset" if lab.startswith("07_") else "ERA document")
+        typ = "EU act" if "/EU_Acts/" in lab else ("ERTMS subset" if lab.startswith("07_") else ("Bane NOR rule" if lab.startswith("08_Norway/Bane_NOR/") else "ERA document"))
         nodes[nid] = {"type": typ, "label": r.get("reference") or os.path.basename(lab), "title": r.get("title", ""), "in_library": lab}
         return
     typ = TYPES.get(pre) or {"ETSI": "ETSI spec", "UIC": "UIC leaflet", "IRS": "UIC leaflet"}.get(lab.split()[0], "Standard")
@@ -540,6 +540,17 @@ if os.path.exists(OV):
                 e = edges.pop(k); ne = edges[(k[0], new)]; ne["count"] += e["count"]; ne["versions"].update(e["versions"])
             if srcs: n_ov[act] += 1
 print("overrides applied:", dict(n_ov), file=sys.stderr)
+
+# ---- Bane NOR Teknisk regelverk: pages link to each other and to their attachments (relative hrefs, tools/trv_crawl.py)
+TRV_ROOT = "08_Norway/Bane_NOR/Teknisk_regelverk/"
+n_trv = 0
+for rel in [r for r in by_path if r.startswith(TRV_ROOT) and r.endswith(".html")]:
+    raw = open(os.path.join(root, rel), encoding="utf-8", errors="ignore").read()
+    for h in re.findall(r'href="([^"#:?]+)(?:#[^"]*)?"', raw):
+        tgt = os.path.normpath(os.path.join(os.path.dirname(rel), html.unescape(h)))
+        if tgt == rel or tgt not in by_path: continue
+        ensure_node("LIB:" + tgt); edges[(rel, "LIB:" + tgt)]["count"] += 1; n_trv += 1
+print("TRV internal links:", n_trv, file=sys.stderr)
 
 # titles of Norwegian ids not in the library (cached by tools/lovdata_titles.py)
 LT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "lovdata_titles.tsv")

@@ -10,7 +10,7 @@ W=${WORK:-$L/.build}                  # scratch: extracted text, edges, nodes (g
 mkdir -p "$W/refs" "$W/meta"
 n=$(find "$L" -name '*.pdf' -not -path '*/.git/*' | wc -l)
 if [ "$n" -lt 500 ]; then echo "Only $n PDFs found. Run 'bash download_all.sh' first; the catalogue keeps only rows whose file exists." >&2; exit 1; fi
-python3 -I $T/merge_catalogue.py $L $R/master.tsv $R/eu_legal.tsv $R/era_guides.tsv $R/norway_fixed.tsv $R/ref_eu_acts.tsv $R/etsi.tsv $R/era_subsets_resolved.tsv $R/cra.tsv $R/ertms_sets.tsv $R/stm.tsv
+python3 -I $T/merge_catalogue.py $L $R/master.tsv $R/eu_legal.tsv $R/era_guides.tsv $R/norway_fixed.tsv $R/ref_eu_acts.tsv $R/etsi.tsv $R/era_subsets_resolved.tsv $R/cra.tsv $R/ertms_sets.tsv $R/stm.tsv $R/banenor_trv.tsv
 python3 -I $T/apply_aliases.py $R/master.tsv $R/era_subsets_unresolved.tsv
 python3 -I $T/extract_refs.py $L $R/master.tsv $W/refs 2>&1 | grep -v "^[0-9]*/[0-9]*$" || true
 mkdir -p $L/99_Reference_Map/online

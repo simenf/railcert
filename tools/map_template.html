@@ -157,6 +157,7 @@ canvas{width:100%;height:100%;display:block;cursor:grab}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .bd.in-force{background:#1f3a28;color:#8fd3a3}:root:not([data-theme=light]) .bd.amended{background:#1d2f44;color:#8cbcea}:root:not([data-theme=light]) .bd.repealed{background:#45231d;color:#f0a090}:root:not([data-theme=light]) .bd.draft,:root:not([data-theme=light]) .bd.unverified{background:#3f3219;color:#e8c37a}}
 .jmp{font-size:12px;color:var(--acc);flex:none;display:inline-flex;gap:3px;align-items:center}
 .more{display:block;border:0;background:none;font:inherit;width:100%;text-align:left;padding:3px 0 5px;color:var(--acc);cursor:pointer;font-size:12.5px}.more:hover{text-decoration:underline}
+.trq{border-bottom:1px solid var(--line);background:var(--chip)}.trq .it,.trq .hit{border-bottom:0;background:none}.trq-x{padding:0 12px 8px;font-size:13px}.trq-x span{display:block;color:var(--mute)}.trq-x p{margin:3px 0 0}
 .hit{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;font:inherit;color:inherit;padding:6px 12px;cursor:pointer}.hit:hover{background:var(--chip)}.hit small{display:block;color:var(--mute);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nohit{padding:28px 20px;color:var(--mute);line-height:1.6}.nohit b{color:var(--ink)}
 .crumbs{font-size:12.5px;color:var(--mute);margin:0 0 6px;line-height:1.7}.crumbs .lk{font-size:12.5px}
@@ -250,7 +251,7 @@ function hideTip(){tip.style.display='none';}
 // colours
 const PAL=['#1f5f99','#d1495b','#4d9a3e','#8a5cc2','#e08a1e','#1aa3a3','#c2185b','#5c6b7a','#7a8a1a','#b0702a','#3b8fd6','#6b4f2a'];
 const folders=[...new Set(D.docs.map(d=>folderTop(d.f)))].sort(); const fcol=f=>PAL[folders.indexOf(f)%PAL.length];
-const TCOL={'EU act':'#1f5f99','Norwegian law/regulation':'#c2185b','ERA document':'#8a5cc2','ERTMS subset':'#1aa3a3','ETSI spec':'#e08a1e','Standard':'#5c6b7a','UIC leaflet':'#b0702a'};
+const TCOL={'EU act':'#1f5f99','Norwegian law/regulation':'#c2185b','Bane NOR rule':'#9e4a1c','ERA document':'#8a5cc2','ERTMS subset':'#1aa3a3','ETSI spec':'#e08a1e','Standard':'#5c6b7a','UIC leaflet':'#b0702a'};
 // tabs
 document.querySelectorAll('header nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('header nav button').forEach(x=>{x.classList.toggle('on',x===b); x.setAttribute('aria-selected',x===b);});document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));if(b.dataset.v==='gr')initGraph(); if(b.dataset.v==='va')initVA(); if(b.dataset.v==='cr')initCR(); if(b.dataset.v==='eratv')initEratv();
   const det=document.getElementById('detail'); if(b.dataset.v==='nav'){document.getElementById('nvgrid').appendChild(det); if(selId) navAfter(selId);} if(b.dataset.v==='ex'){ document.getElementById('exgrid').appendChild(det); if(!selId) det.innerHTML=EMPTY.ex; } if(b.dataset.v==='nav'&&!selId) det.innerHTML=EMPTY[nRoot]; if(b.dataset.v==='nav'||b.dataset.v==='ex'){ const eg=document.getElementById('egod'); if(eg) eg.open=egoOpt.show[b.dataset.v]; if(selId) drawEgo(selId); }});
@@ -280,6 +281,7 @@ function items(){
 }
 function renderList(){
   const arr=items(); let h='',g=null;
+  const tq=trqOf(q.value); if(tq) h+=`<div class="grp" role="presentation">Bane NOR requirement</div>`+trqCard(tq,`<div class="it" role="option" tabindex="0" aria-selected="false" data-id="${esc(tq.f)}"><span class="sn">${esc(shortOf(tq.f))}</span><small>Chapter holding TRV:${esc(tq.k)}</small></div>`);
   const LIM=1500; if(arr.length>LIM) h+=`<div class="grp" role="status">Showing ${LIM} of ${arr.length} – type to narrow</div>`;
   for(const x of arr.slice(0,LIM)){ if(x.g!==g){g=x.g;h+=`<div class="grp" role="presentation">${esc(x.gl)}</div>`;} h+=`<div class="it${x.id===selId?' sel':''}" role="option" tabindex="0" aria-selected="${x.id===selId}" data-id="${esc(x.id)}">${x.h}<small>${esc(x.sub)}</small></div>`; }
   list.innerHTML=h||'<div class="empty">No matches</div>';
@@ -293,8 +295,13 @@ const IC=n=>`<svg class="ic" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const flink=(id,nm)=>LOCAL&&docs.has(id)?`<a class="xl" href="${fileUrl(id)}" target="_blank" title="Open local file" aria-label="Open local file${nm?': '+esc(nm):''}">${IC('file')}</a>`:'';
 const xlink=(u,t,nm)=>u?`<a class="xl" href="${esc(u)}" target="_blank" rel="noopener" title="${esc(t||'Open source')}" aria-label="${esc(t||'Open source')}${nm?': '+esc(nm):''}">${IC('ext')}</a>`:'';
 const docLink=id=>{const d=docs.get(id); if(!d) return ''; const nm=d.s||d.t; return flink(id,nm)+xlink(d.u,'Official source',nm);};
+// Bane NOR Teknisk regelverk requirement ids: "TRV:07113", "trv 7113" or a bare 5-digit number -> chapter, section, text
+const TRQ=D.trq||{};
+const trqOf=v=>{const m=(v||'').trim().match(/^(?:trv\s*[:\-]?\s*(\d{1,5})|(\d{5}))$/i); if(!m) return null; const k=(m[1]||m[2]).padStart(5,'0'), r=TRQ[k]; return r&&docs.has(r[0])?{k,f:r[0],sec:r[1],tx:r[2]}:null;};
+const trqLinks=t=>(LOCAL?`<a class="xl" href="${fileUrl(t.f)}#TRV-${t.k}" target="_blank" title="Open the requirement in the local copy" aria-label="Open TRV:${t.k} in the local copy">${IC('file')}</a>`:'')+xlink('https://trv.banenor.no/wiki/TRV:'+t.k,'Open the requirement on trv.banenor.no','TRV:'+t.k);
+const trqCard=(t,inner)=>`<div class="trq">${inner}<div class="trq-x"><b>TRV:${esc(t.k)}</b> ${trqLinks(t)}<span>${esc(t.sec)}</span>${t.tx?`<p>${esc(t.tx)}${t.tx.length>=140?'…':''}</p>`:''}</div></div>`;
 const extLink=e=>e?xlink(e.u,e.uk,e.s||e.l):'';
-const typeOrder=['EU act','Norwegian law/regulation','ERA document','ERTMS subset','ETSI spec','Standard','UIC leaflet'];
+const typeOrder=['EU act','Norwegian law/regulation','Bane NOR rule','ERA document','ERTMS subset','ETSI spec','Standard','UIC leaflet'];
 function tagFor(e){ if(e.lib.length) return '<span class="tag lib">'+(LOCAL?'in library':'in collection')+'</span>'; if(/Paid/.test(e.a)) return '<span class="tag paid">'+(e.ty==='UIC leaflet'?'UIC – paid':'paid standard')+'</span>'; return '<span class="tag">not in library</span>'; }
 // one even line per reference: short name, number, links, tag, count; unfolds to the full title
 function refRow(go,nm,num,full,links,tag,cnt){
@@ -302,7 +309,7 @@ function refRow(go,nm,num,full,links,tag,cnt){
   const head=`<span class="tw" aria-hidden="true">${more?IC('chev'):''}</span><a href="#" tabindex="-1" class="rn" data-go="${esc(go)}" title="${esc(full||nm)}">${esc(nm)}</a>${num&&num!==nm?`<span class="num">${esc(num)}</span>`:''}${links}${tag||''}<span class="c">${cnt}</span>`;
   return more?`<details class="rf"><summary tabindex="-1">${head}</summary><div class="rfx">${esc(full)}</div></details>`:`<div class="rf"><div class="rs" tabindex="-1">${head}</div></div>`;
 }
-const extRow=(e,cnt,rf)=>refRow(rf||resolve(e.id),e.s||e.l,e.s?(numOfExt(e)||e.l):'',e.t||(e.s?e.l:''),rf&&docs.has(rf)?docLink(rf):extLink(e),e.lib.length?'':tagFor(e),cnt);   // 'in library' is the norm: tag only what isn't
+const extRow=(e,cnt,rf)=>refRow(rf||resolve(e.id),(rf&&docs.has(rf)&&docs.get(rf).s)||e.s||e.l,e.s?(numOfExt(e)||e.l):'',e.t||(e.s?e.l:''),rf&&docs.has(rf)?docLink(rf):extLink(e),e.lib.length?'':tagFor(e),cnt);   // 'in library' is the norm: tag only what isn't
 const docRow=(s,cnt)=>{const d=docs.get(s); if(!d) return refRow(s,s,'','','','',cnt); return refRow(s,d.s||d.t||s,d.s?(d.n||''):'',d.t||'',docLink(s),'',cnt);};
 const titlesBtn='<button class="lk alltitles" data-alltitles>Show full titles</button>';
 function linkExt(e){ const lbl=(e.s?`<b>${esc(e.s)}</b> <span class="num">${esc(e.l)}</span>`:esc(e.l))+(e.t?` <span style="color:var(--mute)">— ${esc(e.t.slice(0,110))}</span>`:''); return `<a href="#" data-go="${esc(resolve(e.id))}">${lbl}</a>`; }
@@ -457,6 +464,7 @@ function renderHits(s){
   const rank={grp:0,fam:1,parts:2,doc:2,ext:3}; out.sort((a,b)=>(rank[NN[a].ty]-rank[NN[b].ty])||((NN[a].t??5)-(NN[b].t??5))||depthOf(a)-depthOf(b));
   tree.innerHTML=out.length?`<div class="grp" role="status">${out.length>200?'First 200 of ':''}${out.length} match${out.length===1?'':'es'} – pick one to jump to its place</div>`+out.slice(0,200).map(i=>{const r=NN[i]; return `<button class="hit" data-h="${i}"><span class="sn">${esc(r.l)}</span>${r.n&&r.n!==r.l?`<span class="num">${esc(r.n)}</span>`:''} ${QUIET.has(r.b)?'':bdg(r.b)}<small>${esc([nrootOf(i),...crumbOf(i)].map(j=>NN[j].l).join(' › '))}</small></button>`;}).join('')
     :`<div class="nohit" role="status"><b>Nothing in the Navigator matches “${esc(nq.value.trim())}”.</b><br>The Navigator holds library documents and standards cited by two or more documents. Try a number such as 2016/797, 50126 or SUBSET-026, or <button class="lk" data-exq>search everything in the Explorer</button>.</div>`;
+  const tq=trqOf(nq.value), th=tq&&byId.get(tq.f); if(th) tree.innerHTML=trqCard(tq,`<button class="hit" data-h="${th[0]}"><span class="sn">${esc(shortOf(tq.f))}</span><small>Chapter holding TRV:${esc(tq.k)} – pick to jump to its place</small></button>`)+(out.length?tree.innerHTML:'');
 }
 const chipLabel=id=>{ const c=byId.get(id); if(!c) return shortOf(id); const r=NN[c[0]]; return r.l+(r.n&&r.n!==r.l&&!/parts$/.test(r.n)?' ('+r.n+')':''); };
 function renderPaths(){

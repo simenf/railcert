@@ -204,9 +204,48 @@ def build_nav(data, verbose=True):
                 return target
         return None
 
+    # Bane NOR Teknisk regelverk: one group per book (NNN_<Book> folder), grouped by subject area when an
+    # area has several books; chapters keep the rulebook's order and are all shown.
+    trv_books = {}   # book folder -> (NNN, "Area/Part"), from the book's front page (NNN_00_*.html) or the folder name
+    for d in data["docs"]:
+        if not d["f"].startswith(C.TRV_ROOT + "/"): continue
+        bf = "/".join(d["f"].split("/")[:4])
+        m = re.match(r"^(\d{3})_(.*)$", bf.rsplit("/", 1)[-1])
+        if not m: continue
+        if re.match(r"^\d{3}_00_", d["id"].rsplit("/", 1)[-1]) and d["f"] == bf:
+            trv_books[bf] = (m.group(1), re.sub(r"^(Teknisk regelverk|Technical rules \(TRV\)) \d{3} ", "", d.get("t", "")))
+        else:
+            t = re.sub(r"^(Teknisk regelverk|Technical rules \(TRV\)) \d{3} ", "", d.get("t", "")).split(" – ")[0]
+            trv_books.setdefault(bf, (m.group(1), t or m.group(2).replace("_", " ")))
+    areas = defaultdict(list)
+    for bf, (num, t) in sorted(trv_books.items()):
+        areas[t.split("/")[0].strip()].append(bf)
+    if trv_books and C.TRV_GROUP in N:
+        for area, bfs in areas.items():
+            parent = C.TRV_GROUP
+            if len(bfs) > 1:
+                parent = add(f"{C.TRV_GROUP}:{area}", C.TRV_GROUP, ty="grp", l=area, tier=3, hand=1)["k"]
+            for bf in bfs:
+                num, t = trv_books[bf]
+                add(f"{C.TRV_GROUP}:{num}", parent, ty="grp", l=f"{num} " + t.replace("/", " – "), tier=3, hand=1)
+
+    def trv_parent(folder):
+        if not folder.startswith(C.TRV_ROOT + "/"): return None
+        bf = "/".join(folder.split("/")[:4])
+        if bf not in trv_books: return None
+        k = f"{C.TRV_GROUP}:{trv_books[bf][0]}"
+        if folder != bf:                       # attachments (Vedlegg/)
+            if k + "#v" not in N: add(k + "#v", k, ty="grp", l="Vedlegg (attachments)", tier=3, w=-1)
+            k += "#v"
+        return k
+
     stats = defaultdict(int)
     for tier, root, ids, famkey in units:
         i0 = ids[0]; folder = docs[i0]["f"]
+        tp = trv_parent(folder)
+        if tp:
+            doc_node(i0, tp, hand=1, tier=tier); stats["trv"] += 1
+            continue
         par = override(i0) or C.FOLDER_PARENT.get(folder)
         how = "override" if override(i0) else "folder"
         ranked = scored(ids, root, 1 if tier >= 3 else 0) or scored(ids, root, 3)
@@ -439,5 +478,9 @@ def write_html(out_dir, data):
     os.makedirs(os.path.join(out_dir, "online"), exist_ok=True)
     html = html.replace("__ERATV__", eratv)
     open(os.path.join(out_dir, "reference_map.html"), "w", encoding="utf-8").write(html.replace("__MODE__", "local").replace("__DATA__", js))
-    open(os.path.join(out_dir, "online", "index.html"), "w", encoding="utf-8").write(html.replace("__MODE__", "online").replace("__DATA__", js))
+    # the public edition carries TRV requirement ids and sections only; the text stays in the local edition
+    js_online = js
+    if data.get("trq"):
+        js_online = json.dumps({**data, "trq": {k: v[:2] + [""] for k, v in data["trq"].items()}}, ensure_ascii=False, separators=(",", ":"))
+    open(os.path.join(out_dir, "online", "index.html"), "w", encoding="utf-8").write(html.replace("__MODE__", "online").replace("__DATA__", js_online))
     return len(js)
