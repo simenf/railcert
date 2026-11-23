@@ -1,6 +1,6 @@
 # Railcert – European & Norwegian railway regulation library
 
-Collected 2026-11-23 · 1787 documents (1.16 GB) · reference map with 21,164 citation links
+Collected 2026-11-23 · 1787 documents (1.16 GB) · reference map with 21,931 citation links
 
 Open **`99_Reference_Map/reference_map.html`** in a browser to explore which document cites which. A copy with source links only, ready for public hosting, is in `99_Reference_Map/online/`. All source URLs are in **`catalogue.tsv`**. To refresh or re-download, run `bash download_all.sh` from this folder; it skips files that are already present.
 
@@ -50,14 +50,14 @@ Open **`99_Reference_Map/reference_map.html`** in a browser to explore which doc
 
 ## 3. Standards (EN / IEC / ISO / CLC / UIC)
 
-The TSIs and guides cite 992 distinct EN/IEC/ISO/CLC/CEN standards and 216 UIC leaflets. These are **copyrighted and sold** by CEN/CENELEC, IEC, ISO and UIC (in Norway through Standard Norge), so they are **listed, not downloaded**. `99_Reference_Map/standards_register.csv` gives, for each standard:
+The TSIs and guides cite 1100 distinct EN/IEC/ISO/CLC/CEN standards and 216 UIC leaflets. These are **copyrighted and sold** by CEN/CENELEC, IEC, ISO and UIC (in Norway through Standard Norge), so they are **listed, not downloaded**. `99_Reference_Map/standards_register.csv` gives, for each standard:
 - the versions cited (for example EN 50126-1:2017),
 - how many documents cite it,
 - exactly which documents cite it.
 
 Free standards were downloaded: 31 ETSI specifications (GSM-R, FRMCS, 3GPP, EN 301 515 and others) are in `09_Referenced_Documents/ETSI`. ERA's own list of standards cited in the TSIs is `06_ERA_Guides/TSI_Application_Guides` (xlsx).
 
-Most cited: EN 50129 (71), EN 50126 (60), EN 50159 (51), EN 50128 (50), EN 50122-1 (48), EN 50149 (39), EN 50163 (39), ISO 9001 (39), EN 50125-1 (37), EN 50367 (35), EN 50155 (34), EN 50119 (30), EN 50388 (28), EN 50126-1 (28), EN 15528 (26)
+Most cited: EN 50129 (73), EN 50126 (62), EN 50128 (53), EN 50159 (53), EN 50122-1 (48), EN 50149 (39), EN 50163 (39), ISO 9001 (39), EN 50125-1 (37), EN 50367 (35), EN 50155 (34), EN 50119 (30), EN 50388 (28), EN 50126-1 (28), EN 15528 (26)
 
 ## 4. Reference map (`99_Reference_Map`)
 
@@ -83,7 +83,7 @@ Both editions are regenerated every time the map is rebuilt. Upload only the `on
 - **references_edges.csv**: one row per (citing document → cited item), with mention count and versions cited.
 - **standards_register.csv**: the standards list described in section 3, with titles and where each title came from.
 
-**Standard titles** come from, in order of priority: ERA's *Standards quoted in TSIs* list (official titles); ETSI cover pages for specs in the library; a curated list of widely used standards (marked "check edition"); and the title printed next to the reference in the citing documents. Series references such as EN 13103 take the series title from their parts. 517 of the 1626 cited standards have a title. Together they account for about 69% of all citations to standards.
+**Standard titles** come from, in order of priority: ERA's *Standards quoted in TSIs* list (official titles); ETSI cover pages for specs in the library; a curated list of widely used standards (marked "check edition"); and the title printed next to the reference in the citing documents. Series references such as EN 13103 take the series title from their parts. 523 of the 1801 cited standards have a title. Together they account for about 64% of all citations to standards.
 
 **Method.** Text was extracted from every PDF and HTML file with pdftotext. Citations were matched with patterns for:
 - EU acts, in English and Norwegian wording ("forordning (EU) nr. 402/2013", "forskrift 9. september 2021 nr. 2742");
