@@ -49,7 +49,8 @@ def set_of(p):
     return next((k for k in SETS if "/" + k + "/" in p), None)
 SRC_SET = [("Reg_2016-919", "Set3_ETCS_B3_R2"), ("Reg_2019-776", "Set3_ETCS_B3_R2"), ("Reg_2020-387", "Set3_ETCS_B3_R2"),
            ("ATC2_STM_Specifications/v5.1_2009/", "Set1_ETCS_B2"), ("ATC2_STM_Specifications/v5.2_2014/", "Set1_ETCS_B2"),
-           ("ATC2_STM_Specifications/v6.0_2014/", "Set2_ETCS_B3_MR1"), ("ATC2_STM_Specifications/v6.1_2017/", "Set3_ETCS_B3_R2")]
+           ("ATC2_STM_Specifications/v6.0_2014/", "Set2_ETCS_B3_MR1"), ("ATC2_STM_Specifications/v6.1_2017/", "Set3_ETCS_B3_R2"),
+           ("Bane_NOR/Teknisk_regelverk/", "Set3_ETCS_B3_R2")]   # Bane NOR's rules are written for Set 3 (system version 3.6.0)
 def same_set_file(src, lib):
     """An ERTMS document cites the subset versions of its own specification set: resolve to that set's file.
     Outside the set folders: the 2016/919 CCS TSI family mandates sets 1-3 (Set 3 is the latest), and each
@@ -172,6 +173,15 @@ def graph(mode):
 
 G = {"docs": graph("docs"), "std": graph("std")}
 data = {"docs": list(docs.values()), "ext": list(ext.values()), "edges": E, "G": G}
+# Bane NOR Teknisk regelverk requirement index (tools/trv_crawl.py): "07113" -> [chapter file, section, text]
+TRQ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "banenor_trv_requirements.tsv")
+if os.path.exists(TRQ):
+    data["trq"] = {}
+    for r in csv.DictReader(open(TRQ, encoding="utf-8"), delimiter="\t"):
+        p, k = f"{r['folder']}/{r['filename']}", r["req_id"].split(":")[-1]
+        old = data["trq"].get(k)
+        if p in docs and (not old or ("superseded" in docs[old[0]]["st"] and "superseded" not in docs[p]["st"])):
+            data["trq"][k] = [p, r["section"][:90], r["text"][:140]]
 os.makedirs(out, exist_ok=True)
 
 # ---------- CSV exports ----------

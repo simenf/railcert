@@ -3,6 +3,13 @@
 Newest first. The top entry sets the version shown in the footer of the map.
 Add a new `## x.y.z – date` section for each release, then rebuild the map.
 
+## 1.6.0 – 2026-11-23
+- Bane NOR Teknisk regelverk (TRV): all books, chapters, appendices, change logs and attachments from trv.banenor.no, downloaded as cleaned, cross-linked pages
+- Navigator: TRV under Bane NOR, grouped by subject area and book, with chapters in rulebook order
+- Search by requirement ID (for example TRV:07113) in the Navigator and Explorer jumps to the chapter, section and requirement text
+- Links between TRV chapters and to their attachments appear as citations; TSIs, EN standards and other documents cited in TRV are linked too
+- Task paths for vehicle authorisation, ETCS on-board and trackside CCS now point to the relevant TRV chapters
+
 ## 1.5.0 – 2026-11-14
 - CSM RA tab: clickable process map of Regulation (EU) 402/2013 with the hazard record and the assessment body alongside
 - Each step shows the legal requirement, ERA guidance, practice notes, evidence and linked documents

@@ -98,6 +98,13 @@ class ShortNames:
             if fn.startswith("000_Readme"): return f"Readme – set {lab}", ""
             t = re.sub(r"\s*\[Set\w*\]$|\s*\[Informative\]$", "", title)
             return (t[:60] + f" ({lab})") if t else "", ""
+        if r["folder"].startswith("08_Norway/Bane_NOR/Teknisk_regelverk/"):   # tools/trv_crawl.py
+            m = re.match(r"^(?:Teknisk regelverk|Technical rules \(TRV\)) (\d{3}) (.*?)(?: – (.*))?$", title)
+            if m:
+                b, book, rest = m.groups()
+                if not rest: return f"TRV {b} {book}", ""
+                if r.get("date_or_status") == "attachment": return f"TRV {b} {rest}"[:90], ""
+                return f"TRV {b} " + re.sub(r"^(kap\.|part) ", "kap. ", rest)[:80], ""
         for pat, val in FILE_RULES:
             m = re.match(pat, fn)
             if m: return (val(m) if callable(val) else val), ""
