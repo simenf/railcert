@@ -141,6 +141,13 @@ CUR = {
  "CLC/TS 50701": "Railway applications – Cybersecurity",
  "ETSI EN 301 549": "Accessibility requirements for ICT products and services",
  "ETSI EN 300 330": "Short Range Devices (SRD) – Radio equipment in the frequency range 9 kHz to 25 MHz and inductive loop systems in the frequency range 9 kHz to 30 MHz",
+ # Norwegian electrotechnical norms (titles as printed in Bane NOR TRV)
+ "NEK 400": "Elektriske lavspenningsinstallasjoner",
+ "NEK 440": "Stasjonsanlegg over 1 kV",
+ "NEK 900": "Elektriske jernbaneinstallasjoner",
+ # telecom (GSM-R / EuroRadio)
+ "ITU-T E.164": "The international public telecommunication numbering plan",
+ "ETSI ETS 300 102-1": "ISDN – User-network interface layer 3 – Specifications for basic call control",
 }
 for lab, ti in CUR.items():
     k = key(lab)

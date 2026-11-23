@@ -78,6 +78,7 @@ def avail(n):
     if ty == "UIC leaflet": return "Paid (UIC)"
     if ty == "ETSI spec": return "Free (ETSI) – not resolved"
     if ty == "EU act": return "Free (EUR-Lex) – not available/noise"
+    if ty == "Norwegian law/regulation": return "Free (Lovdata)"
     return "Not found"
 for n in ext.values(): n["a"] = avail(n)
 

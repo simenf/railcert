@@ -84,19 +84,31 @@ ITC_CH = {"1/2013": "22013D0804", "2/2019": "22020D0040", "1/2020": "22020D0896"
 NAMED_EU = [(re.compile(r"\bUN(?:/ECE|ECE)?\s+Regulation\s+No\.?\s*155\b"), "EU:42021X0387", "UN Regulation No 155"),
             (re.compile(r"Interinstitutional\s+Agreement\s+of\s+13\s+April\s+2016\s+on\s+Better\s+Law-?\s*Making", re.I), "EU:32016Q0512", "Interinstitutional Agreement on Better Law-Making (2016)")]
 STD = re.compile(
-    r"\b(?P<org>(?:pr)?EN(?:[\s" + NBSP + r"]+(?:IEC|ISO))?|IEC|ISO(?:/IEC)?|CLC/TS|CLC/TR|CEN/TS|CEN/TR|CEN/CLC/TS|ETSI[\s" + NBSP + r"]+(?:TS|EN|TR|ES)|UIC(?:[\s" + NBSP + r"]+(?:[Ll]eaflet|Code|IRS))?|IRS(?:[\s" + NBSP + r"]+UIC)?|NS[\s" + NBSP + r"]+EN|CENELEC)"
+    r"\b(?P<org>(?:F?pr)?EN(?:[\s" + NBSP + r"]+(?:IEC|ISO))?|IEC|ISO(?:/IEC)?|CLC/TS|CLC/TR|CEN/TS|CEN/TR|CEN/CLC/TS|ETSI[\s" + NBSP + r"]+(?:TS|EN|TR|ES)|UIC(?:[\s" + NBSP + r"]+(?:[Ll]eaflet|Code|IRS))?|IRS(?:[\s" + NBSP + r"]+UIC)?|NS[\s" + NBSP + r"]+EN|CENELEC|CELENEC|NEK(?=[ " + NBSP + r"]?\d{3}\b)|TS(?=[ " + NBSP + r"]?50\d{3}(?!\d)))"
     r"[ " + NBSP + r"]*\n?(?P<num>\d{2,6}(?:[ " + NBSP + r"]\d{3}(?!\d))?(?:-\d{1,3}(?!\d)){0,3})(?!\d)(?::(?P<yr>(?:19|20)\d{2}))?(?:\+A(?P<amd>\d)(?::\d{4})?)?")
 SUBSET = re.compile(r"\bSUBSET[-_\s" + NBSP + r"–]{0,3}(\d{3})((?:-\d{1,2}){0,2})(?!\d)", re.I)
 SS_ABBR = re.compile(r"\b[Ss][Ss][-_ ]?(\d{3})((?:-\d{1,2}){0,2})(?![\d.])")      # SS-026, SS026 (ERTMS documents only)
 ETSI_BARE = re.compile(r"(?<![/\w])(TS|TR|ES)[ " + NBSP + r"]+(1\d{2})[ " + NBSP + r"](\d{3})((?:-\d{1,2}){0,2})(?!\d)")
 GPP = re.compile(r"\b(?:3GPP|3G)?\s*(TS|TR)[ " + NBSP + r"]+(\d{2})\.(\d{3})((?:-\d{1,2}){0,2})(?![\d.])")
+# continuation of a standards list after a match: "EN 50126, 50128, 50129 and 50159". Only 5-digit numbers or
+# numbers with a part, so that years, page numbers and dimensions ("EN 15273, 1435 mm") are not picked up
+STD_MORE = re.compile(r"[ \t" + NBSP + r"]*\n?[ \t" + NBSP + r"]*(?:,|;|\band\b|\bog\b|\bor\b|\beller\b|&)[ \t" + NBSP + r"]*\n?[ \t" + NBSP + r"]*"
+                      r"(\d{5}(?:-\d{1,3}(?!\d)){0,3}|\d{4}(?:-\d{1,3}(?!\d)){1,3})(?![\d/.,]\d)(?::((?:19|20)\d{2}))?")
+ETS_OLD = re.compile(r"(?<![\w/])(?:pr|I-)?ETS[ " + NBSP + r"]+(300)[ " + NBSP + r"]?(\d{3})((?:-\d{1,2}){0,2})(?!\d)")    # pre-1996 ETSI ETS
+GSM_SPEC = re.compile(r"\bGSM[ " + NBSP + r"]+(\d{2})\.(\d{2})((?:-\d{1,2})?)(?![\d.]\d)")                                # GSM 04.08
+ITU_REC = re.compile(r"\b(?:ITU-T|CCITT)[ " + NBSP + r"]+(?:Rec(?:ommendations?|\.)?[ " + NBSP + r"]+)?([A-Z])\.[ " + NBSP + r"]?(\d{1,4}(?:\.\d{1,2})?)(?![\d.]\d)")
+ANSI_ASTM = re.compile(r"\b(ANSI|ASTM)[ " + NBSP + r"]+([A-Z]\d{1,4}(?:\.\d{1,3})?)(?![\d.]\d)")
+EEIG_DOC = re.compile(r"\bEEIG[ :" + NBSP + r"]*(\d{2}S\d{3})\b")                                                            # EEIG 97S066
+# EU acts written with hyphens ("Decision 2004-447-EC") or bare with a suffix and no act word ("93/465/EEC")
+ACT_HY = re.compile(r"\b(?P<kind>Regulation|Directive|Decision)[\s" + NBSP + r"]+(?:\((?:EU|EC|EEC)\)[\s" + NBSP + r"]*)?(?:No\.?[\s" + NBSP + r"]*)?(?P<a>\d{2,4})-(?P<b>\d{1,4})-(?P<sfx>EC|EU|EEC)\b")
+ACT_BARE = re.compile(r"(?<![\w/.-])(?P<a>\d{2}|\d{4})/(?P<b>\d{1,4})/(?P<sfx>EEC|EC|EU|EØF|EF)\b(?!/)")
 MORANE = re.compile(r"\b([AEFP])\s?(\d{2})\s?T\s?(\d{4})\b")
 ATC2_LABELS = {"ESRS": "SS:SUBSET-026", "ESTM": "SS:SUBSET-035", "ESTMA": "SS:SUBSET-058", "ESTMT": "SS:SUBSET-056", "ESTML": "SS:SUBSET-057",
                "ESTMP": "SS:SUBSET-059", "ETI": "SS:SUBSET-034", "EMMI": "SS:SUBSET-033", "ERADMI": "ERA:ERA/ERTMS/015560"}
 ATC2_LAB = re.compile(r"\[(" + "|".join(ATC2_LABELS) + r")\]")
 ERTMS_DOC_IDS = [(re.compile(r"(?<![\w/.-])(\d{2}E\d{3})(?![\w])"), lambda m: "ERA:" + m.group(1)),                     # EUG/ERA notes: 13E154, 21E089
                  (re.compile(r"\b(FFFIS|FU|FIS|TOBA|AT)-(7\d{3})\b"), lambda m: f"ERA:FRMCS-{m.group(1)}-{m.group(2)}"),          # FRMCS
-                 (re.compile(r"(?<![\w-])O-(2475|2875|3001)(?:-(\d))?\b"), lambda m: "ERA:O-" + m.group(1) + (f"-{m.group(2)}" if m.group(2) else "")),
+                 (re.compile(r"(?<![\w-])O[-_](2475|2875|3001)(?:-(\d))?\b"), lambda m: "ERA:O-" + m.group(1) + (f"-{m.group(2)}" if m.group(2) else "")),
                  (re.compile(r"\b(?:TD/)?011REC1028\b"), lambda m: "ERA:TD/011REC1028")]
 ERA120X = re.compile(r"\bERA[\s_-]?120([89])[/_ -](\d{2,3})(?!\d)")
 ERADOC = re.compile(r"\b(ERA(?:/ERTMS|/GUI|/TD|/REC|/OPI|/REP|/PRG|/INT|/TMP|/ADV)?[/_-][A-Z0-9_./-]{3,20}\d|ERA1209/\d{3}|ERA-PRG-\d{3}|ERA-TD-\d{4}-\d+)", re.I)
@@ -135,7 +147,10 @@ NOR_IDS = {"jernbaneloven": "LOV-1993-06-11-100", "samtrafikkforskriften": "FOR-
            "varslings- og rapporteringsforskriften": "FOR-2006-03-31-379", "sikkerhetsstyringsforskriften": "FOR-2011-04-11-389",
            "csm sms-forskriften": "FOR-2021-09-08-2703", "csm ra-forskriften": "FOR-2014-10-27-1344", "tsi ccs-forskriften": "FOR-2025-03-14-450",
            "tsi ope-forskriften": "FOR-2021-09-08-2714", "tsi-opeforskriften": "FOR-2021-09-08-2714", "tsi loc&pas-forskriften": "FOR-2015-07-23-913",
-           "tsi loc & pas-forskriften": "FOR-2015-07-23-913", "togframføringsforskriften": "FOR-2008-02-29-240"}
+           "tsi loc & pas-forskriften": "FOR-2015-07-23-913", "togframføringsforskriften": "FOR-2008-02-29-240",
+           "forskrift om elektriske forsyningsanlegg": "FOR-2005-12-20-1626", "forskrift for elektriske forsyningsanlegg": "FOR-2005-12-20-1626"}
+NOR_ABBR = {"FEF": "FOR-2005-12-20-1626"}     # case-sensitive abbreviations
+NOR_ABBR_RE = re.compile(r"\b(" + "|".join(NOR_ABBR) + r")\b")
 NOR_NAME = re.compile(r"\b(" + "|".join(sorted(map(re.escape, NOR_IDS), key=len, reverse=True)) + r")(?:s|en)?\b", re.I)
 
 KIND = {"framework decision": "F", "recommendation": "H", "anbefaling": "H", "regulation": "R", "directive": "L", "decision": "D",
@@ -183,7 +198,9 @@ def act_key(kind, a, b, sfx=None, no=False):
 def norm_std(org, num):
     org = re.sub(r"\s+", " ", org.replace(NBSP, " ")).strip()
     org = re.sub(r"^NS EN", "EN", org)
-    org = re.sub(r"^prEN", "EN", org)
+    org = re.sub(r"^F?prEN", "EN", org)
+    if org == "CELENEC": org = "CENELEC"      # common misspelling
+    if org == "TS": org = "CLC/TS"            # "TS 50459" / "TS50459": CENELEC technical specification
     num = num.replace(NBSP, " ")
     if re.match(r"^\d{3} \d{3}$", num): num = num.replace(" ", " ")  # ETSI style '102 281'
     else: num = num.replace(" ", "")
@@ -211,6 +228,9 @@ for rel, r in by_path.items():
         if c[0] == "0": SELF_ALT[rel] = "3" + c[1:]
 celex_to_files = defaultdict(list)
 for rel, c in self_celex.items(): celex_to_files[c].append(rel)
+# CELEX numbers known to exist on EUR-Lex: used to tell a bare "93/465/EEC" directive from a decision
+_CC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "celex_check.tsv")
+CELEX_OK = {r["celex"] for r in csv.DictReader(open(_CC, encoding="utf-8"), delimiter="\t") if r["exists"] == "1"} if os.path.exists(_CC) else set()
 
 SET_YEAR = {"Set1_ETCS_B2": 2012, "Set2_ETCS_B3_MR1": 2015, "Set3_ETCS_B3_R2": 2019, "Set4_ETCS_B4_R1_current": None}
 
@@ -303,7 +323,9 @@ for i, rel in enumerate(files):
         nid = "EU:" + celex
         nodes.setdefault(nid, {"type": "EU act", "label": label, "celex": celex})
         edges[(rel, nid)]["count"] += 1
+    covered = set()                                 # start offsets of act numbers already read (for ACT_BARE)
     for m in ACT.finditer(t):
+        covered.add(m.start("a"))
         no = bool(m.group("no"))
         # decisions of non-EU bodies (EEA Joint Committee, EU-Switzerland committee, ERA boards) are not EU acts
         kl = m.group("kind").lower()
@@ -316,6 +338,7 @@ for i, rel in enumerate(files):
                 for _ in range(10):                         # "Decisions No 1/2020, 2/2020, 2/2021"
                     mm = ACT_MORE.match(t, pos)
                     if not mm: break
+                    covered.add(mm.start(1))
                     keys.append(f"{int(mm.group(1))}/{mm.group(2)}"); pos = mm.end()
                 for key in keys:
                     if key in ITC_CH and ch:
@@ -328,8 +351,21 @@ for i, rel in enumerate(files):
         for _ in range(30):
             mm = ACT_MORE.match(t, pos)
             if not mm: break
+            covered.add(mm.start(1))
             add_act(m.group("kind"), mm.group(1), mm.group(2), mm.group(3) or m.group("sfx"), no)
             pos = mm.end()
+    for m in ACT_HY.finditer(t):
+        add_act(m.group("kind"), m.group("a"), m.group("b"), m.group("sfx"))
+    # bare "93/465/EEC": directive or decision, whichever exists on EUR-Lex (skip if both or neither do)
+    for m in ACT_BARE.finditer(t):
+        if m.start() in covered: continue
+        if re.search(r"(?:No|nr)\.?\s*$", t[max(0, m.start() - 6):m.start()]): continue
+        hits = []
+        for kind in ("Directive", "Decision"):
+            k = act_key(kind, m.group("a"), m.group("b"), m.group("sfx"))
+            if k and (k[0] in CELEX_OK or k[0] in celex_to_files): hits.append(kind)
+        if len(hits) == 1:
+            add_act(hits[0], m.group("a"), m.group("b"), m.group("sfx"))
     for rx, nid, lab in NAMED_EU:
         if rx.search(t) and nid[3:] != me:
             nodes.setdefault(nid, {"type": "EU act", "label": lab, "celex": nid[3:]})
@@ -353,6 +389,12 @@ for i, rel in enumerate(files):
         nid = "NO:" + fid
         nodes.setdefault(nid, {"type": "Norwegian law/regulation", "label": fid})
         edges[(rel, nid)]["count"] += 1
+    for m in NOR_ABBR_RE.finditer(t):
+        fid = NOR_ABBR[m.group(1)]
+        if rel in alias.get("NO:" + fid, ()): continue
+        nid = "NO:" + fid
+        nodes.setdefault(nid, {"type": "Norwegian law/regulation", "label": fid})
+        edges[(rel, nid)]["count"] += 1
     for m in STD.finditer(t):
         org, num = m.group("org"), m.group("num")
         if org.upper().startswith("EN") and len(num.replace("-", "")) < 4: continue  # EN 1 etc noise
@@ -365,6 +407,17 @@ for i, rel in enumerate(files):
         nodes.setdefault(nid, {"type": typ, "label": sid})
         e = edges[(rel, nid)]; e["count"] += 1
         if m.group("yr"): e["versions"][m.group("yr") + (f"+A{m.group('amd')}" if m.group("amd") else "")] += 1
+        # "EN 50126, 50128, 50129 and 50159": the list shares the first item's organisation
+        if typ == "Standard" and not sid.startswith(("NEK", "CLC/TS", "CEN/TS", "CLC/TR", "CEN/TR")):
+            pos = m.end()
+            for _ in range(15):
+                mm = STD_MORE.match(t, pos)
+                if not mm: break
+                sid2 = norm_std(org, mm.group(1)); nid2 = "STD:" + sid2
+                nodes.setdefault(nid2, {"type": "Standard", "label": sid2})
+                e2 = edges[(rel, nid2)]; e2["count"] += 1
+                if mm.group(2): e2["versions"][mm.group(2)] += 1
+                pos = mm.end()
     def add_subset(num, parts):
         sid = f"SUBSET-{num}"
         for p_ in [x for x in parts.split("-") if x]:            # most specific part that exists in the library
@@ -387,12 +440,28 @@ for i, rel in enumerate(files):
             nodes.setdefault(nid, {"type": "ERTMS subset" if nid.startswith("SS:") else "ERA document", "label": nid.split(":", 1)[1]})
             edges[(rel, nid)]["count"] += 1
     for rx, fmt in ((ETSI_BARE, lambda m: f"ETSI {m.group(1)} {m.group(2)} {m.group(3)}{m.group(4)}"),
-                    (GPP, lambda m: f"ETSI TS 1{m.group(2)} {m.group(3)}{m.group(4)}")):
+                    (GPP, lambda m: f"ETSI TS 1{m.group(2)} {m.group(3)}{m.group(4)}"),
+                    (ETS_OLD, lambda m: f"ETSI ETS {m.group(1)} {m.group(2)}{m.group(3)}"),
+                    (GSM_SPEC, lambda m: f"GSM {m.group(1)}.{m.group(2)}{m.group(3)}")):
         for m in rx.finditer(t):
+            # "ETSI TS 144 018 ... (GSM 04.18 version 8.5.0 Release 1999)": the GSM number is the title alias of the TS
+            if rx is GSM_SPEC and t[m.start() - 1:m.start()] == "(" and re.match(r"[ \t\n]+version", t[m.end():m.end() + 12]): continue
             sid = fmt(m); nid = "STD:" + sid
             nodes.setdefault(nid, {"type": "ETSI spec", "label": sid})
             edges[(rel, nid)]["count"] += 1
-    if rel.startswith(("07_", "02_", "06_", "09_Referenced_Documents/ERA")):
+    for rx, fmt, typ in ((ITU_REC, lambda m: f"ITU-T {m.group(1)}.{m.group(2)}", "Standard"),
+                         (ANSI_ASTM, lambda m: f"{m.group(1)} {m.group(2)}", "Standard")):
+        for m in rx.finditer(t):
+            sid = fmt(m); nid = "STD:" + sid
+            nodes.setdefault(nid, {"type": typ, "label": sid})
+            edges[(rel, nid)]["count"] += 1
+    # ERA/EEIG document ids; the old CCS TSI decisions (09_Referenced_Documents/EU_Acts) list them in Annex A
+    if rel.startswith(("07_", "02_", "06_", "09_Referenced_Documents/ERA")) or (rel.startswith("09_Referenced_Documents/EU_Acts/") and "SUBSET-" in t):
+        for m in EEIG_DOC.finditer(t):
+            nid = "ERA:" + m.group(1)
+            if rel in era_files.get(nid, []): continue
+            nodes.setdefault(nid, {"type": "ERA document", "label": "EEIG " + m.group(1)})
+            edges[(rel, nid)]["count"] += 1
         for rx_, fmt_ in ERTMS_DOC_IDS:
             for m in rx_.finditer(t):
                 nid = fmt_(m)
