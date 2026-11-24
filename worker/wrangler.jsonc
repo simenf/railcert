@@ -68,7 +68,7 @@
           "database_name": "railcert-ask",
           // OWNER: replace with the id printed by `wrangler d1 create railcert-ask` (deploy.sh tells you).
           // Change ONLY this one; the top-level placeholder stays.
-          "database_id": "00000000-0000-0000-0000-000000000000"
+          "database_id": "40c16c60-9406-4a1e-9051-41e01aece6f0"
         }
       ],
       "r2_buckets": [{ "binding": "FILES", "bucket_name": "railcert-library" }],
@@ -81,8 +81,8 @@
         "USE_VECTORS": "1",
         // OWNER: Zero Trust team domain (e.g. "myteam.cloudflareaccess.com") and the Access application AUD tag.
         // With REQUIRE_ACCESS=1 the Worker refuses every request until both are set.
-        "ACCESS_TEAM_DOMAIN": "",
-        "ACCESS_AUD": "",
+        "ACCESS_TEAM_DOMAIN": "simen.cloudflareaccess.com",
+        "ACCESS_AUD": "f97310ebfd2ae066be8af57bfe5a410c5fb8d6fc136cfcb63ff17a7c5f706313",
         "REQUIRE_ACCESS": "1"
       }
     }

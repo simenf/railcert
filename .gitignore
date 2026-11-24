@@ -30,3 +30,4 @@ Thumbs.db
 /worker/.wrangler/
 /worker/.dev.vars
 /.wrangler/
+/worker/.deploy.env
