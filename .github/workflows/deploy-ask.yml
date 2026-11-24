@@ -1,0 +1,47 @@
+name: Deploy Ask Worker
+
+# Ships the railcert-ask Worker CODE to Cloudflare (ask.rail.simenf.com) when worker/ changes on main.
+# Data (D1, R2 documents, vectors) is loaded from the owner's machine with worker/scripts/deploy.sh;
+# this workflow never touches it. The public map keeps deploying through Cloudflare Pages as before.
+# Needs repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - worker/**
+      - .github/workflows/deploy-ask.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-ask
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: worker/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Deploy (env production)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          command: deploy --env production

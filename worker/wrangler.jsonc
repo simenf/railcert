@@ -60,6 +60,8 @@
       "name": "railcert-ask",
       "workers_dev": false,
       "preview_urls": false,
+      // Own hostname; does not touch the Pages site rail.simenf.com. Change here if you want another name.
+      "routes": [{ "pattern": "ask.rail.simenf.com", "custom_domain": true }],
       "d1_databases": [
         {
           "binding": "DB",
