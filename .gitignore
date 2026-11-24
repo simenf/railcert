@@ -24,3 +24,9 @@ Thumbs.db
 # local scratch
 /_to_delete/
 /.claude/
+
+# railcert-ask Worker (secrets and local state)
+/worker/node_modules/
+/worker/.wrangler/
+/worker/.dev.vars
+/.wrangler/

@@ -1,0 +1,5 @@
+# Copy to .dev.vars (git-ignored) for `wrangler dev`. Never commit real keys.
+OPENROUTER_API_KEY=sk-or-v1-...
+# Local dev only: turn off the Cloudflare Access requirement (the config default is "1", fail closed).
+# `npm run dev` passes --var REQUIRE_ACCESS:0 itself, so this line only matters for plain `npx wrangler dev`.
+REQUIRE_ACCESS=0

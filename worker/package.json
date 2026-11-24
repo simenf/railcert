@@ -1,0 +1,18 @@
+{
+  "name": "railcert-ask",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --var REQUIRE_ACCESS:0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --config test/vitest.config.ts && node --test test/ui-md.test.mjs",
+    "cf-typegen": "wrangler types --env-interface Env src/worker-configuration.d.ts"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "^1.9.1",
+    "@cloudflare/workers-types": "^5.20261123.1",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.12",
+    "wrangler": "^4.167.0"
+  }
+}
