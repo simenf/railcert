@@ -291,7 +291,7 @@ function asstInner(m,last){
       +(m.citations&&m.citations.length?'<button class="act" type="button" data-act="copysrc">'+icon('copy')+'<span>Copy with sources</span></button>':'')
       +'<button class="act" type="button" data-act="regen">'+icon('regen')+'<span>Regenerate</span></button>'
       +'<button class="act" type="button" data-act="md">'+icon('down')+'<span>Export .md</span></button>'
-      +(u?'<span class="usage">'+esc(u)+'</span>':'')+'</div>';
+      +((u||m.model)?'<span class="usage">'+esc([m.model?(modelNames[m.model]||m.model):'',u].filter(Boolean).join(' · '))+'</span>':'')+'</div>';
   }
   return h;
 }
@@ -519,7 +519,7 @@ function regenerate(idx){
 
 /* ---------- SSE ---------- */
 async function streamAsk(messages,onEvent,signal){
-  const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json','Accept':'text/event-stream'},body:JSON.stringify({messages}),signal});
+  const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json','Accept':'text/event-stream'},body:JSON.stringify(modelSel()?{messages,model:modelSel()}:{messages}),signal});
   if(!r.ok){let t='';try{const j=await r.json();t=j.error||'';}catch(e){}throw new Error((t||('Request failed'))+' (HTTP '+r.status+')');}
   if(!r.body)throw new Error('This browser cannot read streamed responses.');
   const rd=r.body.getReader(),dec=new TextDecoder();let buf='';
@@ -558,7 +558,7 @@ async function ask(override){
       const stick=nearBottom();
       if(ev==='step'){const s=j.summary||('Step '+j.n+': '+j.tool);m.steps.push({tool:j.tool||'',summary:s});const li=document.createElement('li');li.textContent=s;ol.appendChild(li);tl.textContent=s;status.textContent=s;}
       else if(ev==='token'){if(!raw)tl.textContent='Writing the answer…';raw+=j.t||'';if(!paintT)paintT=setTimeout(paint,100);}
-      else if(ev==='done'){finished=true;m.content=j.answer!=null?j.answer:raw;m.citations=j.citations||[];m.quote_checks=j.quote_checks||[];m.usage=j.usage;m.nsteps=j.steps;
+      else if(ev==='done'){finished=true;m.content=j.answer!=null?j.answer:raw;m.citations=j.citations||[];m.quote_checks=j.quote_checks||[];m.usage=j.usage;m.nsteps=j.steps;m.model=j.model;
         if(Array.isArray(j.follow_ups))m.follow_ups=j.follow_ups.filter(x=>typeof x==='string'&&x.trim()).slice(0,3);
         if(j.source_map&&Array.isArray(j.source_map.nodes))m.source_map=j.source_map;}
       else if(ev==='error'){finished=true;m.error=j.message||'The server reported an error.';m.content=m.content||stripRaw(raw);}
@@ -665,12 +665,27 @@ $('#sform').onsubmit=e=>{e.preventDefault();search();};
 /* ---------- health ---------- */
 let libDocs=0;
 function showLibCount(){const s=$('#libcount');if(s&&libDocs)s.textContent=' ('+libDocs.toLocaleString()+' documents)';}
+/* ---------- model picker ---------- */
+const LSMODEL='railcertAskModel';let modelNames={};
+function fillModels(list,def){
+  const sel=$('#model');if(!sel)return;
+  if(!Array.isArray(list)||!list.length){list=def?[{id:def,label:def,default:true}]:[];}
+  modelNames={};for(const m of list)modelNames[m.id]=m.label||m.id;
+  let saved='';try{saved=localStorage.getItem(LSMODEL)||'';}catch(e){}
+  if(!list.some(m=>m.id===saved))saved=(list.find(m=>m.default)||list[0]||{}).id||'';
+  sel.innerHTML=list.map(m=>'<option value="'+esc(m.id)+'">'+esc((m.label||m.id)+(m.default?' (default)':''))+'</option>').join('');
+  sel.value=saved;sel.closest('.mpick').hidden=list.length<2;
+}
+function modelSel(){const sel=$('#model');return sel&&sel.value?sel.value:'';}
+document.addEventListener('change',e=>{if(e.target&&e.target.id==='model'){try{localStorage.setItem(LSMODEL,e.target.value);}catch(err){}}});
+
 async function health(){
   const el=$('#health');
   try{
     const r=await fetch('/api/health');const j=await r.json();if(!r.ok||!j.ok)throw new Error();
     el.classList.remove('bad');
-    el.textContent=[(j.docs||0).toLocaleString()+' docs',(j.chunks||0).toLocaleString()+' passages','semantic '+(j.vectors?'on':'off'),j.model||'',j.build_date?'built '+j.build_date:''].filter(Boolean).join(' · ');
+    el.textContent=[(j.docs||0).toLocaleString()+' docs',(j.chunks||0).toLocaleString()+' passages','semantic '+(j.vectors?'on':'off'),j.build_date?'built '+j.build_date:''].filter(Boolean).join(' · ');
+    fillModels(j.models,j.model);
     if(j.build_date)$('#build').textContent='Index built '+j.build_date+'.';
     libDocs=j.docs||0;showLibCount();
   }catch(e){el.classList.add('bad');el.textContent='Server not reachable';}

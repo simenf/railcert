@@ -32,7 +32,12 @@
       <textarea id="q" rows="2" placeholder="Ask about EU or Norwegian railway regulation, ERTMS, CSM RA, authorisation…" aria-describedby="qhint"></textarea>
       <button class="btn pri" id="send" type="submit">Send</button>
       <button class="btn stop" id="stop" type="button" hidden>Stop</button>
-      <span class="qhint" id="qhint">Enter to send · Shift+Enter for a new line</span>
+      <div class="qrow">
+        <label class="mpick" for="model"><span>Model</span>
+          <select id="model" title="Language model used for new questions"><option value="">Default</option></select>
+        </label>
+        <span class="qhint" id="qhint">Enter to send · Shift+Enter for a new line</span>
+      </div>
     </form>
   </div>
 </section>

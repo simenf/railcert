@@ -1,4 +1,4 @@
-import { type Env, DEFAULT_MODEL, vectorsEnabled } from "./env";
+import { type Env, DEFAULT_MODEL, modelChoices, vectorsEnabled } from "./env";
 import { type ChunkRow, buildHit, fileUrl, getDocs } from "./docs";
 import { HttpError, boolParam, intParam, json } from "./http";
 import { search } from "./search";
@@ -28,6 +28,7 @@ export async function handleHealth(env: Env): Promise<Response> {
     chunks,
     vectors: vectorsEnabled(env),
     model: env.MODEL || DEFAULT_MODEL,
+    models: modelChoices(env),
     build_date: m.build_date ?? null,
     llm: !!env.OPENROUTER_API_KEY,
   });
