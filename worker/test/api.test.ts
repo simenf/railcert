@@ -264,6 +264,47 @@ describe("/api/ask", () => {
     expect(n).toBe(11);
   });
 
+  it("re-asks once when the model returns an empty answer", async () => {
+    const bodies: any[] = [];
+    vi.stubGlobal("fetch", async (_i: RequestInfo | URL, init?: RequestInit) => {
+      const body = JSON.parse(String(init?.body));
+      bodies.push(body);
+      if (bodies.length === 1) return Response.json({ choices: [{ message: { content: null, tool_calls: [{ id: "t1", type: "function", function: { name: "read", arguments: '{"chunk_id":401}' } }] } }] });
+      if (bodies.length === 2) return Response.json({ choices: [{ message: { content: "\nFOLLOWUPS: a | b" } }] });
+      return Response.json({ choices: [{ message: { content: "Second try from [c:401]." } }] });
+    });
+    const { res } = await call(
+      "/api/ask",
+      { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: "Hva sier § 3-1?" }] }) },
+      { OPENROUTER_API_KEY: "k" },
+    );
+    const events = parseSse(await res.text());
+    expect(events.some((e) => e.ev === "error")).toBe(false);
+    expect(events.filter((e) => e.ev === "step").map((e) => e.data.tool)).toEqual(["read", "retry"]);
+    expect(events.find((e) => e.ev === "done")!.data.answer).toBe("Second try from [1].");
+    expect(bodies).toHaveLength(3);
+    expect(bodies[2].tool_choice).toBe("none");
+    expect(bodies[2].max_tokens).toBe(16000);
+    expect(bodies[1].max_tokens).toBe(4000);
+    expect(bodies[2].messages.at(-1).content).toMatch(/last message was empty/);
+  });
+
+  it("gives up with an error after one empty retry", async () => {
+    let n = 0;
+    vi.stubGlobal("fetch", async () => {
+      n++;
+      return Response.json({ choices: [{ message: { content: "  " } }] });
+    });
+    const { res } = await call(
+      "/api/ask",
+      { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: "hi" }] }) },
+      { OPENROUTER_API_KEY: "k" },
+    );
+    const ev = parseSse(await res.text());
+    expect(ev.at(-1)).toMatchObject({ ev: "error", data: { message: expect.stringContaining("empty answer") } });
+    expect(n).toBe(2);
+  });
+
   it("reports provider errors and validates input", async () => {
     vi.stubGlobal("fetch", async () => Response.json({ error: { message: "rate limited" } }, { status: 429 }));
     const { res } = await call(

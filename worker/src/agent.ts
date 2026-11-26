@@ -54,6 +54,18 @@ export function parseAskBody(raw: unknown, env: Env): { history: ChatMessage[]; 
 
 type Emit = (event: string, data: unknown) => void;
 
+/** How many times to re-ask when the model ends with an empty answer. */
+const MAX_EMPTY_RETRIES = 1;
+/** Output-token allowance for the empty-answer retry. */
+const RETRY_MAX_TOKENS = 16000;
+const EMPTY_RETRY_NUDGE =
+  "Your last message was empty. Write your final answer to the user's question now, using only the sources you have already retrieved, following all the answer rules (direct answer first, [c:id] citations, the FOLLOWUPS line). If the library does not contain the answer, say so.";
+
+/** True when a model message has no visible answer (blank, or only the FOLLOWUPS line). */
+export function isBlankAnswer(t: string): boolean {
+  return !t.replace(/^\s*\**\s*follow-?ups?\s*\**\s*:.*$/gim, "").trim();
+}
+
 function addUsage(total: Usage, u: Usage | null) {
   if (!u) return;
   total.prompt_tokens += u.prompt_tokens;
@@ -85,6 +97,8 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
   let steps = 0;
   let rawAnswer = "";
   let shown = "";
+  let emptyRetries = 0;
+  let retryFinal = false;
   const emitToken = (t: string) => {
     if (!t) return;
     shown += t;
@@ -92,8 +106,8 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
   };
 
   for (let round = 1; ; round++) {
-    const forceFinal = round > MAX_ROUNDS || toolChars >= TOOL_CHAR_BUDGET || Date.now() - started > DEADLINE_MS;
-    if (forceFinal) messages.push({ role: "user", content: FINAL_NUDGE });
+    const forceFinal = retryFinal || round > MAX_ROUNDS || toolChars >= TOOL_CHAR_BUDGET || Date.now() - started > DEADLINE_MS;
+    if (forceFinal && !retryFinal) messages.push({ role: "user", content: FINAL_NUDGE });
 
     let roundBuf = "";
     let live = false;
@@ -106,7 +120,9 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
       tools: TOOL_SCHEMAS as unknown as unknown[],
       toolChoice: forceFinal ? "none" : "auto",
       referer: env.APP_URL,
-      maxTokens: 4000,
+      // Reasoning models can spend the whole allowance on hidden reasoning and return no text
+      // (finish_reason "length"); the empty-answer retry gets a much larger allowance.
+      maxTokens: retryFinal ? RETRY_MAX_TOKENS : 4000,
       signal,
       onToolCall: () => {
         sawTool = true;
@@ -123,6 +139,17 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
     addUsage(usage, result.usage);
 
     const calls = forceFinal ? [] : result.tool_calls.slice(0, MAX_TOOL_CALLS_PER_ROUND);
+    if (!calls.length && !rawAnswer.trim() && isBlankAnswer(roundBuf) && emptyRetries < MAX_EMPTY_RETRIES && !signal?.aborted) {
+      // Some models occasionally end with an empty message. Ask once more for the final answer,
+      // without tools, instead of failing the whole question.
+      emptyRetries++;
+      console.warn(`empty model answer, retrying: model=${model} round=${round} finish=${result.finish_reason}`);
+      emit("step", { n: steps, tool: "retry", args: {}, summary: "The model returned an empty answer — asking it to answer again" });
+      messages.push({ role: "assistant", content: roundBuf || "" });
+      messages.push({ role: "user", content: EMPTY_RETRY_NUDGE });
+      retryFinal = true;
+      continue;
+    }
     if (!calls.length) {
       if (!live) emitToken(render(roundBuf));
       rawAnswer += roundBuf;

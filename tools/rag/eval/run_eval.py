@@ -86,7 +86,8 @@ def validate(questions, catalogue):
 
 
 class Server:
-    def __init__(self, base, headers, timeout):
+    def __init__(self, base, headers, timeout, model=None):
+        self.model = model
         self.base, self.headers, self.timeout = base.rstrip("/"), headers, timeout
 
     def req(self, path, data=None, accept="application/json"):
@@ -128,7 +129,7 @@ class Server:
             elif ev == "error":
                 res["error"] = payload.get("message", str(payload))
 
-        with urllib.request.urlopen(self.req("/api/ask", {"messages": [{"role": "user", "content": question}]},
+        with urllib.request.urlopen(self.req("/api/ask", dict({"messages": [{"role": "user", "content": question}]}, **({"model": self.model} if self.model else {})),
                                              accept="text/event-stream"), timeout=self.timeout) as r:
             for raw in r:
                 line = raw.decode("utf-8", "replace").rstrip("\r\n")
@@ -334,7 +335,7 @@ def run(args):
     for h in args.header or []:
         n, _, v = h.partition(":")
         headers[n.strip()] = v.strip()
-    srv = Server(args.base, headers, args.timeout)
+    srv = Server(args.base, headers, args.timeout, args.model)
     try:
         srv.get_json("/api/health")
     except urllib.error.HTTPError as e:
@@ -424,6 +425,7 @@ def main():
     ap.add_argument("--ask", action="store_true", help="also call /api/ask and score the answers")
     ap.add_argument("--only", help="comma-separated question ids")
     ap.add_argument("--k", type=int, default=10)
+    ap.add_argument("--model", help="model id to request in /api/ask (must be allowed by the Worker); default: server default")
     ap.add_argument("--out", help="output dir (default .build/rag/eval/<timestamp>)")
     ap.add_argument("--timeout", type=float, default=180)
     ap.add_argument("--header", action="append", help="extra request header 'Name: value' (e.g. Cf-Access-Jwt-Assertion)")

@@ -238,7 +238,7 @@ function traceSummary(steps,ms){
   const p=[];
   if(!known)p.push(steps.length+' step'+(steps.length>1?'s':''));
   else{if(c.search)p.push('Searched '+c.search+'×');if(c.read)p.push((p.length?'read ':'Read ')+c.read+' passage'+(c.read>1?'s':''));
-    const o=steps.length-(c.search||0)-(c.read||0);if(o)p.push(o+' other lookup'+(o>1?'s':''));}
+    const o=steps.length-(c.search||0)-(c.read||0)-(c.retry||0);if(o)p.push(o+' other lookup'+(o>1?'s':''));if(c.retry)p.push('retried once');}
   if(ms)p.push(fmtDur(ms));
   return p.join(' · ');
 }
