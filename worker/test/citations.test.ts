@@ -21,6 +21,47 @@ describe("citation renumbering", () => {
     expect(out).toBe("Fact one [1] and two [2] end [c:");
     expect(c.citations().map((x) => x.chunk_id)).toEqual([30, 10]);
   });
+  it("renumbers (c:id) and [c:id] inside mermaid blocks to (n) and drops unknown ids there", () => {
+    const raw = [
+      "Intro [c:20].",
+      "```mermaid",
+      "flowchart TD",
+      '  A["Apply (c:10)"] --> B["Assess (c:30, c:99)"]',
+      '  B --> C["Decide [c:20]"] --> D["Ghost (c:99)"]',
+      "```",
+      "After (c:30) and [c:10].",
+      "```js",
+      "x = 1 // [c:10]",
+      "```",
+    ].join("\n");
+    const r = renumberCitations(raw, allowed);
+    expect(r.text).toBe(
+      [
+        "Intro [1].",
+        "```mermaid",
+        "flowchart TD",
+        '  A["Apply (2)"] --> B["Assess (3)"]',
+        '  B --> C["Decide (1)"] --> D["Ghost"]',
+        "```",
+        "After [3] and [2].",
+        "```js",
+        "x = 1 // [2]",
+        "```",
+      ].join("\n"),
+    );
+  });
+  it("streams mermaid blocks split at awkward places", () => {
+    const raw = 'Lead [c:10].\n\n```mermaid\nflowchart LR\n  A["Step (c:20)"] --> B["Next (c:10)(c:30)"]\n```\nDone [c:30].';
+    const whole = renumberCitations(raw, allowed).text;
+    expect(whole).toContain('A["Step (2)"] --> B["Next (1)(3)"]');
+    for (const size of [1, 2, 3, 5, 7, 11]) {
+      const c = new Citer(allowed);
+      let out = "";
+      for (let i = 0; i < raw.length; i += size) out += c.push(raw.slice(i, i + size));
+      out += c.flush();
+      expect(out, `chunk size ${size}`).toBe(whole);
+    }
+  });
   it("does not hold back ordinary brackets for long", () => {
     const c = new Citer(allowed);
     expect(c.push("see [Annex II] now")).toBe("see [Annex II] now");
@@ -38,6 +79,10 @@ describe("quote checks", () => {
   it("extracts quotes of >= 6 words followed by a citation", () => {
     const raw = 'It says “the DeBo shall be responsible for the verification” [c:10]. Short "two words" [c:10]. "Not cited quote of many words here" alone.';
     expect(extractQuotes(raw)).toEqual([{ quote: "the DeBo shall be responsible for the verification", ids: [10] }]);
+  });
+  it("ignores mermaid blocks", () => {
+    const raw = 'Before.\n```mermaid\nflowchart TD\n  A["the DeBo shall be responsible for the verification"] [c:10]\n```\nAfter "the DeBo shall be responsible for the checks" [c:10].';
+    expect(extractQuotes(raw)).toEqual([{ quote: "the DeBo shall be responsible for the checks", ids: [10] }]);
   });
   it("checks against cited chunk text only", () => {
     const raw =

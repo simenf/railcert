@@ -12,8 +12,8 @@ const hlStart = src.indexOf("function hl(");
 const hlSrc = src.slice(hlStart, src.indexOf("\nfunction ", hlStart + 1));
 assert.ok(pure.includes("function mdInline(") && hlSrc.startsWith("function hl("), "could not locate the helpers in app.js");
 const ctx = vm.createContext({ URL });
-vm.runInContext(`${pure}\n${hlSrc}\nglobalThis.__t = { mdInline, mdRender, hl };`, ctx);
-const { mdInline, mdRender, hl } = ctx.__t;
+vm.runInContext(`${pure}\n${hlSrc}\nglobalThis.__t = { mdInline, mdRender, hl, quoteRe, markQuotes, sourceMapSvg, mapEdges };`, ctx);
+const { mdInline, mdRender, hl, quoteRe, markQuotes, sourceMapSvg, mapEdges } = ctx.__t;
 
 const cites = new Map([
   [1, { n: 1, short_name: "CCS TSI", doc_title: 'Reg "2023/1695"', locator: "Art. 1", file_url: "/files/a.pdf#page=1", official_url: "https://eur-lex.europa.eu/eli/reg_impl/2023/1695/oj" }],
@@ -83,4 +83,99 @@ test("hl highlights each term once and never inside an inserted <mark>", () => {
   assert.equal(hl('x "q"', "quot"), "x &quot;q&quot;");
   assert.equal(hl("Set 3 SUBSET-026", "subset-026"), "Set 3 <mark>SUBSET-026</mark>");
   assert.equal(hl("<b>", ""), "&lt;b&gt;");
+});
+
+// ---------- answer presentation v2 ----------
+const cites3 = new Map([1, 2, 3].map((n) => [n, { n, chunk_id: 10 + n, short_name: `Doc ${n}`, locator: `Art. ${n}`, page_start: n, file_url: `/files/d${n}.pdf#page=${n}`, official_url: "https://eur-lex.europa.eu/x" }]));
+const quotes = (list) => list.map((q) => ({ ...q, re: quoteRe(q.quote), used: false }));
+
+test("a citation becomes a superscript link that hugs the word before it", () => {
+  const h = mdInline("the TSIs [2].", cites3);
+  assertSane(h);
+  assert.equal(h, 'the TSIs<sup class="cs c-2"><a class="cite" href="/files/d2.pdf#page=2" aria-label="Source 2 Doc 2, Art. 2 · p. 2">2</a></sup>.');
+});
+
+test("neighbouring citations merge into one superscript; runs of three become a range", () => {
+  const a = mdInline("claim [1][2][3]", cites3);
+  assertSane(a);
+  assert.match(a, /<sup class="cs c-1 c-2 c-3"><a class="cite" href="\/files\/d1\.pdf#page=1" aria-label="Sources 1 Doc 1[^"]*">1–3<\/a><\/sup>$/);
+  assert.equal((a.match(/<sup/g) || []).length, 1);
+  assert.match(mdInline("x [1, 3] [2]", cites3), />1–3<\/a>/);
+  assert.match(mdInline("x [3][1]", cites3), />1,3<\/a>/);
+});
+
+test("unknown citation numbers are marked, never linked", () => {
+  const h = mdInline("x [2][9]", cites3);
+  assertSane(h);
+  assert.match(h, /<sup class="cs c-2"><a class="cite"[^>]*>2<\/a><span class="cite bad" title="[^"]*">,9<\/span><\/sup>/);
+  assert.doesNotMatch(mdInline("y [9]", cites3), /<a /);
+});
+
+test("while streaming, numbers render as plain superscripts", () => {
+  const h = mdRender("Text [1][2] and [5].", "live");
+  assertSane(h);
+  assert.equal(h, '<p>Text<sup class="cs pending">1,2</sup> and<sup class="cs pending">5</sup>.</p>');
+});
+
+test("mermaid fences become an escaped diagram slot; other fences stay code", () => {
+  const h = mdRender('Intro\n\n```mermaid\nflowchart TD\n  A["<img src=x onerror=alert(1)> (1)"] --> B\n```\n\n```js\n<b>x</b>\n```', cites3);
+  assertSane(h);
+  assert.match(h, /<div class="mmd"><pre class="mmd-src"><code>flowchart TD\n  A\[&quot;&lt;img src=x onerror=alert\(1\)&gt; \(1\)&quot;\] --&gt; B<\/code><\/pre><\/div>/);
+  assert.match(h, /<pre><code>&lt;b&gt;x&lt;\/b&gt;<\/code><\/pre>/);
+  assert.doesNotMatch(h, /<img|<b>/);
+});
+
+test("an unclosed fence (mid-stream) renders as code to the end, never as markup", () => {
+  const h = mdRender("A [1]\n\n```mermaid\nflowchart LR\n  A --> B[\"**x** [2]\"]", "live");
+  assertSane(h);
+  assert.match(h, /<div class="mmd"><pre class="mmd-src"><code>flowchart LR\n  A --&gt; B\[&quot;\*\*x\*\* \[2\]&quot;\]<\/code><\/pre><\/div>$/);
+});
+
+test("checked quotes are marked inline: a tick when verified, an amber span when not", () => {
+  const qs = quotes([
+    { quote: "shall carry out an independent assessment", ok: true, n: 1 },
+    { quote: "this sentence was never in the source", ok: false, n: 2 },
+    { quote: "a quote that is not in the answer at all", ok: false, n: 3 },
+  ]);
+  const h = mdRender("It “shall carry out an  independent-assessment” [1]. Also \"this sentence was never in the source\" [2].", cites3, { quotes: qs });
+  assertSane(h);
+  assert.match(h, /<span class="q ok">shall carry out an  independent-assessment”<\/span><span class="qv" title="Quote verified against source 1"><span class="sr"> \(quote verified\)<\/span><\/span><sup class="cs c-1">/);
+  assert.match(h, /<span class="q bad c-2" title="[^"]*">this sentence was never in the source&quot;<span class="sr">[^<]*<\/span><\/span><sup class="cs c-2">/);
+  assert.deepEqual(qs.map((q) => q.used), [true, true, false]);
+});
+
+test("quote marking cannot inject markup", () => {
+  const qs = quotes([{ quote: "<script>alert(1)</script> is quoted here", ok: false, n: 1 }]);
+  const h = mdRender("He said <script>alert(1)</script> is quoted here [1].", cites3, { quotes: qs });
+  assertSane(h);
+  assert.doesNotMatch(h, /<script/);
+  assert.ok(qs[0].used);
+});
+
+test("markQuotes escapes the excerpt and highlights the quoted words", () => {
+  assert.equal(markQuotes('A <b> "shall verify the file" & more', ["shall verify the file"]), 'A &lt;b&gt; &quot;<mark>shall verify the file&quot;</mark> &amp; more');
+  assert.equal(markQuotes("nothing here", ["not present at all"]), "nothing here");
+});
+
+test("source map: escaped labels, encoded file paths, nothing drawn without edges", () => {
+  const nodes = [
+    { path: "a/Dir 2016.pdf", label: 'Dir <x onclick="1">', cited: true, ns: [1, 2], level: 0 },
+    { path: "b/c.pdf", label: "CSM RA", cited: false, ns: [], level: 1 },
+  ];
+  assert.equal(sourceMapSvg({ nodes, edges: [] }, false, "t"), "");
+  const svg = sourceMapSvg({ nodes, edges: [{ from: "b/c.pdf", to: "a/Dir 2016.pdf", mentions: 3 }] }, false, "t");
+  assert.match(svg, /href="\/files\/a\/Dir%202016\.pdf"/);
+  assert.match(svg, /Dir &lt;x onclick=&quot;1&quot;&gt;/);
+  assert.doesNotMatch(svg, /<x /);
+  assert.match(svg, /marker-end="url\(#t-ah\)"/);
+});
+
+test("source map edges are thinned to each node's strongest three", () => {
+  const nodes = Array.from({ length: 8 }, (_, i) => ({ path: `p${i}`, label: `D${i}`, level: i % 4 }));
+  const edges = [];
+  for (let i = 0; i < 8; i++) for (let j = 0; j < 8; j++) if (i !== j) edges.push({ from: `p${i}`, to: `p${j}`, mentions: i * 8 + j });
+  const { edges: kept, total } = mapEdges({ nodes, edges });
+  assert.equal(total, 56);
+  assert.ok(kept.length <= 24 && kept.length >= 8, `kept ${kept.length}`);
+  assert.ok(kept.some((e) => e.from === "p7" && e.to === "p6"), "strongest edge kept");
 });

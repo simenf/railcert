@@ -5,6 +5,8 @@ import { HttpError } from "./http";
 import { type ChatMessage, type Usage, LlmError, chat } from "./llm";
 import { FINAL_NUDGE, systemPrompt } from "./prompt";
 import { Citer, type SourceInfo, checkQuotes } from "./citations";
+import { FollowupFilter, makeExcerpt, parseFollowups, splitInlineFollowups } from "./answer";
+import { buildSourceMap } from "./sourcemap";
 import { TOOL_SCHEMAS, type ToolContext, runTool } from "./tools";
 
 export const MAX_ROUNDS = 10;
@@ -75,6 +77,9 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
   const seen = new Map<number, SourceInfo>();
   const ctx: ToolContext = { env, seen, texts: new Map() };
   const citer = new Citer(seen);
+  const followups = new FollowupFilter();
+  /** raw model text → visible text: FOLLOWUPS line removed, citations renumbered */
+  const render = (t: string) => citer.push(followups.push(t));
   const usage: Usage = { prompt_tokens: 0, completion_tokens: 0 };
   let toolChars = 0;
   let steps = 0;
@@ -108,10 +113,10 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
       },
       onContent: (d) => {
         roundBuf += d;
-        if (live) emitToken(citer.push(d));
+        if (live) emitToken(render(d));
         else if (!sawTool && roundBuf.length >= LIVE_THRESHOLD) {
           live = true;
-          emitToken(citer.push(roundBuf));
+          emitToken(render(roundBuf));
         }
       },
     });
@@ -119,14 +124,14 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
 
     const calls = forceFinal ? [] : result.tool_calls.slice(0, MAX_TOOL_CALLS_PER_ROUND);
     if (!calls.length) {
-      if (!live) emitToken(citer.push(roundBuf));
+      if (!live) emitToken(render(roundBuf));
       rawAnswer += roundBuf;
       break;
     }
     if (live) {
       // the model wrote visible text and then asked for tools: keep the text as part of the answer
       rawAnswer += `${roundBuf}\n\n`;
-      emitToken(citer.push("\n\n"));
+      emitToken(render("\n\n"));
     }
     messages.push({ role: "assistant", content: result.content || null, tool_calls: calls });
     for (const call of calls) {
@@ -142,6 +147,7 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
     }
   }
 
+  emitToken(citer.push(followups.flush()));
   emitToken(citer.flush());
   if (!rawAnswer.trim()) {
     emit("error", { message: "The model returned an empty answer. Try rephrasing the question." });
@@ -157,10 +163,27 @@ export async function runAgent(env: Env, history: ChatMessage[], model: string, 
       .all<{ id: number; text: string }>();
     for (const r of results ?? []) ctx.texts.set(r.id, r.text);
   }
-  const quote_checks = checkQuotes(rawAnswer, ctx.texts, new Set(seen.keys()));
+  const quote_checks = checkQuotes(rawAnswer, ctx.texts, new Set(seen.keys())).map((q) => ({ ...q, n: citer.numberOf(q.chunk_id) }));
+  for (const c of citations) {
+    const text = ctx.texts.get(c.chunk_id);
+    if (!text) continue;
+    const q = quote_checks.find((x) => x.ok && x.chunk_id === c.chunk_id);
+    c.excerpt = makeExcerpt(text, q?.quote);
+  }
+  // a model that ignored "own line" still gets its follow-ups removed from the final answer
+  const inline = splitInlineFollowups(shown.trim());
+  const follow_ups = parseFollowups(inline.line ? [...followups.lines, inline.line] : followups.lines);
+  let source_map;
+  try {
+    source_map = await buildSourceMap(env, docs, citations);
+  } catch (e) {
+    console.error("source_map failed", e); // optional field: never fail the answer for it
+  }
   const u: Record<string, number> = { prompt_tokens: usage.prompt_tokens, completion_tokens: usage.completion_tokens };
   if (usage.cost_usd != null) u.cost_usd = Math.round(usage.cost_usd * 1e6) / 1e6;
-  emit("done", { answer: shown.trim(), citations, quote_checks, usage: u, steps, model });
+  const done: Record<string, unknown> = { answer: inline.text, citations, quote_checks, follow_ups, usage: u, steps, model };
+  if (source_map) done.source_map = source_map;
+  emit("done", done);
 }
 
 /** Wraps runAgent in an SSE response. */

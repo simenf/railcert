@@ -115,3 +115,30 @@ where `file_url` = `/files/<path>#page=<page_start>` for PDFs (or `#<anchor>` fo
 - Semantic (when `USE_VECTORS=1`): embed the query with `@cf/baai/bge-m3`, `VECTORS.query(topK=50, filter)`.
 - Fuse with reciprocal rank fusion (k=60); boost exact locator/identifier matches; demote
   `repealed`/`historical` unless asked; collapse `duplicate_of` copies; max 3 hits per document by default.
+
+## Answer presentation v2 (additions to the `done` event)
+
+All additions are optional fields; old clients ignore them.
+
+- `citations[i].excerpt` — up to ~700 chars of the cited chunk text (whitespace-collapsed), centred on the first
+  verified quote from that chunk if any, else the chunk start. Used for the hover/tap source card.
+- `quote_checks[i].n` — the citation number the quote is attached to (or null), so the UI can mark the quote inline.
+- `follow_ups` — 0–3 short follow-up questions (same language as the user). The model ends its answer with one line
+  `FOLLOWUPS: q1 | q2 | q3`; the Worker strips that line from `answer` and from the streamed `token`s
+  (hold back a trailing partial line that could be the start of `FOLLOWUPS:`).
+- `source_map` — `{ "nodes": [Node], "edges": [Edge] }` built from the `edges` table (never from the model), so the UI
+  can draw how the cited documents relate:
+  - `Node` = `{ "path", "label" (short name or title), "area", "status", "kind": "act"|"guide"|"spec"|"national"|"standard"|"other", "cited": bool, "ns": [citation numbers], "level": 0..4 }`
+    where `level` orders the legal hierarchy: 0 EU directives/regulations of the framework, 1 implementing/delegated acts
+    (TSIs, CSMs, 2018/545 …), 2 ERA guidance / national law & guidance, 3 specifications (ERTMS SUBSETs, TRV), 4 standards.
+  - `Edge` = `{ "from": path, "to": path, "mentions": n }` meaning `from` cites `to`.
+  - Contains every cited document, plus at most 4 extra in-library documents that connect two cited documents in one hop
+    (cited by one, citing another). Max 14 nodes; edges only between included nodes; duplicates (`duplicate_of`) collapsed.
+  - Omitted when fewer than 2 nodes.
+
+Answer text conventions (system prompt):
+- Open with a 1–3 sentence direct answer, then details under short headings or lists.
+- Cite once per claim/paragraph, at the end of the sentence, never mid-sentence; group like `[c:12][c:40]`.
+- Use a ```mermaid fenced block (flowchart TD/LR, sequenceDiagram or timeline only) when the question is about a process,
+  sequence of steps, roles or hierarchy; only steps supported by sources; put citation numbers in node labels as `(c:12)`
+  which the Worker renumbers to `(n)` like other citations; keep it ≤ 15 nodes; no styling/click directives.

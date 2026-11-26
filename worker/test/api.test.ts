@@ -200,7 +200,7 @@ describe("/api/ask", () => {
         });
       }
       const answer =
-        'The applicant designates a DeBo for national rules: "shall designate one or more bodies responsible for the verification procedure" [c:202]. Invented: "this sentence is not in the source text at all" [c:202]. Unknown source [c:999].';
+        'The applicant designates a DeBo for national rules: "shall designate one or more bodies responsible for the verification procedure" [c:202]. Invented: "this sentence is not in the source text at all" [c:202]. Unknown source [c:999].\n\n```mermaid\nflowchart LR\n  A["Applicant (c:202)"] --> B["DeBo (c:999)"]\n```\n\nFOLLOWUPS: What is a NoBo? | Which national rules apply?';
       const parts = answer.match(/.{1,7}/gs)!;
       return sseResponse([
         ...parts.map((p) => ({ choices: [{ delta: { content: p } }] })),
@@ -228,7 +228,13 @@ describe("/api/ask", () => {
     expect(done.citations).toHaveLength(1);
     expect(done.citations[0]).toMatchObject({ n: 1, chunk_id: 202, locator: "Art. 15(8)", doc_path: "01_EU_Framework/Directive_2016_797.pdf" });
     expect(done.citations[0].snippet).toBeUndefined();
-    expect(done.quote_checks.map((q: any) => q.ok)).toEqual([true, false]);
+    expect(done.quote_checks.map((q: any) => [q.ok, q.n])).toEqual([[true, 1], [false, 1]]);
+    expect(done.citations[0].excerpt).toContain("shall designate one or more bodies");
+    expect(done.answer).toContain('A["Applicant (1)"] --> B["DeBo"]');
+    expect(done.answer).not.toContain("FOLLOWUPS");
+    expect(streamed).not.toContain("FOLLOWUPS");
+    expect(done.follow_ups).toEqual(["What is a NoBo?", "Which national rules apply?"]);
+    expect(done.source_map).toBeUndefined(); // one cited document only
     expect(done.usage).toEqual({ prompt_tokens: 400, completion_tokens: 60, cost_usd: 0.0003 });
     expect(done.steps).toBe(1);
     // the tool result went back to the model, with tools offered in round 1

@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "public/app.css"
+        ],
+        "createdAt": "2026-11-26T22:18:05.558Z",
+        "reason": "Claude triage: L86 is a 2px neutral --line border on .md blockquote (standard quotation styling for quoted legal text), not a coloured card side-tab"
+      }
+    ]
+  }
+}

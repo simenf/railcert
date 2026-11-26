@@ -56,7 +56,11 @@ export interface Hit {
   official_url: string | null;
 }
 
-export type Citation = Omit<Hit, "snippet" | "score"> & { n: number };
+export type Citation = Omit<Hit, "snippet" | "score"> & {
+  n: number;
+  /** Up to ~700 chars of the chunk text for the source card (set once the answer is complete). */
+  excerpt?: string;
+};
 
 export interface DocIndex {
   byId: Map<number, DocRow>;
