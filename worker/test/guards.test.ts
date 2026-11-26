@@ -54,3 +54,17 @@ describe("/files CSP", () => {
     expect(fileCsp(contentTypeFor("x.PDF"))).toBeNull();
   });
 });
+
+describe("modelChoices", () => {
+  it("lists the default first, then allowed models, without duplicates", async () => {
+    const { modelChoices } = await import("../src/env");
+    const r = modelChoices({ MODEL: "meta/muse-ember", ALLOWED_MODELS: " tencent/hy4-flash, meta/muse-ember ,deepseek/deepseek-v4.1-flash-1017," });
+    expect(r.map((m) => m.id)).toEqual(["meta/muse-ember", "tencent/hy4-flash", "deepseek/deepseek-v4.1-flash-1017"]);
+    expect(r[0]).toEqual({ id: "meta/muse-ember", label: "Meta Muse Ember", default: true });
+    expect(r.filter((m) => m.default)).toHaveLength(1);
+  });
+  it("falls back to the built-in default with no config", async () => {
+    const { modelChoices, DEFAULT_MODEL } = await import("../src/env");
+    expect(modelChoices({})).toEqual([{ id: DEFAULT_MODEL, label: "Meta Muse Ember", default: true }]);
+  });
+});

@@ -45,7 +45,8 @@
   ],
 
   "vars": {
-    "MODEL": "deepseek/deepseek-v4.1-flash-1017",
+    "MODEL": "meta/muse-ember",
+    "ALLOWED_MODELS": "tencent/hy4-flash,deepseek/deepseek-v4.1-flash-1017",
     "LLM_BASE_URL": "https://openrouter.ai/api/v1",
     "USE_VECTORS": "0",
     "ACCESS_TEAM_DOMAIN": "",
@@ -75,7 +76,8 @@
       "vectorize": [{ "binding": "VECTORS", "index_name": "railcert-chunks" }],
       "ai": { "binding": "AI" },
       "vars": {
-        "MODEL": "deepseek/deepseek-v4.1-flash-1017",
+        "MODEL": "meta/muse-ember",
+        "ALLOWED_MODELS": "tencent/hy4-flash,deepseek/deepseek-v4.1-flash-1017",
         // OWNER: AI Gateway URL, e.g. https://gateway.ai.cloudflare.com/v1/<account_id>/<gateway>/openrouter
         "LLM_BASE_URL": "https://openrouter.ai/api/v1",
         "USE_VECTORS": "1",

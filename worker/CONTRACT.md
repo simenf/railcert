@@ -52,7 +52,8 @@ only deploy target (`wrangler deploy --env production`) and the only place the r
 | `VECTORS` | Vectorize | index `railcert-chunks`, 1024 dims, cosine. Optional: absent/unusable in local dev |
 | `AI` | Workers AI | query embeddings with `@cf/baai/bge-m3`. Optional in local dev |
 | `ASSETS` | static assets | `worker/public` |
-| `MODEL` | var | default `deepseek/deepseek-v4.1-flash-1017` |
+| `MODEL` | var | default model, `meta/muse-ember` |
+| `ALLOWED_MODELS` | var | other models the chat may pick (comma-separated): `tencent/hy4-flash,deepseek/deepseek-v4.1-flash-1017` |
 | `LLM_BASE_URL` | var | `https://openrouter.ai/api/v1` locally; in prod the AI Gateway URL `https://gateway.ai.cloudflare.com/v1/<account>/<gateway>/openrouter` |
 | `USE_VECTORS` | var | `"1"` to enable semantic search; `"0"` → keyword-only (local default) |
 | `ACCESS_TEAM_DOMAIN`, `ACCESS_AUD` | vars | when both set, every request must carry a valid `Cf-Access-Jwt-Assertion` |
@@ -64,7 +65,7 @@ only deploy target (`wrangler deploy --env production`) and the only place the r
 
 All JSON. Errors: `{"error": "…"}` with 4xx/5xx.
 
-- `GET /api/health` → `{"ok":true,"docs":N,"chunks":N,"vectors":bool,"model":"…","build_date":"…"}`
+- `GET /api/health` → `{"ok":true,"docs":N,"chunks":N,"vectors":bool,"model":"…","models":[{"id","label","default"}],"build_date":"…"}`
 - `GET /api/search?q=…&k=20&area=…&ertms_set=…&status=…&include_repealed=0&doc=<path>` →
   `{"query":"…","mode":"hybrid|keyword","results":[Hit]}`
 - `GET /api/doc?path=…` → doc row + `cites`, `cited_by` counts
