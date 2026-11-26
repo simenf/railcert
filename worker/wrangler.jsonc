@@ -1,0 +1,90 @@
+// railcert-ask: team-only "ask the library" Worker. See CONTRACT.md and README.md.
+//
+// The default (top-level) config is for LOCAL DEV ONLY and FAILS CLOSED if it is ever deployed by mistake
+// (a plain `wrangler deploy` without `--env production`):
+//   - a different name (`railcert-ask-dev`), so it can never replace or shadow the production Worker;
+//   - workers_dev and preview_urls off, so it gets no public *.workers.dev URL;
+//   - REQUIRE_ACCESS "1" with no Access vars, so it refuses every request;
+//   - the placeholder database_id, so the deploy itself fails (no such D1 database).
+// Local dev turns Access off with REQUIRE_ACCESS=0: `npm run dev` (passes --var REQUIRE_ACCESS:0) or a
+// `.dev.vars` copied from `.dev.vars.example`. Plain `npx wrangler dev` without either refuses all requests.
+// `wrangler dev` works without a Cloudflare login (local D1 + local R2 via Miniflare; no Vectorize /
+// Workers AI → keyword-only search).
+// Production lives in `env.production` (deploy with `wrangler deploy --env production`), which adds
+// VECTORS + AI, turns semantic search on and makes Cloudflare Access mandatory.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "railcert-ask-dev",
+  "workers_dev": false,
+  "preview_urls": false,
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+
+  // Static chat UI. The Worker runs first for EVERY request so the Access JWT check also covers assets.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "none"
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "railcert-ask",
+      // KEEP this placeholder: it is all `wrangler dev` / `wrangler d1 execute --local` need, and it makes
+      // an accidental top-level `wrangler deploy` fail. The real id goes ONLY in env.production below.
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "r2_buckets": [
+    // Private bucket: no public URL, no r2.dev. Files are only served through /files/* behind Access.
+    { "binding": "FILES", "bucket_name": "railcert-library" }
+  ],
+
+  "vars": {
+    "MODEL": "deepseek/deepseek-v4.1-flash-1017",
+    "LLM_BASE_URL": "https://openrouter.ai/api/v1",
+    "USE_VECTORS": "0",
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": "",
+    // Fail closed. Local dev overrides this to "0" (npm run dev / .dev.vars); never set "0" here.
+    "REQUIRE_ACCESS": "1"
+  },
+  // OPENROUTER_API_KEY: `.dev.vars` locally (git-ignored), `wrangler secret put OPENROUTER_API_KEY --env production` in prod.
+
+  "env": {
+    "production": {
+      "name": "railcert-ask",
+      "workers_dev": false,
+      "preview_urls": false,
+      // Own hostname; does not touch the Pages site rail.simenf.com. Change here if you want another name.
+      "routes": [{ "pattern": "ask.rail.simenf.com", "custom_domain": true }],
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "railcert-ask",
+          // OWNER: replace with the id printed by `wrangler d1 create railcert-ask` (deploy.sh tells you).
+          // Change ONLY this one; the top-level placeholder stays.
+          "database_id": "40c16c60-9406-4a1e-9051-41e01aece6f0"
+        }
+      ],
+      "r2_buckets": [{ "binding": "FILES", "bucket_name": "railcert-library" }],
+      "vectorize": [{ "binding": "VECTORS", "index_name": "railcert-chunks" }],
+      "ai": { "binding": "AI" },
+      "vars": {
+        "MODEL": "deepseek/deepseek-v4.1-flash-1017",
+        // OWNER: AI Gateway URL, e.g. https://gateway.ai.cloudflare.com/v1/<account_id>/<gateway>/openrouter
+        "LLM_BASE_URL": "https://openrouter.ai/api/v1",
+        "USE_VECTORS": "1",
+        // OWNER: Zero Trust team domain (e.g. "myteam.cloudflareaccess.com") and the Access application AUD tag.
+        // With REQUIRE_ACCESS=1 the Worker refuses every request until both are set.
+        "ACCESS_TEAM_DOMAIN": "simen.cloudflareaccess.com",
+        "ACCESS_AUD": "f97310ebfd2ae066be8af57bfe5a410c5fb8d6fc136cfcb63ff17a7c5f706313",
+        "REQUIRE_ACCESS": "1"
+      }
+    }
+  }
+}

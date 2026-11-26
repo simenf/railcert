@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Railcert Ask</title>
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="app.css">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <h1>Railcert <span>Ask the library</span></h1>
+  <nav role="tablist" aria-label="Mode">
+    <button role="tab" id="tab-ask" data-mode="ask" aria-selected="true" aria-controls="v-ask">Ask</button>
+    <button role="tab" id="tab-search" data-mode="search" aria-selected="false" aria-controls="v-search" tabindex="-1">Search</button>
+  </nav>
+  <div class="health" id="health" aria-live="polite">Connecting…</div>
+</header>
+
+<main id="main">
+<section id="v-ask" class="view on" role="tabpanel" aria-labelledby="tab-ask">
+  <aside class="hist" id="hist" aria-label="Past chats">
+    <div class="histbar"><button class="btn pri" id="newchat" type="button">New chat</button></div>
+    <ul id="histlist"></ul>
+  </aside>
+  <div class="chat">
+    <div class="chatbar">
+      <button class="btn ghost histtoggle" id="histtoggle" type="button" aria-expanded="false" aria-controls="hist">Chats</button>
+      <span class="ctitle" id="ctitle">New chat</span>
+      <button class="btn ghost" id="export" type="button" title="Download this chat as Markdown, with sources">Export .md</button>
+    </div>
+    <div class="msgs" id="msgs" role="log" aria-label="Conversation"></div>
+    <form class="composer" id="form">
+      <label class="sr" for="q">Your question</label>
+      <textarea id="q" rows="2" placeholder="Ask about EU or Norwegian railway regulation, ERTMS, CSM RA, authorisation…" aria-describedby="qhint"></textarea>
+      <button class="btn pri" id="send" type="submit">Send</button>
+      <button class="btn stop" id="stop" type="button" hidden>Stop</button>
+      <span class="qhint" id="qhint">Enter to send · Shift+Enter for a new line</span>
+    </form>
+  </div>
+</section>
+
+<section id="v-search" class="view" role="tabpanel" aria-labelledby="tab-search" hidden>
+  <form class="sbar" id="sform" role="search">
+    <label class="sr" for="sq">Search the library</label>
+    <input type="search" id="sq" placeholder="Search passages: article, SUBSET-026, 3.5.3.7, 2023/1695, samtrafikkforskriften…">
+    <label class="sr" for="sarea">Area</label>
+    <select id="sarea"><option value="">All areas</option></select>
+    <label class="sr" for="sset">ERTMS set</label>
+    <select id="sset"><option value="">Any ERTMS set</option></select>
+    <label class="chk"><input type="checkbox" id="srep"> Include repealed</label>
+    <button class="btn pri" type="submit">Search</button>
+  </form>
+  <div class="smeta" id="smeta" aria-live="polite"></div>
+  <ol class="hits" id="hits"></ol>
+</section>
+</main>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="card" id="card" role="dialog" aria-modal="false" aria-labelledby="card-t" hidden></div>
+<footer>Answers are AI-generated from the library and can be wrong or incomplete. Always verify against the official text before relying on them. <span id="build"></span></footer>
+<script src="app.js"></script>
+</body></html>

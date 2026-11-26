@@ -130,6 +130,7 @@ The GitHub repository holds **the map, the catalogue and the tools, not the docu
 | `tools/nav_config.py`, `tools/navigator.py` | Navigator rules (top of the hierarchy, Norway ⇄ EU links, placement overrides, task paths) and the code that builds the tree |
 | `tools/va_config.py` | Content of the Vehicle authorisation tab: process steps, certificates and declarations, their links and legal references |
 | `tools/csmra_config.py` | Content of the CSM RA tab: process boxes with legal text, guidance, practice notes and role advice, and the steps of the guided assessment |
+| `worker/`, `tools/rag/` | **Railcert Ask**: a team-only search and "ask the library" agent (Cloudflare Worker, D1, R2, Vectorize, OpenRouter). Documents go only to a private bucket behind Cloudflare Access. See `worker/README.md` |
 
 **Rebuilding from a fresh clone:**
 1. `bash download_all.sh`
